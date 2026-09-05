@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms and Conditions - Monetic</title>
+  <meta name="description" content="Terms and Conditions of Service for Monetic, an independent personal finance and budget tracking mobile application.">
+  <link rel="canonical" href="https://monetic.app/terms.html">
+  <style>
+    :root {
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-subtle: #64748b;
+      --border-color: #e2e8f0;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-bg: #eff6ff;
+      --accent: #10b981;
+      --warning-bg: #fffbeb;
+      --warning-border: #f59e0b;
+      --warning-text: #92400e;
+      --warning-title: #78350f;
+      --table-header-bg: #f1f5f9;
+      --table-row-alt: #f8fafc;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #0b0f19;
+        --card-bg: #111827;
+        --text-main: #f8fafc;
+        --text-muted: #cbd5e1;
+        --text-subtle: #94a3b8;
+        --border-color: #1f2937;
+        --primary: #3b82f6;
+        --primary-hover: #60a5fa;
+        --primary-bg: rgba(59, 130, 246, 0.12);
+        --accent: #34d399;
+        --warning-bg: rgba(245, 158, 11, 0.1);
+        --warning-border: #f59e0b;
+        --warning-text: #fde68a;
+        --warning-title: #fbbf24;
+        --table-header-bg: #1e293b;
+        --table-row-alt: #162032;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding: 0;
+    }
+
+    header {
+      background-color: var(--card-bg);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .nav-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #2563eb, #10b981);
+      color: white;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.925rem;
+      font-weight: 500;
+      padding: 0.4rem 0.75rem;
+      border-radius: 6px;
+      transition: color 0.15s ease, background-color 0.15s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+      background-color: var(--primary-bg);
+    }
+
+    .nav-link.active {
+      color: var(--primary);
+      font-weight: 600;
+      background-color: var(--primary-bg);
+    }
+
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1.5rem 4rem 1.5rem;
+    }
+
+    .doc-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    @media (max-width: 640px) {
+      .doc-card {
+        padding: 1.75rem 1.25rem;
+        border-radius: 12px;
+      }
+    }
+
+    .title-block {
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.1rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+      color: var(--text-main);
+    }
+
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      font-size: 0.875rem;
+      color: var(--text-subtle);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.6rem;
+      border-radius: 9999px;
+      font-size: 0.775rem;
+      font-weight: 600;
+      background-color: var(--primary-bg);
+      color: var(--primary);
+      border: 1px solid rgba(37, 99, 235, 0.2);
+    }
+
+    .badge-dev {
+      background-color: rgba(16, 185, 129, 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-top: 2.25rem;
+      margin-bottom: 1rem;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--text-main);
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--text-muted);
+    }
+
+    ul, ol {
+      margin-bottom: 1.25rem;
+      padding-left: 1.5rem;
+      color: var(--text-muted);
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border-color);
+      margin: 2rem 0;
+    }
+
+    /* Warning / Financial Disclaimer Callout */
+    .callout-warning {
+      background-color: var(--warning-bg);
+      border-left: 4px solid var(--warning-border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      color: var(--warning-text);
+    }
+
+    .callout-warning h3 {
+      color: var(--warning-title);
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .callout-warning p {
+      color: var(--warning-text);
+      margin-bottom: 0.5rem;
+    }
+
+    .callout-warning ul {
+      color: var(--warning-text);
+      margin-bottom: 0;
+    }
+
+    /* Tables */
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.925rem;
+    }
+
+    th {
+      background-color: var(--table-header-bg);
+      color: var(--text-main);
+      font-weight: 600;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-muted);
+    }
+
+    tr:nth-child(even) td {
+      background-color: var(--table-row-alt);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      background-color: var(--table-header-bg);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.875em;
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+    }
+
+    footer {
+      border-top: 1px solid var(--border-color);
+      background-color: var(--card-bg);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--text-subtle);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media print {
+      body {
+        background: white;
+        color: black;
+      }
+      header, footer, .nav-links {
+        display: none;
+      }
+      .doc-card {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <span class="brand-badge">M</span>
+        <span>Monetic</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="terms.html" class="nav-link active">Terms & Conditions</a>
+        <a href="privacy.html" class="nav-link">Privacy Policy</a>
+        <a href="privacy.html#delete-account" class="nav-link">Delete Account</a>
+        <a href="mailto:support@monetic.app" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="doc-card">
+      <div class="title-block">
+        <h1>Terms and Conditions for Monetic</h1>
+        <div class="meta-bar">
+          <span><strong>Effective Date:</strong> September 5, 2026</span>
+          <span>•</span>
+          <span><strong>Last Updated:</strong> September 5, 2026</span>
+          <span class="badge badge-dev">Independent Developer</span>
+        </div>
+      </div>
+
+      <section>
+        <h2>1. Introduction & Acceptance of Terms</h2>
+        <p>Welcome to <strong>Monetic</strong> ("the App", "Service", "we", "us", or "our"). Monetic is a mobile personal budgeting and finance tracking software application available across Android and iOS platforms, accessible at <a href="https://monetic.app">https://monetic.app</a>.</p>
+        <p>These Terms and Conditions ("Terms") constitute a legally binding agreement between you ("User", "you", or "your") and the developer of Monetic. By downloading, installing, accessing, or using Monetic in any manner, you expressly acknowledge that you have read, understood, and agreed to be bound by these Terms, as well as our <a href="privacy.html">Privacy Policy</a>. If you do not agree to these Terms, you must not download, access, or use the App.</p>
+
+        <h3>1.1. Developer Status</h3>
+        <p>Monetic is designed, engineered, and maintained by an <strong>independent software developer</strong>. The App is not owned, operated, endorsed by, or affiliated with any commercial banking institution, credit broker, investment firm, government entity, or licensed financial corporation.</p>
+
+        <h3>1.2. Eligibility and Minimum Age</h3>
+        <ul>
+          <li><strong>European Union (EU) & European Economic Area (EEA):</strong> You must be at least <strong>16 years of age</strong> (or the minimum legal age for digital consent under the national laws of your EU Member State) to use Monetic.</li>
+          <li><strong>Rest of the World:</strong> You must be at least <strong>13 years of age</strong> (or the applicable age of majority in your jurisdiction).</li>
+          <li>If you are under the legal age of majority in your jurisdiction, you represent and warrant that you have obtained the consent of your parent or legal guardian to use the App and agree to these Terms.</li>
+        </ul>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>2. Strict Financial Disclaimer: Non-Banking & Non-Advisory Status</h2>
+
+        <div class="callout-warning">
+          <h3>⚠️ Critical Legal Notice: Informational & Organizational Tool Only</h3>
+          <p><strong>MONETIC IS STRICTLY A PERSONAL EXPENSE TRACKING, BUDGETING, AND MONEY MANAGEMENT UTILITY DESIGNED SOLELY FOR PERSONAL ORGANIZATIONAL AND INFORMATIONAL PURPOSES.</strong></p>
+        </div>
+
+        <ol>
+          <li><strong>Not a Financial Institution or Bank:</strong> Monetic is <strong>NOT</strong> a bank, credit union, depository institution, payment services provider, money transmitter, escrow agent, or lender. Monetic does not hold deposits, manage escrow funds, execute bank wire transfers, issue debit or credit cards, or process monetary payments between individuals or entities.</li>
+          <li><strong>No Fiduciary or Financial Advisory Services:</strong> Monetic does not provide financial planning, investment advice, portfolio management, tax consulting, accounting advice, or wealth management recommendations. None of the charts, statistics, reports, analytics, forecasts, spending metrics, or balance calculations provided within the App constitute professional financial, investment, legal, or tax advice.</li>
+          <li><strong>No Automated Banking Integration or Transactions:</strong> Monetic relies entirely on manual user inputs, custom entries, and user-configured scheduled transactions. The App does not initiate automated withdrawals, direct debits, or banking transactions on your behalf.</li>
+          <li><strong>Calculations & Currency Exchange Estimates:</strong> Financial calculations, monthly roll-ups, category distributions, and multi-currency exchange rate conversions are provided for convenience and estimation only. Market exchange rates fluctuate continuously. You are solely responsible for independently verifying all numbers before making financial, investment, tax, commercial, or business decisions.</li>
+          <li><strong>No Liability for Financial Decisions:</strong> You acknowledge and agree that any financial decisions, budgetary choices, investments, or expense allocations you make are made at your own sole discretion and risk. Monetic and its developer assume no responsibility or liability for financial losses, inaccuracies, overdraft fees, or consequences resulting from your use of the App.</li>
+        </ol>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>3. User Accounts, Security & Authentication</h2>
+
+        <h3>3.1. Account Types & Registration</h3>
+        <p>Monetic offers two flexible modes of operation:</p>
+        <ul>
+          <li><strong>Anonymous / Guest Mode:</strong> You may use core tracking features without creating a cloud account. In this mode, your financial data resides solely on your physical device.</li>
+          <li><strong>Authenticated Account:</strong> You may register an account using your email address and password or through third-party authentication (Google Sign-In) powered by Firebase Authentication.</li>
+        </ul>
+
+        <h3>3.2. User Responsibilities & Account Security</h3>
+        <ul>
+          <li>You agree to provide accurate, current, and complete information during registration and keep your account details updated.</li>
+          <li>You are exclusively responsible for maintaining the confidentiality and security of your account credentials, passwords, and device access.</li>
+          <li>Any actions, transactions, or modifications performed under your account credentials will be deemed to have been authorized by you.</li>
+          <li>You must notify us immediately at <a href="mailto:support@monetic.app">support@monetic.app</a> if you suspect unauthorized access or security breaches of your account.</li>
+        </ul>
+
+        <h3>3.3. In-App 4-Digit Security PIN and Biometrics</h3>
+        <ul>
+          <li>Monetic provides an optional in-app 4-digit security PIN and biometric authentication (Fingerprint, Touch ID, Face ID) for device-level privacy.</li>
+          <li>The 4-digit PIN is salted and cryptographically hashed (SHA-256) locally on your device. Biometric authentication is handled strictly by your device's hardware Secure Enclave / Biometric Prompt API.</li>
+          <li><strong>Local-Only Invariant:</strong> Your security PIN is <strong>never</strong> transmitted to, synchronized with, or recoverable from our servers. If you forget your security PIN and do not have an active cloud backup or biometric bypass, we cannot retrieve or reset your PIN. You bear sole responsibility for safeguarding your PIN and device.</li>
+        </ul>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>4. Subscriptions, In-App Purchases & Billing (Monetic Pro)</h2>
+        <p>Monetic offers both free core functionality and enhanced premium features ("Monetic Pro") accessible via subscription or one-time lifetime purchase.</p>
+
+        <h3>4.1. Subscription Plans & Pricing</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Plan Type</th>
+                <th>Product Identifier</th>
+                <th>Billing Frequency</th>
+                <th>Current Base Pricing (RON)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Monthly Subscription</strong></td>
+                <td><code>monetic_pro_monthly</code></td>
+                <td>Recurring Monthly</td>
+                <td>7.00 RON / month (or local store equivalent)</td>
+              </tr>
+              <tr>
+                <td><strong>Annual Subscription</strong></td>
+                <td><code>monetic_pro_yearly</code></td>
+                <td>Recurring Annually</td>
+                <td>60.00 RON / year (or local store equivalent)</td>
+              </tr>
+              <tr>
+                <td><strong>Lifetime License</strong></td>
+                <td><code>monetic_pro_lifetime</code></td>
+                <td>One-Time Purchase</td>
+                <td>140.00 RON one-time (or local store equivalent)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p><em>Prices include applicable statutory Value Added Tax (VAT) or sales tax based on your country of residence as determined by Apple or Google.</em></p>
+
+        <h3>4.2. Free Trial Period</h3>
+        <ul>
+          <li>We may offer a <strong>14-day free trial</strong> for select subscription tiers (e.g., Annual Subscription).</li>
+          <li>Unless canceled at least <strong>24 hours before the expiration of the free trial period</strong>, your trial will automatically convert into a paid, recurring subscription, and your payment method on file with Apple or Google will be charged the applicable subscription rate.</li>
+          <li>Free trials are limited to one per user / Apple ID / Google Account.</li>
+        </ul>
+
+        <h3>4.3. Payment Processing & Store Authority</h3>
+        <p>All monetary transactions, billing processing, payment methods, and invoice issuance are managed exclusively by:</p>
+        <ul>
+          <li><strong>Apple Inc.</strong> via the Apple App Store (StoreKit) for iOS devices;</li>
+          <li><strong>Google LLC</strong> via Google Play Billing for Android devices.</li>
+        </ul>
+        <p>Our in-app subscription status and entitlement management are facilitated securely through <strong>RevenueCat Inc.</strong> Monetic never collects, processes, stores, or handles credit card numbers, bank account numbers, or direct billing details.</p>
+
+        <h3>4.4. Automatic Renewal & Cancellation</h3>
+        <ul>
+          <li><strong>Auto-Renewal:</strong> Subscriptions automatically renew at the end of each billing cycle (monthly or annually) unless you cancel your subscription at least <strong>24 hours prior</strong> to the end of the current billing cycle.</li>
+          <li><strong>How to Cancel:</strong> You can cancel your subscription at any time via your device's native app store account management:
+            <ul>
+              <li><strong>On iOS:</strong> Open <em>Settings</em> → Tap your <em>Apple ID profile</em> → Tap <em>Subscriptions</em> → Select <em>Monetic</em> → Tap <em>Cancel Subscription</em>.</li>
+              <li><strong>On Android:</strong> Open the <em>Google Play Store</em> → Tap your <em>Profile Icon</em> → Tap <em>Payments &amp; subscriptions</em> → Tap <em>Subscriptions</em> → Select <em>Monetic</em> → Tap <em>Cancel subscription</em>.</li>
+            </ul>
+          </li>
+          <li><strong>Effect of Cancellation:</strong> When you cancel a subscription, your access to Monetic Pro features will continue until the end of the current paid billing cycle. Cancellation takes effect for the subsequent cycle; partial-period refunds are not automatically granted.</li>
+        </ul>
+
+        <h3>4.5. Price Modifications</h3>
+        <p>We reserve the right to modify subscription pricing for Monetic Pro at our sole discretion. Any price changes will be communicated in advance via your app store provider (Apple or Google) in accordance with their respective platform terms. Price changes will not apply retroactively to an ongoing billing cycle.</p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>5. EU Statutory Right of Withdrawal & Refund Policy</h2>
+
+        <h3>5.1. European Union Right of Withdrawal (Directive 2011/83/EU)</h3>
+        <p>Under the European Union Consumer Rights Directive (Directive 2011/83/EU):</p>
+        <ol>
+          <li>EU consumers generally possess a statutory 14-day right of withdrawal from distance and off-premises contracts without stating reasons.</li>
+          <li><strong>Digital Content Exception:</strong> In accordance with Article 16(m) of Directive 2011/83/EU, the statutory right of withdrawal ceases to apply to the supply of digital content not supplied on a tangible medium if performance has begun with the consumer's prior express consent and acknowledgment that they thereby lose their right of withdrawal.</li>
+          <li>When you purchase Monetic Pro or activate a subscription through the Apple App Store or Google Play Store, digital access is furnished immediately upon transaction completion, and you acknowledge that your withdrawal right may be subject to the store operator's terms.</li>
+        </ol>
+
+        <h3>5.2. Store-Managed Refund Procedures</h3>
+        <p>Because all payment contracts are formed directly between you and the respective platform operator (Apple or Google), <strong>Monetic cannot directly issue refunds or reverse credit card charges</strong>. All refund requests must be submitted to the platform operator:</p>
+        <ul>
+          <li><strong>Apple App Store Purchases:</strong> Submit a refund request via Apple's official portal at <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">https://reportaproblem.apple.com</a> in accordance with Apple Media Services Terms and Conditions.</li>
+          <li><strong>Google Play Store Purchases:</strong> Submit a refund request via Google Play Help at <a href="https://support.google.com/googleplay/workflow/9813248" target="_blank" rel="noopener">https://support.google.com/googleplay/workflow/9813248</a> within the timeframes stipulated by Google Play Refund Policies.</li>
+        </ul>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>6. User Content & Intellectual Property Ownership</h2>
+
+        <h3>6.1. Your Ownership of Financial Data & Content</h3>
+        <ul>
+          <li><strong>100% User Ownership:</strong> You retain full ownership, title, and intellectual property rights in and to all financial records, transaction descriptions, budget numbers, custom category titles, accounts, regular payments, and uploaded images (receipt photographs and custom logos) that you enter or store in Monetic ("User Content").</li>
+          <li><strong>Limited Processing License:</strong> You grant Monetic a non-exclusive, worldwide, royalty-free license solely to store, process, compress, display, and synchronize your User Content on your devices and designated cloud backups (Google Drive AppData or Firebase Firestore) for the sole purpose of providing and operating the Service for you.</li>
+        </ul>
+
+        <h3>6.2. Acceptable Use & Prohibited Content</h3>
+        <p>You agree not to use Monetic to:</p>
+        <ol>
+          <li>Upload, store, or transmit any content that is unlawful, defamatory, obscene, infringing upon third-party intellectual property, or harmful;</li>
+          <li>Upload images containing viruses, trojans, worms, or malicious code;</li>
+          <li>Reverse engineer, decompile, disassemble, or derive the source code of the Monetic application, except to the extent permitted by mandatory statutory law;</li>
+          <li>Interfere with, disrupt, or compromise the integrity, security, or performance of our backend servers, cloud databases, or API infrastructure;</li>
+          <li>Create automated bots, scrapers, or scripts to access or extract data from Monetic;</li>
+          <li>Rent, lease, sublicense, resell, or distribute the App to third parties for commercial timesharing.</li>
+        </ol>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>7. Cloud Backup, Synchronization & Data Loss Safeguards</h2>
+
+        <h3>7.1. Dual Cloud Backup Governance</h3>
+        <ul>
+          <li><strong>Primary Android Storage (Google Drive AppData):</strong> On Android, Monetic synchronizes your database and receipt images into a compressed archive (<code>monetic_backup.zip</code>) directly within your private Google Drive AppData folder. This storage is isolated to your personal Google account.</li>
+          <li><strong>Fallback & iOS Storage (Firebase Cloud Firestore):</strong> On iOS, or as an Android fallback when Google Drive is unlinked, backups are synchronized securely to Google Firebase Cloud Firestore.</li>
+        </ul>
+
+        <h3>7.2. Data Loss & Backup Responsibility</h3>
+        <ul>
+          <li>While Monetic implements robust local persistence (Room SQLite) and background auto-backup mechanisms (Android WorkManager <code>CloudBackupWorker</code>), you acknowledge that data loss can occur due to device damage, theft, operating system resets, software corruption, unlinked cloud accounts, or forgotten security PINs.</li>
+          <li><strong>Recommendation:</strong> You are strongly encouraged to maintain active cloud backups and keep your device operating system updated.</li>
+          <li>Monetic disclaims any liability for the loss, corruption, or unrecoverability of your financial records or receipt photos, to the fullest extent permitted by applicable law.</li>
+        </ul>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>8. Monetic Intellectual Property Rights</h2>
+        <p>The Monetic application, including but not limited to its software code, user interface designs, visual layouts, themes, icons, logos, graphic assets, animations, database schemas, and documentation, are the exclusive intellectual property of Monetic and its developer.</p>
+        <p>Subject to your compliance with these Terms, we grant you a limited, non-exclusive, non-transferable, non-sublicensable, revocable license to download, install, and use Monetic on personal mobile devices for your personal, non-commercial financial management purposes.</p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>9. Disclaimer of Warranties ("As-Is" & "As-Available")</h2>
+        <ol>
+          <li><strong>General Disclaimer:</strong> TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, MONETIC IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS, WITHOUT WARRANTIES, GUARANTEES, OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, ACCURACY, AND NON-INFRINGEMENT.</li>
+          <li><strong>Operation & Continuity:</strong> WE DO NOT WARRANT THAT THE SERVICE WILL BE UNINTERRUPTED, TIMELY, SECURE, BUG-FREE, OR ERROR-FREE, OR THAT DEFECTS WILL BE CORRECTED IMMEDIATELY.</li>
+          <li><strong>EU Statutory Consumer Guarantees:</strong> NOTHING IN THIS SECTION RESTRICTS OR EXCLUDES ANY STATUTORY CONSUMER RIGHTS OR STATUTORY CONFORMITY GUARANTEES UNDER DIRECTIVE (EU) 2019/770 ON DIGITAL CONTENT AND SERVICES THAT CANNOT BE CONTRACTUALLY WAIVED UNDER THE MANDATORY LAWS OF YOUR EU MEMBER STATE.</li>
+        </ol>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>10. Limitation of Liability</h2>
+        <ol>
+          <li><strong>Exclusion of Consequential Damages:</strong> TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, IN NO EVENT SHALL MONETIC, ITS DEVELOPER, AFFILIATES, OFFICERS, DIRECTORS, AGENTS, OR PARTNERS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO LOSS OF PROFITS, LOSS OF REVENUE, LOSS OF FINANCIAL DATA, BUSINESS INTERRUPTION, LOSS OF GOODWILL, OR INACCURATE FINANCIAL LOGGING, ARISING OUT OF OR IN CONNECTION WITH YOUR ACCESS TO, USE OF, OR INABILITY TO USE THE APP.</li>
+          <li><strong>Aggregate Liability Cap:</strong> IN ALL CIRCUMSTANCES, OUR TOTAL AGGREGATE LIABILITY ARISING UNDER OR IN RELATION TO THESE TERMS OR YOUR USE OF MONETIC SHALL BE LIMITED TO THE GREATER OF:
+            <ul>
+              <li>THE TOTAL AMOUNT ACTUALLY PAID BY YOU FOR MONETIC PRO SUBSCRIPTIONS OR PURCHASES IN THE TWELVE (12) MONTHS PRECEDING THE CLAIM; OR</li>
+              <li>FIFTY EUROS (€50.00 EUR) OR ITS EQUIVALENT IN NATIONAL CURRENCY.</li>
+            </ul>
+          </li>
+          <li><strong>Mandatory Statutory Exceptions:</strong> CERTAIN JURISDICTIONS (INCLUDING MEMBER STATES OF THE EUROPEAN UNION) DO NOT ALLOW THE LIMITATION OR EXCLUSION OF LIABILITY FOR GROSS NEGLIGENCE, WILLFUL MISCONDUCT, BODILY INJURY, FRAUD, OR VIOLATIONS OF MANDATORY CONSUMER PROTECTION LAWS. IN SUCH JURISDICTIONS, OUR LIABILITY IS LIMITED TO THE STRICT MAXIMUM EXTENT PERMISSIBLE BY APPLICABLE LAW.</li>
+        </ol>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>11. Account Deletion & Termination</h2>
+
+        <h3>11.1. Self-Service Account Deletion by User</h3>
+        <ul>
+          <li>You have the right to terminate these Terms and delete your Monetic account at any time.</li>
+          <li>You can execute permanent account deletion directly within the App: Navigate to <strong>Settings</strong> → <strong>My Profile</strong> → <strong>Șterge Contul / Delete Account</strong> → Confirm dialog.</li>
+          <li>Alternatively, you may submit a deletion request via email to <a href="mailto:support@monetic.app">support@monetic.app</a> as detailed in our <a href="privacy.html#delete-account">Privacy Policy</a>.</li>
+          <li><strong>Immediate Deletion Invariant:</strong> Initiating account deletion permanently purges your Firebase Authentication user record, Firestore cloud backups, and active synchronization links. This action is irreversible.</li>
+        </ul>
+
+        <h3>11.2. Termination by Monetic</h3>
+        <p>We reserve the right to suspend or terminate your account or restrict your access to Monetic immediately, without prior notice or liability, if:</p>
+        <ol>
+          <li>You materially breach any provision of these Terms or our Privacy Policy;</li>
+          <li>We are required to do so by applicable law, court order, or regulatory authority;</li>
+          <li>We detect abusive, fraudulent, or malicious activities threatening the security or integrity of the Service.</li>
+        </ol>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>12. Governing Law, Dispute Resolution & EU ODR Platform</h2>
+
+        <h3>12.1. Governing Law & Jurisdiction</h3>
+        <ul>
+          <li>These Terms and any dispute or claim arising out of or in connection with them shall be governed by and construed in accordance with the <strong>laws of Romania</strong> and the regulations of the <strong>European Union</strong>, without giving effect to conflict-of-law principles.</li>
+          <li><strong>Consumer Protection Invariant:</strong> If you are an EU/EEA consumer, this choice of law does not deprive you of the protection afforded to you by mandatory provisions of the law of your country of habitual residence (pursuant to Article 6 of Regulation (EC) No 593/2008 - Rome I).</li>
+        </ul>
+
+        <h3>12.2. European Online Dispute Resolution (ODR)</h3>
+        <p>In accordance with Regulation (EU) No 524/2013 on consumer ODR, consumers resident in the EU have the right to resolve consumer disputes out of court via the European Commission's Online Dispute Resolution platform: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr</a>.</p>
+        <p>We encourage you to contact us directly at <a href="mailto:support@monetic.app">support@monetic.app</a> first so that we can swiftly address and resolve any complaints or disputes amicably.</p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>13. Third-Party Services & External Links</h2>
+        <p>Monetic integrates third-party software development kits (SDKs) and services to deliver authentication, subscription verification, ads, and diagnostics:</p>
+        <ul>
+          <li><strong>Google Firebase &amp; Google Cloud</strong> (Authentication, Firestore, Crashlytics)</li>
+          <li><strong>RevenueCat</strong> (In-App Subscriptions &amp; Purchases)</li>
+          <li><strong>Google AdMob &amp; UMP CMP</strong> (Advertising &amp; Consent Management)</li>
+        </ul>
+        <p>Your interaction with these third-party platforms is governed by their respective terms of service and privacy policies. Monetic is not responsible for the availability, content, or practices of third-party platforms.</p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>14. Changes & Updates to Terms</h2>
+        <p>We may update or revise these Terms from time to time to reflect modifications in our features, changes in the legal landscape, or updates in app store policies.</p>
+        <ul>
+          <li>When material revisions are made, we will notify you by updating the "Last Updated" and "Effective Date" at the top of this document, and, where appropriate, provide an in-app notice.</li>
+          <li>Your continued access or use of Monetic after the effective date of updated Terms constitutes your full acceptance of the revised Terms. If you do not agree to the revised Terms, you must discontinue using Monetic and delete your account.</li>
+        </ul>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>15. Severability & Entire Agreement</h2>
+        <ul>
+          <li><strong>Severability:</strong> If any provision of these Terms is found to be unlawful, void, or unenforceable under applicable law, that provision shall be severed and shall not affect the validity and enforceability of the remaining provisions, which shall continue in full force and effect.</li>
+          <li><strong>Entire Agreement:</strong> These Terms, together with our <a href="privacy.html">Privacy Policy</a>, constitute the entire and exclusive agreement between you and Monetic regarding your use of the Service, superseding all prior oral or written agreements or understandings.</li>
+        </ul>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>16. Contact Information & Developer Details</h2>
+        <p>If you have questions, comments, feedback, or legal inquiries concerning these Terms and Conditions, please contact:</p>
+        <ul>
+          <li><strong>Application:</strong> Monetic</li>
+          <li><strong>Developer:</strong> Independent Software Developer</li>
+          <li><strong>Contact & Support Email:</strong> <a href="mailto:support@monetic.app">support@monetic.app</a></li>
+          <li><strong>Official Website:</strong> <a href="https://monetic.app">https://monetic.app</a></li>
+        </ul>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <span>•</span>
+      <a href="terms.html">Terms & Conditions</a>
+      <span>•</span>
+      <a href="privacy.html">Privacy Policy</a>
+      <span>•</span>
+      <a href="privacy.html#delete-account">Delete Account</a>
+      <span>•</span>
+      <a href="mailto:support@monetic.app">Support</a>
+    </div>
+    <p>&copy; 2026 Monetic. All rights reserved. Developed by an independent software developer.</p>
+  </footer>
+
+</body>
+</html>

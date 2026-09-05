@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy - Monetic</title>
+  <meta name="description" content="Privacy Policy and Data Safety disclosures for Monetic, an independent personal finance and budget tracking mobile application.">
+  <link rel="canonical" href="https://monetic.app/privacy.html">
+  <style>
+    :root {
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-subtle: #64748b;
+      --border-color: #e2e8f0;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-bg: #eff6ff;
+      --accent: #10b981;
+      --accent-bg: rgba(16, 185, 129, 0.1);
+      --accent-border: #10b981;
+      --danger-bg: #fef2f2;
+      --danger-border: #ef4444;
+      --danger-text: #991b1b;
+      --danger-title: #7f1d1d;
+      --info-bg: #f0f9ff;
+      --info-border: #0284c7;
+      --info-text: #0369a1;
+      --table-header-bg: #f1f5f9;
+      --table-row-alt: #f8fafc;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #0b0f19;
+        --card-bg: #111827;
+        --text-main: #f8fafc;
+        --text-muted: #cbd5e1;
+        --text-subtle: #94a3b8;
+        --border-color: #1f2937;
+        --primary: #3b82f6;
+        --primary-hover: #60a5fa;
+        --primary-bg: rgba(59, 130, 246, 0.12);
+        --accent: #34d399;
+        --accent-bg: rgba(16, 185, 129, 0.15);
+        --accent-border: #34d399;
+        --danger-bg: rgba(239, 68, 68, 0.12);
+        --danger-border: #ef4444;
+        --danger-text: #fca5a5;
+        --danger-title: #f87171;
+        --info-bg: rgba(2, 132, 199, 0.12);
+        --info-border: #38bdf8;
+        --info-text: #bae6fd;
+        --table-header-bg: #1e293b;
+        --table-row-alt: #162032;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding: 0;
+    }
+
+    header {
+      background-color: var(--card-bg);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .nav-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #2563eb, #10b981);
+      color: white;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.925rem;
+      font-weight: 500;
+      padding: 0.4rem 0.75rem;
+      border-radius: 6px;
+      transition: color 0.15s ease, background-color 0.15s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+      background-color: var(--primary-bg);
+    }
+
+    .nav-link.active {
+      color: var(--primary);
+      font-weight: 600;
+      background-color: var(--primary-bg);
+    }
+
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1.5rem 4rem 1.5rem;
+    }
+
+    .doc-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    @media (max-width: 640px) {
+      .doc-card {
+        padding: 1.75rem 1.25rem;
+        border-radius: 12px;
+      }
+    }
+
+    .title-block {
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.1rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+      color: var(--text-main);
+    }
+
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      font-size: 0.875rem;
+      color: var(--text-subtle);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.6rem;
+      border-radius: 9999px;
+      font-size: 0.775rem;
+      font-weight: 600;
+      background-color: var(--primary-bg);
+      color: var(--primary);
+      border: 1px solid rgba(37, 99, 235, 0.2);
+    }
+
+    .badge-dev {
+      background-color: rgba(16, 185, 129, 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-top: 2.25rem;
+      margin-bottom: 1rem;
+      color: var(--text-main);
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+      color: var(--text-main);
+    }
+
+    h4 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--text-muted);
+    }
+
+    ul, ol {
+      margin-bottom: 1.25rem;
+      padding-left: 1.5rem;
+      color: var(--text-muted);
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid var(--border-color);
+      margin: 2rem 0;
+    }
+
+    /* Callouts */
+    .callout-info {
+      background-color: var(--info-bg);
+      border-left: 4px solid var(--info-border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      color: var(--info-text);
+    }
+
+    .callout-info h3 {
+      color: var(--info-text);
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    .callout-info p {
+      color: var(--info-text);
+      margin-bottom: 0.5rem;
+    }
+
+    .callout-info ul {
+      color: var(--info-text);
+      margin-bottom: 0;
+    }
+
+    /* Account Deletion Dedicated Box (Google Play / Apple Compliant) */
+    .deletion-card {
+      background-color: var(--danger-bg);
+      border: 2px solid var(--danger-border);
+      border-radius: 12px;
+      padding: 1.75rem;
+      margin: 2rem 0;
+      scroll-margin-top: 5rem;
+    }
+
+    .deletion-card h3 {
+      color: var(--danger-title);
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.25rem;
+    }
+
+    .deletion-card p {
+      color: var(--danger-text);
+    }
+
+    .deletion-card ol, .deletion-card ul {
+      color: var(--danger-text);
+    }
+
+    .deletion-method {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin: 1rem 0;
+    }
+
+    .deletion-method h4 {
+      color: var(--text-main);
+      margin-top: 0;
+    }
+
+    .deletion-method p, .deletion-method ol, .deletion-method ul {
+      color: var(--text-muted);
+    }
+
+    /* Tables */
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.925rem;
+    }
+
+    th {
+      background-color: var(--table-header-bg);
+      color: var(--text-main);
+      font-weight: 600;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-muted);
+      vertical-align: top;
+    }
+
+    tr:nth-child(even) td {
+      background-color: var(--table-row-alt);
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      background-color: var(--table-header-bg);
+      padding: 0.15rem 0.4rem;
+      border-radius: 4px;
+      font-size: 0.875em;
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+    }
+
+    footer {
+      border-top: 1px solid var(--border-color);
+      background-color: var(--card-bg);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--text-subtle);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media print {
+      body {
+        background: white;
+        color: black;
+      }
+      header, footer, .nav-links {
+        display: none;
+      }
+      .doc-card {
+        border: none;
+        box-shadow: none;
+        padding: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <span class="brand-badge">M</span>
+        <span>Monetic</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="terms.html" class="nav-link">Terms & Conditions</a>
+        <a href="privacy.html" class="nav-link active">Privacy Policy</a>
+        <a href="privacy.html#delete-account" class="nav-link">Delete Account</a>
+        <a href="mailto:support@monetic.app" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="doc-card">
+      <div class="title-block">
+        <h1>Privacy Policy for Monetic</h1>
+        <div class="meta-bar">
+          <span><strong>Effective Date:</strong> September 5, 2026</span>
+          <span>•</span>
+          <span><strong>Last Updated:</strong> September 5, 2026</span>
+          <span class="badge badge-dev">Independent Developer</span>
+        </div>
+      </div>
+
+      <section>
+        <h2>1. Introduction & Overview</h2>
+        <p>Welcome to <strong>Monetic</strong> ("the App", "we", "us", or "our"). Monetic is an advanced personal finance, budget tracking, and expense management mobile application developed and operated by an <strong>independent software developer</strong> for Android and iOS, accessible at <a href="https://monetic.app">https://monetic.app</a>.</p>
+        <p>We are deeply committed to protecting your privacy and safeguarding your personal and financial information. This Privacy Policy outlines our transparent data practices in strict compliance with:</p>
+        <ul>
+          <li><strong>The General Data Protection Regulation (GDPR)</strong> (Regulation (EU) 2016/679) for users located in the European Union (EU) and European Economic Area (EEA);</li>
+          <li><strong>The ePrivacy Directive</strong> (Directive 2002/58/EC as amended);</li>
+          <li><strong>The California Consumer Privacy Act (CCPA)</strong> and <strong>California Privacy Rights Act (CPRA)</strong> for California residents;</li>
+          <li><strong>Google Play Developer Program Policies</strong> (including Financial Services, Data Safety, and Account Deletion mandates);</li>
+          <li><strong>Apple App Store Review Guidelines</strong> (including Guideline 5.1 on Privacy, Data Collection, and Account Deletion).</li>
+        </ul>
+        <p>By downloading, accessing, or using Monetic, you acknowledge that you have read and understood this Privacy Policy. If you do not agree with our data practices, please do not use the App.</p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>2. Data Controller & Contact Information</h2>
+        <p>For the purposes of the GDPR and applicable international data protection laws, the <strong>Data Controller</strong> responsible for your personal data is:</p>
+        <ul>
+          <li><strong>Application:</strong> Monetic</li>
+          <li><strong>Developer:</strong> Independent Software Developer</li>
+          <li><strong>Contact & Privacy Email:</strong> <a href="mailto:support@monetic.app">support@monetic.app</a></li>
+          <li><strong>Official Website:</strong> <a href="https://monetic.app">https://monetic.app</a></li>
+        </ul>
+        <p>If you have any questions, concerns, or requests regarding this Privacy Policy or your statutory privacy rights, please email us directly at <a href="mailto:support@monetic.app">support@monetic.app</a>.</p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>3. Core Architectural Principle: Local-First Storage vs. Cloud Synchronization</h2>
+        <p>Monetic is engineered around a <strong>privacy-first, local-first architectural foundation</strong>:</p>
+
+        <div class="callout-info">
+          <h3>🔒 Local Storage by Default (Offline-First Invariant)</h3>
+          <p><strong>By default, and during all offline usage, all of your financial data is stored solely on your physical device.</strong></p>
+          <p>Your transactions, account balances, custom categories, recurring payment reminders, notes, and photos are saved in a local encrypted SQLite database (Room persistence library / SQLite). We cannot see, read, access, or analyze your local data.</p>
+        </div>
+
+        <ol>
+          <li><strong>No Mandatory Cloud Registration:</strong> You can use Monetic completely anonymously in Guest Mode without ever registering an account or synchronizing data to the internet.</li>
+          <li><strong>Cloud Backup Requires Explicit Opt-In & Authentication:</strong> Remote cloud backups (Google Drive AppData on Android, or Google Firebase Cloud Firestore on iOS/Android fallback) <strong>never occur without your explicit affirmative consent and authenticated login</strong>.</li>
+          <li><strong>Strong Encryption in Transit and at Rest:</strong> Whenever you choose to synchronize backups to the cloud, data is encrypted in transit using <strong>TLS 1.3</strong> and encrypted at rest using industry-standard <strong>AES-256</strong>.</li>
+          <li><strong>Zero Commercial Data Selling:</strong> We <strong>never</strong> sell, rent, lease, monetize, or broker your personal financial records or transaction data to data aggregators, advertisers, credit bureaus, or third parties under any circumstances.</li>
+          <li><strong>User Ownership of Backups:</strong> On Android, cloud backups are stored in your own private Google Drive <code>appDataFolder</code>. You retain sole ownership and control over your files.</li>
+        </ol>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>4. Categories of Data We Process</h2>
+
+        <h3>4.1. Information You Provide to Us</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Description & Specific Data Points</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Account Credentials</strong></td>
+                <td>Email address, hashed password, Firebase Authentication UID, Google profile identifier (when using Google Sign-In), account creation date.</td>
+                <td>Authentication, account recovery, session security, multi-device backup access.</td>
+              </tr>
+              <tr>
+                <td><strong>Financial Records</strong></td>
+                <td>Account names, balances, native account currencies, transactions (amount, date/time, type: income/expense/transfer, category designation, optional notes).</td>
+                <td>Core app functionality: budget calculation, expense tracking, statistics, multi-currency conversion.</td>
+              </tr>
+              <tr>
+                <td><strong>Scheduled & Recurring Payments</strong></td>
+                <td>Bill names, recurring frequencies (daily, weekly, monthly), due dates, notification reminder times.</td>
+                <td>Scheduling local device notifications for payment reminders.</td>
+              </tr>
+              <tr>
+                <td><strong>Receipt Photographs & Custom Logos</strong></td>
+                <td>Photographic images of paper receipts, invoices, custom category logos, or account avatars selected from your device's photo library or captured via camera.</td>
+                <td>Associating proof-of-purchase images with transactions and personalizing user interface avatars.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>4.2. Information Processed Locally on Device (Never Transmitted to Servers)</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Technical Implementation</th>
+                <th>Privacy Invariant</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Internal 4-Digit Security PIN</strong></td>
+                <td>Salted with 128-bit random salt and hashed using SHA-256 in private device storage (<code>SharedPreferences</code> / <code>NSUserDefaults</code>).</td>
+                <td><strong>NEVER</strong> transmitted to or stored on our servers. Does not alter or sync with cloud passwords.</td>
+              </tr>
+              <tr>
+                <td><strong>Biometric Authentication</strong></td>
+                <td>Touch ID, Face ID, Android BiometricPrompt (fingerprint or face unlock).</td>
+                <td>Processed strictly inside the hardware <strong>Secure Enclave / Android Keystore</strong> of your device. Monetic only receives a binary success/failure token. Raw biometric data is never accessible.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>4.3. Information Collected Automatically & Technical Telemetry</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Source & Technical Points</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Diagnostic & Crash Telemetry</strong></td>
+                <td>Device hardware model, OS version (Android/iOS), CPU architecture, application version, timestamp of crash, stack traces (collected via Firebase Crashlytics).</td>
+                <td>Identifying software bugs, diagnosing fatal errors, enhancing application stability and performance. Retained for 90 days then purged.</td>
+              </tr>
+              <tr>
+                <td><strong>Device & Network Identifiers</strong></td>
+                <td>Ephemeral IP address (anonymized/truncated by Firebase), system language and locale settings, time zone.</td>
+                <td>Remote configuration routing, localized currency and date formatting, maintenance mode checks.</td>
+              </tr>
+              <tr>
+                <td><strong>Purchase & Entitlement Data</strong></td>
+                <td>RevenueCat App User ID, transaction ID, store product identifiers (<code>monetic_pro_monthly</code>, <code>monetic_pro_yearly</code>, <code>monetic_pro_lifetime</code>), purchase timestamp, subscription status.</td>
+                <td>Granting and managing Monetic Pro feature entitlements and auto-renewal status.</td>
+              </tr>
+              <tr>
+                <td><strong>Advertising Identifiers (Free Plan Only)</strong></td>
+                <td>Google Advertising ID (GAID) on Android, IDFA on iOS (subject to user consent via Google UMP / App Tracking Transparency).</td>
+                <td>Serving non-intrusive advertisements in the Free version through Google AdMob, strictly subject to user consent.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>5. Legal Bases for Processing under GDPR (EU/EEA Users)</h2>
+        <p>If you are located in the European Union or European Economic Area, we process your personal data under the following lawful bases set out in <strong>Article 6(1) of the GDPR</strong>:</p>
+        <ul>
+          <li><strong>Performance of a Contract (Art. 6(1)(b) GDPR):</strong> Processing account credentials, financial records, transaction calculations, and cloud backups to fulfill our contractual obligation to provide the Monetic service.</li>
+          <li><strong>Your Explicit Consent (Art. 6(1)(a) GDPR):</strong> Accessing your device camera or photo library to capture and attach receipt photos; serving personalized advertisements via Google AdMob, managed dynamically through the Google User Messaging Platform (UMP) Consent Management Platform.</li>
+          <li><strong>Legitimate Interests (Art. 6(1)(f) GDPR):</strong> Monitoring app reliability, debugging crashes, and analyzing technical errors via Firebase Crashlytics to deliver a secure, performant software product; preventing fraudulent use of subscriptions.</li>
+          <li><strong>Compliance with Legal Obligations (Art. 6(1)(c) GDPR):</strong> Maintaining digital purchase records required by tax, consumer protection, and commercial accounting regulations.</li>
+        </ul>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>6. Cloud Backup Architecture & Zero Developer Cost Model</h2>
+        <p>Monetic provides a hybrid dual-channel backup system designed to maximize privacy and eliminate unnecessary third-party data retention:</p>
+
+        <h3>6.1. Google Drive Cloud Backup (Primary on Android)</h3>
+        <ul>
+          <li><strong>Storage Location:</strong> Backups are written directly to your personal Google Drive account in the hidden <code>appDataFolder</code>.</li>
+          <li><strong>Isolation:</strong> Files stored in the <code>appDataFolder</code> are private to Monetic and cannot be accessed, viewed, or modified by other applications on your device or Google Drive.</li>
+          <li><strong>Scope of Access:</strong> Monetic requests strictly limited scopes (<code>drive.appdata</code> and <code>drive.file</code>). The App <strong>cannot</strong> see, read, modify, or delete any of your personal documents, photos, spreadsheets, or folders on Google Drive.</li>
+          <li><strong>Unified Identity:</strong> When signed in via Google Sign-In, your Monetic profile and Google Drive backup destination are unified 1:1.</li>
+        </ul>
+
+        <h3>6.2. Firebase Cloud Firestore (Secondary / Fallback)</h3>
+        <ul>
+          <li><strong>Storage Location:</strong> Used on iOS or on Android when Google Drive is unlinked. Data is stored in secure Google Cloud Firestore database instances (<code>/users/{uid}/backup/snapshot</code>).</li>
+          <li><strong>Security:</strong> Data in transit is protected using Transport Layer Security (TLS 1.3), and data at rest is encrypted using 256-bit Advanced Encryption Standard (AES-256).</li>
+        </ul>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>7. Third-Party Service Providers & Sub-Processors</h2>
+        <p>We work with trusted third-party technology providers to power authentication, infrastructure, crash reporting, subscription validation, and advertising. All sub-processors are bound by strict Data Processing Agreements (DPAs):</p>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Sub-Processor</th>
+                <th>Location</th>
+                <th>Role / Services Provided</th>
+                <th>Privacy Policy</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Google LLC / Google Ireland Ltd.</strong></td>
+                <td>USA / Ireland</td>
+                <td>Firebase Authentication, Cloud Firestore, Firebase Crashlytics, Firebase Remote Config, Google Drive API, Google AdMob.</td>
+                <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></td>
+              </tr>
+              <tr>
+                <td><strong>Apple Inc.</strong></td>
+                <td>USA / Ireland</td>
+                <td>Apple In-App Purchase (StoreKit 2), Face ID local verification, Apple Push Notifications.</td>
+                <td><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Privacy Policy</a></td>
+              </tr>
+              <tr>
+                <td><strong>RevenueCat, Inc.</strong></td>
+                <td>USA</td>
+                <td>In-app subscription lifecycle management, receipt validation, entitlement verification.</td>
+                <td><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">RevenueCat Privacy Policy</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>8. International Data Transfers</h2>
+        <p>Our sub-processors (such as Google and RevenueCat) maintain servers in the European Union, the United States, and worldwide.</p>
+        <p>Whenever personal data originating from the European Economic Area (EEA), the United Kingdom, or Switzerland is transferred outside these territories, we ensure an adequate level of data protection by relying on:</p>
+        <ul>
+          <li><strong>The EU-U.S. Data Privacy Framework (DPF)</strong> and the UK Extension to the EU-U.S. DPF;</li>
+          <li><strong>Standard Contractual Clauses (SCCs)</strong> approved by the European Commission pursuant to Article 46(2)(c) of the GDPR;</li>
+          <li>Technical safeguards, including end-to-end transport layer encryption (TLS 1.3) and AES-256 storage encryption.</li>
+        </ul>
+      </section>
+
+      <hr>
+
+      <!-- EXPLICIT GOOGLE PLAY & APPLE ACCOUNT DELETION SECTION -->
+      <section id="delete-account" class="deletion-card">
+        <div id="account-deletion"></div>
+        <h3>🗑️ 9. Account & Associated Data Deletion Policy</h3>
+        <p><strong>Google Play Data Safety & Apple App Store Review Guideline 5.1.1(v) Compliance Notice:</strong></p>
+        <p>Monetic provides complete, transparent, and readily accessible mechanisms allowing you to permanently delete your account and all associated personal and financial data. You may execute deletion at any time using either of the following methods:</p>
+
+        <div class="deletion-method">
+          <h4>Method 1: In-App Self-Service Deletion (Immediate & Automated)</h4>
+          <p>If you currently have the Monetic app installed on your device:</p>
+          <ol>
+            <li>Open the <strong>Monetic</strong> application.</li>
+            <li>Navigate to <strong>Settings</strong> → <strong>My Profile</strong> (or Account Details).</li>
+            <li>Scroll to the bottom of the screen and tap <strong>Șterge Contul / Delete Account</strong>.</li>
+            <li>Confirm your choice in the confirmation dialog.</li>
+          </ol>
+          <p><em>Result:</em> Your account, authentication credentials, and remote cloud backups stored in Firebase Firestore are instantly, automatically, and permanently erased.</p>
+        </div>
+
+        <div class="deletion-method">
+          <h4>Method 2: Non-In-App / Direct Email Request (Web Form / Store Submission)</h4>
+          <p>If you have uninstalled the app, lost access to your device, or prefer submitting an external request via web/email:</p>
+          <ol>
+            <li>Compose an email from the email address associated with your Monetic account to <strong><a href="mailto:support@monetic.app?subject=Account%20Deletion%20Request">support@monetic.app</a></strong>.</li>
+            <li>Use the subject line: <code>Account Deletion Request</code> or <code>Data Deletion Request</code>.</li>
+            <li>State that you request the permanent deletion of your Monetic account and associated data, specifying your registered email address and, if known, your Monetic User ID.</li>
+            <li>Our team will verify your ownership and process the permanent deletion within <strong>30 days</strong> (typically within 48 to 72 hours). You will receive a final confirmation email once all cloud data has been erased.</li>
+          </ol>
+        </div>
+
+        <h4>Scope of Data Permanently Purged:</h4>
+        <ul>
+          <li><strong>Firebase Authentication Record:</strong> Your user profile, registered email address, hashed password, and unique User Identifier (UID) are permanently purged.</li>
+          <li><strong>Cloud Database Records:</strong> All remote backups, account balances, transaction histories, custom categories, tags, and snapshots stored in Firebase Cloud Firestore (<code>/users/{uid}</code>) are permanently and irreversibly destroyed.</li>
+          <li><strong>Session & Diagnostic Identifiers:</strong> Active device session tokens and diagnostic bindings are completely wiped.</li>
+          <li><strong>Google Drive AppData Backups (Android):</strong> Data stored in your private Google Drive AppData folder is owned exclusively by your personal Google account. You can delete it directly through Google Drive:
+            <ul>
+              <li>Visit <a href="https://drive.google.com" target="_blank" rel="noopener">Google Drive on the Web</a>.</li>
+              <li>Click <strong>Settings (gear icon)</strong> → <strong>Settings</strong> → <strong>Manage Apps</strong>.</li>
+              <li>Locate <strong>Monetic</strong>, click <strong>Options</strong>, and choose <strong>Delete hidden app data</strong>.</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h4>Data Retention & Exceptions:</h4>
+        <ul>
+          <li><strong>Local Data:</strong> Data stored on your physical device remains on your device until you clear application storage or uninstall the App. Monetic cannot remotely delete files on your physical device.</li>
+          <li><strong>Diagnostic Telemetry:</strong> Aggregated, de-identified crash logs in Firebase Crashlytics contain no personal identifiers and are automatically purged after 90 days.</li>
+          <li><strong>In-App Purchases:</strong> Subscription billing transactions processed through Apple (StoreKit) or Google Play Billing are maintained by Apple or Google under their respective statutory accounting and tax retention periods. Monetic does not hold payment card numbers.</li>
+        </ul>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>10. Your Privacy Rights</h2>
+        <p>Depending on your country or state of residence, you have statutory rights regarding your personal information:</p>
+
+        <h3>10.1. Rights under the EU General Data Protection Regulation (GDPR)</h3>
+        <ul>
+          <li><strong>Right of Access (Art. 15 GDPR):</strong> Request confirmation of data processing and obtain a copy of your personal data.</li>
+          <li><strong>Right to Rectification (Art. 16 GDPR):</strong> Correct inaccurate or incomplete personal information directly within the App.</li>
+          <li><strong>Right to Erasure / "Right to be Forgotten" (Art. 17 GDPR):</strong> Request the permanent deletion of your data via the in-app "Delete Account" button or by emailing <a href="mailto:support@monetic.app">support@monetic.app</a>.</li>
+          <li><strong>Right to Restriction of Processing (Art. 18 GDPR):</strong> Request restriction of data processing under certain statutory conditions.</li>
+          <li><strong>Right to Data Portability (Art. 20 GDPR):</strong> Export all financial transactions and accounts at any time via <strong>Settings → Data Management → Export to CSV</strong> or via Google Drive archive download.</li>
+          <li><strong>Right to Object (Art. 21 GDPR):</strong> Object at any time to data processing based on legitimate interests.</li>
+          <li><strong>Right to Withdraw Consent (Art. 7(3) GDPR):</strong> Withdraw consent for personalized ads or camera access at any time via the in-app consent manager or device settings.</li>
+          <li><strong>Right to Lodge a Complaint:</strong> File a complaint with your local Data Protection Supervisory Authority (in Romania: <em>ANSPDCP</em>, <a href="https://www.dataprotection.ro" target="_blank" rel="noopener">www.dataprotection.ro</a>).</li>
+        </ul>
+
+        <h3>10.2. Rights for California Residents (CCPA / CPRA)</h3>
+        <ul>
+          <li><strong>Right to Know & Access:</strong> Request details on the categories and specific pieces of personal information collected over the past 12 months.</li>
+          <li><strong>Right to Delete:</strong> Request the deletion of your personal data.</li>
+          <li><strong>Right to Non-Discrimination:</strong> We will never discriminate against you for exercising your CCPA privacy rights.</li>
+          <li><strong>Notice Regarding "Sale" or "Sharing":</strong> We do <strong>not</strong> sell your personal or financial data for monetary consideration. For ad-supported Free tier users, third-party cookies or advertising identifiers (Google AdMob) may be considered "sharing" for cross-context behavioral advertising under California law. You can opt-out at any time via your device settings (<em>Opt out of Ads Personalization</em> on Android, or <em>Ask App not to Track</em> on iOS).</li>
+        </ul>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>11. Security of Your Information</h2>
+        <p>We implement rigorous technical and organizational security measures to protect your personal data against accidental loss, unauthorized access, destruction, or alteration:</p>
+        <ul>
+          <li><strong>Transport Encryption:</strong> All communications between the App, Google APIs, Firebase, and RevenueCat are enforced using <strong>TLS 1.3</strong> encryption.</li>
+          <li><strong>Cryptographic Salting & Hashing:</strong> Internal application PINs are secured with 128-bit random salts and <strong>SHA-256</strong> cryptographic digests.</li>
+          <li><strong>Biometric Enclave Isolation:</strong> Biometric verification is sandboxed inside the operating system's hardware Secure Enclave.</li>
+          <li><strong>Restricted API Access:</strong> Cloud Firestore and Google Drive connections are governed by strict security rules requiring authenticated tokens matching the user's verified identity.</li>
+        </ul>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>12. Protection of Children's Privacy</h2>
+        <p>Monetic is not intended or designed for use by children under the age of 16 (or under 13 in the United States). We do not knowingly solicit, collect, or process personal data from children. If we discover that a child has provided us with personal information without verified parental consent, we will take immediate steps to permanently delete such information from our databases. If you believe that a minor has provided us with personal data, please contact us immediately at <a href="mailto:support@monetic.app">support@monetic.app</a>.</p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>13. Changes & Updates to This Privacy Policy</h2>
+        <p>We may update this Privacy Policy from time to time to reflect modifications to our software architecture, newly introduced features, changes in legal obligations, or updates from regulatory authorities.</p>
+        <p>When we make material changes, we will notify you by:</p>
+        <ol>
+          <li>Updating the "Last Updated" and "Effective Date" at the top of this document;</li>
+          <li>Publishing the revised policy at <a href="https://monetic.app/privacy.html">https://monetic.app/privacy.html</a>;</li>
+          <li>Providing an in-app notice or alert dialog when a significant architectural change occurs.</li>
+        </ol>
+        <p>We encourage you to review this Privacy Policy periodically to stay informed about how we protect your information.</p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>14. Contact Us & Developer Details</h2>
+        <p>If you have questions, feedback, or legal inquiries regarding this Privacy Policy or wish to exercise any of your statutory data protection rights, please contact:</p>
+        <ul>
+          <li><strong>Application:</strong> Monetic</li>
+          <li><strong>Developer:</strong> Independent Software Developer</li>
+          <li><strong>Contact & Privacy Email:</strong> <a href="mailto:support@monetic.app">support@monetic.app</a></li>
+          <li><strong>Official Website:</strong> <a href="https://monetic.app">https://monetic.app</a></li>
+          <li><strong>Postal Address:</strong> Cluj-Napoca, Romania</li>
+        </ul>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <span>•</span>
+      <a href="terms.html">Terms & Conditions</a>
+      <span>•</span>
+      <a href="privacy.html">Privacy Policy</a>
+      <span>•</span>
+      <a href="privacy.html#delete-account">Delete Account</a>
+      <span>•</span>
+      <a href="mailto:support@monetic.app">Support</a>
+    </div>
+    <p>&copy; 2026 Monetic. All rights reserved. Developed by an independent software developer.</p>
+  </footer>
+
+</body>
+</html>
