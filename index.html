@@ -3,24 +3,380 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Monetic - Legal & Support</title>
+  <title>Monetic - Smart Personal Finance & Budget Tracker</title>
+  <meta name="description" content="Official documentation, privacy disclosures, and support hub for Monetic, an independent personal finance and budget tracking mobile application.">
+  <link rel="canonical" href="https://monetic.app/">
   <style>
-    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; max-width: 600px; margin: 60px auto; padding: 0 20px; line-height: 1.6; color: #333; }
-    h1 { font-size: 24px; }
-    ul { list-style-type: none; padding: 0; }
-    li { margin: 12px 0; }
-    a { color: #0969da; text-decoration: none; font-weight: 500; }
-    a:hover { text-decoration: underline; }
+    :root {
+      --bg-color: #f8fafc;
+      --card-bg: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-subtle: #64748b;
+      --border-color: #e2e8f0;
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-bg: #eff6ff;
+      --accent: #10b981;
+      --accent-bg: rgba(16, 185, 129, 0.1);
+      --accent-border: #10b981;
+      --info-bg: #f0f9ff;
+      --info-border: #0284c7;
+      --info-text: #0369a1;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg-color: #0b0f19;
+        --card-bg: #111827;
+        --text-main: #f8fafc;
+        --text-muted: #cbd5e1;
+        --text-subtle: #94a3b8;
+        --border-color: #1f2937;
+        --primary: #3b82f6;
+        --primary-hover: #60a5fa;
+        --primary-bg: rgba(59, 130, 246, 0.12);
+        --accent: #34d399;
+        --accent-bg: rgba(16, 185, 129, 0.15);
+        --accent-border: #34d399;
+        --info-bg: rgba(2, 132, 199, 0.12);
+        --info-border: #38bdf8;
+        --info-text: #bae6fd;
+        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      padding: 0;
+    }
+
+    header {
+      background-color: var(--card-bg);
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .nav-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #2563eb, #10b981);
+      color: white;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.925rem;
+      font-weight: 500;
+      padding: 0.4rem 0.75rem;
+      border-radius: 6px;
+      transition: color 0.15s ease, background-color 0.15s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--primary);
+      background-color: var(--primary-bg);
+    }
+
+    .nav-link.active {
+      color: var(--primary);
+      font-weight: 600;
+      background-color: var(--primary-bg);
+    }
+
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1.5rem 4rem 1.5rem;
+    }
+
+    .doc-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      box-shadow: var(--shadow);
+    }
+
+    @media (max-width: 640px) {
+      .doc-card {
+        padding: 1.75rem 1.25rem;
+        border-radius: 12px;
+      }
+    }
+
+    .title-block {
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      font-size: 2.1rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.75rem;
+      color: var(--text-main);
+    }
+
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      font-size: 0.875rem;
+      color: var(--text-subtle);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.25rem 0.6rem;
+      border-radius: 9999px;
+      font-size: 0.775rem;
+      font-weight: 600;
+      background-color: var(--primary-bg);
+      color: var(--primary);
+      border: 1px solid rgba(37, 99, 235, 0.2);
+    }
+
+    .badge-dev {
+      background-color: rgba(16, 185, 129, 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--text-main);
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--text-muted);
+    }
+
+    .callout-info {
+      background-color: var(--info-bg);
+      border-left: 4px solid var(--info-border);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      color: var(--info-text);
+    }
+
+    .callout-info h3 {
+      color: var(--info-text);
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      font-size: 1.15rem;
+    }
+
+    .callout-info p {
+      color: var(--info-text);
+      margin-bottom: 0;
+    }
+
+    .grid-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .doc-link-card {
+      display: flex;
+      flex-direction: column;
+      padding: 1.25rem;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      background-color: var(--card-bg);
+      text-decoration: none;
+      transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .doc-link-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--primary);
+      box-shadow: var(--shadow);
+    }
+
+    .doc-link-card .card-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .doc-link-card .card-desc {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    footer {
+      border-top: 1px solid var(--border-color);
+      background-color: var(--card-bg);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      font-size: 0.875rem;
+      color: var(--text-subtle);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .footer-links a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
-  <h1>Monetic</h1>
-  <p>Official legal documents and support information for the Monetic application.</p>
-  <ul>
-    <li>📄 <a href="/privacy.html">Privacy Policy</a></li>
-    <li>📑 <a href="/terms.html">Terms & Conditions</a></li>
-    <li>🗑️ <a href="/privacy.html#delete-account">Account & Data Deletion</a></li>
-    <li>✉️ Contact Support: <a href="mailto:support@monetic.app">support@monetic.app</a></li>
-  </ul>
+
+  <header>
+    <div class="nav-container">
+      <a href="index.html" class="brand">
+        <span class="brand-badge">M</span>
+        <span>Monetic</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="terms.html" class="nav-link">Terms & Conditions</a>
+        <a href="privacy.html" class="nav-link">Privacy Policy</a>
+        <a href="privacy.html#delete-account" class="nav-link">Delete Account</a>
+        <a href="mailto:support@monetic.app" class="nav-link">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article class="doc-card">
+      <div class="title-block">
+        <h1>Monetic</h1>
+        <div class="meta-bar">
+          <span>Personal Finance & Budget Tracker</span>
+          <span>•</span>
+          <span class="badge badge-dev">Independent Developer</span>
+        </div>
+      </div>
+
+      <div class="callout-info">
+        <h3>🔒 Privacy-First & Offline-First</h3>
+        <p>Monetic is designed to put your privacy first. All personal budgeting records and transactions remain stored locally on your device unless you explicitly opt into encrypted cloud backups.</p>
+      </div>
+
+      <h2>Documentation & Support</h2>
+      <p>Access the legal disclosures, terms of service, and user data rights documentation for Monetic:</p>
+
+      <div class="grid-links">
+        <a href="privacy.html" class="doc-link-card">
+          <span class="card-title">📄 Privacy Policy</span>
+          <span class="card-desc">Detailed disclosures on data processing, GDPR rights, telemetry, and security protocols.</span>
+        </a>
+
+        <a href="terms.html" class="doc-link-card">
+          <span class="card-title">📑 Terms & Conditions</span>
+          <span class="card-desc">Rules of service, licensing, Monetic Pro subscription terms, and financial disclaimers.</span>
+        </a>
+
+        <a href="privacy.html#delete-account" class="doc-link-card">
+          <span class="card-title">🗑️ Account & Data Deletion</span>
+          <span class="card-desc">Self-service and email instructions to permanently wipe your account and cloud data.</span>
+        </a>
+
+        <a href="mailto:support@monetic.app" class="doc-link-card">
+          <span class="card-title">✉️ Customer Support</span>
+          <span class="card-desc">Direct assistance from the developer for technical inquiries or account requests.</span>
+        </a>
+      </div>
+    </article>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <span>•</span>
+      <a href="terms.html">Terms & Conditions</a>
+      <span>•</span>
+      <a href="privacy.html">Privacy Policy</a>
+      <span>•</span>
+      <a href="privacy.html#delete-account">Delete Account</a>
+      <span>•</span>
+      <a href="mailto:support@monetic.app">Support</a>
+    </div>
+    <p>&copy; 2026 Monetic. All rights reserved. Developed by an independent software developer.</p>
+  </footer>
+
 </body>
 </html>
