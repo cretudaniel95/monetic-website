@@ -67,34 +67,41 @@
       padding: 0;
     }
 
+    /* Header */
     header {
-      background-color: var(--card-bg);
+      background-color: rgba(19, 15, 36, 0.88);
       border-bottom: 1px solid var(--border-color);
       position: sticky;
       top: 0;
       z-index: 100;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    @media (prefers-color-scheme: light) {
+      header {
+        background-color: rgba(255, 255, 255, 0.92);
+      }
     }
 
     .nav-container {
-      max-width: 900px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 1rem 1.5rem;
+      padding: 0.65rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 0.75rem;
+      gap: 1rem;
+      position: relative;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.65rem;
       text-decoration: none;
       color: var(--text-main);
-      font-weight: 700;
+      font-weight: 800;
       font-size: 1.25rem;
       letter-spacing: -0.02em;
     }
@@ -102,37 +109,213 @@
     .brand-logo {
       width: 34px;
       height: 34px;
-      border-radius: 8px;
+      border-radius: 9px;
       object-fit: cover;
-      display: block;
+      box-shadow: 0 4px 12px rgba(157, 113, 253, 0.35);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .nav-actions-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    /* Elegant Flag Language Switcher */
+    .lang-switcher {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(19, 15, 36, 0.85);
+      border: 1px solid var(--border-color);
+      border-radius: 9999px;
+      padding: 3px;
+      gap: 2px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+      transition: border-color 0.2s ease;
+    }
+
+    .lang-switcher:hover {
+      border-color: rgba(157, 113, 253, 0.5);
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 0.725rem;
+      font-weight: 700;
+      padding: 0.25rem 0.55rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.2s ease;
+      line-height: 1;
+    }
+
+    .lang-btn:hover {
+      color: var(--text-main);
+    }
+
+    .lang-btn.active {
+      background: linear-gradient(135deg, var(--primary), #7c3aed);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(157, 113, 253, 0.35);
+    }
+
+    .flag-icon {
+      font-size: 0.9rem;
+      line-height: 1;
+      display: inline-block;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
+      gap: 0.4rem;
     }
 
     .nav-link {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.925rem;
+      font-size: 0.9rem;
       font-weight: 500;
-      padding: 0.4rem 0.75rem;
-      border-radius: 6px;
+      padding: 0.45rem 0.8rem;
+      border-radius: 8px;
       transition: color 0.15s ease, background-color 0.15s ease;
     }
 
-    .nav-link:hover {
-      color: var(--primary);
-      background-color: var(--primary-bg);
+    .nav-link:hover, .nav-link.active {
+      color: var(--text-main);
+      background-color: rgba(157, 113, 253, 0.12);
     }
 
-    .nav-link.active {
-      color: var(--primary);
+    .cta-button-nav {
+      background: linear-gradient(135deg, #9d71fd, #7c3aed);
+      color: #ffffff !important;
       font-weight: 600;
-      background-color: var(--primary-bg);
+      padding: 0.45rem 1.05rem;
+      border-radius: 9999px;
+      box-shadow: 0 4px 14px rgba(157, 113, 253, 0.35);
+      margin-left: 0.25rem;
+    }
+
+    .cta-button-nav:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+
+    /* Mobile Hamburger Button */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 38px;
+      height: 38px;
+      background: rgba(157, 113, 253, 0.08);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      cursor: pointer;
+      padding: 7px;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .nav-toggle:hover {
+      background: rgba(157, 113, 253, 0.16);
+      border-color: #9d71fd;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background-color: var(--text-main);
+      border-radius: 2px;
+      transition: transform 0.22s ease, opacity 0.22s ease;
+    }
+
+    .nav-toggle.is-active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-toggle.is-active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle.is-active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    @media (max-width: 860px) {
+      .nav-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(16, 12, 31, 0.97);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1rem 1.25rem 1.25rem 1.25rem;
+        gap: 0.35rem;
+      }
+
+      @media (prefers-color-scheme: light) {
+        .nav-links {
+          background: rgba(255, 255, 255, 0.98);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+      }
+
+      .nav-links.is-open {
+        display: flex;
+        animation: navSlideDown 0.2s ease-out forwards;
+      }
+
+      .nav-link {
+        padding: 0.7rem 0.9rem;
+        font-size: 0.95rem;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+
+      .cta-button-nav {
+        margin-left: 0;
+        margin-top: 0.5rem;
+        text-align: center;
+        justify-content: center;
+        padding: 0.75rem 1rem;
+      }
+    }
+
+    @keyframes navSlideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     main {
@@ -362,6 +545,13 @@
         padding: 0;
       }
     }
+    /* Bilingual Content Switching */
+    html[lang="en"] .lang-content-ro {
+      display: none !important;
+    }
+    html[lang="ro"] .lang-content-en {
+      display: none !important;
+    }
   </style>
 </head>
 <body>
@@ -369,22 +559,46 @@
   <header>
     <div class="nav-container">
       <a href="index.html" class="brand">
-        <img src="monetic_logo_512.png" alt="Monetic Logo" class="brand-logo">
+        <img src="monetic_logo_512.png" alt="Monetic Logo" class="brand-logo" width="34" height="34">
         <span>Monetic</span>
       </a>
-      <nav class="nav-links">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="terms.html" class="nav-link active">Terms & Conditions</a>
-        <a href="privacy.html" class="nav-link">Privacy Policy</a>
-        <a href="privacy.html#delete-account" class="nav-link">Delete Account</a>
-        <a href="mailto:support@monetic.app" class="nav-link">Contact</a>
-      </nav>
+
+      <div class="nav-right">
+        <nav class="nav-links" id="nav-links">
+          <a href="index.html" class="nav-link" data-i18n="nav_home">Home</a>
+          <a href="index.html#features" class="nav-link" data-i18n="nav_features">Features</a>
+          <a href="index.html#tour" class="nav-link" data-i18n="nav_tour">App Tour</a>
+          <a href="index.html#pro" class="nav-link" data-i18n="nav_pro" style="color: #c084fc; font-weight: 700;">💎 PRO</a>
+          <a href="terms.html" class="nav-link active" data-i18n="nav_terms">Terms</a>
+          <a href="privacy.html" class="nav-link" data-i18n="nav_privacy">Privacy</a>
+          <a href="privacy.html#delete-account" class="nav-link cta-button-nav" data-i18n="nav_delete_account">Delete Account</a>
+        </nav>
+
+        <div class="nav-actions-wrap">
+          <div class="lang-switcher" role="group" aria-label="Language selection">
+            <button type="button" class="lang-btn active" data-lang="en" aria-label="Switch to English" title="Switch to English">
+              <span class="flag-icon">🇬🇧</span> <span class="lang-text">EN</span>
+            </button>
+            <button type="button" class="lang-btn" data-lang="ro" aria-label="Comută în Română" title="Comută în Română">
+              <span class="flag-icon">🇷🇴</span> <span class="lang-text">RO</span>
+            </button>
+          </div>
+
+          <!-- Mobile Hamburger Button -->
+          <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
     </div>
   </header>
 
   <main>
     <article class="doc-card">
-      <div class="title-block">
+    <div class="lang-content-en">
+<div class="title-block">
         <h1>Terms and Conditions for Monetic</h1>
         <div class="meta-bar">
           <span><strong>Effective Date:</strong> September 29, 2026</span>
@@ -740,23 +954,414 @@
           <li><strong>Jurisdiction:</strong> Cluj-Napoca, Romania</li>
         </ul>
       </section>
-    </article>
+    </div>
+
+    <div class="lang-content-ro">
+      <div class="title-block">
+        <h1>Termeni și Condiții pentru Monetic</h1>
+        <div class="meta-bar">
+          <span><strong>Data intrării în vigoare:</strong> 29 Septembrie 2026</span>
+          <span>•</span>
+          <span><strong>Ultima actualizare:</strong> 29 Septembrie 2026</span>
+          <span class="badge badge-dev">Dezvoltator Independent</span>
+        </div>
+      </div>
+
+      <section>
+        <h2>1. Introducere &amp; Acceptarea Termenilor</h2>
+        <p>Bun venit la <strong>Monetic</strong> („Aplicația”, „Serviciul”, „noi” sau „al nostru”). Monetic este o aplicație mobilă independentă de evidență a finanțelor personale și bugetare, dezvoltată și operată ca soluție multiplatformă pentru Android și iOS. Acești Termeni și Condiții („Termenii”) constituie un acord juridic obligatoriu între dumneavoastră („Utilizator”, „dumneavoastră”) și Monetic cu privire la accesul și utilizarea aplicației mobile Monetic pe platformele Android și iOS, precum și a oricăror servicii sau site-uri web asociate (<a href="https://monetic.app">https://monetic.app</a>).</p>
+        <p>Prin descărcarea, instalarea, crearea unui cont sau utilizarea aplicației Monetic în orice mod, confirmați în mod expres că ați citit, ați înțeles și sunteți de acord să respectați acești Termeni, precum și <a href="privacy.html">Politica noastră de Confidențialitate</a>. Dacă nu sunteți de acord cu acești Termeni, nu trebuie să descărcați, să accesați sau să utilizați Aplicația.</p>
+
+        <h3>1.1. Statutul Dezvoltatorului</h3>
+        <p>Monetic este proiectată, dezvoltată și administrată de Daniel Crețu, activând în calitate de dezvoltator independent de software cu sediul în Cluj-Napoca, România. Aplicația nu este afiliată, sponsorizată sau operată în numele vreunei instituții bancare comerciale, societăți de investiții, agenții de rating de credit sau corporații financiare.</p>
+
+        <h3>1.2. Eligibilitate și Vârstă Minimă</h3>
+        <ul>
+          <li><strong>Uniunea Europeană (UE) &amp; Spațiul Economic European (SEE):</strong> Trebuie să aveți vârsta de cel puțin <strong>16 ani</strong> (sau vârsta legală minimă pentru consimțământul digital conform legislației statului membru UE de reședință) pentru a utiliza Monetic.</li>
+          <li><strong>Restul Lumii:</strong> Trebuie să aveți vârsta de cel puțin <strong>13 ani</strong> (sau vârsta majoratului aplicabilă în jurisdicția dumneavoastră).</li>
+          <li>Dacă sunteți minor conform legislației locale, declarați și garantați că ați obținut acordul părintelui sau al tutorelui legal pentru a utiliza Aplicația și a accepta acești Termeni.</li>
+        </ul>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>2. Disclaimer Financiar Strict: Statut Non-Bancar și Fără Consultanță Financiară</h2>
+
+        <div class="callout-warning">
+          <h3>⚠️ Notificare Juridică Critică: Exclusiv în Scopuri Informative &amp; de Estimare</h3>
+          <p><strong>MONETIC ESTE EXCLUSIV UN INSTRUMENT DE MONITORIZARE A CHELTUIELILOR PERSONALE, BUGETARE ȘI ORGANIZARE A BANILOR, CONCEPUT STRICT ÎN SCOPURI PERSONALE, ORGANIZATORICE ȘI INFORMATIVE.</strong></p>
+        </div>
+
+        <ol>
+          <li><strong>Nu este o Instituție Financiară sau Bancă:</strong> Monetic <strong>NU</strong> este o bancă, cooperativă de credit, instituție de depozit, furnizor de servicii de plată, transmițător de bani, agent escrow sau creditor. Monetic nu păstrează depozite, nu administrează fonduri escrow, nu execută transferuri bancare, nu emite carduri de debit sau credit și nu procesează plăți monetare între persoane sau entități.</li>
+          <li><strong>Fără Servicii Fiduclare sau de Consultanță Financiară:</strong> Monetic nu furnizează servicii de planificare financiară, consultanță de investiții, gestionare de portofolii, asistență fiscală, consultanță contabilă sau recomandări de gestionare a averii. Niciunul dintre graficele, statisticile, rapoartele, estimările sau calculele de sold furnizate în Aplicație nu constituie consultanță profesională financiară, de investiții, juridică sau fiscală.</li>
+          <li><strong>Fără Tranzacții sau Integrări Bancare Automatizate:</strong> Monetic se bazează exclusiv pe datele introduse manual de utilizator, intrări personalizate și tranzacții programate configurate de dumneavoastră. Aplicația nu inițiază retrageri automate, debitări directe sau tranzacții bancare în numele dumneavoastră.</li>
+          <li><strong>Calcule și Estimări ale Cursului Valutar:</strong> Calculele financiare, centralizările lunare, distribuția pe categorii și conversiile valutare sunt furnizate doar pentru confort și estimare. Cursurile valutare fluctuează continuu. Sunteți singurul responsabil pentru verificarea independentă a tuturor sumelor înainte de a lua decizii financiare, comerciale sau fiscale.</li>
+          <li><strong>Lipsa Răspunderii pentru Deciziile Financiare:</strong> Recunoașteți și sunteți de acord că orice decizie financiară, alegere bugetară, investiție sau alocare de cheltuieli este luată pe propria răspundere și pe propriul risc. Monetic și dezvoltatorul său nu își asumă nicio responsabilitate sau răspundere pentru pierderi financiare, inexactități, comisioane bancare sau consecințe rezultate din utilizarea Aplicației.</li>
+        </ol>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>3. Conturi de Utilizator, Securitate &amp; Autentificare cu Protecție Hardware</h2>
+
+        <h3>3.1. Tipuri de Conturi &amp; Înregistrare</h3>
+        <p>Monetic oferă moduri flexibile de utilizare:</p>
+        <ul>
+          <li><strong>Mod Anonim / Oaspete (Guest):</strong> Puteți utiliza funcționalitățile de bază fără a crea un cont în cloud. În acest mod, datele dumneavoastră financiare rămân exclusiv pe dispozitivul dumneavoastră fizic.</li>
+          <li><strong>Cont Autentificat:</strong> Vă puteți înregistra folosind adresa de email și o parolă, sau prin autentificare terță securizată (Google Sign-In, Sign in with Apple) gestionată de Firebase Authentication.</li>
+        </ul>
+
+        <h3>3.2. Responsabilitățile Utilizatorului &amp; Securitatea Contului</h3>
+        <ul>
+          <li>Sunteți de acord să furnizați informații corecte, actuale și complete în timpul înregistrării și să le mențineți actualizate.</li>
+          <li>Sunteți exclusiv responsabil de păstrarea confidențialității și securității credențialelor contului, parolelor și accesului la dispozitiv.</li>
+          <li>Orice acțiuni sau tranzacții efectuate sub credențialele contului dumneavoastră vor fi considerate ca fiind autorizate de dumneavoastră.</li>
+          <li>Trebuie să ne notificați imediat la <a href="mailto:support@monetic.app">support@monetic.app</a> dacă suspectați un acces neautorizat la contul dumneavoastră.</li>
+        </ul>
+
+        <h3>3.3. Cod PIN Intern din 4 Cifre &amp; Biometrie</h3>
+        <ul>
+          <li>Monetic oferă un cod PIN opțional de 4 cifre și autentificare biometrică (amprentă, Touch ID, Face ID) pentru protecție directă la nivelul dispozitivului.</li>
+          <li><strong>Derivare Criptografică PBKDF2:</strong> Codul PIN este derivat prin <strong>PBKDF2-HMAC-SHA256 (100.000 iterații)</strong> cu o valoare salt generată prin CSPRNG (<code>SecureRandom</code>).</li>
+          <li><strong>Stocare Securizată Hardware:</strong>
+            <ul>
+              <li><strong>Pe Android:</strong> Secretele derivate sunt stocate în <strong>EncryptedSharedPreferences</strong> protejat prin <strong>Android Keystore MasterKey (AES-256-GCM)</strong>.</li>
+              <li><strong>Pe iOS:</strong> Stocat în <strong>Keychain Services</strong> configurat cu <code>kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly</code>.</li>
+            </ul>
+          </li>
+          <li><strong>Verificare Biometrică:</strong> Autentificarea biometrică este gestionată exclusiv de hardware-ul Secure Enclave / BiometricPrompt al telefonului. Monetic nu are acces la date biometrice brute.</li>
+          <li><strong>Stocare Strict Locală:</strong> Codul PIN <strong>nu este niciodată</strong> transmis, sincronizat sau recuperabil de pe serverele noastre. Dacă uitați codul PIN și nu aveți o copie de rezervă în cloud sau deblocare biometrică, noi nu vă putem recupera sau reseta codul PIN. Sunteți singurul responsabil de protejarea acestuia.</li>
+        </ul>
+
+        <h3>3.4. Protecția Bazei de Date Locale &amp; Instantanee de Recuperare</h3>
+        <ul>
+          <li><strong>Criptarea Nativă a Sistemului:</strong> Baza de date SQLite locală este izolată în spațiul intern al aplicației, protejată de Android File-Based Encryption (FBE) și iOS Data Protection.</li>
+          <li><strong>Instantanee Locale Automate (<code>.monrec</code>):</strong> Monetic generează automat arhive de recuperare înainte de operațiunile critice asupra bazei de date pentru a preveni coruperea datelor.</li>
+          <li><strong>Excluderea din Backup-ul Sistemului de Operare:</strong> Baza de date locală (<code>money_manager_db</code>), fotografiile bonurilor (<code>receipt_photos</code>) și fișierele de recuperare (<code>recovery_backups</code>) sunt excluse explicit din backup-urile automate necriptate ale sistemului de operare (Google Drive Auto-Backup și backup-ul iCloud necriptat).</li>
+        </ul>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>4. Abonamente, Achiziții în Aplicație &amp; Facturare (Monetic PRO)</h2>
+        <p>Monetic oferă atât funcționalități gratuite de bază, cât și funcționalități premium extinse („Monetic PRO”) accesibile prin abonament periodic sau achiziție unică permanentă.</p>
+
+        <h3>4.1. Planuri Tarifare &amp; Prețuri</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Tip Plan</th>
+                <th>Identificator Produs</th>
+                <th>Frecvență Facturare</th>
+                <th>Preț de Bază Curent (RON)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Abonament Lunar</strong></td>
+                <td><code>monetic_pro_monthly</code></td>
+                <td>Recurent Lunar</td>
+                <td>7,00 RON / lună (sau echivalentul în moneda locală a magazinului)</td>
+              </tr>
+              <tr>
+                <td><strong>Abonament Anual</strong></td>
+                <td><code>monetic_pro_yearly</code></td>
+                <td>Recurent Anual</td>
+                <td>60,00 RON / an (sau echivalentul în moneda locală a magazinului)</td>
+              </tr>
+              <tr>
+                <td><strong>Licență Permanentă (Lifetime)</strong></td>
+                <td><code>monetic_pro_lifetime</code></td>
+                <td>Achiziție Unică</td>
+                <td>140,00 RON plată unică (sau echivalentul în moneda locală a magazinului)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p><em>Prețurile includ Taxa pe Valoarea Adăugată (TVA) aplicabilă conform reglementărilor fiscale stabilite de Apple sau Google în țara dumneavoastră de reședință.</em></p>
+
+        <h3>4.2. Perioada de Testare Gratuită (Free Trial)</h3>
+        <ul>
+          <li>Fiecare utilizator nou beneficiază automat de o <strong>perioadă de testare gratuită de 14 zile</strong> pentru explorarea funcționalităților PRO, fără a fi necesară introducerea unui card bancar sau activarea unui abonament plătit.</li>
+          <li>În cazul în care activați o perioadă de probă asociată unui abonament de magazin (de ex. abonamentul Anual), dacă nu anulați abonamentul cu cel puțin <strong>24 de ore înainte de expirarea perioadei de probă</strong>, acesta se va converti automat într-un abonament recurent plătit, taxat conform metodei de plată salvate în contul Apple sau Google.</li>
+        </ul>
+
+        <h3>4.3. Procesarea Plăților &amp; Autoritatea Magazinelor</h3>
+        <p>Toate tranzacțiile financiare, procesarea facturilor și metodele de plată sunt gestionate exclusiv de către:</p>
+        <ul>
+          <li><strong>Apple Inc.</strong> prin Apple App Store (StoreKit) pentru dispozitivele iOS;</li>
+          <li><strong>Google LLC</strong> prin Google Play Billing pentru dispozitivele Android.</li>
+        </ul>
+        <p>Statutul abonamentului și validarea drepturilor în aplicație sunt asigurate prin <strong>RevenueCat Inc.</strong> Monetic nu colectează, nu procesează și nu stochează niciodată numere de carduri bancare sau date bancare directe.</p>
+
+        <h3>4.4. Reînnoire Automată &amp; Anulare</h3>
+        <ul>
+          <li><strong>Reînnoire Automată:</strong> Abonamentele se reînnoiesc automat la sfârșitul fiecărei perioade de facturare (lunar sau anual), cu excepția cazului în care anulați abonamentul cu cel puțin <strong>24 de ore înainte</strong> de expirarea ciclului curent.</li>
+          <li><strong>Cum se Anulează:</strong> Puteți anula abonamentul în orice moment direct din setările contului dumneavoastră de magazin:
+            <ul>
+              <li><strong>Pe iOS:</strong> Deschideți <em>Setări</em> → Atingeți <em>Profilul Apple ID</em> → Atingeți <em>Abonamente</em> → Selectați <em>Monetic</em> → Atingeți <em>Anulează Abonamentul</em>.</li>
+              <li><strong>Pe Android:</strong> Deschideți <em>Google Play Store</em> → Atingeți <em>Pictograma de Profil</em> → Atingeți <em>Plăți și abonamente</em> → Atingeți <em>Abonamente</em> → Selectați <em>Monetic</em> → Atingeți <em>Anulați abonamentul</em>.</li>
+            </ul>
+          </li>
+          <li><strong>Efectul Anulării:</strong> La anularea unui abonament, accesul la funcționalitățile Monetic PRO va continua până la finalul perioadei deja plătite. Anularea intră în vigoare pentru ciclul următor; rambursările pentru fracțiuni de perioadă nu se acordă automat.</li>
+        </ul>
+
+        <div class="callout-warning">
+          <h3>⚠️ Notificare Critică Privind Ștergerea Contului &amp; Abonamentele de Magazin</h3>
+          <p><strong>ȘTERGEREA CONTULUI DUMNEAVOASTRĂ DIN APLICAȚIA MONETIC NU ANULEAZĂ, NU SUSPENDĂ ȘI NU RAMBURSEAZĂ AUTOMAT ABONAMENTELE ACTIVE ACHIZIȚIONATE PRIN APPLE APP STORE SAU GOOGLE PLAY STORE.</strong></p>
+          <p>Abonamentele reprezintă contracte separate gestionate direct între dumneavoastră și Apple sau Google. Pentru a preveni debitările recurente după ștergerea contului, <strong>TREBUIE să anulați manual abonamentul activ</strong> din setările de abonamente ale contului dumneavoastră Apple sau Google Play înainte sau imediat după ștergerea contului Monetic.</p>
+        </div>
+
+        <h3>4.5. Modificări de Preț</h3>
+        <p>Ne rezervăm dreptul de a ajusta prețurile abonamentelor Monetic PRO. Orice modificare de tarif va fi comunicată în avans prin intermediul magazinului de aplicații (Apple sau Google) conform politicilor platformelor respective. Modificările de preț nu se vor aplica retroactiv ciclului de facturare în curs.</p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>5. Dreptul Legal de Retragere în UE &amp; Politica de Rambursare</h2>
+
+        <h3>5.1. Dreptul de Retragere în Uniunea Europeană (Directiva 2011/83/UE)</h3>
+        <p>Conform Directivei UE privind Drepturile Consumatorilor (Directiva 2011/83/UE):</p>
+        <ol>
+          <li>Consumatorii din UE beneficiază, de regulă, de un drept legal de retragere de 14 zile din contractele la distanță, fără a fi necesară precizarea motivelor.</li>
+          <li><strong>Excepția pentru Conținut Digital:</strong> În conformitate cu Articolul 16(m) din Directiva 2011/83/UE (transpus în România prin OUG nr. 34/2014, art. 16 lit. m), dreptul legal de retragere încetează să se aplice în cazul furnizării de conținut digital care nu este livrat pe un suport material, dacă prestarea a început cu acordul prealabil expres al consumatorului și după ce acesta a confirmat că a luat cunoștință de faptul că își va pierde dreptul de retragere.</li>
+          <li>La achiziționarea Monetic PRO prin Apple App Store sau Google Play Store, accesul digital este furnizat instantaneu la finalizarea tranzacției, iar condițiile de retragere sunt reglementate de politicile magazinului respectiv.</li>
+        </ol>
+
+        <h3>5.2. Proceduri de Rambursare Gestionate de Magazine</h3>
+        <p>Deoarece contractele de plată sunt încheiate direct între dumneavoastră și operatorul platformei (Apple sau Google), <strong>Monetic nu poate emite direct rambursări și nu poate inversa debitările de pe card</strong>. Toate solicitările de rambursare trebuie trimise operatorului platformei:</p>
+        <ul>
+          <li><strong>Achiziții din Apple App Store:</strong> Trimiteți o solicitare pe portalul oficial Apple la <a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">https://reportaproblem.apple.com</a> conform Termenilor și Condițiilor Serviciilor Apple Media.</li>
+          <li><strong>Achiziții din Google Play Store:</strong> Trimiteți o solicitare prin Centrul de Ajutor Google Play la <a href="https://support.google.com/googleplay/workflow/9813248" target="_blank" rel="noopener">https://support.google.com/googleplay/workflow/9813248</a> în termenele stabilite de Politica de Rambursare Google Play.</li>
+        </ul>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>6. Conținutul Utilizatorului &amp; Drepturi de Proprietate Intelectuală</h2>
+
+        <h3>6.1. Proprietatea Dumneavoastră Asupra Datelor Financiare</h3>
+        <ul>
+          <li><strong>Proprietate 100% a Utilizatorului:</strong> Păstrați dreptul deplin de proprietate și toate drepturile de proprietate intelectuală asupra evidențelor financiare, descrierilor de tranzacții, sumelor bugetate, denumirilor de categorii, conturilor, plăților regulate și fotografiilor atașate (bonuri și sigle) pe care le introduceți în Monetic („Conținutul Utilizatorului”).</li>
+          <li><strong>Licență Limitată de Prelucrare:</strong> Acordați aplicației Monetic o licență neexclusivă, gratuită și la nivel mondial, strict în scopul de a stoca, procesa, comprima, afișa și sincroniza Conținutul dumneavoastră pe dispozitivele dumneavoastră și în spațiile de backup alese (Google Drive AppData sau Firebase), exclusiv pentru furnizarea și funcționarea Serviciului.</li>
+        </ul>
+
+        <h3>6.2. Utilizare Acceptabilă &amp; Restricții</h3>
+        <p>Sunteți de acord să nu utilizați Monetic pentru:</p>
+        <ol>
+          <li>A încărca, stoca sau transmite conținut ilegal, defăimător, obscen sau care încalcă drepturile de proprietate intelectuală ale unor terți;</li>
+          <li>A încărca fișiere ce conțin viruși, viermi sau cod dăunător;</li>
+          <li>A efectua inginerie inversă (reverse engineering), decompilare sau dezasamblare a codului sursă al aplicației, cu excepția limitelor permise imperativ de lege;</li>
+          <li>A perturba, compromite sau ataca securitatea sau funcționarea serverelor noastre, bazelor de date sau infrastructurii API;</li>
+          <li>A utiliza roboți automatizați, scripturi de colectare (scraping) pentru a accesa sau extrage date din Monetic;</li>
+          <li>A vinde, redistribui, închiria sau sublicenția Aplicația unor terțe părți în regim comercial.</li>
+        </ol>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>7. Backup în Cloud, Sincronizare &amp; Protecție împotriva Pierderii Datelor</h2>
+
+        <h3>7.1. Administrarea Sistemului Dual de Backup</h3>
+        <ul>
+          <li><strong>Stocare Principală Android (Google Drive AppData):</strong> Pe Android, Monetic comprimă baza de date și fotografiile bonurilor într-o arhivă criptată (<code>monetic_backup.zip</code>) direct în folderul privat AppData din Google Drive-ul dumneavoastră personal.</li>
+          <li><strong>Stocare Secundară &amp; iOS (Firebase Cloud Firestore):</strong> Pe iOS sau ca alternativă pe Android, datele sunt sincronizate securizat în Google Firebase Cloud Firestore și Cloud Storage.</li>
+        </ul>
+
+        <h3>7.2. Responsabilitatea Salvgardării Datelor</h3>
+        <ul>
+          <li>Deși Monetic implementează persistență locală robustă (Room SQLite), instantanee automate de recuperare (<code>.monrec</code>) și mecanisme de sincronizare automată în fundal (Android WorkManager <code>CloudBackupWorker</code>), recunoașteți că pierderea datelor poate surveni din cauza deteriorării dispozitivului, furtului, resetării sistemului, erorilor software sau uitării codului PIN de securitate.</li>
+          <li><strong>Recomandare:</strong> Vă încurajăm ferm să mențineți active backup-urile în cloud și să efectuați exporturi periodice CSV ale tranzacțiilor.</li>
+          <li>Monetic este exonerată de orice răspundere pentru pierderea, deteriorarea sau imposibilitatea recuperării înregistrărilor dumneavoastră financiare, în măsura maximă permisă de lege.</li>
+        </ul>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>8. Drepturile de Proprietate Intelectuală ale Monetic</h2>
+        <p>Aplicația Monetic, incluzând codul sursă, designul interfeței grafice, layout-urile vizuale, temele, pictogramele, siglele, animațiile, schemele bazei de date și documentația, constituie proprietatea intelectuală exclusivă a Monetic și a licențiatorilor săi.</p>
+        <p>Sub rezerva respectării acestor Termeni, vă acordăm o licență limitată, neexclusivă, netransmisibilă, nesublicențiabilă și revocabilă de a descărca, instala și utiliza Monetic pe dispozitivele personale, strict pentru uz personal și necomercial de gestionare a finanțelor.</p>
+        <p>Toate mărcile comerciale și denumirile asociate Monetic sunt protejate de legislația privind proprietatea industrială și concurența loială.</p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>9. Exonerare de Garanții („Așa cum este” &amp; „Conform disponibilității”)</h2>
+        <ol>
+          <li><strong>Exonerare Generală:</strong> ÎN MĂSURA MAXIMĂ PERMISĂ DE LEGISLAȚIA APLICABILĂ, MONETIC ESTE FURNIZATĂ PE BAZA PRINCIPIULUI „AȘA CUM ESTE” („AS IS”) ȘI „CONFORM DISPONIBILITĂȚII” („AS AVAILABLE”), FĂRĂ NICIUN FEL DE GARANȚII EXPRESE, IMPLICITE SAU LEGALE, INCLUSIV GARANȚII DE VANDABILITATE, POTRIVIRE PENTRU UN ANUMIT SCOP, EXACTITATE SAU NEÎNCĂLCARE A DREPTURILOR TERȚILOR.</li>
+          <li><strong>Continuitate &amp; Funcționare:</strong> NU GARANTĂM CĂ SERVICIUL VA FI NEÎNTRERUPT, LIPSIT DE ERORI, SIGUR SAU CĂ TOATE DEFECTELE VOR FI CORECTATE IMEDIAT.</li>
+          <li><strong>Garanții Legale Obligatorii pentru Consumatorii din UE:</strong> NIMIC DIN ACEASTĂ SECȚIUNE NU RESTRÂNGE ȘI NU EXCLUDE DREPTURILE LEGALE ALE CONSUMATORILOR PRIVIND CONFORMITATEA CONȚINUTULUI ȘI SERVICIILOR DIGITALE CONFORM DIRECTIVEI (UE) 2019/770 (TRANSPUSĂ PRIN OUG NR. 141/2021) CARE NU POT FI RESTRÂNSE PRIN CONTRACT.</li>
+        </ol>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>10. Limitarea Răspunderii</h2>
+        <ol>
+          <li><strong>Excluderea Daunelor Indirecte:</strong> ÎN MĂSURA MAXIMĂ PERMISĂ DE LEGISLAȚIA APLICABILĂ, ÎN NICIUN CAZ MONETIC, DEZVOLTATORUL SĂU, AFILIAȚII SAU PARTENERII NU VOR FI RĂSPUNZĂTORI PENTRU DAUNE INDIRECTE, ACCIDENTALE, SPECIALE, SUBSECVENTE SAU PUNITIVE, INCLUSIV PIERDERI DE PROFIT, PIERDERI DE DATE FINANCIARE, ÎNTRERUPEREA ACTIVITĂȚII SAU ÎNREGISTRĂRI ERONATE, REZULTATE DIN ACCESUL SAU UTILIZAREA APLICAȚIEI.</li>
+          <li><strong>Plafonul Răspunderii Agregate:</strong> ÎN TOATE SITUAȚIILE, RĂSPUNDEREA NOASTRĂ TOTALĂ AGREGATĂ CARE DECURGE DIN SAU ÎN LEGĂTURĂ CU ACEȘTI TERMENI SAU UTILIZAREA MONETIC VA FI LIMITATĂ LA CEA MAI MARE DINTRE:
+            <ul>
+              <li>SUMA EFECTIV PLĂTITĂ DE DUMNEAVOASTRĂ PENTRU ABONAMENTELE SAU ACHIZIȚIILE MONETIC PRO ÎN ULTIMELE DOUĂSPREZECE (12) LUNI PRECEDÂND RECLAMAȚIA; SAU</li>
+              <li>CINCIZECI DE EURO (50,00 EUR) SAU ECHIVALENTUL ÎN MONEDĂ NAȚIONALĂ.</li>
+            </ul>
+          </li>
+          <li><strong>Excepții Legale Imperative:</strong> ANUMITE JURISDICȚII (INCLUSIV STATE MEMBRE ALE UNIUNII EUROPENE) NU PERMIT LIMITAREA RĂSPUNDERII PENTRU CULPĂ GRAVĂ, INTENȚIE, VĂTĂMARE CORPORALĂ, FRAUDĂ SAU ÎNCĂLCAREA LEGISLAȚIEI IMPERATIVE DE PROTECȚIE A CONSUMATORULUI. ÎN ACESTE JURISDICȚII, RĂSPUNDEREA NOASTRĂ ESTE LIMITATĂ ÎN MĂSURA STRICT PERMISĂ DE LEGE.</li>
+        </ol>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>11. Ștergerea Contului, Păstrarea Datelor &amp; Rezilierea</h2>
+
+        <h3>11.1. Ștergerea Directă a Contului de Către Utilizator</h3>
+        <p>Aveți dreptul de a înceta acești Termeni și de a vă șterge contul Monetic în orice moment direct din Aplicație: Accesați <strong>Setări</strong> &gt; <strong>Profil / Cont</strong> &gt; <strong>Șterge Contul</strong>.</p>
+        <ul>
+          <li><strong>Opțiuni Flexibile de Ștergere:</strong>
+            <ul>
+              <li><strong>Șterge Toate Datele (Local &amp; Cloud):</strong> Șterge definitiv și ireversibil datele de conectare Firebase Authentication, baza de date Firestore, backup-urile din cloud și fotografiile bonurilor salvate pe telefon.</li>
+              <li><strong>Păstrează Datele Locale ca Oaspete:</strong> Șterge contul și datele din cloud, păstrând tranzacțiile locale pe telefon ca profil offline anonim.</li>
+            </ul>
+          </li>
+          <li><strong>Revocarea Autorizării Apple Sign-In:</strong> Dacă v-ați autentificat prin Sign in with Apple, ștergerea contului declanșează o solicitare oficială de revocare a token-ului către serverele Apple (<code>https://appleid.apple.com/auth/revoke</code>), în conformitate cu cerințele Apple App Store Review Guideline 5.1.1(v).</li>
+          <li><strong>Ireversibilitate:</strong> Ștergerea contului este definitivă și nu poate fi anulată. Datele șterse din cloud nu pot fi recuperate.</li>
+        </ul>
+
+        <h3>11.2. Rezilierea de Către Monetic</h3>
+        <p>Ne rezervăm dreptul de a suspenda sau de a închide contul dumneavoastră sau de a restricționa accesul la Monetic imediat, fără notificare prealabilă, dacă:</p>
+        <ol>
+          <li>Încălcați în mod grav prevederile acestor Termeni sau ale Politicii de Confidențialitate;</li>
+          <li>Suntem obligați prin lege, hotărâre judecătorească sau solicitare a unei autorități de reglementare;</li>
+          <li>Detectăm activități frauduloase sau abuzive care amenință securitatea Serviciului.</li>
+        </ol>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>12. Legea Aplicabilă, Soluționarea Litigiilor &amp; Platforma SOL a UE</h2>
+
+        <h3>12.1. Legea Aplicabilă &amp; Jurisdicție</h3>
+        <ul>
+          <li>Acești Termeni și orice litigiu apărut în legătură cu aceștia vor fi guvernați și interpretați în conformitate cu <strong>legislația din România</strong> și reglementările <strong>Uniunii Europene</strong>, fără a lua în considerare normele privind conflictul de legi.</li>
+          <li><strong>Protecția Consumatorilor:</strong> Dacă sunteți consumator din UE/SEE, această alegere a legii nu vă lipsește de protecția acordată de dispozițiile imperative din legislația țării dumneavoastră de reședință obișnuită (în temeiul Articolului 6 din Regulamentul (CE) nr. 593/2008 - Roma I).</li>
+        </ul>
+
+        <h3>12.2. Platforma Europeană de Soluționare Online a Litigiilor (SOL)</h3>
+        <p>Conform Regulamentului (UE) nr. 524/2013, consumatorii cu reședința în UE au dreptul de a soluționa litigiile pe cale extrajudiciară prin intermediul Platformei Europene de Soluționare Online a Litigiilor: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr</a>.</p>
+        <p>Vă încurajăm să ne contactați mai întâi la <a href="mailto:support@monetic.app">support@monetic.app</a> pentru a găsi o rezolvare rapidă și amiabilă la orice solicitare sau neînțelegere.</p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>13. Servicii Terțe &amp; Consimțământul pentru Publicitate</h2>
+        <p>Monetic utilizează biblioteci și servicii furnizate de parteneri tehnologici terți pentru autentificare, rutare, securitate și publicitate:</p>
+        <ul>
+          <li><strong>Cloudflare, Inc.</strong> (Anycast Edge Proxy, WAF, protecție DDoS)</li>
+          <li><strong>Google Firebase &amp; Google Cloud</strong> (Autentificare, Firestore, Storage, Crashlytics)</li>
+          <li><strong>RevenueCat</strong> (Managementul abonamentelor și chitanțelor digitale)</li>
+          <li><strong>Google AdMob &amp; Google UMP SDK</strong> (Publicitate &amp; gestionarea consimțământului GDPR / e-Privacy)</li>
+        </ul>
+        <p>În versiunea gratuită cu reclame, afișarea anunțurilor este strict condiționată de acordul exprimat prin Google UMP SDK pentru utilizatorii din SEE și Regatul Unit. Interacțiunea cu aceste platforme este supusă termenilor și politicilor respective ale acestora.</p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>14. Modificări &amp; Actualizări ale Termenilor</h2>
+        <p>Putem actualiza sau modifica acești Termeni periodic pentru a reflecta evoluția funcționalităților noastre sau cerințele legislative:</p>
+        <ul>
+          <li>La efectuarea unor modificări substanțiale, vă vom notifica prin actualizarea datelor de „Ultima actualizare” și „Data intrării în vigoare” din antet și, unde este cazul, printr-o notificare în aplicație.</li>
+          <li>Continuarea utilizării aplicației Monetic după data intrării în vigoare a noilor Termeni constituie acceptarea deplină a acestora. Dacă nu sunteți de acord cu modificările, trebuie să încetați utilizarea aplicației și să vă ștergeți contul.</li>
+        </ul>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>15. Divizibilitate &amp; Integralitatea Acordului</h2>
+        <ul>
+          <li><strong>Divizibilitate:</strong> În cazul în care o prevedere a acestor Termeni este considerată nelegală, nulă sau inaplicabilă, acea prevedere va fi considerată disjunsă și nu va afecta valabilitatea și aplicabilitatea celorlalte prevederi, care vor continua să producă efecte depline.</li>
+          <li><strong>Integralitatea Acordului:</strong> Acești Termeni, împreună cu <a href="privacy.html">Politica de Confidențialitate</a>, constituie acordul complet și exclusiv dintre dumneavoastră și Monetic cu privire la utilizarea Serviciului, înlocuind orice înțelegeri sau acorduri anterioare.</li>
+        </ul>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>16. Informații de Contact &amp; Datele Dezvoltatorului</h2>
+        <p>Dacă aveți întrebări, comentarii sau solicitări juridice referitoare la acești Termeni și Condiții, vă rugăm să ne contactați:</p>
+        <ul>
+          <li><strong>Aplicație:</strong> Monetic</li>
+          <li><strong>Dezvoltator:</strong> Daniel Crețu (Dezvoltator Software Independent)</li>
+          <li><strong>Email de Contact &amp; Suport:</strong> <a href="mailto:support@monetic.app">support@monetic.app</a></li>
+          <li><strong>Punct Unic de Contact conform Regulamentului Serviciilor Digitale (DSA):</strong> <a href="mailto:support@monetic.app">support@monetic.app</a> (Limbi de comunicare: Română, Engleză)</li>
+          <li><strong>Site Oficial:</strong> <a href="https://monetic.app">https://monetic.app</a></li>
+          <li><strong>Jurisdicție:</strong> Cluj-Napoca, România</li>
+        </ul>
+      </section>
+    </div>
+</article>
   </main>
 
   <footer>
     <div class="footer-links">
-      <a href="index.html">Home</a>
+      <a href="index.html" data-i18n="footer_home">Home</a>
       <span>•</span>
-      <a href="terms.html">Terms & Conditions</a>
+      <a href="terms.html" data-i18n="nav_terms">Terms &amp; Conditions</a>
       <span>•</span>
-      <a href="privacy.html">Privacy Policy</a>
+      <a href="privacy.html" data-i18n="nav_privacy">Privacy Policy</a>
       <span>•</span>
-      <a href="privacy.html#delete-account">Delete Account</a>
+      <a href="privacy.html#delete-account" data-i18n="footer_delete">Delete Account</a>
       <span>•</span>
-      <a href="mailto:support@monetic.app">Support</a>
+      <a href="mailto:support@monetic.app" data-i18n="footer_support">Support</a>
     </div>
-    <p>&copy; 2026 Monetic. All rights reserved.</p>
+    <p>&copy; 2026 Monetic. <span data-i18n="footer_rights">All rights reserved.</span></p>
   </footer>
 
+  <!-- Translation Engine Script -->
+  <script src="translations.js"></script>
+
+  <script>
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = navLinks.classList.toggle('is-open');
+        navToggle.classList.toggle('is-active', isOpen);
+        navToggle.setAttribute('aria-expanded', isOpen);
+      });
+
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('is-open');
+          navToggle.classList.remove('is-active');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!navToggle.contains(e.target) && !navLinks.contains(e.target) && navLinks.classList.contains('is-open')) {
+          navLinks.classList.remove('is-open');
+          navToggle.classList.remove('is-active');
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  </script>
 </body>
 </html>

@@ -3,49 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Monetic - Smart Personal Finance & Budget Tracker</title>
-  <meta name="description" content="Official documentation, privacy disclosures, and support hub for Monetic, an independent personal finance and budget tracking mobile application.">
+  <title>Monetic - Smart Personal Finance & Budget Tracker | Offline-First</title>
+  <meta name="description" content="Discover Monetic: an advanced, offline-first personal finance and budget tracking mobile app for Android and iOS. 49 currencies, hardware-backed security, zero bank credentials.">
   <link rel="canonical" href="https://monetic.app/">
   <link rel="icon" type="image/png" href="monetic_logo_512.png">
   <style>
     :root {
-      --bg-color: #f8fafc;
-      --card-bg: #ffffff;
-      --text-main: #0f172a;
-      --text-muted: #475569;
-      --text-subtle: #64748b;
-      --border-color: #e2e8f0;
-      --primary: #2563eb;
-      --primary-hover: #1d4ed8;
-      --primary-bg: #eff6ff;
-      --accent: #10b981;
-      --accent-bg: rgba(16, 185, 129, 0.1);
-      --accent-border: #10b981;
-      --info-bg: #f0f9ff;
-      --info-border: #0284c7;
-      --info-text: #0369a1;
-      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+      --bg-color: #0b0914;
+      --bg-surface: #130f24;
+      --card-bg: #1a1530;
+      --card-hover: #221b3f;
+      --card-border: #2d2452;
+      --card-border-hover: #4e3f8a;
+      --text-main: #f5f3ff;
+      --text-muted: #a59cc0;
+      --text-subtle: #797096;
+      --primary: #9d71fd;
+      --primary-hover: #b493ff;
+      --primary-glow: rgba(157, 113, 253, 0.28);
+      --accent-green: #10b981;
+      --accent-green-bg: rgba(16, 185, 129, 0.15);
+      --accent-coral: #f43f5e;
+      --accent-coral-bg: rgba(244, 63, 94, 0.15);
+      --accent-cyan: #38bdf8;
+      --accent-cyan-bg: rgba(56, 189, 248, 0.15);
+      --accent-amber: #f59e0b;
+      --accent-amber-bg: rgba(245, 158, 11, 0.15);
+      --phone-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.7), 0 0 40px rgba(157, 113, 253, 0.15);
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
 
-    @media (prefers-color-scheme: dark) {
+    @media (prefers-color-scheme: light) {
       :root {
-        --bg-color: #0b0f19;
-        --card-bg: #111827;
-        --text-main: #f8fafc;
-        --text-muted: #cbd5e1;
-        --text-subtle: #94a3b8;
-        --border-color: #1f2937;
-        --primary: #3b82f6;
-        --primary-hover: #60a5fa;
-        --primary-bg: rgba(59, 130, 246, 0.12);
-        --accent: #34d399;
-        --accent-bg: rgba(16, 185, 129, 0.15);
-        --accent-border: #34d399;
-        --info-bg: rgba(2, 132, 199, 0.12);
-        --info-border: #38bdf8;
-        --info-text: #bae6fd;
-        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+        --bg-color: #f7f6fc;
+        --bg-surface: #ffffff;
+        --card-bg: #ffffff;
+        --card-hover: #fcfbfe;
+        --card-border: #e4e0f2;
+        --card-border-hover: #9d71fd;
+        --text-main: #130f24;
+        --text-muted: #4e4866;
+        --text-subtle: #787291;
+        --primary: #7c3aed;
+        --primary-hover: #6d28d9;
+        --primary-glow: rgba(124, 58, 237, 0.16);
+        --phone-shadow: 0 20px 45px -12px rgba(45, 36, 82, 0.2), 0 0 30px rgba(124, 58, 237, 0.08);
       }
     }
 
@@ -55,225 +57,1343 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: var(--font-family);
       background-color: var(--bg-color);
       color: var(--text-main);
-      line-height: 1.7;
+      line-height: 1.65;
       -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      padding: 0;
+      overflow-x: hidden;
     }
 
+    /* Ambient Glow background */
+    .ambient-glow {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(100vw, 1200px);
+      height: 600px;
+      background: radial-gradient(circle at 50% 10%, var(--primary-glow) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Header */
     header {
-      background-color: var(--card-bg);
-      border-bottom: 1px solid var(--border-color);
+      background-color: rgba(19, 15, 36, 0.88);
+      border-bottom: 1px solid var(--card-border);
       position: sticky;
       top: 0;
       z-index: 100;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    @media (prefers-color-scheme: light) {
+      header {
+        background-color: rgba(255, 255, 255, 0.92);
+      }
     }
 
     .nav-container {
-      max-width: 900px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 1rem 1.5rem;
+      padding: 0.65rem 1.25rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 0.75rem;
+      gap: 1rem;
+      position: relative;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.65rem;
       text-decoration: none;
       color: var(--text-main);
-      font-weight: 700;
+      font-weight: 800;
       font-size: 1.25rem;
       letter-spacing: -0.02em;
     }
 
     .brand-logo {
-      width: 36px;
-      height: 36px;
+      width: 34px;
+      height: 34px;
       border-radius: 9px;
       object-fit: cover;
-      display: block;
+      box-shadow: 0 4px 12px var(--primary-glow);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .nav-actions-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    /* Elegant Flag Language Switcher */
+    .lang-switcher {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(19, 15, 36, 0.85);
+      border: 1px solid var(--card-border);
+      border-radius: 9999px;
+      padding: 3px;
+      gap: 2px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+      transition: border-color 0.2s ease;
+    }
+
+    .lang-switcher:hover {
+      border-color: rgba(157, 113, 253, 0.5);
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 0.725rem;
+      font-weight: 700;
+      padding: 0.25rem 0.55rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.2s ease;
+      line-height: 1;
+    }
+
+    .lang-btn:hover {
+      color: var(--text-main);
+    }
+
+    .lang-btn.active {
+      background: linear-gradient(135deg, var(--primary), #7c3aed);
+      color: #ffffff;
+      box-shadow: 0 2px 8px var(--primary-glow);
+    }
+
+    .flag-icon {
+      font-size: 0.9rem;
+      line-height: 1;
+      display: inline-block;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
+      gap: 0.4rem;
     }
 
     .nav-link {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.925rem;
+      font-size: 0.9rem;
       font-weight: 500;
-      padding: 0.4rem 0.75rem;
-      border-radius: 6px;
+      padding: 0.45rem 0.8rem;
+      border-radius: 8px;
       transition: color 0.15s ease, background-color 0.15s ease;
     }
 
-    .nav-link:hover {
-      color: var(--primary);
-      background-color: var(--primary-bg);
+    .nav-link:hover, .nav-link.active {
+      color: var(--text-main);
+      background-color: rgba(157, 113, 253, 0.12);
     }
 
-    .nav-link.active {
-      color: var(--primary);
+    .cta-button-nav {
+      background: linear-gradient(135deg, var(--primary), #7c3aed);
+      color: #ffffff !important;
       font-weight: 600;
-      background-color: var(--primary-bg);
+      padding: 0.45rem 1.05rem;
+      border-radius: 9999px;
+      box-shadow: 0 4px 14px var(--primary-glow);
+      margin-left: 0.25rem;
     }
 
-    main {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1.5rem 4rem 1.5rem;
+    .cta-button-nav:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
     }
 
-    .doc-card {
-      background-color: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 16px;
-      padding: 2.5rem 2rem;
-      box-shadow: var(--shadow);
+    /* Mobile Hamburger Button */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 38px;
+      height: 38px;
+      background: rgba(157, 113, 253, 0.08);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      cursor: pointer;
+      padding: 7px;
+      transition: background 0.2s ease, border-color 0.2s ease;
     }
 
-    @media (max-width: 640px) {
-      .doc-card {
-        padding: 1.75rem 1.25rem;
-        border-radius: 12px;
+    .nav-toggle:hover {
+      background: rgba(157, 113, 253, 0.16);
+      border-color: var(--primary);
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background-color: var(--text-main);
+      border-radius: 2px;
+      transition: transform 0.22s ease, opacity 0.22s ease;
+    }
+
+    .nav-toggle.is-active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-toggle.is-active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle.is-active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    @media (max-width: 860px) {
+      .nav-right {
+        gap: 0.5rem;
+      }
+
+      .nav-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(16, 12, 31, 0.97);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--card-border);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1rem 1.25rem 1.25rem 1.25rem;
+        gap: 0.35rem;
+      }
+
+      @media (prefers-color-scheme: light) {
+        .nav-links {
+          background: rgba(255, 255, 255, 0.98);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+      }
+
+      .nav-links.is-open {
+        display: flex;
+        animation: navSlideDown 0.2s ease-out forwards;
+      }
+
+      .nav-link {
+        padding: 0.7rem 0.9rem;
+        font-size: 0.95rem;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+
+      .cta-button-nav {
+        margin-left: 0;
+        margin-top: 0.5rem;
+        text-align: center;
+        justify-content: center;
+        padding: 0.75rem 1rem;
       }
     }
 
-    .title-block {
-      border-bottom: 1px solid var(--border-color);
-      padding-bottom: 1.5rem;
-      margin-bottom: 2rem;
+    @keyframes navSlideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    h1 {
-      font-size: 2.1rem;
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      margin-bottom: 0.75rem;
-      color: var(--text-main);
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      position: relative;
+      z-index: 1;
     }
 
-    .meta-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
+    /* Hero Section */
+    .hero {
+      padding: 4rem 0 5rem 0;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3.5rem;
       align-items: center;
-      font-size: 0.875rem;
-      color: var(--text-subtle);
     }
 
-    .badge {
+    @media (max-width: 960px) {
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 2.5rem 0 3.5rem 0;
+        text-align: center;
+        gap: 2.5rem;
+      }
+    }
+
+    .hero-badge-wrap {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 960px) {
+      .hero-badge-wrap {
+        justify-content: center;
+      }
+    }
+
+    .hero-badge {
       display: inline-flex;
       align-items: center;
-      padding: 0.25rem 0.6rem;
+      gap: 0.4rem;
+      padding: 0.35rem 0.85rem;
       border-radius: 9999px;
-      font-size: 0.775rem;
+      font-size: 0.8rem;
       font-weight: 600;
-      background-color: var(--primary-bg);
+      background: rgba(157, 113, 253, 0.12);
+      border: 1px solid rgba(157, 113, 253, 0.3);
       color: var(--primary);
-      border: 1px solid rgba(37, 99, 235, 0.2);
     }
 
-    .badge-dev {
-      background-color: rgba(16, 185, 129, 0.12);
-      color: var(--accent);
-      border: 1px solid rgba(16, 185, 129, 0.25);
+    .hero-badge.green {
+      background: var(--accent-green-bg);
+      border-color: rgba(16, 185, 129, 0.3);
+      color: var(--accent-green);
     }
 
-    h2 {
-      font-size: 1.35rem;
+    h1.hero-title {
+      font-size: clamp(1.75rem, 5.5vw, 3.4rem);
+      font-weight: 800;
+      line-height: 1.18;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+      text-wrap: balance;
+    }
+
+    .hero-title span.gradient-text {
+      background: linear-gradient(135deg, #f5f3ff 20%, #b493ff 60%, #10b981 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    @media (prefers-color-scheme: light) {
+      .hero-title span.gradient-text {
+        background: linear-gradient(135deg, #130f24 20%, #7c3aed 65%, #059669 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    .hero-desc {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      max-width: 580px;
+    }
+
+    @media (max-width: 960px) {
+      .hero-desc {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 960px) {
+      .hero-actions {
+        justify-content: center;
+      }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.6rem;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #7c3aed);
+      color: #ffffff;
+      box-shadow: 0 4px 20px var(--primary-glow);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px var(--primary-glow);
+    }
+
+    .btn-secondary {
+      background-color: var(--card-bg);
+      color: var(--text-main);
+      border: 1px solid var(--card-border);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--card-hover);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    /* Hero Showcase Frame */
+    .hero-mockup-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .phone-frame {
+      width: min(100%, 340px);
+      background: #06040a;
+      border-radius: 44px;
+      padding: 10px 8px;
+      box-shadow: var(--phone-shadow);
+      border: 3.5px solid rgba(157, 113, 253, 0.35);
+      position: relative;
+      box-sizing: border-box;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .phone-frame:hover {
+      transform: translateY(-6px) scale(1.02);
+    }
+
+    .phone-frame img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 527 / 1024;
+      object-fit: contain;
+      border-radius: 34px;
+      display: block;
+    }
+
+    .floating-card {
+      position: absolute;
+      background: rgba(26, 21, 48, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--card-border-hover);
+      padding: 0.75rem 1rem;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--text-main);
+      animation: float 4s ease-in-out infinite alternate;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-8px); }
+    }
+
+    .floating-card.card-left {
+      bottom: 12%;
+      left: -15px;
+      animation-delay: 0.5s;
+    }
+
+    .floating-card.card-right {
+      top: 15%;
+      right: -15px;
+      animation-delay: 1.5s;
+    }
+
+    @media (max-width: 640px) {
+      .floating-card {
+        display: none;
+      }
+    }
+
+    /* Pillars Strip */
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin: 3rem 0 5rem 0;
+    }
+
+    .pillar-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      transition: all 0.2s ease;
+    }
+
+    .pillar-card:hover {
+      border-color: var(--card-border-hover);
+      transform: translateY(-3px);
+      background: var(--card-hover);
+    }
+
+    .pillar-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      background: rgba(157, 113, 253, 0.12);
+      border: 1px solid rgba(157, 113, 253, 0.25);
+    }
+
+    .pillar-card h3 {
+      font-size: 1.15rem;
       font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
+    }
+
+    .pillar-card p {
+      font-size: 0.925rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Section Headers */
+    .section-head {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 3.5rem auto;
+    }
+
+    .section-badge {
+      display: inline-block;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 1rem;
+      color: var(--text-main);
+      text-wrap: balance;
+    }
+
+    .section-desc {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* Filter Tabs for App Tour */
+    .tour-filter-bar {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+      padding: 0.4rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 0.55rem 1rem;
+      border-radius: 9px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .filter-btn:hover {
+      color: var(--text-main);
+      background: rgba(157, 113, 253, 0.1);
+    }
+
+    .filter-btn.active {
+      color: #ffffff;
+      background: var(--primary);
+      box-shadow: 0 4px 12px var(--primary-glow);
+    }
+
+    /* Feature Chapter Rows */
+    .chapter-section {
+      margin-bottom: 5.5rem;
+    }
+
+    .chapter-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 2.75rem 2.5rem;
+      display: grid;
+      grid-template-columns: 1.1fr 1.3fr;
+      gap: 3rem;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (max-width: 960px) {
+      .chapter-card {
+        grid-template-columns: 1fr;
+        padding: 2rem 1.25rem;
+        gap: 2rem;
+      }
+
+      .chapter-card .chapter-info {
+        order: 1 !important;
+      }
+
+      .chapter-card .screen-gallery {
+        order: 2 !important;
+      }
+    }
+
+    .chapter-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 0.3rem 0.75rem;
+      border-radius: 9999px;
+      margin-bottom: 1rem;
+      background: rgba(157, 113, 253, 0.15);
+      color: var(--primary);
+      border: 1px solid rgba(157, 113, 253, 0.3);
+    }
+
+    .chapter-title {
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      font-weight: 800;
       letter-spacing: -0.02em;
-      margin-top: 1.5rem;
       margin-bottom: 1rem;
       color: var(--text-main);
     }
 
-    p {
-      margin-bottom: 1rem;
+    .chapter-lead {
+      font-size: 1.05rem;
       color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 1.75rem;
     }
 
-    .callout-info {
-      background-color: var(--info-bg);
-      border-left: 4px solid var(--info-border);
-      border-radius: 8px;
-      padding: 1.25rem 1.5rem;
-      margin: 1.5rem 0;
-      color: var(--info-text);
+    .tutorial-steps {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
     }
 
-    .callout-info h3 {
-      color: var(--info-text);
-      margin-top: 0;
+    .tutorial-step-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .step-number {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), #7c3aed);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 0.15rem;
+    }
+
+    .step-content h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 0.25rem;
+    }
+
+    .step-content p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Screen Gallery Grid inside Chapter */
+    .screen-gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      justify-items: center;
+      width: 100%;
+    }
+
+    @media (max-width: 640px) {
+      .screen-gallery {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 1rem;
+      }
+    }
+
+    .screen-thumb {
+      width: 100%;
+      max-width: 220px;
+      aspect-ratio: 526 / 1024;
+      background: #06040a;
+      border-radius: 36px;
+      padding: 7px 5px;
+      border: 2.5px solid rgba(157, 113, 253, 0.35);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+      position: relative;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+
+    .screen-thumb:hover {
+      transform: translateY(-6px) scale(1.02);
+      border-color: var(--primary);
+      box-shadow: 0 20px 45px -10px var(--primary-glow);
+    }
+
+    .screen-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 30px;
+      display: block;
+    }
+
+    .thumb-label {
+      display: none;
+    }
+
+    .expand-indicator {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(19, 15, 36, 0.85);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 50%;
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: #ffffff;
+      opacity: 0.8;
+      transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .screen-thumb:hover .expand-indicator {
+      opacity: 1;
+      transform: scale(1.1);
+      background: var(--primary);
+    }
+
+    /* Monetic PRO / Premium Section */
+    .pro-section {
+      margin: 5.5rem 0;
+      position: relative;
+    }
+
+    .pro-card-hero {
+      background: linear-gradient(135deg, rgba(22, 17, 43, 0.95) 0%, rgba(35, 20, 60, 0.95) 100%);
+      border: 2px solid rgba(157, 113, 253, 0.35);
+      border-radius: 28px;
+      padding: 3.5rem 2.5rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(157, 113, 253, 0.12);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .pro-card-hero {
+        padding: 2.25rem 1.25rem;
+        border-radius: 20px;
+      }
+    }
+
+    .pro-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 0.4rem 1.1rem;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, rgba(157, 113, 253, 0.25), rgba(124, 58, 237, 0.35));
+      border: 1px solid rgba(157, 113, 253, 0.5);
+      color: #ffffff;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 4px 15px rgba(157, 113, 253, 0.25);
+    }
+
+    .pro-title {
+      font-size: clamp(1.8rem, 3.5vw, 2.7rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    .pro-subtitle {
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      max-width: 650px;
+      margin: 0 auto 3rem auto;
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    /* PRO Features Grid */
+    .pro-features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3.5rem;
+      text-align: left;
+    }
+
+    .pro-feature-card {
+      background: rgba(14, 11, 26, 0.65);
+      border: 1px solid rgba(157, 113, 253, 0.2);
+      border-radius: 18px;
+      padding: 1.5rem;
+      transition: all 0.25s ease;
+    }
+
+    .pro-feature-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-3px);
+      background: rgba(14, 11, 26, 0.85);
+    }
+
+    .pro-feature-icon {
+      font-size: 1.75rem;
+      margin-bottom: 0.75rem;
+      display: inline-block;
+    }
+
+    .pro-feature-card h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #ffffff;
       margin-bottom: 0.5rem;
-      font-size: 1.15rem;
     }
 
-    .callout-info p {
-      color: var(--info-text);
-      margin-bottom: 0;
+    .pro-feature-card p {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.55;
     }
 
-    .grid-links {
+    /* 14-Day Free Trial Notice Banner */
+    .pro-trial-banner {
+      background: linear-gradient(135deg, rgba(157, 113, 253, 0.14), rgba(124, 58, 237, 0.08));
+      border: 1px solid rgba(157, 113, 253, 0.35);
+      border-radius: 16px;
+      padding: 1.1rem 1.6rem;
+      max-width: 820px;
+      margin: 2.5rem auto 3rem auto;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    }
+
+    .pro-trial-banner .trial-icon {
+      font-size: 2rem;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .pro-trial-banner .trial-text {
+      font-size: 0.95rem;
+      color: var(--text-main);
+      line-height: 1.55;
+    }
+
+    .pro-trial-banner strong {
+      color: #c084fc;
+      font-weight: 700;
+    }
+
+    @media (max-width: 640px) {
+      .pro-trial-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 1.25rem 1.1rem;
+        gap: 0.6rem;
+        margin: 2rem auto 2.5rem auto;
+      }
+    }
+
+    /* PRO Plans Grid */
+    .pro-plans-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+      max-width: 900px;
+      margin: 0 auto;
+      align-items: stretch;
+    }
+
+    .pro-plan-card {
+      background: rgba(14, 11, 26, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 22px;
+      padding: 2.25rem 1.5rem 1.75rem 1.5rem;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      transition: all 0.25s ease;
+    }
+
+    .pro-plan-card.featured {
+      border: 2px solid var(--primary);
+      background: linear-gradient(180deg, rgba(38, 22, 66, 0.9) 0%, rgba(19, 15, 36, 0.95) 100%);
+      box-shadow: 0 12px 35px rgba(157, 113, 253, 0.3);
+      transform: scale(1.03);
+    }
+
+    @media (max-width: 768px) {
+      .pro-plan-card.featured {
+        transform: none;
+      }
+    }
+
+    .plan-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--primary), #7c3aed);
+      color: #ffffff;
+      font-size: 0.725rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      padding: 0.3rem 0.85rem;
+      border-radius: 9999px;
+      box-shadow: 0 4px 12px var(--primary-glow);
+      white-space: nowrap;
+    }
+
+    .plan-name {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+
+    .plan-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      min-height: 40px;
+    }
+
+    .plan-price-wrap {
+      margin: 0.5rem 0 1.25rem 0;
+      padding: 0.85rem 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .plan-price {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      gap: 0.35rem;
+      line-height: 1.1;
+    }
+
+    .plan-price .price-currency {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .plan-price .price-period {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .plan-subtext {
+      font-size: 0.8rem;
+      color: var(--accent-green);
+      font-weight: 600;
+      margin-top: 0.45rem;
+    }
+
+    .plan-subtext.neutral {
+      color: var(--text-subtle);
+      font-weight: 500;
+    }
+
+    .plan-features {
+      list-style: none;
+      text-align: left;
+      margin: 1rem 0 1.5rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      font-size: 0.85rem;
+      color: var(--text-main);
+    }
+
+    .plan-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .plan-features li span {
+      color: var(--accent-green);
+      font-weight: bold;
+    }
+
+    .pro-guarantee-note {
+      text-align: center;
+      font-size: 0.825rem;
+      color: var(--text-subtle);
+      margin-top: 2.25rem;
+      line-height: 1.5;
+    }
+
+    /* Comparison Table Card - Centered By Default */
+    .compare-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 3rem 2rem;
+      margin: 4.5rem 0;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @media (max-width: 768px) {
+      .compare-card {
+        padding: 2rem 0.75rem;
+        margin: 3.5rem 0;
+        border-radius: 20px;
+      }
+    }
+
+    .compare-card .section-head {
+      text-align: center;
+      margin: 0 auto 2.5rem auto;
+      max-width: 700px;
+      width: 100%;
+    }
+
+    .compare-card .section-badge {
+      display: inline-block;
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .compare-card .section-title {
+      text-align: center;
+      margin: 0 auto;
+    }
+
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      display: flex;
+      justify-content: center;
+    }
+
+    .compare-table {
+      width: 100%;
+      max-width: 860px;
+      border-collapse: collapse;
+      text-align: center;
+      font-size: 0.95rem;
+      margin: 0 auto;
+    }
+
+    .compare-table th {
+      padding: 1rem 1.25rem;
+      color: var(--text-main);
+      font-weight: 700;
+      border-bottom: 2px solid var(--card-border);
+      text-align: center;
+      background: rgba(157, 113, 253, 0.05);
+    }
+
+    .compare-table th:first-child {
+      text-align: left;
+    }
+
+    .compare-table td {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid var(--card-border);
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .compare-table td:first-child {
+      text-align: left;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    @media (max-width: 768px) {
+      .compare-table th,
+      .compare-table td {
+        padding: 0.85rem 0.5rem;
+        font-size: 0.825rem;
+      }
+
+      .status-check,
+      .status-cross {
+        justify-content: center;
+        text-align: center;
+        display: flex;
+      }
+    }
+
+    .compare-table tr:hover td {
+      background: rgba(157, 113, 253, 0.04);
+    }
+
+    .status-check {
+      color: var(--accent-green);
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .status-cross {
+      color: var(--accent-coral);
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    /* Docs & Legal Hub Grid */
+    .legal-hub {
+      padding: 4rem 0 5rem 0;
+    }
+
+    .docs-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1rem;
-      margin-top: 1.5rem;
+      gap: 1.25rem;
+      margin-top: 2rem;
     }
 
     .doc-link-card {
       display: flex;
       flex-direction: column;
-      padding: 1.25rem;
-      border-radius: 10px;
-      border: 1px solid var(--border-color);
+      padding: 1.5rem;
+      border-radius: 14px;
+      border: 1px solid var(--card-border);
       background-color: var(--card-bg);
       text-decoration: none;
-      transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+      transition: all 0.2s ease;
     }
 
     .doc-link-card:hover {
-      transform: translateY(-2px);
+      transform: translateY(-3px);
       border-color: var(--primary);
-      box-shadow: var(--shadow);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      background-color: var(--card-hover);
     }
 
     .doc-link-card .card-title {
       font-weight: 700;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
       color: var(--text-main);
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.5rem;
     }
 
     .doc-link-card .card-desc {
       font-size: 0.875rem;
       color: var(--text-muted);
-      line-height: 1.5;
+      line-height: 1.55;
     }
 
+    /* Lightbox Modal */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(7, 5, 15, 0.95);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+      box-sizing: border-box;
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .lightbox-dialog {
+      max-width: 90vw;
+      max-height: 88vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .lightbox-image {
+      max-width: 100%;
+      max-height: 74vh;
+      border-radius: 20px;
+      border: 2px solid var(--card-border-hover);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.85);
+      object-fit: contain;
+    }
+
+    .lightbox-caption {
+      margin-top: 0.75rem;
+      font-size: 0.925rem;
+      font-weight: 600;
+      color: #ffffff;
+      text-align: center;
+      background: rgba(26, 21, 48, 0.9);
+      padding: 0.45rem 1.25rem;
+      border-radius: 9999px;
+      border: 1px solid var(--card-border);
+      max-width: 88vw;
+      line-height: 1.4;
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: calc(18px + env(safe-area-inset-top, 0px));
+      right: calc(18px + env(safe-area-inset-right, 0px));
+      background: rgba(22, 17, 43, 0.92);
+      border: 2px solid rgba(157, 113, 253, 0.75);
+      color: #ffffff;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      z-index: 2010;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.7), 0 0 15px rgba(157, 113, 253, 0.3);
+      touch-action: manipulation;
+    }
+
+    .lightbox-close:hover,
+    .lightbox-close:active {
+      background: var(--primary);
+      border-color: #ffffff;
+      transform: scale(1.1);
+      box-shadow: 0 6px 25px var(--primary-glow);
+    }
+
+    /* Footer */
     footer {
-      border-top: 1px solid var(--border-color);
-      background-color: var(--card-bg);
-      padding: 2.5rem 1.5rem;
+      border-top: 1px solid var(--card-border);
+      background-color: var(--bg-surface);
+      padding: 3rem 1.5rem;
       text-align: center;
       font-size: 0.875rem;
       color: var(--text-subtle);
@@ -283,96 +1403,784 @@
       display: flex;
       justify-content: center;
       gap: 1.5rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.25rem;
       flex-wrap: wrap;
     }
 
     .footer-links a {
-      color: var(--primary);
+      color: var(--text-muted);
       text-decoration: none;
       font-weight: 500;
+      transition: color 0.15s ease;
     }
 
     .footer-links a:hover {
-      text-decoration: underline;
+      color: var(--primary);
     }
   </style>
 </head>
 <body>
 
+  <div class="ambient-glow"></div>
+
+  <!-- Header -->
   <header>
     <div class="nav-container">
       <a href="index.html" class="brand">
-        <img src="monetic_logo_512.png" alt="Monetic Logo" class="brand-logo">
+        <img src="monetic_logo_512.png" alt="Monetic Logo" class="brand-logo" width="34" height="34">
         <span>Monetic</span>
       </a>
-      <nav class="nav-links">
-        <a href="index.html" class="nav-link active">Home</a>
-        <a href="terms.html" class="nav-link">Terms & Conditions</a>
-        <a href="privacy.html" class="nav-link">Privacy Policy</a>
-        <a href="privacy.html#delete-account" class="nav-link">Delete Account</a>
-        <a href="mailto:support@monetic.app" class="nav-link">Contact</a>
-      </nav>
+
+      <div class="nav-right">
+        <nav class="nav-links" id="nav-links">
+          <a href="#features" class="nav-link" data-i18n="nav_features">Features</a>
+          <a href="#tour" class="nav-link" data-i18n="nav_tour">App Tour</a>
+          <a href="#analytics" class="nav-link" data-i18n="nav_analytics">Analytics</a>
+          <a href="#pro" class="nav-link" data-i18n="nav_pro" style="color: #c084fc; font-weight: 700;">💎 PRO</a>
+          <a href="#privacy" class="nav-link" data-i18n="nav_security">Security</a>
+          <a href="terms.html" class="nav-link" data-i18n="nav_terms">Terms</a>
+          <a href="privacy.html" class="nav-link" data-i18n="nav_privacy">Privacy</a>
+          <a href="#docs" class="nav-link cta-button-nav" data-i18n="nav_legal_hub">Legal Hub</a>
+        </nav>
+
+        <div class="nav-actions-wrap">
+          <div class="lang-switcher" role="group" aria-label="Language selection">
+            <button type="button" class="lang-btn active" data-lang="en" aria-label="Switch to English" title="Switch to English">
+              <span class="flag-icon">🇬🇧</span> <span class="lang-text">EN</span>
+            </button>
+            <button type="button" class="lang-btn" data-lang="ro" aria-label="Comută în Română" title="Comută în Română">
+              <span class="flag-icon">🇷🇴</span> <span class="lang-text">RO</span>
+            </button>
+          </div>
+
+          <!-- Mobile Hamburger Button -->
+          <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
     </div>
   </header>
 
   <main>
-    <article class="doc-card">
-      <div class="title-block">
-        <h1>Monetic</h1>
-        <div class="meta-bar">
-          <span>Personal Finance & Budget Tracker</span>
-          <span>•</span>
-          <span class="badge badge-dev">Independent Developer</span>
+    <div class="container">
+
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-content">
+          <div class="hero-badge-wrap">
+            <span class="hero-badge" data-i18n="hero_badge_offline">🔒 100% Offline-First</span>
+            <span class="hero-badge green" data-i18n="hero_badge_sync">⚡ Multi-Device Real-Time AutoSync</span>
+            <span class="hero-badge" data-i18n="hero_badge_cloud">☁️ Google Drive &amp; Firebase</span>
+            <span class="hero-badge" data-i18n="hero_badge_currencies">💱 49 Currencies</span>
+          </div>
+          <h1 class="hero-title" data-i18n="hero_title">
+            Take complete control of your finances <span class="gradient-text">with real-time sync &amp; zero compromises on privacy.</span>
+          </h1>
+          <p class="hero-desc" data-i18n="hero_desc">
+            Monetic is an intuitive, privacy-first personal finance and expense tracking mobile app for Android and iOS. Built with multi-device real-time sync (Firebase), private Google Drive backups, hardware-backed encryption, 15 AMOLED themes, and rich visual budgeting.
+          </p>
+          <div class="hero-actions">
+            <a href="#tour" class="btn btn-primary">
+              <span data-i18n="hero_btn_tour">📱 Explore Guided Tour</span>
+            </a>
+            <a href="#docs" class="btn btn-secondary">
+              <span data-i18n="hero_btn_docs">📑 Legal &amp; Privacy Docs</span>
+            </a>
+          </div>
         </div>
-      </div>
 
-      <div class="callout-info">
-        <h3>🔒 Privacy-First & Offline-First</h3>
-        <p>Monetic is designed to put your privacy first. All personal budgeting records and transactions remain stored locally on your device unless you explicitly opt into encrypted cloud backups.</p>
-      </div>
+        <div class="hero-mockup-wrapper">
+          <div class="phone-frame">
+            <img src="screenshots/20_dashboard_expenses.jpg" alt="Monetic Dashboard Expenses Screen" loading="eager" fetchpriority="high">
+          </div>
+          <div class="floating-card card-left">
+            <span>🛡️</span>
+            <div>
+              <div style="font-size:0.75rem; color:var(--text-subtle);" data-i18n="hero_card_storage">Local Storage</div>
+              <div>SQLite Room AES-256</div>
+            </div>
+          </div>
+          <div class="floating-card card-right">
+            <span>📈</span>
+            <div>
+              <div style="font-size:0.75rem; color:var(--text-subtle);" data-i18n="hero_card_income">Monthly Income</div>
+              <div style="color:var(--accent-green);">+lei 14,041.47</div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-      <h2>Documentation & Support</h2>
-      <p>Access the legal disclosures, terms of service, and user data rights documentation for Monetic:</p>
+      <!-- Key Pillars -->
+      <section id="features">
+        <div class="section-head">
+          <span class="section-badge" data-i18n="pillars_badge">Why Monetic</span>
+          <h2 class="section-title" data-i18n="pillars_title">Built from the ground up for modern financial clarity</h2>
+          <p class="section-desc" data-i18n="pillars_desc">Traditional finance apps monetize your transactions or demand invasive bank logins. Monetic keeps your financial life completely yours.</p>
+        </div>
 
-      <div class="grid-links">
-        <a href="privacy.html" class="doc-link-card">
-          <span class="card-title">📄 Privacy Policy</span>
-          <span class="card-desc">Detailed disclosures on data processing, GDPR rights, telemetry, and security protocols.</span>
-        </a>
+        <div class="pillars-grid">
+          <div class="pillar-card">
+            <div class="pillar-icon">🔒</div>
+            <h3 data-i18n="pillar1_title">Local-First &amp; Encrypted</h3>
+            <p data-i18n="pillar1_desc">Your records reside directly on your physical device. Backed by Android File-Based Encryption (FBE) and iOS Data Protection, completely isolated from outside apps.</p>
+          </div>
 
-        <a href="terms.html" class="doc-link-card">
-          <span class="card-title">📑 Terms & Conditions</span>
-          <span class="card-desc">Rules of service, licensing, Monetic Pro subscription terms, and financial disclaimers.</span>
-        </a>
+          <div class="pillar-card">
+            <div class="pillar-icon">💱</div>
+            <h3 data-i18n="pillar2_title">49 Currencies &amp; Crypto</h3>
+            <p data-i18n="pillar2_desc">Seamlessly manage international accounts in EUR, USD, RON, GBP, CHF, and cryptocurrencies with live conversion rates computed directly in the app.</p>
+          </div>
 
-        <a href="privacy.html#delete-account" class="doc-link-card">
-          <span class="card-title">🗑️ Account & Data Deletion</span>
-          <span class="card-desc">Self-service and email instructions to permanently wipe your account and cloud data.</span>
-        </a>
+          <div class="pillar-card">
+            <div class="pillar-icon">📊</div>
+            <h3 data-i18n="pillar3_title">Visual Interactive Analytics</h3>
+            <p data-i18n="pillar3_desc">Rich donut charts, expense breakdown rings, multi-month income vs. expense comparison bars, and portfolio net worth tracking curves.</p>
+          </div>
 
-        <a href="mailto:support@monetic.app" class="doc-link-card">
-          <span class="card-title">✉️ Customer Support</span>
-          <span class="card-desc">Direct assistance from the developer for technical inquiries or account requests.</span>
-        </a>
-      </div>
-    </article>
+          <div class="pillar-card">
+            <div class="pillar-icon">🔄</div>
+            <h3 data-i18n="pillar4_title">Real-Time Sync &amp; Free Cloud Backup</h3>
+            <p data-i18n="pillar4_desc">Use Monetic on multiple phones and tablets simultaneously with instant Firebase AutoSync. Plus, backup 1:1 directly to your private Google Drive <code>appDataFolder</code> — free for all users.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Interactive App Tour & Functional Tutorial -->
+      <section id="tour" class="chapter-section">
+        <div class="section-head">
+          <span class="section-badge" data-i18n="tour_badge">Functional Walkthrough</span>
+          <h2 class="section-title" data-i18n="tour_title">Explore Monetic Screen by Screen</h2>
+          <p class="section-desc" data-i18n="tour_desc">Click any screen preview to open it in full-resolution detail. Follow the walkthrough to see how Monetic transforms your daily budgeting routine.</p>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="tour-filter-bar">
+          <button class="filter-btn active" data-filter="all" data-i18n="filter_all">All Modules</button>
+          <button class="filter-btn" data-filter="tracking" data-i18n="filter_tracking">Daily Tracking</button>
+          <button class="filter-btn" data-filter="accounts" data-i18n="filter_accounts">Accounts &amp; Wallets</button>
+          <button class="filter-btn" data-filter="analytics" data-i18n="filter_analytics">Charts &amp; Budgets</button>
+          <button class="filter-btn" data-filter="automation" data-i18n="filter_automation">Subscriptions &amp; Bills</button>
+          <button class="filter-btn" data-filter="personalization" data-i18n="filter_personalization">Themes &amp; Settings</button>
+          <button class="filter-btn" data-filter="security" data-i18n="filter_security">Cloud &amp; Security</button>
+        </div>
+
+        <!-- Chapter 1: Daily Tracking & Fast Transaction Logging -->
+        <div class="chapter-card tour-item" data-category="tracking" style="margin-bottom: 2.5rem;">
+          <div class="chapter-info">
+            <span class="chapter-badge" data-i18n="ch1_badge">Chapter 01 • Daily Operations</span>
+            <h3 class="chapter-title" data-i18n="ch1_title">Effortless Dashboard &amp; Lightning Fast Logging</h3>
+            <p class="chapter-lead" data-i18n="ch1_lead">Everything starts on the dashboard. Get an instant glance at your net balance, monthly income, total expenses, and custom categories.</p>
+            <ul class="tutorial-steps">
+              <li class="tutorial-step-item">
+                <span class="step-number">1</span>
+                <div class="step-content">
+                  <h4 data-i18n="ch1_step1_h">Interactive Ring Breakdown</h4>
+                  <p data-i18n="ch1_step1_p">Toggle seamlessly between Income and Expenses. The interactive donut ring updates live with exact percentages per category.</p>
+                </div>
+              </li>
+              <li class="tutorial-step-item">
+                <span class="step-number">2</span>
+                <div class="step-content">
+                  <h4 data-i18n="ch1_step2_h">Quick Add with Paper Receipts</h4>
+                  <p data-i18n="ch1_step2_p">Tap the floating "+" button to log an expense in seconds. Select account, category, and attach up to 3 receipt photos (up to 15 MB) for audit-ready proof of purchase.</p>
+                </div>
+              </li>
+              <li class="tutorial-step-item">
+                <span class="step-number">3</span>
+                <div class="step-content">
+                  <h4 data-i18n="ch1_step3_h">Chronological Ledger &amp; Filter</h4>
+                  <p data-i18n="ch1_step3_p">Filter your financial timeline by Day, Week, Month, Year, or custom date period. View net balance changes day by day.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="screen-gallery">
+            <div class="screen-thumb" onclick="openLightbox('screenshots/20_dashboard_expenses.jpg', 'cap_dashboard_expenses')">
+              <img src="screenshots/20_dashboard_expenses.jpg" alt="Dashboard Expenses View" loading="lazy">
+              <span class="expand-indicator">🔍</span>
+            </div>
+            <div class="screen-thumb" onclick="openLightbox('screenshots/18_dashboard_income.jpg', 'cap_dashboard_income')">
+              <img src="screenshots/18_dashboard_income.jpg" alt="Dashboard Income View" loading="lazy">
+              <span class="expand-indicator">🔍</span>
+            </div>
+            <div class="screen-thumb" onclick="openLightbox('screenshots/22_add_transaction.jpg', 'cap_add_transaction')">
+              <img src="screenshots/22_add_transaction.jpg" alt="Add Transaction Screen" loading="lazy">
+              <span class="expand-indicator">🔍</span>
+            </div>
+            <div class="screen-thumb" onclick="openLightbox('screenshots/19_transactions.jpg', 'cap_transactions')">
+              <img src="screenshots/19_transactions.jpg" alt="Transactions List Screen" loading="lazy">
+              <span class="expand-indicator">🔍</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chapter 2: Accounts & Multi-Currency -->
+        <div class="chapter-card tour-item" data-category="accounts" style="margin-bottom: 2.5rem;">
+          <div class="chapter-info">
+            <span class="chapter-badge" data-i18n="ch2_badge">Chapter 02 • Wallets &amp; Funds</span>
+            <h3 class="chapter-title" data-i18n="ch2_title">Multi-Account Management &amp; Instant Transfers</h3>
+            <p class="chapter-lead" data-i18n="ch2_lead">Keep your cash, main bank accounts, savings pools, meal vouchers, and investment portfolios strictly separated yet centrally visible.</p>
+            <ul class="tutorial-steps">
+              <li class="tutorial-step-item">
+                <span class="step-number">1</span>
+                <div class="step-content">
+                  <h4 data-i18n="ch2_step1_h">Diverse Account Types</h4>
+                  <p data-i18n="ch2_step1_p">Organize checking, physical cash, savings, and investments across multiple foreign currencies (EUR, USD, RON) with cumulative net worth calculation.</p>
+                </div>
+              </li>
+              <li class="tutorial-step-item">
+                <span class="step-number">2</span>
+                <div class="step-content">
+                  <h4 data-i18n="ch2_step2_h">Deep Visual Customization &amp; Favorite Colors</h4>
+                  <p data-i18n="ch2_step2_p">Assign custom photographic logos, emojis, and pick from a 360° color wheel with saturation, brightness, and quick presets (Pastel, Vibrant, Deep). <strong>Save up to 6 custom favorite colors</strong> to your personal palette for instant 1-tap reuse across accounts and categories.</p>
+                </div>
+              </li>
+              <li class="tutorial-step-item">
+                <span class="step-number">3</span>
+                <div class="step-content">
+                  <h4 data-i18n="ch2_step3_h">Zero-Distortion Transfers</h4>
+                  <p data-i18n="ch2_step3_p">Move funds between accounts with one tap. Transfers are recorded as internal liquidity shifts without skewing your monthly income or expense totals.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="screen-gallery">
+            <div class="screen-thumb" onclick="openLightbox('screenshots/17_accounts.jpg', 'cap_accounts')">
+              <img src="screenshots/17_accounts.jpg" alt="Accounts Overview" loading="lazy">
+              <span class="expand-indicator">🔍</span>
+            </div>
+            <div class="screen-thumb" onclick="openLightbox('screenshots/21_create_account_dialog.jpg', 'cap_create_account')">
+              <img src="screenshots/21_create_account_dialog.jpg" alt="Create Account Dialog" loading="lazy">
+              <span class="expand-indicator">🔍</span>
+            </div>
+            <div class="screen-thumb" onclick="openLightbox('screenshots/15_transfers.jpg', 'cap_transfers')">
+              <img src="screenshots/15_transfers.jpg" alt="Transfers Screen" loading="lazy">
+              <span class="expand-indicator">🔍</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chapter 3: Charts & Deep Analytics -->
+        <div id="analytics" class="chapter-card tour-item" data-category="analytics" style="margin-bottom: 2.5rem;">
+          <div class="chapter-info">
+            <span class="chapter-badge" data-i18n="ch3_badge">Chapter 03 • Insights</span>
+            <h3 class="chapter-title" data-i18n="ch3_title">Visual Budgeting, Trend Lines &amp; Net Worth Growth</h3>
+            <p class="chapter-lead" data-i18n="ch3_lead">Transform raw transaction data into actionable financial wisdom. Monetic provides 5 powerful charting perspectives to eliminate spending leaks.</p>
+            <ul class="tutorial-steps">
+              <li class="tutorial-step-item">
+                <span class="step-number">1</span>
+                <div class="step-content">
+                  <h4 data-i18n="ch3_step1_h">Dynamic Budget vs. Average Lines</h4>
+                  <p data-i18n="ch3_step1_p">Track your spending against customizable budget targets and historical averages with responsive wave trend graphs.</p>
+                </div>
+              </li>
+              <li class="tutorial-step-item">
+                <span class="step-number">2</span>
+                <div class="step-content">
+                  <h4 data-i18n="ch3_step2_h">Interactive Donut &amp; Pie Slices</h4>
+                  <p data-i18n="ch3_step2_p">Touch any slice on the Donut or Pie charts to drill down into category details, exact sums, and percentages.</p>
+                </div>
+              </li>
+              <li class="tutorial-step-item">
+                <span class="step-number">3</span>
+                <div class="step-content">
+                  <h4 data-i18n="ch3_step3_h">Portfolio Net Worth Evolution</h4>
+                  <p data-i18n="ch3_step3_p">Monitor the long-term upward trajectory of your total accumulated capital across all accounts combined.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="screen-gallery">
+            <div class="screen-thumb" onclick="openLightbox('screenshots/06_charts_trend.jpg', 'cap_trend')">
+              <img src="screenshots/06_charts_trend.jpg" alt="Trend &amp; Budget Chart" loading="lazy">
+              <span class="expand-indicator">🔍</span>
+            </div>
+            <div class="screen-thumb" onclick="openLightbox('screenshots/10_charts_analytics.jpg', 'cap_analytics')">
+              <img src="screenshots/10_charts_analytics.jpg" alt="Period Wave Curve" loading="lazy">
+              <span class="expand-indicator">🔍</span>
+            </div>
+            <div class="screen-thumb" onclick="openLightbox('screenshots/08_charts_net_worth.jpg', 'cap_net_worth')">
+              <img src="screenshots/08_charts_net_worth.jpg" alt="Net Worth Chart" loading="lazy">
+              <span class="expand-indicator">🔍</span>
+            </div>
+            <div class="screen-thumb" onclick="openLightbox('screenshots/14_charts_bar_monthly.jpg', 'cap_monthly_bar')">
+              <img src="screenshots/14_charts_bar_monthly.jpg" alt="Monthly Bar Chart" loading="lazy">
+              <span class="expand-indicator">🔍</span>
+            </div>
+            <div class="screen-thumb" onclick="openLightbox('screenshots/12_charts_pie_expenses.jpg', 'cap_pie_expenses')">
+              <img src="screenshots/12_charts_pie_expenses.jpg" alt="Pie Chart Expenses" loading="lazy">
+              <span class="expand-indicator">🔍</span>
+            </div>
+            <div class="screen-thumb" onclick="openLightbox('screenshots/13_charts_donut_expenses.jpg', 'cap_donut_expenses')">
+              <img src="screenshots/13_charts_donut_expenses.jpg" alt="Donut Chart Expenses" loading="lazy">
+              <span class="expand-indicator">🔍</span>
+            </div>
+            <div class="screen-thumb" onclick="openLightbox('screenshots/16_charts_donut_detail.jpg', 'cap_donut_detail')">
+              <img src="screenshots/16_charts_donut_detail.jpg" alt="Donut Slice Detail" loading="lazy">
+              <span class="expand-indicator">🔍</span>
+            </div>
+            <div class="screen-thumb" onclick="openLightbox('screenshots/11_charts_category_breakdown.jpg', 'cap_category_breakdown')">
+              <img src="screenshots/11_charts_category_breakdown.jpg" alt="Category Breakdown" loading="lazy">
+              <span class="expand-indicator">🔍</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chapter 4: Subscriptions & Reminders -->
+        <div class="chapter-card tour-item" data-category="automation" style="margin-bottom: 2.5rem;">
+          <div class="chapter-info">
+            <span class="chapter-badge" data-i18n="ch4_badge">Chapter 04 • Automation</span>
+            <h3 class="chapter-title" data-i18n="ch4_title">Subscriptions, Recurring Bills &amp; Smart Reminders</h3>
+            <p class="chapter-lead" data-i18n="ch4_lead">Stop unwanted subscription auto-renewals from catching you off guard. Manage all fixed recurring expenses in one clean list.</p>
+            <ul class="tutorial-steps">
+              <li class="tutorial-step-item">
+                <span class="step-number">1</span>
+                <div class="step-content">
+                  <h4 data-i18n="ch4_step1_h">Scheduled Payments</h4>
+                  <p data-i18n="ch4_step1_p">Track rent, utility invoices, mobile subscriptions, and streaming services with exact monthly billing dates and notification times.</p>
+                </div>
+              </li>
+              <li class="tutorial-step-item">
+                <span class="step-number">2</span>
+                <div class="step-content">
+                  <h4 data-i18n="ch4_step2_h">Daily Logging &amp; Utility Index Alerts</h4>
+                  <p data-i18n="ch4_step2_p">Set gentle local device reminders (e.g. daily at 20:00, or index reading on the 25th) so your records always remain up to date.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="screen-gallery">
+            <div class="screen-thumb" onclick="openLightbox('screenshots/04_regular_payments.jpg', 'cap_regular_payments')">
+              <img src="screenshots/04_regular_payments.jpg" alt="Regular Payments" loading="lazy">
+              <span class="expand-indicator">🔍</span>
+            </div>
+            <div class="screen-thumb" onclick="openLightbox('screenshots/05_reminders.jpg', 'cap_reminders')">
+              <img src="screenshots/05_reminders.jpg" alt="Reminders Screen" loading="lazy">
+              <span class="expand-indicator">🔍</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chapter 5: Personalization & Themes -->
+        <div class="chapter-card tour-item" data-category="personalization" style="margin-bottom: 2.5rem;">
+          <div class="chapter-info">
+            <span class="chapter-badge" data-i18n="ch5_badge">Chapter 05 • Experience</span>
+            <h3 class="chapter-title" data-i18n="ch5_title">15 Handcrafted Themes, 49 Currencies &amp; Full Bilingual Support</h3>
+            <p class="chapter-lead" data-i18n="ch5_lead">Tailor Monetic to your aesthetic preferences and device display. Features 15 tailor-made themes engineered for true AMOLED battery savings and visual elegance.</p>
+            <ul class="tutorial-steps">
+              <li class="tutorial-step-item">
+                <span class="step-number">1</span>
+                <div class="step-content">
+                  <h4 data-i18n="ch5_step1_h">15 Complete Handcrafted Themes</h4>
+                  <p data-i18n="ch5_step1_p">Monetic offers <strong>15 distinct themes</strong>: Midnight OLED (#000000 true black for AMOLED battery efficiency), Royal Amethyst, Emerald Forest, Sapphire Ocean, Sunset Amber, Rose Gold, Nordic Slate, Mocha Espresso, Crimson Velvet, Sepia Night Shift (zero blue-light eye comfort), Mint Sage Light, Nordic Frost Light, Classic Light, Classic Dark, and System Default.</p>
+                </div>
+              </li>
+              <li class="tutorial-step-item">
+                <span class="step-number">2</span>
+                <div class="step-content">
+                  <h4 data-i18n="ch5_step2_h">49 Currencies with Real-Time Conversions</h4>
+                  <p data-i18n="ch5_step2_p">From USD, EUR, and RON to GBP, JPY, and crypto, instantly check current conversion equivalents.</p>
+                </div>
+              </li>
+              <li class="tutorial-step-item">
+                <span class="step-number">3</span>
+                <div class="step-content">
+                  <h4 data-i18n="ch5_step3_h">Bilingual Precision (EN &amp; RO)</h4>
+                  <p data-i18n="ch5_step3_p">Full 100% string parity between English and Romanian across all screens, dialogs, and notifications.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="screen-gallery">
+            <div class="screen-thumb" onclick="openLightbox('screenshots/03_themes_appearance.jpg', 'cap_themes')">
+              <img src="screenshots/03_themes_appearance.jpg" alt="Themes Screen" loading="lazy">
+              <span class="expand-indicator">🔍</span>
+            </div>
+            <div class="screen-thumb" onclick="openLightbox('screenshots/02_select_currency.jpg', 'cap_currency')">
+              <img src="screenshots/02_select_currency.jpg" alt="Currencies Screen" loading="lazy">
+              <span class="expand-indicator">🔍</span>
+            </div>
+            <div class="screen-thumb" onclick="openLightbox('screenshots/01_select_language.jpg', 'cap_language')">
+              <img src="screenshots/01_select_language.jpg" alt="Language Selection" loading="lazy">
+              <span class="expand-indicator">🔍</span>
+            </div>
+            <div class="screen-thumb" onclick="openLightbox('screenshots/07_settings.jpg', 'cap_settings')">
+              <img src="screenshots/07_settings.jpg" alt="Settings Screen" loading="lazy">
+              <span class="expand-indicator">🔍</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chapter 6: Multi-Device Sync, Cloud Freedom & Privacy -->
+        <div id="privacy" class="chapter-card tour-item" data-category="security">
+          <div class="chapter-info">
+            <span class="chapter-badge" data-i18n="ch6_badge">Chapter 06 • Multi-Device Sync &amp; Privacy</span>
+            <h3 class="chapter-title" data-i18n="ch6_title">Real-Time Multi-Device AutoSync &amp; Private Google Drive Backup</h3>
+            <p class="chapter-lead" data-i18n="ch6_lead">Use Monetic seamlessly across multiple phones and tablets. Real-time Firebase AutoSync propagates your transactions instantaneously, while Google Drive provides private 1:1 backups — completely free for all users.</p>
+            <ul class="tutorial-steps">
+              <li class="tutorial-step-item">
+                <span class="step-number">1</span>
+                <div class="step-content">
+                  <h4 data-i18n="ch6_step1_h">Firebase Real-Time AutoSync Across Multiple Devices</h4>
+                  <p data-i18n="ch6_step1_p">Log a transaction on your smartphone and watch it appear instantaneously on your tablet or secondary device in real time. Firebase listeners handle real-time state synchronization seamlessly in the background without manual imports.</p>
+                </div>
+              </li>
+              <li class="tutorial-step-item">
+                <span class="step-number">2</span>
+                <div class="step-content">
+                  <h4 data-i18n="ch6_step2_h">Private 1:1 Google Drive Backups</h4>
+                  <p data-i18n="ch6_step2_p">Backups are saved directly into your personal Google Drive account in the hidden application data folder (<code>appDataFolder</code>). 100% isolated, confidential, and costs $0 in cloud storage fees.</p>
+                </div>
+              </li>
+              <li class="tutorial-step-item">
+                <span class="step-number">3</span>
+                <div class="step-content">
+                  <h4 data-i18n="ch6_step3_h">Offline-First Resilience</h4>
+                  <p data-i18n="ch6_step3_p">No internet connection needed to log transactions or track budgets. Everything is stored locally in SQLite Room. The moment your device reconnects to Wi-Fi or cellular data, AutoSync syncs everything effortlessly.</p>
+                </div>
+              </li>
+              <li class="tutorial-step-item">
+                <span class="step-number">4</span>
+                <div class="step-content">
+                  <h4 data-i18n="ch6_step4_h">Hardware-Backed PIN, Biometrics &amp; Right to Erasure</h4>
+                  <p data-i18n="ch6_step4_p">PINs are hashed using PBKDF2-HMAC-SHA256 (100,000 rounds) and protected in Android Keystore / iOS Keychain. Biometric credentials never leave your device's hardware Secure Enclave, with 1-tap permanent data erasure anytime.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="screen-gallery">
+            <div class="screen-thumb" onclick="openLightbox('screenshots/09_account_cloud_backup.jpg', 'cap_cloud_backup')">
+              <img src="screenshots/09_account_cloud_backup.jpg" alt="Account and Cloud Backup" loading="lazy">
+              <span class="expand-indicator">🔍</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Monetic PRO / Premium Features Section -->
+      <section id="pro" class="pro-section">
+        <div class="pro-card-hero">
+          <div style="text-align: center;">
+            <div class="pro-badge" data-i18n="pro_badge">💎 MONETIC PRO</div>
+            <h2 class="pro-title" data-i18n="pro_title">Unlock the Ultimate Financial Experience</h2>
+            <p class="pro-subtitle" data-i18n="pro_subtitle">Enjoy complete financial focus with zero ads, all 15 handcrafted AMOLED themes, unlimited custom accounts &amp; categories, and priority support. Transparent pricing with no hidden fees.</p>
+          </div>
+
+          <!-- Feature Highlights Grid -->
+          <div class="pro-features-grid">
+            <div class="pro-feature-card">
+              <span class="pro-feature-icon">✨</span>
+              <h4 data-i18n="pro_feat1_h">100% Ad-Free Experience</h4>
+              <p data-i18n="pro_feat1_p">Zero video ads, banners, or tracking interruptions. Pure, uninterrupted focus on your budgeting.</p>
+            </div>
+            <div class="pro-feature-card">
+              <span class="pro-feature-icon">🎨</span>
+              <h4 data-i18n="pro_feat2_h">All 15 Handcrafted Themes</h4>
+              <p data-i18n="pro_feat2_p">Full access to Midnight OLED (#000000 true black), Royal Amethyst, Rose Gold, Emerald Forest, Sapphire Ocean, and more.</p>
+            </div>
+            <div class="pro-feature-card">
+              <span class="pro-feature-icon">♾️</span>
+              <h4 data-i18n="pro_feat3_h">Unlimited Accounts &amp; Categories</h4>
+              <p data-i18n="pro_feat3_p">Create as many checking, cash, savings, and crypto wallets as you need with custom logos and saved favorite color palettes.</p>
+            </div>
+            <div class="pro-feature-card">
+              <span class="pro-feature-icon">🚀</span>
+              <h4 data-i18n="pro_feat4_h">Priority Support &amp; Early Access</h4>
+              <p data-i18n="pro_feat4_p">Get fast-track direct developer assistance and early access to upcoming features and experimental tools.</p>
+            </div>
+          </div>
+
+          <!-- 14-Day Free Trial Notice Banner -->
+          <div class="pro-trial-banner">
+            <span class="trial-icon">🎁</span>
+            <div class="trial-text">
+              <strong data-i18n="pro_trial_title">14-Day Free Trial for Everyone</strong> — 
+              <span data-i18n="pro_trial_desc">Every new install includes 14 days of unrestricted PRO access. No credit card, payment details, or subscription required.</span>
+            </div>
+          </div>
+
+          <!-- Pricing & Access Tiers -->
+          <div class="pro-plans-grid">
+            <div class="pro-plan-card">
+              <div class="plan-name" data-i18n="plan_monthly_name">Monthly</div>
+              <div class="plan-desc" data-i18n="plan_monthly_desc">Maximum flexibility with no long-term commitment.</div>
+              <div class="plan-price-wrap">
+                <div class="plan-price">
+                  <span class="price-val">7</span>
+                  <span class="price-currency">RON</span>
+                  <span class="price-period" data-i18n="plan_monthly_period">/ month</span>
+                </div>
+                <div class="plan-subtext neutral" data-i18n="plan_monthly_subtext">Billed monthly • Cancel anytime</div>
+              </div>
+              <ul class="plan-features">
+                <li><span>✓</span> <span data-i18n="plan_monthly_f1">Full access to all PRO features</span></li>
+                <li><span>✓</span> <span data-i18n="plan_monthly_f2">Month-to-month flexibility</span></li>
+                <li><span>✓</span> <span data-i18n="plan_monthly_f3">Cancel anytime in 1 tap</span></li>
+                <li><span>✓</span> <span data-i18n="plan_monthly_f4">Standard in-app updates</span></li>
+              </ul>
+            </div>
+
+            <div class="pro-plan-card featured">
+              <div class="plan-badge" data-i18n="plan_yearly_badge">MOST POPULAR • SAVE 28%</div>
+              <div class="plan-name" data-i18n="plan_yearly_name">Yearly</div>
+              <div class="plan-desc" data-i18n="plan_yearly_desc">Our best-value annual subscription for committed savers.</div>
+              <div class="plan-price-wrap">
+                <div class="plan-price">
+                  <span class="price-val">60</span>
+                  <span class="price-currency">RON</span>
+                  <span class="price-period" data-i18n="plan_yearly_period">/ year</span>
+                </div>
+                <div class="plan-subtext" data-i18n="plan_yearly_subtext">Only ~5 RON / month • Save 28%</div>
+              </div>
+              <ul class="plan-features">
+                <li><span>✓</span> <span data-i18n="plan_yearly_f1">Full access to all PRO features</span></li>
+                <li><span>✓</span> <span data-i18n="plan_yearly_f2">Save 28% compared to monthly</span></li>
+                <li><span>✓</span> <span data-i18n="plan_yearly_f3">Early access to new features</span></li>
+                <li><span>✓</span> <span data-i18n="plan_yearly_f4">Priority developer support</span></li>
+              </ul>
+            </div>
+
+            <div class="pro-plan-card">
+              <div class="plan-badge" style="background: linear-gradient(135deg, #10b981, #059669);" data-i18n="plan_lifetime_badge">ONE-TIME PAYMENT • LIFETIME</div>
+              <div class="plan-name" data-i18n="plan_lifetime_name">Lifetime</div>
+              <div class="plan-desc" data-i18n="plan_lifetime_desc">Pay once, own it forever. Zero subscriptions or recurring fees.</div>
+              <div class="plan-price-wrap">
+                <div class="plan-price">
+                  <span class="price-val">140</span>
+                  <span class="price-currency">RON</span>
+                  <span class="price-period" data-i18n="plan_lifetime_period">one-time</span>
+                </div>
+                <div class="plan-subtext" style="color: #34d399;" data-i18n="plan_lifetime_subtext">Single payment • Permanent access</div>
+              </div>
+              <ul class="plan-features">
+                <li><span>✓</span> <span data-i18n="plan_lifetime_f1">Full access to all current &amp; future PRO features</span></li>
+                <li><span>✓</span> <span data-i18n="plan_lifetime_f2">Pay once, never pay again</span></li>
+                <li><span>✓</span> <span data-i18n="plan_lifetime_f3">Priority developer support</span></li>
+                <li><span>✓</span> <span data-i18n="plan_lifetime_f4">Lifetime VIP supporter status</span></li>
+                <li><span>✓</span> <span data-i18n="plan_lifetime_f5">Support an independent developer</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="pro-guarantee-note" data-i18n="pro_guarantee">
+            🔒 Processed securely through Google Play &amp; Apple App Store. Subscriptions can be managed or canceled anytime in your store account with zero data loss.
+          </p>
+        </div>
+      </section>
+
+      <!-- Comparison Section -->
+      <section class="compare-card">
+        <div class="section-head">
+          <span class="section-badge" data-i18n="comp_badge">Comparison</span>
+          <h2 class="section-title" data-i18n="comp_title">How Monetic compares to traditional finance apps</h2>
+        </div>
+
+        <div class="table-responsive">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th data-i18n="comp_th_feature">Feature</th>
+                <th data-i18n="comp_th_monetic">Monetic</th>
+                <th data-i18n="comp_th_others">Typical Banking / Budgeting Apps</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong data-i18n="comp_r1_f">Default Data Storage</strong></td>
+                <td><span class="status-check" data-i18n="comp_r1_m">✓ 100% On-Device (SQLite Room)</span></td>
+                <td><span class="status-cross" data-i18n="comp_r1_o">✗ Mandatory 3rd-party servers</span></td>
+              </tr>
+              <tr>
+                <td><strong data-i18n="comp_r2_f">Bank Account Credentials</strong></td>
+                <td><span class="status-check" data-i18n="comp_r2_m">✓ Never Requested (Zero Risk)</span></td>
+                <td><span class="status-cross" data-i18n="comp_r2_o">✗ Requires Open Banking screen scraping</span></td>
+              </tr>
+              <tr>
+                <td><strong data-i18n="comp_r3_f">Commercial Data Monetization</strong></td>
+                <td><span class="status-check" data-i18n="comp_r3_m">✓ Strict Zero Selling Guarantee</span></td>
+                <td><span class="status-cross" data-i18n="comp_r3_o">✗ Often brokered to credit bureaus</span></td>
+              </tr>
+              <tr>
+                <td><strong data-i18n="comp_r4_f">Security Architecture</strong></td>
+                <td><span class="status-check" data-i18n="comp_r4_m">✓ PBKDF2 (100k iters) &amp; Secure Enclave</span></td>
+                <td><span class="status-cross" data-i18n="comp_r4_o">✗ Varies / Cloud password storage</span></td>
+              </tr>
+              <tr>
+                <td><strong data-i18n="comp_r5_f">Supported Currencies</strong></td>
+                <td><span class="status-check" data-i18n="comp_r5_m">✓ 49 Fiat &amp; Crypto Currencies</span></td>
+                <td><span class="status-cross" data-i18n="comp_r5_o">✗ Usually restricted to single fiat</span></td>
+              </tr>
+              <tr>
+                <td><strong data-i18n="comp_r6_f">Multi-Device Real-Time Sync</strong></td>
+                <td><span class="status-check" data-i18n="comp_r6_m">✓ Instant AutoSync (Firebase) across phones &amp; tablets</span></td>
+                <td><span class="status-cross" data-i18n="comp_r6_o">✗ Often delayed batch sync or desktop-only</span></td>
+              </tr>
+              <tr>
+                <td><strong data-i18n="comp_r7_f">Backup Ownership &amp; Freedom</strong></td>
+                <td><span class="status-check" data-i18n="comp_r7_m">✓ Free for all users • Personal Google Drive + Firebase Sync</span></td>
+                <td><span class="status-cross" data-i18n="comp_r7_o">✗ Proprietary locked cloud format or paywalled</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Legal Hub & Documentation -->
+      <section id="docs" class="legal-hub">
+        <div class="section-head">
+          <span class="section-badge" data-i18n="docs_badge">Documentation &amp; Support Hub</span>
+          <h2 class="section-title" data-i18n="docs_title">Official Disclosures &amp; Legal Governance</h2>
+          <p class="section-desc" data-i18n="docs_desc">Access our statutory data safety documentation, GDPR privacy disclosures, terms of service, and dedicated support channels:</p>
+        </div>
+
+        <div class="docs-grid">
+          <a href="privacy.html" class="doc-link-card">
+            <span class="card-title" data-i18n="doc1_title">📄 Privacy Policy</span>
+            <span class="card-desc" data-i18n="doc1_desc">Comprehensive GDPR, DSA, CCPA, sub-processors, and local data protection disclosures.</span>
+          </a>
+
+          <a href="terms.html" class="doc-link-card">
+            <span class="card-title" data-i18n="doc2_title">📑 Terms &amp; Conditions</span>
+            <span class="card-desc" data-i18n="doc2_desc">Binding terms of service, Monetic Pro subscription policies, licensing, and financial disclaimers.</span>
+          </a>
+
+          <a href="privacy.html#delete-account" class="doc-link-card">
+            <span class="card-title" data-i18n="doc3_title">🗑️ Account &amp; Data Deletion</span>
+            <span class="card-desc" data-i18n="doc3_desc">Google Play &amp; Apple compliant instructions for immediate, permanent self-service data erasure.</span>
+          </a>
+
+          <a href="mailto:support@monetic.app" class="doc-link-card">
+            <span class="card-title" data-i18n="doc4_title">✉️ Customer Support &amp; DSA Contact</span>
+            <span class="card-desc" data-i18n="doc4_desc">Direct developer contact for inquiries, technical assistance, or bug reports (English &amp; Romanian).</span>
+          </a>
+        </div>
+      </section>
+
+    </div>
   </main>
 
+  <!-- Lightbox Modal for Fullscreen Screenshot Previews -->
+  <div id="lightbox" class="lightbox-modal" onclick="closeLightbox(event)" role="dialog" aria-modal="true" aria-label="Screenshot Preview">
+    <button class="lightbox-close" onclick="closeLightbox(event)" title="Close viewer" aria-label="Close viewer">✕</button>
+    <div class="lightbox-dialog" onclick="event.stopPropagation()">
+      <img id="lightbox-img" class="lightbox-image" src="" alt="Monetic Screen Full View">
+      <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <!-- Footer -->
   <footer>
     <div class="footer-links">
-      <a href="index.html">Home</a>
+      <a href="index.html" data-i18n="footer_home">Home</a>
       <span>•</span>
-      <a href="terms.html">Terms & Conditions</a>
+      <a href="#features" data-i18n="nav_features">Features</a>
       <span>•</span>
-      <a href="privacy.html">Privacy Policy</a>
+      <a href="#tour" data-i18n="nav_tour">App Tour</a>
       <span>•</span>
-      <a href="privacy.html#delete-account">Delete Account</a>
+      <a href="#pro" data-i18n="nav_pro">💎 Monetic PRO</a>
       <span>•</span>
-      <a href="mailto:support@monetic.app">Support</a>
+      <a href="terms.html" data-i18n="nav_terms">Terms &amp; Conditions</a>
+      <span>•</span>
+      <a href="privacy.html" data-i18n="nav_privacy">Privacy Policy</a>
+      <span>•</span>
+      <a href="privacy.html#delete-account" data-i18n="footer_delete">Delete Account</a>
+      <span>•</span>
+      <a href="mailto:support@monetic.app" data-i18n="footer_support">Support</a>
     </div>
-    <p>&copy; 2026 Monetic. All rights reserved.</p>
+    <p>&copy; 2026 Monetic. <span data-i18n="footer_rights">All rights reserved.</span></p>
   </footer>
+
+  <!-- Translation Engine Script -->
+  <script src="translations.js"></script>
+
+  <!-- Lightbox & Filter Interactivity Script -->
+  <script>
+    function openLightbox(src, captionKeyOrText) {
+      const modal = document.getElementById('lightbox');
+      const img = document.getElementById('lightbox-img');
+      const cap = document.getElementById('lightbox-caption');
+      img.src = src;
+      const translatedCaption = (window.getMoneticTranslation && typeof window.getMoneticTranslation === 'function')
+        ? window.getMoneticTranslation(captionKeyOrText, captionKeyOrText)
+        : captionKeyOrText;
+      img.alt = translatedCaption;
+      cap.innerHTML = translatedCaption;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(event) {
+      if (event && event.stopPropagation) {
+        event.stopPropagation();
+      }
+      const modal = document.getElementById('lightbox');
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        closeLightbox();
+      }
+    });
+
+    // Module Filter Buttons
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+        
+        document.querySelectorAll('.tour-item').forEach(item => {
+          if (filter === 'all' || item.getAttribute('data-category') === filter) {
+            item.style.display = 'grid';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Mobile Nav Toggle
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = navLinks.classList.toggle('is-open');
+        navToggle.classList.toggle('is-active', isOpen);
+        navToggle.setAttribute('aria-expanded', isOpen);
+      });
+
+      // Close mobile nav when clicking a link
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('is-open');
+          navToggle.classList.remove('is-active');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      // Close mobile nav when tapping outside
+      document.addEventListener('click', (e) => {
+        if (!navToggle.contains(e.target) && !navLinks.contains(e.target) && navLinks.classList.contains('is-open')) {
+          navLinks.classList.remove('is-open');
+          navToggle.classList.remove('is-active');
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  </script>
 
 </body>
 </html>

@@ -81,34 +81,41 @@
       padding: 0;
     }
 
+    /* Header */
     header {
-      background-color: var(--card-bg);
+      background-color: rgba(19, 15, 36, 0.88);
       border-bottom: 1px solid var(--border-color);
       position: sticky;
       top: 0;
       z-index: 100;
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+
+    @media (prefers-color-scheme: light) {
+      header {
+        background-color: rgba(255, 255, 255, 0.92);
+      }
     }
 
     .nav-container {
-      max-width: 900px;
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 1rem 1.5rem;
+      padding: 0.65rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 0.75rem;
+      gap: 1rem;
+      position: relative;
     }
 
     .brand {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.65rem;
       text-decoration: none;
       color: var(--text-main);
-      font-weight: 700;
+      font-weight: 800;
       font-size: 1.25rem;
       letter-spacing: -0.02em;
     }
@@ -116,37 +123,213 @@
     .brand-logo {
       width: 34px;
       height: 34px;
-      border-radius: 8px;
+      border-radius: 9px;
       object-fit: cover;
-      display: block;
+      box-shadow: 0 4px 12px rgba(157, 113, 253, 0.35);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .nav-actions-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    /* Elegant Flag Language Switcher */
+    .lang-switcher {
+      display: inline-flex;
+      align-items: center;
+      background: rgba(19, 15, 36, 0.85);
+      border: 1px solid var(--border-color);
+      border-radius: 9999px;
+      padding: 3px;
+      gap: 2px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+      transition: border-color 0.2s ease;
+    }
+
+    .lang-switcher:hover {
+      border-color: rgba(157, 113, 253, 0.5);
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 0.725rem;
+      font-weight: 700;
+      padding: 0.25rem 0.55rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 0.2s ease;
+      line-height: 1;
+    }
+
+    .lang-btn:hover {
+      color: var(--text-main);
+    }
+
+    .lang-btn.active {
+      background: linear-gradient(135deg, var(--primary), #7c3aed);
+      color: #ffffff;
+      box-shadow: 0 2px 8px rgba(157, 113, 253, 0.35);
+    }
+
+    .flag-icon {
+      font-size: 0.9rem;
+      line-height: 1;
+      display: inline-block;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
+      gap: 0.4rem;
     }
 
     .nav-link {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.925rem;
+      font-size: 0.9rem;
       font-weight: 500;
-      padding: 0.4rem 0.75rem;
-      border-radius: 6px;
+      padding: 0.45rem 0.8rem;
+      border-radius: 8px;
       transition: color 0.15s ease, background-color 0.15s ease;
     }
 
-    .nav-link:hover {
-      color: var(--primary);
-      background-color: var(--primary-bg);
+    .nav-link:hover, .nav-link.active {
+      color: var(--text-main);
+      background-color: rgba(157, 113, 253, 0.12);
     }
 
-    .nav-link.active {
-      color: var(--primary);
+    .cta-button-nav {
+      background: linear-gradient(135deg, #9d71fd, #7c3aed);
+      color: #ffffff !important;
       font-weight: 600;
-      background-color: var(--primary-bg);
+      padding: 0.45rem 1.05rem;
+      border-radius: 9999px;
+      box-shadow: 0 4px 14px rgba(157, 113, 253, 0.35);
+      margin-left: 0.25rem;
+    }
+
+    .cta-button-nav:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+
+    /* Mobile Hamburger Button */
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 38px;
+      height: 38px;
+      background: rgba(157, 113, 253, 0.08);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      cursor: pointer;
+      padding: 7px;
+      transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .nav-toggle:hover {
+      background: rgba(157, 113, 253, 0.16);
+      border-color: #9d71fd;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background-color: var(--text-main);
+      border-radius: 2px;
+      transition: transform 0.22s ease, opacity 0.22s ease;
+    }
+
+    .nav-toggle.is-active span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-toggle.is-active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .nav-toggle.is-active span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    @media (max-width: 860px) {
+      .nav-toggle {
+        display: flex;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(16, 12, 31, 0.97);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border-color);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1rem 1.25rem 1.25rem 1.25rem;
+        gap: 0.35rem;
+      }
+
+      @media (prefers-color-scheme: light) {
+        .nav-links {
+          background: rgba(255, 255, 255, 0.98);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+      }
+
+      .nav-links.is-open {
+        display: flex;
+        animation: navSlideDown 0.2s ease-out forwards;
+      }
+
+      .nav-link {
+        padding: 0.7rem 0.9rem;
+        font-size: 0.95rem;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+      }
+
+      .cta-button-nav {
+        margin-left: 0;
+        margin-top: 0.5rem;
+        text-align: center;
+        justify-content: center;
+        padding: 0.75rem 1rem;
+      }
+    }
+
+    @keyframes navSlideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     main {
@@ -423,6 +606,13 @@
         padding: 0;
       }
     }
+    /* Bilingual Content Switching */
+    html[lang="en"] .lang-content-ro {
+      display: none !important;
+    }
+    html[lang="ro"] .lang-content-en {
+      display: none !important;
+    }
   </style>
 </head>
 <body>
@@ -430,22 +620,46 @@
   <header>
     <div class="nav-container">
       <a href="index.html" class="brand">
-        <img src="monetic_logo_512.png" alt="Monetic Logo" class="brand-logo">
+        <img src="monetic_logo_512.png" alt="Monetic Logo" class="brand-logo" width="34" height="34">
         <span>Monetic</span>
       </a>
-      <nav class="nav-links">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="terms.html" class="nav-link">Terms & Conditions</a>
-        <a href="privacy.html" class="nav-link active">Privacy Policy</a>
-        <a href="privacy.html#delete-account" class="nav-link">Delete Account</a>
-        <a href="mailto:support@monetic.app" class="nav-link">Contact</a>
-      </nav>
+
+      <div class="nav-right">
+        <nav class="nav-links" id="nav-links">
+          <a href="index.html" class="nav-link" data-i18n="nav_home">Home</a>
+          <a href="index.html#features" class="nav-link" data-i18n="nav_features">Features</a>
+          <a href="index.html#tour" class="nav-link" data-i18n="nav_tour">App Tour</a>
+          <a href="index.html#pro" class="nav-link" data-i18n="nav_pro" style="color: #c084fc; font-weight: 700;">💎 PRO</a>
+          <a href="terms.html" class="nav-link" data-i18n="nav_terms">Terms</a>
+          <a href="privacy.html" class="nav-link active" data-i18n="nav_privacy">Privacy</a>
+          <a href="privacy.html#delete-account" class="nav-link cta-button-nav" data-i18n="nav_delete_account">Delete Account</a>
+        </nav>
+
+        <div class="nav-actions-wrap">
+          <div class="lang-switcher" role="group" aria-label="Language selection">
+            <button type="button" class="lang-btn active" data-lang="en" aria-label="Switch to English" title="Switch to English">
+              <span class="flag-icon">🇬🇧</span> <span class="lang-text">EN</span>
+            </button>
+            <button type="button" class="lang-btn" data-lang="ro" aria-label="Comută în Română" title="Comută în Română">
+              <span class="flag-icon">🇷🇴</span> <span class="lang-text">RO</span>
+            </button>
+          </div>
+
+          <!-- Mobile Hamburger Button -->
+          <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
     </div>
   </header>
 
   <main>
     <article class="doc-card">
-      <div class="title-block">
+    <div class="lang-content-en">
+<div class="title-block">
         <h1>Privacy Policy for Monetic</h1>
         <div class="meta-bar">
           <span><strong>Effective Date:</strong> September 29, 2026</span>
@@ -870,23 +1084,483 @@
           <li><strong>Postal Address:</strong> Cluj-Napoca, Romania</li>
         </ul>
       </section>
-    </article>
+    </div>
+
+    <div class="lang-content-ro">
+      <div class="title-block">
+        <h1>Politica de Confidențialitate pentru Monetic</h1>
+        <div class="meta-bar">
+          <span><strong>Data intrării în vigoare:</strong> 29 Septembrie 2026</span>
+          <span>•</span>
+          <span><strong>Ultima actualizare:</strong> 29 Septembrie 2026</span>
+          <span class="badge badge-dev">Dezvoltator Independent</span>
+        </div>
+      </div>
+
+      <section>
+        <h2>1. Introducere &amp; Prezentare Generală</h2>
+        <p>Bun venit la <strong>Monetic</strong> („Aplicația”, „noi” sau „al nostru”). Monetic este o aplicație mobilă avansată de evidență a cheltuielilor, gestionare a bugetului și finanțe personale, dezvoltată și operată ca soluție multiplatformă pentru Android și iOS, accesibilă la <a href="https://monetic.app">https://monetic.app</a>.</p>
+        <p>Suntem profund dedicați protejării vieții dumneavoastră private și asigurării securității datelor personale și financiare. Această Politică de Confidențialitate explică modul în care colectăm, utilizăm, stocăm, partajăm și protejăm datele dumneavoastră atunci când utilizați aplicația Monetic și serviciile asociate, în strictă conformitate cu:</p>
+        <ul>
+          <li><strong>Regulamentul General privind Protecția Datelor (GDPR)</strong> (Regulamentul (UE) 2016/679) pentru utilizatorii situați în Uniunea Europeană (UE) și Spațiul Economic European (SEE);</li>
+          <li><strong>Directiva e-Privacy</strong> (Directiva 2002/58/CE cu modificările ulterioare) și legislația națională de transpunere;</li>
+          <li><strong>Regulamentul privind Serviciile Digitale (DSA)</strong> (Regulamentul (UE) 2022/2065);</li>
+          <li><strong>California Consumer Privacy Act (CCPA)</strong> și <strong>California Privacy Rights Act (CPRA)</strong> pentru rezidenții din California;</li>
+          <li><strong>Politicile pentru Dezvoltatori Google Play</strong> (inclusiv ghidurile privind Serviciile Financiare, Securitatea Datelor și Ștergerea Contului);</li>
+          <li><strong>Ghidurile de Revizuire Apple App Store</strong> (inclusiv Ghidul 5.1 privind Confidențialitatea, Colectarea Datelor și Ștergerea Contului 5.1.1(v)).</li>
+        </ul>
+        <p>Prin descărcarea, accesarea sau utilizarea aplicației Monetic, confirmați că ați citit și ați înțeles prezenta Politică de Confidențialitate. Dacă nu sunteți de acord cu practicile noastre privind datele, vă rugăm să nu utilizați Aplicația.</p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>2. Operatorul de Date &amp; Informații de Contact</h2>
+        <p>În sensul GDPR și al legislației internaționale aplicabile privind protecția datelor, <strong>Operatorul de Date</strong> responsabil pentru datele dumneavoastră personale este:</p>
+        <ul>
+          <li><strong>Aplicație:</strong> Monetic</li>
+          <li><strong>Operator de Date / Dezvoltator:</strong> Daniel Crețu (Dezvoltator Software Independent)</li>
+          <li><strong>Email de Contact &amp; Confidențialitate:</strong> <a href="mailto:support@monetic.app">support@monetic.app</a></li>
+          <li><strong>Punct Unic de Contact conform Regulamentului Serviciilor Digitale (DSA):</strong> <a href="mailto:support@monetic.app">support@monetic.app</a> (Limbi de comunicare: Română, Engleză)</li>
+          <li><strong>Site Oficial:</strong> <a href="https://monetic.app">https://monetic.app</a></li>
+          <li><strong>Adresă Poștală:</strong> Cluj-Napoca, România</li>
+        </ul>
+        <p>Dacă aveți întrebări, nelămuriri sau solicitări privind prezenta Politică de Confidențialitate sau exercitarea drepturilor dumneavoastră legale, vă rugăm să ne scrieți direct la <a href="mailto:support@monetic.app">support@monetic.app</a>.</p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>3. Principiul Arhitectural Esențial: Stocare Prioritar Locală (Local-First), Izolare OS &amp; Sincronizare Hibridă</h2>
+        <p>Monetic este concepută având la bază o <strong>filozofie de confidențialitate prin design (privacy-by-design) și stocare prioritar locală</strong>:</p>
+
+        <div class="callout-info">
+          <h3>🔒 Stocare Locală Implicită &amp; Securitate Asigurată Hardware</h3>
+          <p><strong>În mod implicit, evidențele dumneavoastră financiare sunt stocate exclusiv pe dispozitivul dumneavoastră fizic.</strong></p>
+          <p>Tranzacțiile, soldurile conturilor, categoriile personalizate, plățile recurente, mementourile și istoricul transferurilor sunt păstrate într-o bază de date SQLite privată prin biblioteca Room. Noi nu putem vizualiza, citi, accesa sau analiza datele dumneavoastră financiare locale.</p>
+        </div>
+
+        <ol>
+          <li><strong>Stocare Locală pe Dispozitiv în Mod Implicit (Offline-First):</strong> Datele dumneavoastră financiare de zi cu zi sunt stocate exclusiv pe dispozitivul fizic într-o bază de date locală SQLite prin intermediul bibliotecii Room.</li>
+          <li><strong>Criptarea Nativă la Nivelul Sistemului de Operare:</strong>
+            <ul>
+              <li><strong>Android:</strong> Baza de date SQLite locală este stocată în spațiul intern privat protejat prin <strong>Criptare la Nivel de Fișier (File-Based Encryption - FBE)</strong>, izolând fișierele aplicației de procesele neautorizate.</li>
+              <li><strong>iOS:</strong> Fișierele bazei de date sunt salvate în containerul <code>Application Support</code> protejat prin <strong>iOS Data Protection</strong> (<code>NSFileProtectionCompleteUntilFirstUserAuthentication</code>), rămânând criptate hardware cât timp dispozitivul este blocat.</li>
+            </ul>
+          </li>
+          <li><strong>Instantanee Locale Automate de Recuperare (<code>.monrec</code>):</strong> Monetic generează arhive criptate de recuperare (<code>.monrec</code>) în stocarea internă privată înainte de operațiunile critice asupra bazei de date. Aceste instantanee rămân exclusiv pe dispozitivul fizic.</li>
+          <li><strong>Excludere Strictă din Backup-urile Necriptate ale Sistemului de Operare:</strong>
+            <ul>
+              <li>Pentru a preveni scurgerile financiare necriptate în backup-urile automate ale sistemului de operare, Monetic exclude în mod explicit baza de date locală (<code>money_manager_db</code>), fotografiile bonurilor (<code>receipt_photos</code>) și fișierele de recuperare (<code>recovery_backups</code>) din backup-urile automate OS.</li>
+              <li><strong>Android:</strong> Blocat explicit prin <code>backup_rules.xml</code> și <code>data_extraction_rules.xml</code> împotriva Google Drive Auto-Backup și transferurilor directe între telefoane.</li>
+              <li><strong>iOS:</strong> Marcat cu <code>NSURLIsExcludedFromBackupKey = true</code> pentru a împiedica includerea în backup-urile necriptate iCloud.</li>
+            </ul>
+          </li>
+          <li><strong>Sincronizarea în Cloud Necesită Consimțământ Explicit &amp; Autentificare:</strong> Sincronizarea la distanță și copiile de rezervă în cloud <strong>nu au loc niciodată fără consimțământul dumneavoastră expres și conectarea într-un cont autentificat</strong>. Toate datele transmise sau stocate în cloud sunt securizate prin TLS 1.3 în tranzit și AES-256 în repaus.</li>
+          <li><strong>Zero Vânzare a Datelor Comerciale:</strong> Nu vindem, nu închiriem, nu monetizăm și nu cedăm <strong>niciodată</strong> datele dumneavoastră financiare personale către agenții de publicitate, birouri de credit sau brokeri de date, sub nicio circumstanță.</li>
+          <li><strong>Proprietatea Utilizatorului Asupra Copiilor de Rezervă:</strong> Când activați backup-ul în cloud, datele sunt comprimate într-o arhivă criptată (<code>monetic_backup.zip</code>) și stocate direct în propriul cont Google Drive în folderul privat AppData (pe Android) sau criptate în Firebase Cloud Firestore / Storage (pe iOS sau ca alternativă). Dumneavoastră păstrați proprietatea exclusivă asupra acestor fișiere.</li>
+        </ol>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>4. Categoriile de Date pe Care le Prelucrăm</h2>
+
+        <h3>4.1. Informații pe Care ni le Furnizați Direct</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Categorie</th>
+                <th>Descriere &amp; Date Specifice</th>
+                <th>Scopul Prelucrării</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Date de Autentificare</strong></td>
+                <td>Adresă de email, parolă (hash-uită criptografic), UID Firebase Authentication, identificator cont Google (la utilizarea Google Sign-In), identificator utilizator Apple (la utilizarea Sign in with Apple), data creării contului, status verificare email.</td>
+                <td>Autentificare, recuperarea contului, securitatea sesiunii, sincronizare multi-dispozitiv.</td>
+              </tr>
+              <tr>
+                <td><strong>Evidențe Financiare</strong></td>
+                <td>Denumiri de conturi, solduri, monede ale conturilor, tranzacții (sumă, dată/oră, tip: venit/cheltuială/transfer, categorie, notițe opționale).</td>
+                <td>Funcționalitate de bază: calculul bugetului, monitorizarea cheltuielilor, statistici, conversii multi-valută.</td>
+              </tr>
+              <tr>
+                <td><strong>Plăți Recurente &amp; Programate</strong></td>
+                <td>Denumiri facturi/abonamente, frecvență (zilnic, săptămânal, lunar), date scadente, ore setate pentru notificări.</td>
+                <td>Programarea notificărilor locale pe dispozitiv pentru mementouri de plată.</td>
+              </tr>
+              <tr>
+                <td><strong>Fotografii ale Bonurilor &amp; Sigle Personalizate</strong></td>
+                <td>Imagini ale bonurilor fiscale, facturi, sigle de categorii sau avatare de conturi selectate din galeria dispozitivului sau fotografiate cu camera.</td>
+                <td>Atașarea dovezilor de achiziție la tranzacții și personalizarea vizuală a interfeței.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>4.2. Informații Procesate Exclusiv Local pe Dispozitiv (Netransmise Niciodată Către Server)</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Categorie</th>
+                <th>Descriere &amp; Implementare Tehnică</th>
+                <th>Garanție de Confidențialitate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Cod PIN Intern din 4 Cifre</strong></td>
+                <td>Securizat prin <strong>PBKDF2-HMAC-SHA256 (100.000 iterații)</strong> cu o valoare salt generată prin CSPRNG (<code>SecureRandom</code>). Stocat în spațiu securizat hardware: <strong>EncryptedSharedPreferences</strong> cu <strong>MasterKey AES-256-GCM</strong> pe Android și <strong>Keychain Services</strong> cu <code>kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly</code> pe iOS.</td>
+                <td><strong>NICIODATĂ</strong> transmis, sincronizat sau recuperabil de pe serverele noastre. Nu modifică și nu se sincronizează cu parolele din cloud.</td>
+              </tr>
+              <tr>
+                <td><strong>Autentificare Biometrică</strong></td>
+                <td>Touch ID, Face ID, Android BiometricPrompt (amprentă sau deblocare facială).</td>
+                <td>Procesată exclusiv în cadrul hardware-ului securizat <strong>Secure Enclave / Android Keystore</strong> al dispozitivului. Aplicația primește doar un token binar de succes/eșec. Datele biometrice brute <strong>nu</strong> sunt accesibile niciodată aplicației Monetic.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>4.3. Informații Colectate Automat &amp; Observabilitate Tehnică</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Categorie</th>
+                <th>Descriere &amp; Sursă Tehnică</th>
+                <th>Scop &amp; Perioadă de Păstrare</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Corelarea Cererilor &amp; Trasabilitate API</strong></td>
+                <td>Antet efemer <code>X-Request-ID</code> (UUID v4) generat per cerere sau extras din Cloudflare Ray ID (<code>cf-ray</code>), durată execuție (<code>durationMs</code>), metodă HTTP și rută anonimizată.</td>
+                <td>Trasabilitate distribuită, integritatea API-urilor, monitorizare performanță. Efemer, nestocat permanent.</td>
+              </tr>
+              <tr>
+                <td><strong>Jurnale de Acces Server &amp; IP Anonimizat</strong></td>
+                <td>Adresă IP client trunchiată la nivel de subnet: <strong>IPv4 este trunchiat la <code>/24</code></strong> (ultimul octet setat pe zero, ex. <code>198.51.100.0</code>); <strong>IPv6 este trunchiat la <code>/48</code></strong> (ultimii 80 de biți setați pe zero, ex. <code>2001:db8:85a3::</code>). User Agent, cod de stare HTTP, UID Firebase (când utilizatorul este autentificat).</td>
+                <td>Securitatea infrastructurii, protecție DDoS, limitarea ratei de acces (rate limiting). Păstrat strict pentru o <strong>perioadă maximă de 30 de zile</strong> în baza Interesului Legitim (Art. 6(1)(f) GDPR).</td>
+              </tr>
+              <tr>
+                <td><strong>Diagnostic &amp; Telemetrie Erori (Crash)</strong></td>
+                <td>Model hardware dispozitiv, sistem de operare și versiune (Android/iOS), versiune aplicație, timestamp eroare, stive de apeluri anonimizate (prin Firebase Crashlytics).</td>
+                <td>Identificarea defectelor software, remedierea erorilor critice, îmbunătățirea stabilității. Păstrate maximum 90 de zile.</td>
+              </tr>
+              <tr>
+                <td><strong>Date Privind Achizițiile &amp; Drepturile PRO</strong></td>
+                <td>ID utilizator RevenueCat, ID tranzacție magazin, identificatori de produs (<code>monetic_pro_monthly</code>, <code>monetic_pro_yearly</code>, <code>monetic_pro_lifetime</code>), timestamp achiziție, status abonament.</td>
+                <td>Acordarea și validarea accesului la funcționalitățile Monetic PRO, gestionarea reînnoirilor automate.</td>
+              </tr>
+              <tr>
+                <td><strong>Identificatori de Publicitate &amp; Consimțământ (Doar Planul Gratuit)</strong></td>
+                <td>Google Advertising ID (GAID) pe Android, IDFA pe iOS (sub rezerva consimțământului explicit prin App Tracking Transparency), status consimțământ colectat prin <strong>Google User Messaging Platform (UMP) SDK</strong>.</td>
+                <td>Afișarea de reclame non-intruzive în versiunea Gratuită prin Google AdMob, strict condiționată de acordul prealabil în SEE și Regatul Unit.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout-info">
+          <h3>🛡️ Garanție Strictă de Zero Scurgere a Datelor Financiare</h3>
+          <p><strong>Monetic garantează că sumele tranzacțiilor, descrierile, notițele, numele categoriilor, soldurile conturilor și fotografiile bonurilor fiscale NU ajung NICIODATĂ în Firebase Crashlytics, jurnale de server sau servicii terțe de analiză.</strong></p>
+          <p>Jurnalele de diagnostic înregistrează doar rute tehnice sanitizate și dimensiunea în octeți a pachetelor (<code>bytes=...</code>), curățate de parametri, token-uri sau conținutul efectiv al tranzacțiilor.</p>
+        </div>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>5. Temeiurile Legale ale Prelucrării conform GDPR (Utilizatori UE/SEE)</h2>
+        <p>Dacă vă aflați în Uniunea Europeană sau Spațiul Economic European, prelucrăm datele dumneavoastră personale în conformitate cu următoarele temeiuri juridice prevăzute la <strong>Articolul 6(1) din GDPR</strong>:</p>
+        <ul>
+          <li><strong>Executarea unui Contract (Articolul 6(1)(b) GDPR):</strong> Prelucrarea credențialelor de cont, evidențelor financiare, calculelor de tranzacții și backup-urilor în cloud pentru a asigura funcționarea serviciului Monetic.</li>
+          <li><strong>Consimțământul Dumneavoastră Explicit (Articolul 6(1)(a) GDPR &amp; Directiva e-Privacy):</strong> Accesarea camerei foto sau a galeriei pentru atașarea bonurilor; afișarea reclamelor personalizate/non-personalizate prin Google AdMob, gestionate prin platforma <strong>Google User Messaging Platform (UMP)</strong> înainte de orice solicitare de publicitate în SEE.</li>
+          <li><strong>Interesul Legitim (Articolul 6(1)(f) GDPR):</strong> Prelucrarea identificatorilor efemeri de cereri (<code>X-Request-ID</code>) și jurnalelor de server cu IP-uri anonimizate la nivel de subnet (/24 și /48) pe o durată de maximum 30 de zile pentru protejarea infrastructurii împotriva atacurilor cibernetice și a abuzurilor; diagnosticarea defecțiunilor prin Firebase Crashlytics.</li>
+          <li><strong>Conformarea cu o Obligație Legală (Articolul 6(1)(c) GDPR):</strong> Păstrarea confirmărilor de tranzacții digitale impuse de reglementările fiscale și contabile.</li>
+        </ul>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>6. Arhitectura de Backup în Cloud &amp; Gestionarea Ciclului de Viață</h2>
+        <p>Monetic include un sistem hibrid de backup pe două canale conceput pentru a maximiza confidențialitatea:</p>
+
+        <h3>6.1. Backup în Google Drive (Canal Principal pe Android)</h3>
+        <ul>
+          <li><strong>Locație de Stocare:</strong> Copiile de rezervă sunt salvate direct în propriul cont Google Drive, în folderul dedicat și ascuns <code>appDataFolder</code> (<code>https://www.googleapis.com/auth/drive.appdata</code>).</li>
+          <li><strong>Izolare:</strong> Fișierele salvate în <code>appDataFolder</code> sunt private pentru Monetic și nu pot fi accesate sau vizualizate de alte aplicații din contul dumneavoastră Google Drive.</li>
+          <li><strong>Permisiuni Limitate:</strong> Monetic solicită doar permisiuni strict limitate (<code>drive.appdata</code> și <code>drive.file</code>). Aplicația <strong>nu poate</strong> citi, vizualiza, modifica sau șterge alte documente, poze sau fișiere din Google Drive-ul dumneavoastră.</li>
+          <li><strong>Identitate Unificată:</strong> La conectarea prin Google Sign-In, profilul Monetic și destinația de backup sunt corelate 1:1, prevenind suprascrierile accidentale.</li>
+        </ul>
+
+        <h3>6.2. Firebase Cloud Firestore &amp; Storage (Secundar / Alternativă &amp; iOS)</h3>
+        <ul>
+          <li><strong>Locație de Stocare:</strong> Utilizat pe iOS sau pe Android când Google Drive nu este conectat. Datele sunt stocate în instanțe securizate Google Cloud Firestore (<code>/users/{uid}/backups</code>) și containere criptate Google Cloud Storage.</li>
+          <li><strong>Securitate:</strong> Datele în tranzit sunt protejate prin TLS 1.3, iar datele în repaus sunt criptate conform standardului AES-256 pe 256 de biți.</li>
+          <li><strong>Stocare Temporară în Două Etape &amp; Expirare Automată la 24 de Ore:</strong>
+            <ul>
+              <li>Fișierele încărcate (bonuri și arhive) sunt plasate într-un director temporar de verificare (<code>users/{uid}/*/staging/</code>) unde se validează semnătura digitală și codul de control SHA-256 înainte de promovare.</li>
+              <li>Fișierele temporare nefinalizate sau abandonate sunt șterse automat de regulile Cloud Storage după <strong>24 de ore</strong>.</li>
+            </ul>
+          </li>
+        </ul>
+
+        <h3>6.3. Sincronizare în Fundal &amp; WorkManager</h3>
+        <p>Când opțiunea de backup automat este activată în Setări, Monetic programează sarcini în fundal prin <strong>Android WorkManager</strong> (<code>CloudBackupWorker</code>) cu verificarea conexiunii active la rețea (<code>NetworkType.CONNECTED</code>). Aceasta garantează salvarea modificărilor chiar dacă închideți aplicația.</p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>7. Furnizori Terți de Servicii &amp; Sub-procesatori</h2>
+        <p>Colaborăm cu furnizori tehnologici de încredere pentru autentificare, infrastructură, raportarea erorilor, validarea abonamentelor și publicitate. Toți sub-procesatorii sunt obligați prin Acorduri de Prelucrare a Datelor (DPA):</p>
+
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th>Sub-procesator</th>
+                <th>Locație</th>
+                <th>Rol / Servicii Furnizate</th>
+                <th>Politică de Confidențialitate</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Cloudflare, Inc.</strong></td>
+                <td>SUA / UE</td>
+                <td>Anycast Edge Proxy, Web Application Firewall (WAF), atenuare DDoS și rutare securizată SSL/TLS.</td>
+                <td><a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Politica Cloudflare</a></td>
+              </tr>
+              <tr>
+                <td><strong>Google LLC / Google Ireland Ltd.</strong></td>
+                <td>SUA / Irlanda</td>
+                <td>Firebase Authentication, Cloud Firestore, Cloud Storage, Firebase Crashlytics, Firebase Remote Config, Google Drive API, Google AdMob, Google UMP SDK.</td>
+                <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Politica Google</a></td>
+              </tr>
+              <tr>
+                <td><strong>Apple Inc.</strong></td>
+                <td>SUA / Irlanda</td>
+                <td>Autentificare Sign in with Apple, achiziții StoreKit, verificare locală Face ID, notificări Apple Push.</td>
+                <td><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Politica Apple</a></td>
+              </tr>
+              <tr>
+                <td><strong>RevenueCat, Inc.</strong></td>
+                <td>SUA</td>
+                <td>Gestiunea ciclului de viață al abonamentelor, validarea chitanțelor de magazin, verificarea accesului PRO.</td>
+                <td><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">Politica RevenueCat</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>8. Transferuri Internaționale de Date</h2>
+        <p>Sub-procesatorii noștri operează servere în Uniunea Europeană, Statele Unite și la nivel global.</p>
+        <p>Atunci când datele personale provenite din Spațiul Economic European (SEE) sunt transferate în afara acestuia, asigurăm un nivel adecvat de protecție bazat pe:</p>
+        <ul>
+          <li><strong>Cadrul de Confidențialitate a Datelor UE-SUA (Data Privacy Framework - DPF)</strong>;</li>
+          <li><strong>Clauzele Contractuale Standard (SCC)</strong> aprobate de Comisia Europeană în temeiul Articolului 46(2)(c) din GDPR;</li>
+          <li>Măsuri tehnice de protecție, inclusiv criptare TLS 1.3 în tranzit și AES-256 în repaus.</li>
+        </ul>
+      </section>
+
+      <hr>
+
+      <!-- SECTIUNE EXPLICITA DE STERGERE A CONTULUI SI DATELOR -->
+      <section class="deletion-card">
+        <h3>🗑️ 9. Politica de Ștergere a Contului &amp; a Datelor Asociate</h3>
+        <p><strong>Notă de Conformitate cu Cerințele Google Play Data Safety și Ghidul Apple App Store 5.1.1(v):</strong></p>
+        <p>Monetic oferă mecanisme complete, transparente și ușor accesibile care vă permit să vă ștergeți definitiv contul și toate datele personale și financiare asociate. Puteți solicita ștergerea oricând prin oricare dintre următoarele metode:</p>
+
+        <div class="deletion-method">
+          <h4>Metoda 1: Ștergere Directă din Aplicație (Instantanee &amp; Automată)</h4>
+          <p>Dacă aveți aplicația Monetic instalată pe dispozitiv:</p>
+          <ol>
+            <li>Deschideți <strong>Monetic</strong>.</li>
+            <li>Navigați la <strong>Setări</strong> → <strong>Profil / Cont</strong>.</li>
+            <li>Derulați până jos și atingeți <strong>Șterge Contul / Delete Account</strong>.</li>
+            <li>Alegeți opțiunea dorită de gestionare a datelor:
+              <ul>
+                <li><strong>Șterge Toate Datele (Local &amp; Cloud):</strong> Șterge definitiv și ireversibil toate bazele de date, backup-urile și arhivele din cloud, resetează autentificarea, șterge recursiv toate fotografiile bonurilor din stocarea telefonului și golește tabelele bazei de date locale.</li>
+                <li><strong>Păstrează Datele Locale ca Oaspete (Guest):</strong> Șterge contul din cloud, copiile de rezervă și sincronizarea la distanță, păstrând în același timp tranzacțiile locale pe telefon ca profil anonim offline.</li>
+              </ul>
+            </li>
+            <li>Confirmați decizia în dialogul de atenționare.</li>
+          </ol>
+        </div>
+
+        <div class="deletion-method">
+          <h4>Metoda 2: Solicitare de Ștergere prin Email (Trimitere Directă Web)</h4>
+          <p>Dacă ați dezinstalat aplicația sau nu mai aveți acces la dispozitiv:</p>
+          <ol>
+            <li>Trimiteți un email la <strong><a href="mailto:support@monetic.app?subject=Solicitare%20Stergere%20Cont">support@monetic.app</a></strong> de la adresa de email asociată contului Monetic.</li>
+            <li>Specificați în subiect: <code>Solicitare Ștergere Cont</code> sau <code>Account Deletion Request</code>.</li>
+            <li>Menționați adresa de email înregistrată (și ID-ul de utilizator dacă îl cunoașteți).</li>
+            <li>Echipa noastră va verifica solicitarea și va șterge definitiv datele de conectare, backup-urile din cloud și toate evidențele asociate în termen de <strong>maximum 30 de zile</strong> (de regulă în 48 - 72 de ore). Vă vom trimite o confirmare prin email odată finalizată ștergerea.</li>
+          </ol>
+        </div>
+
+        <h4>Domeniul și Efectele Ștergerii:</h4>
+        <ul>
+          <li><strong>Revocarea Autorizării Apple Sign-In (Ghidul Apple 5.1.1(v)):</strong> Pentru utilizatorii conectați cu Apple, aplicația solicită un cod proaspăt prin <code>ASAuthorizationAppleIDProvider</code>, iar backend-ul generează un secret client JWT semnat ES256 și trimite o cerere oficială de revocare la endpoint-ul Apple (<code>https://appleid.apple.com/auth/revoke</code>), revocând asocierea token-ului imediat.</li>
+          <li><strong>Credențiale de Autentificare:</strong> Adresa de email, hash-ul parolei și ID-ul unic de utilizator (UID) sunt șterse definitiv din Firebase Authentication.</li>
+          <li><strong>Baza de Date &amp; Stocarea în Cloud:</strong> Toate instantaneele, tranzacțiile financiare, categoriile de buget, fișierele atașate și arhivele de backup din Firebase Cloud Firestore (<code>/users/{uid}</code>) și Cloud Storage sunt șterse ireversibil.</li>
+          <li><strong>Ștergerea Fișierelor Media Locale:</strong> La selectarea opțiunii de ștergere totală, fotografiile bonurilor fiscale din folderul privat al aplicației (<code>receipt_photos</code>) sunt șterse fizic și recursiv de pe memoria dispozitivului.</li>
+          <li><strong>Anonimizarea Datelor Reziduale:</strong> Tichetele de suport sau feedback-ul transmis anterior sunt anonimizate permanent (<code>userId</code> devine <code>"DELETED_USER"</code>, emailul este eliminat), iar asocierile dispozitivelor de test sunt decuplate (<code>claimedByUid = null</code>).</li>
+          <li><strong>Backup-urile Google Drive (Utilizatori Android):</strong> Arhiva salvată în folderul privat <code>appDataFolder</code> din Google Drive aparține exclusiv contului dumneavoastră Google. Puteți șterge această arhivă oricând direct din Google Drive (<em>Setări &gt; Gestionare Aplicații &gt; Monetic &gt; Ștergeți datele ascunse ale aplicației</em>).</li>
+        </ul>
+
+        <h4>Perioade de Păstrare a Datelor &amp; Excepții:</h4>
+        <ul>
+          <li><strong>Date Locale:</strong> Rămân pe telefon până când ștergeți datele aplicației, o dezinstalați sau selectați opțiunea de ștergere completă.</li>
+          <li><strong>Jurnale de Acces Server:</strong> Jurnalele tehnice cu adrese IP anonimizate la nivel de subnet sunt distruse automat după <strong>30 de zile</strong>.</li>
+          <li><strong>Jurnale de Erori &amp; Telemetrie:</strong> Înregistrările de diagnostic din Firebase Crashlytics sunt păstrate într-o fereastră mobilă de maximum 90 de zile.</li>
+          <li><strong>Evidențe de Facturare:</strong> Tranzacțiile pentru abonamentele Monetic PRO procesate de Apple (StoreKit) sau Google (Google Play Billing) sunt păstrate de Apple și Google conform reglementărilor legale fiscale și contabile. Monetic nu stochează date brute de card sau cont bancar.</li>
+        </ul>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>10. Drepturile Dumneavoastră Privind Confidențialitatea</h2>
+        <p>În funcție de țara sau statul în care aveți reședința, beneficiați de drepturi legale clare cu privire la datele dumneavoastră personale:</p>
+
+        <h3>10.1. Drepturi conform Regulamentului General privind Protecția Datelor (GDPR)</h3>
+        <ul>
+          <li><strong>Dreptul de Acces (Art. 15 GDPR):</strong> Dreptul de a obține o confirmare că datele dumneavoastră sunt prelucrate și o copie a acestora.</li>
+          <li><strong>Dreptul la Rectificare (Art. 16 GDPR):</strong> Dreptul de a corecta datele inexacte sau incomplete direct în Aplicație.</li>
+          <li><strong>Dreptul la Ștergere / „Dreptul de a fi Uitat” (Art. 17 GDPR):</strong> Puteți solicita ștergerea definitivă a datelor prin butonul „Șterge Contul” din aplicație sau la <a href="mailto:support@monetic.app">support@monetic.app</a>.</li>
+          <li><strong>Dreptul la Restricționarea Prelucrării (Art. 18 GDPR):</strong> Dreptul de a solicita blocarea temporară a prelucrării în anumite condiții prevăzute de lege.</li>
+          <li><strong>Dreptul la Portabilitatea Datelor (Art. 20 GDPR):</strong> Puteți exporta toate tranzacțiile și conturile oricând prin <strong>Setări → Gestionare Date → Export în CSV</strong> sau prin descărcarea arhivei din Google Drive.</li>
+          <li><strong>Dreptul la Opoziție (Art. 21 GDPR):</strong> Dreptul de a vă opune în orice moment prelucrării bazate pe interese legitime.</li>
+          <li><strong>Dreptul de a Vă Retrage Consimțământul (Art. 7(3) GDPR):</strong> Vă puteți retrage oricând consimțământul (pentru reclame sau acces la cameră) prin setările UMP din Aplicație sau permisiunile sistemului de operare.</li>
+          <li><strong>Dreptul de a Depune o Plângere:</strong> Aveți dreptul de a depune o plângere la autoritatea națională de supraveghere (în România: <em>Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal - ANSPDCP</em>, <a href="https://www.dataprotection.ro" target="_blank" rel="noopener">www.dataprotection.ro</a>).</li>
+        </ul>
+
+        <h3>10.2. Drepturi pentru Rezidenții din California (CCPA / CPRA)</h3>
+        <ul>
+          <li><strong>Dreptul de a Cunoaște &amp; Accesa:</strong> Puteți solicita detalii privind categoriile și datele colectate în ultimele 12 luni.</li>
+          <li><strong>Dreptul la Ștergere:</strong> Dreptul de a solicita ștergerea datelor personale.</li>
+          <li><strong>Dreptul la Nediscriminare:</strong> Nu vom refuza servicii și nu vom percepe tarife diferite pentru exercitarea drepturilor CCPA.</li>
+          <li><strong>Notă privind Vânzarea sau Partajarea Datelor:</strong> <strong>Nu vindem</strong> datele dumneavoastră financiare sau personale. Pentru versiunea gratuită cu reclame, identificatorii publicitari terți (Google AdMob) sunt guvernați de opțiunile exprimate prin formularul Google UMP sau setările dispozitivului.</li>
+        </ul>
+
+        <h3>10.3. Interdicția Luării Automate a Deciziilor &amp; Creării de Profiluri (Art. 22 GDPR)</h3>
+        <p>Monetic <strong>nu</strong> ia decizii bazate exclusiv pe prelucrarea automată a datelor, algoritmi sau profilare care să producă efecte juridice asupra dumneavoastră. Toate analizele, categoriile de buget și sintezele financiare sunt calculate local și deterministic, strict în scop personal și informativ, fără scoruri de creditare, evaluări de risc sau profilare comportamentală.</p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>11. Măsuri Tehnice &amp; Organizatorice de Securitate</h2>
+        <p>Implementăm măsuri tehnice și organizatorice riguroase pentru protejarea datelor dumneavoastră împotriva pierderii accidentale, accesului neautorizat, distrugerii sau modificării:</p>
+        <ul>
+          <li><strong>Criptare în Tranzit:</strong> Toate comunicațiile dintre Aplicație și servere utilizează protocolul de criptare <strong>TLS 1.3</strong>.</li>
+          <li><strong>Securitate PIN cu Protecție Hardware:</strong> Codul PIN intern este derivat prin <strong>PBKDF2-HMAC-SHA256 (100.000 iterații)</strong> și stocat în EncryptedSharedPreferences (MasterKey AES-256-GCM) pe Android și Keychain Services pe iOS.</li>
+          <li><strong>Protecție Locală Nativă:</strong> Bazele de date SQLite sunt protejate prin Android File-Based Encryption și iOS Data Protection în spațiul privat al aplicației.</li>
+          <li><strong>Izolare față de Backup-ul Sistemului de Operare:</strong> Bazele de date financiare și fotografiile bonurilor sunt excluse explicit din backup-urile automate necriptate ale sistemului (<code>backup_rules.xml</code>, <code>data_extraction_rules.xml</code>, <code>NSURLIsExcludedFromBackupKey = true</code>).</li>
+          <li><strong>Izolare Biometrică:</strong> Autentificarea biometrică este securizată hardware în Secure Enclave / Keystore-ul dispozitivului.</li>
+          <li><strong>Control Strict al Accesului în Backend:</strong> Accesul la Firestore și Cloud Storage necesită token-uri validate Firebase Authentication și verificare App Check.</li>
+        </ul>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>12. Protecția Confidențialității Minorilor</h2>
+        <p>Monetic nu este destinată și nu este concepută pentru a fi utilizată de copii cu vârsta sub 16 ani (sau sub 13 ani în Statele Unite). Nu colectăm și nu prelucrăm cu bună știință date personale de la minori. În cazul în care descoperim că un minor ne-a furnizat date personale fără acordul verificabil al părinților, vom lua măsuri imediate pentru a șterge definitiv aceste date. Dacă aveți motive să credeți că un minor ne-a transmis date personale, vă rugăm să ne contactați la <a href="mailto:support@monetic.app">support@monetic.app</a>.</p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>13. Modificări &amp; Actualizări ale Politicii de Confidențialitate</h2>
+        <p>Putem actualiza periodic această Politică de Confidențialitate pentru a reflecta modificările din arhitectura aplicației, funcționalitățile nou introduse sau cerințele legale și de reglementare.</p>
+        <p>Când aducem modificări semnificative, vă vom notifica prin:</p>
+        <ol>
+          <li>Actualizarea datelor de „Ultima actualizare” și „Data intrării în vigoare” din antetul documentului;</li>
+          <li>Publicarea versiunii revizuite la <a href="https://monetic.app/privacy.html">https://monetic.app/privacy.html</a>;</li>
+          <li>Afișarea unei notificări în aplicație la producerea unor schimbări arhitecturale importante.</li>
+        </ol>
+        <p>Vă recomandăm să consultați periodic această pagină pentru a fi la curent cu măsurile de protecție a datelor dumneavoastră.</p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>14. Contact &amp; Datele Dezvoltatorului</h2>
+        <p>Dacă aveți întrebări, sugestii sau solicitări legale referitoare la această Politică de Confidențialitate sau doriți să vă exercitați drepturile conferite de lege, vă rugăm să contactați:</p>
+        <ul>
+          <li><strong>Aplicație:</strong> Monetic</li>
+          <li><strong>Dezvoltator / Operator de Date:</strong> Daniel Crețu (Dezvoltator Software Independent)</li>
+          <li><strong>Email de Contact &amp; Confidențialitate:</strong> <a href="mailto:support@monetic.app">support@monetic.app</a></li>
+          <li><strong>Punct Unic de Contact conform Regulamentului Serviciilor Digitale (DSA):</strong> <a href="mailto:support@monetic.app">support@monetic.app</a> (Limbi de comunicare: Română, Engleză)</li>
+          <li><strong>Site Oficial:</strong> <a href="https://monetic.app">https://monetic.app</a></li>
+          <li><strong>Adresă Poștală:</strong> Cluj-Napoca, România</li>
+        </ul>
+      </section>
+    </div>
+</article>
   </main>
 
   <footer>
     <div class="footer-links">
-      <a href="index.html">Home</a>
+      <a href="index.html" data-i18n="footer_home">Home</a>
       <span>•</span>
-      <a href="terms.html">Terms & Conditions</a>
+      <a href="terms.html" data-i18n="nav_terms">Terms &amp; Conditions</a>
       <span>•</span>
-      <a href="privacy.html">Privacy Policy</a>
+      <a href="privacy.html" data-i18n="nav_privacy">Privacy Policy</a>
       <span>•</span>
-      <a href="privacy.html#delete-account">Delete Account</a>
+      <a href="privacy.html#delete-account" data-i18n="footer_delete">Delete Account</a>
       <span>•</span>
-      <a href="mailto:support@monetic.app">Support</a>
+      <a href="mailto:support@monetic.app" data-i18n="footer_support">Support</a>
     </div>
-    <p>&copy; 2026 Monetic. All rights reserved.</p>
+    <p>&copy; 2026 Monetic. <span data-i18n="footer_rights">All rights reserved.</span></p>
   </footer>
 
+  <!-- Translation Engine Script -->
+  <script src="translations.js"></script>
+
+  <script>
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    if (navToggle && navLinks) {
+      navToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = navLinks.classList.toggle('is-open');
+        navToggle.classList.toggle('is-active', isOpen);
+        navToggle.setAttribute('aria-expanded', isOpen);
+      });
+
+      navLinks.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('is-open');
+          navToggle.classList.remove('is-active');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!navToggle.contains(e.target) && !navLinks.contains(e.target) && navLinks.classList.contains('is-open')) {
+          navLinks.classList.remove('is-open');
+          navToggle.classList.remove('is-active');
+          navToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    }
+  </script>
 </body>
 </html>
