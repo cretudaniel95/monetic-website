@@ -1,0 +1,8 @@
+# https://www.robotstxt.org/robotstxt.html
+# Robots exclusion file for Monetic (https://monetic.app)
+
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://monetic.app/sitemap.xml

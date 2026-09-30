@@ -523,37 +523,49 @@ function setSiteLanguage(lang) {
     }
   });
 
+  // Synchronize document language attribute for accessibility & SEO
+  document.documentElement.lang = lang;
+
   // Update document title & meta description if needed
   const path = window.location.pathname;
   const metaDesc = document.querySelector('meta[name="description"]');
+  const ogTitle = document.querySelector('meta[property="og:title"]');
+  const ogDesc = document.querySelector('meta[property="og:description"]');
+  const twTitle = document.querySelector('meta[name="twitter:title"]');
+  const twDesc = document.querySelector('meta[name="twitter:description"]');
+
+  let newTitle = "";
+  let newDesc = "";
+
   if (path.includes('privacy')) {
-    document.title = (lang === 'ro')
+    newTitle = (lang === 'ro')
       ? "Politica de Confidențialitate - Monetic"
       : "Privacy Policy - Monetic";
-    if (metaDesc) {
-      metaDesc.content = (lang === 'ro')
-        ? "Politica de confidențialitate și securitatea datelor pentru Monetic, aplicație independentă de evidență financiară și bugetare."
-        : "Privacy Policy and Data Safety disclosures for Monetic, an independent personal finance and budget tracking mobile application.";
-    }
+    newDesc = (lang === 'ro')
+      ? "Politica de confidențialitate și securitatea datelor pentru Monetic, aplicație independentă de evidență financiară și bugetare."
+      : "Privacy Policy and Data Safety disclosures for Monetic, an independent personal finance and budget tracking mobile application.";
   } else if (path.includes('terms')) {
-    document.title = (lang === 'ro')
+    newTitle = (lang === 'ro')
       ? "Termeni și Condiții - Monetic"
       : "Terms and Conditions - Monetic";
-    if (metaDesc) {
-      metaDesc.content = (lang === 'ro')
-        ? "Termeni și condiții oficiale de utilizare pentru Monetic, aplicație de finanțe personale și monitorizare a cheltuielilor."
-        : "Terms and conditions of service for Monetic, an independent personal finance and budget tracking application.";
-    }
+    newDesc = (lang === 'ro')
+      ? "Termeni și condiții oficiale de utilizare pentru Monetic, aplicație de finanțe personale și monitorizare a cheltuielilor."
+      : "Terms and conditions of service for Monetic, an independent personal finance and budget tracking application.";
   } else {
-    document.title = (lang === 'ro')
+    newTitle = (lang === 'ro')
       ? "Monetic - Aplicație Inteligentă de Buget & Finanțe Personale | Offline-First"
       : "Monetic - Smart Personal Finance & Budget Tracker | Offline-First";
-    if (metaDesc) {
-      metaDesc.content = (lang === 'ro')
-        ? "Descoperă Monetic: o aplicație mobilă avansată, offline-first, de finanțe personale și evidență a bugetului pentru Android și iOS. 49 de monede, securitate hardware."
-        : "Discover Monetic: an advanced, offline-first personal finance and budget tracking mobile app for Android and iOS. 49 currencies, hardware-backed security, zero bank credentials.";
-    }
+    newDesc = (lang === 'ro')
+      ? "Descoperă Monetic: o aplicație mobilă avansată, offline-first, de finanțe personale și evidență a bugetului pentru Android și iOS. 49 de monede, securitate hardware."
+      : "Discover Monetic: an advanced, offline-first personal finance and budget tracking mobile app for Android and iOS. 49 currencies, hardware-backed security, zero bank credentials.";
   }
+
+  document.title = newTitle;
+  if (metaDesc) metaDesc.content = newDesc;
+  if (ogTitle) ogTitle.content = newTitle;
+  if (ogDesc) ogDesc.content = newDesc;
+  if (twTitle) twTitle.content = newTitle;
+  if (twDesc) twDesc.content = newDesc;
 }
 
 // Auto-run on DOM ready
