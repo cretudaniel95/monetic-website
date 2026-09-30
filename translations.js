@@ -493,8 +493,19 @@ function setSiteLanguage(lang) {
 
   window.currentMoneticLang = lang;
 
-  // Set html lang attribute
+  // Set html lang attribute and class for immediate CSS reactivity
   document.documentElement.lang = lang;
+  document.documentElement.setAttribute('lang', lang);
+  document.documentElement.classList.remove('lang-en', 'lang-ro');
+  document.documentElement.classList.add('lang-' + lang);
+
+  // Direct display toggle for localized document sections (privacy/terms)
+  document.querySelectorAll('.lang-content-en').forEach(el => {
+    el.style.setProperty('display', (lang === 'ro') ? 'none' : 'block', 'important');
+  });
+  document.querySelectorAll('.lang-content-ro').forEach(el => {
+    el.style.setProperty('display', (lang === 'ro') ? 'block' : 'none', 'important');
+  });
 
   // Persist preference
   try {
@@ -522,9 +533,6 @@ function setSiteLanguage(lang) {
       el.innerHTML = t[key];
     }
   });
-
-  // Synchronize document language attribute for accessibility & SEO
-  document.documentElement.lang = lang;
 
   // Update document title & meta description if needed
   const path = window.location.pathname;
@@ -568,9 +576,10 @@ function setSiteLanguage(lang) {
   if (twDesc) twDesc.content = newDesc;
 }
 
-// Auto-run on DOM ready
-document.addEventListener('DOMContentLoaded', () => {
-  // Check localStorage, then browser language, fallback to en
+/**
+ * Initializes language preference and binds switcher handlers
+ */
+function initMoneticTranslations() {
   let initialLang = 'en';
   try {
     const saved = localStorage.getItem('monetic_preferred_lang');
@@ -593,4 +602,11 @@ document.addEventListener('DOMContentLoaded', () => {
       setSiteLanguage(targetLang);
     });
   });
-});
+}
+
+// Auto-run safely whether DOM is loading or already ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initMoneticTranslations);
+} else {
+  initMoneticTranslations();
+}

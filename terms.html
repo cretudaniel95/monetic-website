@@ -606,13 +606,29 @@
       }
     }
     /* Bilingual Content Switching */
-    html[lang="en"] .lang-content-ro {
+    html[lang="en"] .lang-content-ro,
+    html.lang-en .lang-content-ro,
+    :lang(en) .lang-content-ro {
       display: none !important;
     }
-    html[lang="ro"] .lang-content-en {
+    html[lang="ro"] .lang-content-en,
+    html.lang-ro .lang-content-en,
+    :lang(ro) .lang-content-en {
       display: none !important;
     }
   </style>
+  <script>
+    (function() {
+      try {
+        var saved = localStorage.getItem('monetic_preferred_lang');
+        var lang = (saved === 'ro' || saved === 'en') ? saved : (navigator.language && navigator.language.toLowerCase().startsWith('ro') ? 'ro' : 'en');
+        document.documentElement.setAttribute('lang', lang);
+        document.documentElement.lang = lang;
+        document.documentElement.classList.remove('lang-en', 'lang-ro');
+        document.documentElement.classList.add('lang-' + lang);
+      } catch (e) {}
+    })();
+  </script>
 </head>
 <body>
 
