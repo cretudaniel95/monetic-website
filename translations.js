@@ -133,6 +133,7 @@ const MONETIC_TRANSLATIONS = {
     pro_feat4_p: "Get fast-track direct developer assistance and early access to upcoming features and experimental tools.",
     pro_trial_title: "14-Day Free Trial for Everyone",
     pro_trial_desc: "Every new install includes 14 days of unrestricted PRO access. No credit card, payment details, or subscription required.",
+    price_vat: "+ VAT",
     plan_monthly_name: "Monthly",
     plan_monthly_desc: "Maximum flexibility with no long-term commitment.",
     plan_monthly_subtext: "Billed monthly • Cancel anytime",
@@ -144,7 +145,7 @@ const MONETIC_TRANSLATIONS = {
     plan_yearly_badge: "MOST POPULAR • SAVE 28%",
     plan_yearly_name: "Yearly",
     plan_yearly_desc: "Our best-value annual subscription for committed savers.",
-    plan_yearly_subtext: "Only ~5 RON / month • Save 28%",
+    plan_yearly_subtext: "Only ~5 RON + VAT / month • Save 28%",
     plan_yearly_period: "/ year",
     plan_yearly_f1: "Full access to all PRO features",
     plan_yearly_f2: "Save 28% compared to monthly",
@@ -160,7 +161,7 @@ const MONETIC_TRANSLATIONS = {
     plan_lifetime_f3: "Priority developer support",
     plan_lifetime_f4: "Lifetime VIP supporter status",
     plan_lifetime_f5: "Support an independent developer",
-    pro_guarantee: "🔒 Processed securely through Google Play &amp; Apple App Store. Subscriptions can be managed or canceled anytime in your store account with zero data loss.",
+    pro_guarantee: "🔒 Processed securely through Google Play &amp; Apple App Store. Statutory VAT is calculated and added by Google/Apple at checkout based on country of residence. Subscriptions can be managed or canceled anytime with zero data loss.",
 
     // Comparison Table
     comp_badge: "Comparison",
@@ -364,6 +365,7 @@ const MONETIC_TRANSLATIONS = {
     pro_feat4_p: "Asistență directă prioritară de la dezvoltator și acces timpuriu la funcționalități și instrumente noi.",
     pro_trial_title: "14 Zile de Testare Gratuită pentru Toți",
     pro_trial_desc: "Fiecare instalare nouă include 14 zile de acces complet PRO gratuit. Fără card bancar, fără date de plată și fără abonament necesar.",
+    price_vat: "+ TVA",
     plan_monthly_name: "Lunar",
     plan_monthly_desc: "Flexibilitate maximă, fără angajamente pe termen lung.",
     plan_monthly_subtext: "Facturare lunară • Anulare oricând",
@@ -375,7 +377,7 @@ const MONETIC_TRANSLATIONS = {
     plan_yearly_badge: "CEL MAI POPULAR • ECONOMISEȘTI 28%",
     plan_yearly_name: "Anual",
     plan_yearly_desc: "Cel mai avantajos abonament pentru cei care își gestionează activ finanțele.",
-    plan_yearly_subtext: "Doar ~5 RON / lună • Economisești 28%",
+    plan_yearly_subtext: "Doar ~5 RON + TVA / lună • Economisești 28%",
     plan_yearly_period: "/ an",
     plan_yearly_f1: "Acces complet la funcțiile PRO",
     plan_yearly_f2: "Economisești 28% față de abonamentul lunar",
@@ -391,7 +393,7 @@ const MONETIC_TRANSLATIONS = {
     plan_lifetime_f3: "Suport prioritar de la dezvoltator",
     plan_lifetime_f4: "Statut permanent de susținător VIP",
     plan_lifetime_f5: "Susții un dezvoltator independent",
-    pro_guarantee: "🔒 Tranzacții securizate prin Google Play &amp; Apple App Store. Abonamentele pot fi gestionate sau anulate oricând din contul magazinului, fără pierderea datelor.",
+    pro_guarantee: "🔒 Tranzacții securizate prin Google Play &amp; Apple App Store. TVA-ul legal este calculat direct de Google/Apple la finalizarea comenzii în funcție de țara de reședință. Abonamentele pot fi anulate oricând fără pierderea datelor.",
 
     // Comparison Table
     comp_badge: "Comparație",

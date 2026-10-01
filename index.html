@@ -1276,6 +1276,28 @@
       color: var(--primary);
     }
 
+    .plan-price .price-vat {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.1rem 0.35rem;
+      border-radius: 4px;
+      letter-spacing: 0.03em;
+      line-height: 1;
+      align-self: center;
+      white-space: nowrap;
+    }
+
+    @media (prefers-color-scheme: light) {
+      .plan-price .price-vat {
+        background: rgba(0, 0, 0, 0.05);
+        border-color: rgba(0, 0, 0, 0.08);
+        color: var(--text-subtle);
+      }
+    }
+
     .plan-price .price-period {
       font-size: 0.95rem;
       color: var(--text-muted);
@@ -2103,6 +2125,7 @@
                 <div class="plan-price">
                   <span class="price-val">7</span>
                   <span class="price-currency">RON</span>
+                  <span class="price-vat" data-i18n="price_vat">+ VAT</span>
                   <span class="price-period" data-i18n="plan_monthly_period">/ month</span>
                 </div>
                 <div class="plan-subtext neutral" data-i18n="plan_monthly_subtext">Billed monthly • Cancel anytime</div>
@@ -2123,9 +2146,10 @@
                 <div class="plan-price">
                   <span class="price-val">60</span>
                   <span class="price-currency">RON</span>
+                  <span class="price-vat" data-i18n="price_vat">+ VAT</span>
                   <span class="price-period" data-i18n="plan_yearly_period">/ year</span>
                 </div>
-                <div class="plan-subtext" data-i18n="plan_yearly_subtext">Only ~5 RON / month • Save 28%</div>
+                <div class="plan-subtext" data-i18n="plan_yearly_subtext">Only ~5 RON + VAT / month • Save 28%</div>
               </div>
               <ul class="plan-features">
                 <li><span>✓</span> <span data-i18n="plan_yearly_f1">Full access to all PRO features</span></li>
@@ -2143,6 +2167,7 @@
                 <div class="plan-price">
                   <span class="price-val">140</span>
                   <span class="price-currency">RON</span>
+                  <span class="price-vat" data-i18n="price_vat">+ VAT</span>
                   <span class="price-period" data-i18n="plan_lifetime_period">one-time</span>
                 </div>
                 <div class="plan-subtext" style="color: #34d399;" data-i18n="plan_lifetime_subtext">Single payment • Permanent access</div>
@@ -2158,7 +2183,7 @@
           </div>
 
           <p class="pro-guarantee-note" data-i18n="pro_guarantee">
-            🔒 Processed securely through Google Play &amp; Apple App Store. Subscriptions can be managed or canceled anytime in your store account with zero data loss.
+            🔒 Processed securely through Google Play &amp; Apple App Store. Statutory VAT is calculated and added by Google/Apple at checkout based on country of residence. Subscriptions can be managed or canceled anytime with zero data loss.
           </p>
         </div>
       </section>
