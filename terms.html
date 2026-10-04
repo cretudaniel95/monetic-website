@@ -751,6 +751,7 @@
           </li>
           <li><strong>Biometric Verification:</strong> Biometric authentication is handled strictly by the device's hardware Secure Enclave / Android BiometricPrompt. Monetic never has access to raw biometric data.</li>
           <li><strong>Local-Only Invariant:</strong> Your security PIN is <strong>never</strong> transmitted to, synchronized with, or recoverable from our servers. If you forget your security PIN and do not have an active cloud backup or biometric bypass, we cannot retrieve or reset your PIN. You bear sole responsibility for safeguarding your PIN and device.</li>
+          <li><strong>PIN Recovery Email Association &amp; Cleanup:</strong> If you configure an optional PIN recovery password while authenticated, Monetic prioritizes your verified account email address for recovery assistance. To prevent cross-account exposure or unauthorized access on shared devices, any associated recovery email references are automatically and permanently purged from local security storage upon account logout or session termination.</li>
         </ul>
 
         <h3>3.4. Local Database Protection & Disaster Recovery Snapshots</h3>
@@ -758,6 +759,7 @@
           <li><strong>Native Operating System Encryption:</strong> The local SQLite database is isolated in private application storage protected by Android File-Based Encryption (FBE) and iOS Data Protection (<code>NSFileProtectionCompleteUntilFirstUserAuthentication</code>).</li>
           <li><strong>Automated Local Recovery Snapshots (<code>.monrec</code>):</strong> Monetic automatically generates local recovery snapshots prior to critical database operations to prevent data corruption.</li>
           <li><strong>OS-Level Backup Exclusions:</strong> To prevent unencrypted financial leaks into third-party cloud environments, the local database (<code>money_manager_db</code>), receipt photos (<code>receipt_photos</code>), and local disaster recovery snapshots (<code>recovery_backups</code>) are explicitly excluded from automated unencrypted operating system backups (Google Drive Auto-Backup and unencrypted iCloud backups).</li>
+          <li><strong>Cryptographic Storage &amp; 30-Day Window:</strong> Local disaster recovery snapshots (<code>.monrec</code>) are encrypted with device-specific cryptographic keys (Android KeyStore / iOS Keychain) and retained locally for thirty (30) days. Because encryption keys are tied to physical device hardware, a full operating system reinstallation, device reset, or hardware destruction will render raw unextracted <code>.monrec</code> archives permanently unrecoverable.</li>
         </ul>
       </section>
 
@@ -1110,6 +1112,7 @@
           </li>
           <li><strong>Verificare Biometrică:</strong> Autentificarea biometrică este gestionată exclusiv de hardware-ul Secure Enclave / BiometricPrompt al telefonului. Monetic nu are acces la date biometrice brute.</li>
           <li><strong>Stocare Strict Locală:</strong> Codul PIN <strong>nu este niciodată</strong> transmis, sincronizat sau recuperabil de pe serverele noastre. Dacă uitați codul PIN și nu aveți o copie de rezervă în cloud sau deblocare biometrică, noi nu vă putem recupera sau reseta codul PIN. Sunteți singurul responsabil de protejarea acestuia.</li>
+          <li><strong>Asocierea Emailului de Recuperare PIN &amp; Curățare:</strong> În cazul în care configurați o parolă opțională de recuperare a codului PIN fiind autentificat, Monetic prioritizează adresa de email verificată a contului dumneavoastră pentru asistență la recuperare. Pentru a preveni expunerea între conturi sau accesul neautorizat pe dispozitive partajate, orice referințe către emailul de recuperare asociat sunt eliminate definitiv și automat din stocarea de securitate locală la deconectarea din cont sau la încheierea sesiunii.</li>
         </ul>
 
         <h3>3.4. Protecția Bazei de Date Locale &amp; Instantanee de Recuperare</h3>
@@ -1117,6 +1120,7 @@
           <li><strong>Criptarea Nativă a Sistemului:</strong> Baza de date SQLite locală este izolată în spațiul intern al aplicației, protejată de Android File-Based Encryption (FBE) și iOS Data Protection.</li>
           <li><strong>Instantanee Locale Automate (<code>.monrec</code>):</strong> Monetic generează automat arhive de recuperare înainte de operațiunile critice asupra bazei de date pentru a preveni coruperea datelor.</li>
           <li><strong>Excluderea din Backup-ul Sistemului de Operare:</strong> Baza de date locală (<code>money_manager_db</code>), fotografiile bonurilor (<code>receipt_photos</code>) și fișierele de recuperare (<code>recovery_backups</code>) sunt excluse explicit din backup-urile automate necriptate ale sistemului de operare (Google Drive Auto-Backup și backup-ul iCloud necriptat).</li>
+          <li><strong>Stocare Criptografică &amp; Fereastră de 30 de Zile:</strong> Instantaneele locale de recuperare în caz de dezastru (<code>.monrec</code>) sunt criptate cu chei criptografice specifice dispozitivului (Android KeyStore / iOS Keychain) și sunt păstrate local timp de treizeci (30) de zile. Deoarece cheile de criptare sunt legate de hardware-ul dispozitivului fizic, o reinstalare completă a sistemului de operare, resetarea dispozitivului sau distrugerea hardware-ului va face arhivele <code>.monrec</code> brute neextrase irecuperabile în mod permanent.</li>
         </ul>
       </section>
 

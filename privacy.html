@@ -796,7 +796,12 @@
               <li><strong>iOS:</strong> Database files are stored in the <code>Application Support</code> container protected with <strong>iOS Data Protection</strong> (<code>NSFileProtectionCompleteUntilFirstUserAuthentication</code>), remaining hardware-encrypted while the device is locked.</li>
             </ul>
           </li>
-          <li><strong>Automated Local Disaster Recovery Snapshots (<code>.monrec</code>):</strong> Monetic creates encrypted local snapshot archives (<code>.monrec</code>) within private application storage prior to sensitive database operations. These snapshots reside solely on the physical device.</li>
+          <li><strong>Automated Local Disaster Recovery Snapshots (<code>.monrec</code>):</strong> To protect against accidental deletion or local file corruption, Monetic creates hardware-encrypted local snapshot archives (<code>.monrec</code>) within private application storage prior to sensitive database operations.
+            <ul>
+              <li><strong>Cryptographic Standards:</strong> Snapshots are encrypted at rest using <strong>AES-256-GCM</strong> backed by the <strong>AndroidKeyStore</strong> on Android, and <strong>AES-256 + HMAC-SHA256 (Encrypt-then-MAC)</strong> with keys stored in the <strong>iOS Keychain</strong> (<code>kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly</code>).</li>
+              <li><strong>Retention &amp; Scope:</strong> Snapshots reside solely on your physical device, are retained for a rolling window of <strong>30 days</strong> before automatic local pruning, and are never transmitted to our cloud servers or external third parties.</li>
+            </ul>
+          </li>
           <li><strong>Strict Exclusion from Unencrypted OS-Level System Backups:</strong>
             <ul>
               <li>To prevent unencrypted financial leaks into third-party cloud dumps, Monetic explicitly excludes the local database (<code>money_manager_db</code>), physical receipt photographs (<code>receipt_photos</code>), and local disaster recovery snapshots (<code>recovery_backups</code>) from operating system automated backups.</li>
@@ -929,7 +934,13 @@
         <p>If you are located in the European Union or European Economic Area, we process your personal data under the following lawful bases set out in <strong>Article 6(1) of the GDPR</strong>:</p>
         <ul>
           <li><strong>Performance of a Contract (Article 6(1)(b) GDPR):</strong> Processing account credentials, financial records, transaction calculations, and cloud backups to fulfill our contractual obligation to provide the Monetic service.</li>
-          <li><strong>Your Explicit Consent (Article 6(1)(a) GDPR & ePrivacy Directive):</strong> Accessing your device camera or photo library to capture and attach receipt photos; serving personalized or non-personalized advertisements via Google AdMob, collected and managed dynamically through the <strong>Google User Messaging Platform (UMP) Consent Management Platform</strong> prior to initializing any advertising requests in the EEA and UK.</li>
+          <li><strong>Your Explicit Consent (Article 6(1)(a) GDPR &amp; ePrivacy Directive):</strong>
+            <ul>
+              <li>Accessing your device camera or photo library to capture and attach receipt photos.</li>
+              <li>Serving personalized or non-personalized advertisements via Google AdMob, collected and managed dynamically through the <strong>Google User Messaging Platform (UMP) Consent Management Platform</strong> prior to initializing any advertising requests in the EEA and UK.</li>
+              <li><strong>Withdrawal &amp; Granular CMP Access:</strong> Users in the EEA and UK may revisit, modify, or withdraw their advertising consent choices at any time directly within the application by navigating to <strong>Settings &rarr; Ad Privacy Options</strong> (or through device-level privacy settings). Modifying your consent takes effect immediately upon the next ad request.</li>
+            </ul>
+          </li>
           <li><strong>Legitimate Interests (Article 6(1)(f) GDPR):</strong> Processing ephemeral request identifiers (<code>X-Request-ID</code>) and server access logs with subnet-level IP anonymization (/24 and /48) for up to 30 days to protect backend infrastructure against cyberattacks, DDoS, and abuse; diagnosing crashes and software failures via Firebase Crashlytics using anonymized telemetry.</li>
           <li><strong>Compliance with Legal Obligations (Article 6(1)(c) GDPR):</strong> Maintaining digital transaction confirmation records required by tax, consumer protection, and commercial accounting regulations.</li>
         </ul>
@@ -1116,7 +1127,7 @@
         <h2>11. Technical & Organizational Security Measures</h2>
         <p>We implement rigorous technical and organizational security measures to protect your personal data against accidental loss, unauthorized access, destruction, or alteration:</p>
         <ul>
-          <li><strong>Transport Encryption:</strong> All communications between the App and backend APIs are enforced using <strong>TLS 1.3</strong> encryption.</li>
+          <li><strong>Edge Routing &amp; Transport Encryption:</strong> All network traffic between the mobile application and backend services is routed through <strong>Cloudflare Anycast Edge Proxy</strong> with enforced <strong>TLS 1.3 encryption</strong>, web application firewall (WAF) filtering, and origin shielding (<code>X-Monetic-Edge-Secret</code>) prior to reaching our European backend cluster in <code>europe-west1</code>.</li>
           <li><strong>Hardware-Backed PIN Security:</strong> Internal PINs are derived with <strong>PBKDF2-HMAC-SHA256 (100,000 iterations)</strong> and stored in EncryptedSharedPreferences (MasterKey AES-256-GCM) on Android and Keychain Services on iOS.</li>
           <li><strong>Native Storage Protection:</strong> Local SQLite databases are protected by Android File-Based Encryption and iOS Data Protection in private app directories.</li>
           <li><strong>System Backup Isolation:</strong> Financial databases and receipt photos are explicitly excluded from unencrypted operating system backups (<code>backup_rules.xml</code>, <code>data_extraction_rules.xml</code>, <code>NSURLIsExcludedFromBackupKey = true</code>).</li>
@@ -1224,7 +1235,12 @@
               <li><strong>iOS:</strong> Fișierele bazei de date sunt salvate în containerul <code>Application Support</code> protejat prin <strong>iOS Data Protection</strong> (<code>NSFileProtectionCompleteUntilFirstUserAuthentication</code>), rămânând criptate hardware cât timp dispozitivul este blocat.</li>
             </ul>
           </li>
-          <li><strong>Instantanee Locale Automate de Recuperare (<code>.monrec</code>):</strong> Monetic generează arhive criptate de recuperare (<code>.monrec</code>) în stocarea internă privată înainte de operațiunile critice asupra bazei de date. Aceste instantanee rămân exclusiv pe dispozitivul fizic.</li>
+          <li><strong>Instantanee Locale Automate de Recuperare (<code>.monrec</code>):</strong> Pentru a preveni ștergerea accidentală sau coruperea locală a fișierelor, Monetic generează arhive de recuperare criptate la nivel hardware (<code>.monrec</code>) în stocarea internă privată înainte de operațiunile critice asupra bazei de date.
+            <ul>
+              <li><strong>Standarde Criptografice:</strong> Instantaneele sunt criptate în repaus (at rest) utilizând <strong>AES-256-GCM</strong> susținut de <strong>AndroidKeyStore</strong> pe Android, și <strong>AES-256 + HMAC-SHA256 (Encrypt-then-MAC)</strong> cu chei securizate în <strong>iOS Keychain</strong> (<code>kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly</code>).</li>
+              <li><strong>Păstrare &amp; Sferă de Aplicare:</strong> Instantaneele rezidă exclusiv pe dispozitivul dumneavoastră fizic, sunt păstrate pentru o fereastră mobilă de <strong>30 de zile</strong> înainte de ștergerea automată locală și nu sunt transmise niciodată către serverele noastre cloud sau terți.</li>
+            </ul>
+          </li>
           <li><strong>Excludere Strictă din Backup-urile Necriptate ale Sistemului de Operare:</strong>
             <ul>
               <li>Pentru a preveni scurgerile financiare necriptate în backup-urile automate ale sistemului de operare, Monetic exclude în mod explicit baza de date locală (<code>money_manager_db</code>), fotografiile bonurilor (<code>receipt_photos</code>) și fișierele de recuperare (<code>recovery_backups</code>) din backup-urile automate OS.</li>
@@ -1357,7 +1373,13 @@
         <p>Dacă vă aflați în Uniunea Europeană sau Spațiul Economic European, prelucrăm datele dumneavoastră personale în conformitate cu următoarele temeiuri juridice prevăzute la <strong>Articolul 6(1) din GDPR</strong>:</p>
         <ul>
           <li><strong>Executarea unui Contract (Articolul 6(1)(b) GDPR):</strong> Prelucrarea credențialelor de cont, evidențelor financiare, calculelor de tranzacții și backup-urilor în cloud pentru a asigura funcționarea serviciului Monetic.</li>
-          <li><strong>Consimțământul Dumneavoastră Explicit (Articolul 6(1)(a) GDPR &amp; Directiva e-Privacy):</strong> Accesarea camerei foto sau a galeriei pentru atașarea bonurilor; afișarea reclamelor personalizate/non-personalizate prin Google AdMob, gestionate prin platforma <strong>Google User Messaging Platform (UMP)</strong> înainte de orice solicitare de publicitate în SEE.</li>
+          <li><strong>Consimțământul Dumneavoastră Explicit (Articolul 6(1)(a) GDPR &amp; Directiva e-Privacy):</strong>
+            <ul>
+              <li>Accesarea camerei foto sau a galeriei dispozitivului pentru capturarea și atașarea fotografiilor bonurilor fiscale.</li>
+              <li>Afișarea reclamelor personalizate sau non-personalizate prin Google AdMob, colectate și gestionate dinamic prin platforma de consimțământ <strong>Google User Messaging Platform (UMP)</strong> înainte de inițierea oricăror solicitări publicitare în SEE și Regatul Unit.</li>
+              <li><strong>Retragerea Consimțământului &amp; Acces Granular CMP:</strong> Utilizatorii din SEE și Regatul Unit își pot revedea, modifica sau retrage oricând opțiunile de consimțământ publicitar direct din aplicație accesând <strong>Setări &rarr; Opțiuni Confidențialitate Reclame</strong> (sau prin setările de confidențialitate ale sistemului de operare). Modificarea consimțământului intră în vigoare imediat, la următoarea solicitare de anunț publicitar.</li>
+            </ul>
+          </li>
           <li><strong>Interesul Legitim (Articolul 6(1)(f) GDPR):</strong> Prelucrarea identificatorilor efemeri de cereri (<code>X-Request-ID</code>) și jurnalelor de server cu IP-uri anonimizate la nivel de subnet (/24 și /48) pe o durată de maximum 30 de zile pentru protejarea infrastructurii împotriva atacurilor cibernetice și a abuzurilor; diagnosticarea defecțiunilor prin Firebase Crashlytics.</li>
           <li><strong>Conformarea cu o Obligație Legală (Articolul 6(1)(c) GDPR):</strong> Păstrarea confirmărilor de tranzacții digitale impuse de reglementările fiscale și contabile.</li>
         </ul>
@@ -1543,7 +1565,7 @@
         <h2>11. Măsuri Tehnice &amp; Organizatorice de Securitate</h2>
         <p>Implementăm măsuri tehnice și organizatorice riguroase pentru protejarea datelor dumneavoastră împotriva pierderii accidentale, accesului neautorizat, distrugerii sau modificării:</p>
         <ul>
-          <li><strong>Criptare în Tranzit:</strong> Toate comunicațiile dintre Aplicație și servere utilizează protocolul de criptare <strong>TLS 1.3</strong>.</li>
+          <li><strong>Rutare Edge &amp; Criptare în Tranzit:</strong> Întregul trafic de rețea dintre aplicația mobilă și serviciile backend este rutat prin <strong>Cloudflare Anycast Edge Proxy</strong> cu criptare impusă <strong>TLS 1.3</strong>, filtrare prin Web Application Firewall (WAF) și protecție a originii (Origin Shielding prin <code>X-Monetic-Edge-Secret</code>) înainte de a atinge clusterul backend european din <code>europe-west1</code>.</li>
           <li><strong>Securitate PIN cu Protecție Hardware:</strong> Codul PIN intern este derivat prin <strong>PBKDF2-HMAC-SHA256 (100.000 iterații)</strong> și stocat în EncryptedSharedPreferences (MasterKey AES-256-GCM) pe Android și Keychain Services pe iOS.</li>
           <li><strong>Protecție Locală Nativă:</strong> Bazele de date SQLite sunt protejate prin Android File-Based Encryption și iOS Data Protection în spațiul privat al aplicației.</li>
           <li><strong>Izolare față de Backup-ul Sistemului de Operare:</strong> Bazele de date financiare și fotografiile bonurilor sunt excluse explicit din backup-urile automate necriptate ale sistemului (<code>backup_rules.xml</code>, <code>data_extraction_rules.xml</code>, <code>NSURLIsExcludedFromBackupKey = true</code>).</li>
