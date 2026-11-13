@@ -24,7 +24,7 @@
   <meta property="og:site_name" content="Monetic">
   <meta property="og:url" content="https://monetic.app/privacy.html">
   <meta property="og:title" content="Privacy Policy &amp; Data Safety - Monetic">
-  <meta property="og:description" content="Official Privacy Policy and Data Safety disclosures for Monetic. Complete transparency on data retention, encryption, and zero third-party monetization.">
+  <meta property="og:description" content="Official Privacy Policy and Data Safety disclosures for Monetic. Complete transparency on data retention, encryption, and advertising.">
   <meta property="og:image" content="https://monetic.app/monetic_logo_512.png">
   <meta property="og:image:secure_url" content="https://monetic.app/monetic_logo_512.png">
   <meta property="og:image:width" content="512">
@@ -127,8 +127,10 @@
       padding: 0;
     }
 
-    html {
-      scroll-behavior: smooth;
+    @media (prefers-reduced-motion: no-preference) {
+      html {
+        scroll-behavior: smooth;
+      }
     }
 
     body {
@@ -551,7 +553,7 @@
       scroll-margin-top: 5rem;
     }
 
-    .deletion-card h3 {
+    .deletion-card h2 {
       color: var(--danger-title);
       margin-top: 0;
       display: flex;
@@ -576,7 +578,7 @@
       margin: 1rem 0;
     }
 
-    .deletion-method h4 {
+    .deletion-method h3 {
       color: var(--text-main);
       margin-top: 0;
     }
@@ -723,879 +725,688 @@
 
   <main>
     <article class="doc-card">
-    <div class="lang-content-en">
-<div class="title-block">
-        <h1>Privacy Policy for Monetic</h1>
+    <div class="lang-content-en" lang="en">
+      <div class="title-block">
+        <h1 id="privacy-policy-en">Privacy Policy for Monetic</h1>
         <div class="meta-bar">
-          <span><strong>Effective Date:</strong> September 29, 2026</span>
+          <span><strong>Last Updated:</strong> November 4, 2026</span>
           <span>•</span>
-          <span><strong>Last Updated:</strong> September 29, 2026</span>
+          <span><strong>Effective Date:</strong> November 4, 2026</span>
           <span class="badge badge-dev">Independent Developer</span>
         </div>
       </div>
 
-      <section>
-        <h2>1. Introduction & Overview</h2>
-        <p>Welcome to <strong>Monetic</strong> ("the App", "we", "us", or "our"). Monetic is an advanced personal finance, budget tracking, and expense management mobile application developed and operated as a cross-platform solution for Android and iOS, accessible at <a href="https://monetic.app">https://monetic.app</a>.</p>
-        <p>We are deeply committed to protecting your privacy and ensuring the security of your personal and financial information. This Privacy Policy explains how we collect, use, store, share, and protect your data when you use the Monetic mobile application and associated services, in strict compliance with:</p>
-        <ul>
-          <li><strong>The General Data Protection Regulation (GDPR)</strong> (Regulation (EU) 2016/679) for users located in the European Union (EU) and European Economic Area (EEA);</li>
-          <li><strong>The ePrivacy Directive</strong> (Directive 2002/58/EC as amended) and national transpositions;</li>
-          <li><strong>The EU Digital Services Act (DSA)</strong> (Regulation (EU) 2022/2065);</li>
-          <li><strong>The California Consumer Privacy Act (CCPA)</strong> and <strong>California Privacy Rights Act (CPRA)</strong> for California residents;</li>
-          <li><strong>Google Play Developer Program Policies</strong> (including Financial Services, Data Safety, and Account Deletion guidelines);</li>
-          <li><strong>Apple App Store Review Guidelines</strong> (including Guideline 5.1 on Privacy, Data Collection, and Account Deletion 5.1.1(v)).</li>
-        </ul>
-        <p>By downloading, accessing, or using Monetic, you acknowledge that you have read and understood this Privacy Policy. If you do not agree with our data practices, please do not use the App.</p>
-      </section>
+      <p><strong>Account Deletion (Google Play / App Store):</strong> <a href="privacy.html#delete-account">https://monetic.app/privacy.html#delete-account</a></p>
+      <p><strong>Romanian version:</strong> <a href="#privacy-policy-ro" class="lang-btn" data-lang="ro">PRIVACY_POLICY.ro.md</a></p>
+      <p><strong>Data Controller:</strong> Daniel Crețu, Cluj-Napoca, Romania</p>
+      <p><strong>Contact:</strong> <a href="mailto:support@monetic.app">support@monetic.app</a></p>
 
       <hr>
 
       <section>
-        <h2>2. Data Controller & Contact Information</h2>
-        <p>For the purposes of the GDPR and applicable international data protection laws, the <strong>Data Controller</strong> responsible for your personal data is:</p>
-        <ul>
-          <li><strong>Application:</strong> Monetic</li>
-          <li><strong>Data Controller / Developer:</strong> Daniel Crețu (Independent Software Developer)</li>
-          <li><strong>Contact & Privacy Email:</strong> <a href="mailto:support@monetic.app">support@monetic.app</a></li>
-          <li><strong>EU Digital Services Act (DSA) Single Point of Contact:</strong> <a href="mailto:support@monetic.app">support@monetic.app</a> (Communication languages: English, Romanian)</li>
-          <li><strong>Official Website:</strong> <a href="https://monetic.app">https://monetic.app</a></li>
-          <li><strong>Postal Address:</strong> Cluj-Napoca, Romania</li>
-        </ul>
-        <p>If you have any questions, concerns, or requests regarding this Privacy Policy or your statutory privacy rights, please email us directly at <a href="mailto:support@monetic.app">support@monetic.app</a>.</p>
-      </section>
-
-      <hr>
-
-      <section>
-        <h2>3. Core Architectural Principle: Local-First Storage, OS Isolation & Hybrid Sync</h2>
-        <p>Monetic is architected with a <strong>privacy-by-design, local-first philosophy</strong>:</p>
-
+        <h2>1. Summary</h2>
+        <p>Monetic (&quot;the App&quot;, &quot;we&quot;, &quot;us&quot;) is a personal finance and budgeting app for Android and iOS. This policy explains what personal data the App and its backend process, why, with whom it is shared, how long it is kept and which rights you have. It is written to meet the EU General Data Protection Regulation (GDPR), the UK GDPR, the Swiss FADP, US state privacy laws (including the California CCPA/CPRA), COPPA, and the Apple App Store and Google Play privacy requirements.</p>
+        <p>In short:</p>
         <div class="callout-info">
-          <h3>🔒 Local-First Storage & Hardware-Backed Security</h3>
-          <p><strong>By default, your financial records are stored solely on your physical device.</strong></p>
-          <p>Your transactions, account balances, custom categories, regular payments, recurring reminders, and transfer histories reside in a private SQLite database via Room persistence library. We cannot see, read, access, or analyze your local financial data.</p>
-        </div>
-
-        <ol>
-          <li><strong>Device-Local Storage by Default (Offline-First):</strong> By default, your everyday financial records—including transactions, account balances, custom categories, regular payments, recurring reminders, and transfer histories—are stored exclusively on your physical device in an SQLite database via the Room persistence library.</li>
-          <li><strong>Native Operating System Storage Encryption:</strong>
-            <ul>
-              <li><strong>Android:</strong> The local SQLite database is stored in private internal storage protected by <strong>Android File-Based Encryption (FBE)</strong>, isolating application files from unauthorized processes.</li>
-              <li><strong>iOS:</strong> Database files are stored in the <code>Application Support</code> container protected with <strong>iOS Data Protection</strong> (<code>NSFileProtectionCompleteUntilFirstUserAuthentication</code>), remaining hardware-encrypted while the device is locked.</li>
-            </ul>
-          </li>
-          <li><strong>Automated Local Disaster Recovery Snapshots (<code>.monrec</code>):</strong> To protect against accidental deletion or local file corruption, Monetic creates hardware-encrypted local snapshot archives (<code>.monrec</code>) within private application storage prior to sensitive database operations.
-            <ul>
-              <li><strong>Cryptographic Standards:</strong> Snapshots are encrypted at rest using <strong>AES-256-GCM</strong> backed by the <strong>AndroidKeyStore</strong> on Android, and <strong>AES-256 + HMAC-SHA256 (Encrypt-then-MAC)</strong> with keys stored in the <strong>iOS Keychain</strong> (<code>kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly</code>).</li>
-              <li><strong>Retention &amp; Scope:</strong> Snapshots reside solely on your physical device, are retained for a rolling window of <strong>30 days</strong> before automatic local pruning, and are never transmitted to our cloud servers or external third parties.</li>
-            </ul>
-          </li>
-          <li><strong>Strict Exclusion from Unencrypted OS-Level System Backups:</strong>
-            <ul>
-              <li>To prevent unencrypted financial leaks into third-party cloud dumps, Monetic explicitly excludes the local database (<code>money_manager_db</code>), physical receipt photographs (<code>receipt_photos</code>), and local disaster recovery snapshots (<code>recovery_backups</code>) from operating system automated backups.</li>
-              <li><strong>Android:</strong> Explicitly blocked in <code>backup_rules.xml</code> and <code>data_extraction_rules.xml</code> from Google Drive Auto-Backup and device-to-device transfers.</li>
-              <li><strong>iOS:</strong> Flagged with <code>NSURLIsExcludedFromBackupKey = true</code> to prevent inclusion in unencrypted iCloud device backups.</li>
-            </ul>
-          </li>
-          <li><strong>Cloud Sync Requires Explicit Consent & Authentication:</strong> Cloud synchronization and remote backups <strong>never occur without your explicit consent and authenticated sign-in</strong>. All data transmitted to or stored in cloud backups is secured via TLS 1.3 in transit and AES-256 at rest.</li>
-          <li><strong>Zero Commercial Data Selling:</strong> We <strong>never</strong> sell, rent, lease, monetize, or broker your personal financial records or transaction data to advertisers, credit bureaus, or data aggregators under any circumstances.</li>
-          <li><strong>User Ownership of Backups:</strong> When cloud backup is enabled, your data is packaged into an encrypted archive (<code>monetic_backup.zip</code>) and stored directly in your own private Google Drive AppData folder (on Android) or encrypted in Firebase Cloud Firestore / Storage (on iOS or as fallback). You retain sole ownership of your backup files.</li>
-        </ol>
-      </section>
-
-      <hr>
-
-      <section>
-        <h2>4. Categories of Data We Process</h2>
-
-        <h3>4.1. Information You Provide to Us</h3>
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>Category</th>
-                <th>Description & Specific Data Points</th>
-                <th>Purpose</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Account Credentials</strong></td>
-                <td>Email address, password (hashed), Firebase Authentication UID, Google account profile identifier (when using Google Sign-In), Apple Sign-In user identifier (when using Sign in with Apple), account creation date, email verification status.</td>
-                <td>Authentication, account recovery, session security, multi-device access.</td>
-              </tr>
-              <tr>
-                <td><strong>Financial Records</strong></td>
-                <td>Account names, balances, native account currencies, transactions (amount, date/time, type: income/expense/transfer, category designation, optional notes).</td>
-                <td>Core functionality: budget calculation, expense tracking, statistics, multi-currency conversion.</td>
-              </tr>
-              <tr>
-                <td><strong>Scheduled & Recurring Payments</strong></td>
-                <td>Bill names, recurring frequencies (daily, weekly, monthly), due dates, notification reminder times.</td>
-                <td>Scheduling local device notifications for payment reminders.</td>
-              </tr>
-              <tr>
-                <td><strong>Receipt Photographs & Custom Logos</strong></td>
-                <td>Photographic images of paper receipts, invoices, custom category logos, or account avatars selected from your device's photo library or captured via camera.</td>
-                <td>Associating proof-of-purchase images with transactions and personalizing user interface avatars.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>4.2. Information Processed Locally on Device (Never Transmitted to Servers)</h3>
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>Category</th>
-                <th>Description & Technical Implementation</th>
-                <th>Privacy Invariant</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Internal 4-Digit Security PIN</strong></td>
-                <td>Secured using <strong>PBKDF2-HMAC-SHA256 (100,000 iterations)</strong> with a cryptographically sound salt generated via CSPRNG (<code>SecureRandom</code> / native random generator). Stored in hardware-secured storage: <strong>EncryptedSharedPreferences</strong> backed by <strong>MasterKey AES-256-GCM</strong> on Android, and <strong>Keychain Services</strong> with <code>kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly</code> on iOS.</td>
-                <td><strong>NEVER</strong> transmitted to, synchronized with, or recoverable from our servers. Does not alter or sync with cloud passwords.</td>
-              </tr>
-              <tr>
-                <td><strong>Biometric Authentication</strong></td>
-                <td>Touch ID, Face ID, Android BiometricPrompt (fingerprint or face unlock).</td>
-                <td>Processed strictly within the hardware <strong>Secure Enclave / Android Keystore</strong> of your device. The App only receives a binary success/failure token. Raw biometric data is <strong>never</strong> accessible to Monetic.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>4.3. Information Collected Automatically & Technical Observability</h3>
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>Category</th>
-                <th>Description & Technical Source</th>
-                <th>Purpose & Retention</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Request Correlation & API Tracing</strong></td>
-                <td>Ephemeral <code>X-Request-ID</code> (UUID v4) generated per outbound request or extracted from Cloudflare Edge Ray ID (<code>cf-ray</code>), request execution duration (<code>durationMs</code>), HTTP method, and sanitized path.</td>
-                <td>Distributed tracing, end-to-end API integrity, outside-in performance monitoring. Ephemeral, not stored permanently.</td>
-              </tr>
-              <tr>
-                <td><strong>Server Access Logs & Anonymized IP</strong></td>
-                <td>Truncated client IP address: <strong>IPv4 is truncated to <code>/24</code></strong> (last octet zeroed out, e.g. <code>198.51.100.0</code>); <strong>IPv6 is truncated to <code>/48</code></strong> (last 80 bits zeroed out, e.g. <code>2001:db8:85a3::</code>). User Agent, response status code, internal opaque Firebase UID (when authenticated).</td>
-                <td>Infrastructure security, DDoS mitigation, rate limiting enforcement. Strictly retained for a <strong>maximum rolling window of 30 days</strong> under Legitimate Interests (Art. 6(1)(f) GDPR).</td>
-              </tr>
-              <tr>
-                <td><strong>Diagnostic & Crash Telemetry</strong></td>
-                <td>Device hardware model, operating system and version (Android/iOS), application version, timestamp of crash, sanitized stack traces (via Firebase Crashlytics).</td>
-                <td>Identifying software defects, diagnosing fatal errors, enhancing application stability. Retained for up to 90 days.</td>
-              </tr>
-              <tr>
-                <td><strong>Purchase & Entitlement Data</strong></td>
-                <td>RevenueCat App User ID, transaction ID, store product identifiers (<code>monetic_pro_monthly</code>, <code>monetic_pro_yearly</code>, <code>monetic_pro_lifetime</code>), purchase timestamp, subscription status, trial eligibility.</td>
-                <td>Granting and managing Monetic Pro / Premium feature entitlements, managing auto-renewal status.</td>
-              </tr>
-              <tr>
-                <td><strong>Advertising Identifiers & Consent (Free Plan Only)</strong></td>
-                <td>Google Advertising ID (GAID) on Android, IDFA on iOS (subject to user consent via App Tracking Transparency), consent status collected via the <strong>Google User Messaging Platform (UMP) SDK</strong>.</td>
-                <td>Serving non-intrusive advertisements in the Free version through Google AdMob, strictly conditioned upon prior consent in the EEA/UK.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="callout-info">
-          <h3>🛡️ Strict Zero Financial Data Leakage Guarantee</h3>
-          <p><strong>Monetic guarantees that financial transaction amounts, custom descriptions/notes, category names, account balances, and photographic receipt images NEVER reach Firebase Crashlytics, server access logs, or third-party analytics services.</strong></p>
-          <p>Diagnostic breadcrumbs record only sanitized method paths and payload byte sizes (<code>bytes=...</code>), stripped of all query parameters, tokens, and payload bodies.</p>
-        </div>
-      </section>
-
-      <hr>
-
-      <section>
-        <h2>5. Legal Bases for Processing under GDPR (EU/EEA Users)</h2>
-        <p>If you are located in the European Union or European Economic Area, we process your personal data under the following lawful bases set out in <strong>Article 6(1) of the GDPR</strong>:</p>
         <ul>
-          <li><strong>Performance of a Contract (Article 6(1)(b) GDPR):</strong> Processing account credentials, financial records, transaction calculations, and cloud backups to fulfill our contractual obligation to provide the Monetic service.</li>
-          <li><strong>Your Explicit Consent (Article 6(1)(a) GDPR &amp; ePrivacy Directive):</strong>
-            <ul>
-              <li>Accessing your device camera or photo library to capture and attach receipt photos.</li>
-              <li>Serving personalized or non-personalized advertisements via Google AdMob, collected and managed dynamically through the <strong>Google User Messaging Platform (UMP) Consent Management Platform</strong> prior to initializing any advertising requests in the EEA and UK.</li>
-              <li><strong>Withdrawal &amp; Granular CMP Access:</strong> Users in the EEA and UK may revisit, modify, or withdraw their advertising consent choices at any time directly within the application by navigating to <strong>Settings &rarr; Ad Privacy Options</strong> (or through device-level privacy settings). Modifying your consent takes effect immediately upon the next ad request.</li>
-            </ul>
-          </li>
-          <li><strong>Legitimate Interests (Article 6(1)(f) GDPR):</strong> Processing ephemeral request identifiers (<code>X-Request-ID</code>) and server access logs with subnet-level IP anonymization (/24 and /48) for up to 30 days to protect backend infrastructure against cyberattacks, DDoS, and abuse; diagnosing crashes and software failures via Firebase Crashlytics using anonymized telemetry.</li>
-          <li><strong>Compliance with Legal Obligations (Article 6(1)(c) GDPR):</strong> Maintaining digital transaction confirmation records required by tax, consumer protection, and commercial accounting regulations.</li>
+          <li><strong>Your financial records stay on your device by default.</strong> You can send them to the cloud by signing in and turning on cloud sync or cloud backup. You can also export them and save or share them with destinations you choose.</li>
+          <li><strong>We do not sell your financial data</strong>, and it is never used for advertising.</li>
+          <li><strong>The free version shows ads.</strong> On Android, ads can be personalized only if you agree in the consent form. On iOS, ads are always non-personalized and the App does not track you.</li>
+          <li><strong>Crash reports are optional.</strong> You can turn them off in Settings.</li>
+          <li><strong>You can delete your account and cloud data from inside the App</strong> at any time.</li>
+        </ul>
+        </div>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>2. Who Is Responsible for Your Data</h2>
+        <p>The data controller is <strong>Daniel Crețu</strong>, an independent developer based in <strong>Cluj-Napoca, Romania</strong> (European Union).</p>
+        <ul>
+          <li><strong>Email for privacy requests and support:</strong> <a href="mailto:support@monetic.app">support@monetic.app</a></li>
+          <li><strong>Website:</strong> <a href="https://monetic.app">https://monetic.app</a></li>
+          <li><strong>Languages:</strong> English, Romanian</li>
+        </ul>
+        <p>We have not appointed a Data Protection Officer, because the GDPR does not require one for this type of processing (Art. 37 GDPR). Please send all privacy questions to the email above.</p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>3. What Data We Process</h2>
+        <h3>3.1. Data stored only on your device</h3>
+        <p>The following data is stored in the App's private storage on your device and is <strong>not sent to us</strong> unless you turn on cloud sync or cloud backup (section 4):</p>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr><th scope="col">Data</th><th scope="col">Details</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Financial records</td><td>Accounts, balances, currencies, transactions (amount, date, type, category, notes), transfers, budgets, categories.</td></tr>
+              <tr><td>Scheduled items</td><td>Regular payments and reminders, with their local notifications.</td></tr>
+              <tr><td>Images</td><td>Receipt photos and custom logos you take with the camera or pick from your photo library.</td></tr>
+              <tr><td>Security settings</td><td>Your in-app PIN (stored only as a salted PBKDF2 hash in Android Keystore-backed storage or the iOS Keychain) and your biometric lock setting. Biometric data (fingerprint, Face ID) is handled entirely by your operating system; the App only receives a success or failure result.</td></tr>
+              <tr><td>PIN recovery details</td><td>Your recovery email and a separately salted hash of your recovery password. These are stored in private app preferences on Android and in Keychain on iOS. The recovery password lets you set a new PIN offline without restoring a backup.</td></tr>
+              <tr><td>Local recovery snapshots</td><td>Encrypted copies of the local database, made before risky operations. Archives older than <strong>30 days</strong> are deleted automatically during regular cleanup while the App is used.</td></tr>
+              <tr><td>Migration recovery copy</td><td>A separate database copy used to recover from migration failures. It relies on device storage protection and is not encrypted by the App. It has no time-based expiry and is replaced when another migration snapshot is needed.</td></tr>
+              <tr><td>Preferences and technical state</td><td>Theme, language, currency, backup and crash-reporting choices, and other technical settings. When you sign in, the App also caches account information and authentication credentials to maintain your session. On iOS, authentication tokens are stored in Keychain.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>On Android, local data is excluded from Android Auto Backup. On iOS, receipt photos are excluded from iCloud and computer backups; the local database and recovery snapshots are included in your iPhone backup, so a new iPhone restored from that backup gets your data back. Apple protects iCloud backups under its terms; you control them in your iPhone settings.</p>
+        <p>You can restore or delete local recovery snapshots in <strong>Settings → Data Management</strong>, including in guest mode. These snapshots contain database records, but do not include separately stored images or budget preferences. <strong>&quot;Erase all data&quot;</strong> first creates a local recovery snapshot, kept under the same 30-day cleanup rule.</p>
+        <p>You can export financial records as CSV or ZIP files that are not encrypted by the App. You can save or share them with destinations you choose. Exported copies are outside the App's private storage and lock protection.</p>
+        <h3>3.2. Data you give us when you use online features</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr><th scope="col">Data</th><th scope="col">When</th><th scope="col">Purpose</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Account data:</strong> email address, password (managed by Firebase Authentication, never visible to us), account ID (Firebase UID), sign-in provider, the display name you enter during registration, and the name and profile identifier returned by Google Sign-In or Sign in with Apple</td><td>When you create an account or sign in</td><td>Providing your account, sign-in, account recovery and security</td></tr>
+              <tr><td><strong>Synced financial data:</strong> accounts, transactions, categories, reminders and scheduled payments</td><td>Only if you turn on cloud sync</td><td>Keeping your data in sync across your devices</td></tr>
+              <tr><td><strong>Cloud backups:</strong> a copy of your database, budgets and receipt photos, plus device and app information, backup times, record counts and file size</td><td>Only if you create a backup or turn on automatic backup</td><td>Restoring your data on a new or reset device</td></tr>
+              <tr><td><strong>Feedback:</strong> your message, optional email address, feedback type, device model, OS version, app language, plan (free/trial/Pro), account ID if signed in, device identifier and, while &quot;Include diagnostics&quot; is checked, the request IDs of the app's last 5 failed server calls (random codes that let us find those calls in our server logs; a support email drafted by the app lists them too, and you can delete them before sending)</td><td>Only when you send feedback</td><td>Answering you and fixing problems</td></tr>
+              <tr><td><strong>Purchase data:</strong> RevenueCat customer ID (your account ID when signed in, otherwise a random ID), products bought, purchase and renewal dates, subscription status</td><td>When you buy or restore Monetic Pro</td><td>Granting and restoring Pro features</td></tr>
+              <tr><td><strong>Purchase proof:</strong> account ID, plan, price shown, store product ID, version of the pre-purchase information shown, platform, app language, date and time, and, for the lifetime plan, express consent to immediate access and acknowledgement of losing the right of withdrawal</td><td>When you buy Monetic Pro</td><td>Proving the purchase and consent; emailing you a confirmation</td></tr>
+              <tr><td><strong>Withdrawal statements:</strong> name, purchase description, contact email, account ID, platform, language, time of receipt, purchase-verification result, and the store, product and original purchase date when available from RevenueCat, including whether a previous plan ended and the purchases targeted for refund (product, store, lifetime status, store transaction ID where available, and original purchase date)</td><td>When you submit a withdrawal statement</td><td>Recording and confirming the withdrawal and handling the refund</td></tr>
+              <tr><td><strong>Store-operation queue:</strong> account ID, withdrawal or purchase-proof ID, store product IDs and store transaction IDs where applicable, lifetime status for refunds, processed cancellation transaction IDs and counts, status, attempts, timestamps, retry and processing-lease details, error codes, HTTP status codes and request ID where available</td><td>After an in-time withdrawal for an automatic Google Play refund, or an Android lifetime purchase for renewal cancellation</td><td>Issuing Google Play refunds and stopping renewal of Google Play subscriptions after a lifetime purchase, with retries and progress tracking</td></tr>
+              <tr><td><strong>Trial data:</strong> a device identifier (Android ID or iOS identifierForVendor), trial start and end, account ID if signed in</td><td>When you start a free trial</td><td>Preventing repeated free trials</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Buying Monetic Pro requires a signed-in account with a verified email. Google and Apple accounts count as verified.</p>
+        <p>Your device stores pending purchase proof, including your account ID and purchase details, and a record of your lifetime consent linked to your account. Pending proof is retried when that account is signed in and deleted from the device once delivered to us.</p>
+        <p>We verify purchases with RevenueCat when you submit a withdrawal statement in the App. If verification is temporarily unavailable, we still record your statement for support review.</p>
+        <p>We never receive your payment card or bank details. Payments are handled by Apple or Google.</p>
+        <h3>3.3. Data collected automatically</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr><th scope="col">Data</th><th scope="col">Source</th><th scope="col">Purpose</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Server logs:</strong> IP address truncated before storage (IPv4 to /24, IPv6 to /48), request ID, method, path, status code, duration, hashed versions of the user agent and, when signed in, your account ID. Work the server finishes later (emails, account deletion, feedback notifications) is logged under the request ID of the call that started it. When a call fails, the app shows the first characters of its request ID as an &quot;Error code&quot; you can quote to support</td><td>Our backend (Cloud Functions behind Cloudflare)</td><td>Security, abuse prevention, rate limiting, troubleshooting</td></tr>
+              <tr><td><strong>App integrity tokens</strong></td><td>Firebase App Check (Play Integrity on Android, Apple App Attest/DeviceCheck on iOS)</td><td>Making sure requests come from the genuine App</td></tr>
+              <tr><td><strong>Crash reports:</strong> device model, OS version, app version, crash time, stack trace, technical log lines (no amounts, notes, category names or images), a Crashlytics installation ID</td><td>Firebase Crashlytics, <strong>on by default</strong>. You can turn off &quot;Send crash reports&quot; in Settings</td><td>Finding and fixing crashes. Crash reports are not linked to your account.</td></tr>
+              <tr><td><strong>Configuration requests:</strong> network information such as your IP address; a Firebase installation ID for Remote Config on Android</td><td>Cloud Firestore; Firebase Remote Config on Android</td><td>Delivering app settings (for example, ad frequency)</td></tr>
+              <tr><td><strong>Advertising data (free plan):</strong> advertising ID (Android only, if allowed by you and your device settings), IP address, approximate location, device and app information, ad interactions, your consent choices</td><td>Google AdMob and the Google User Messaging Platform (UMP)</td><td>Showing ads and measuring them; recording your consent choices</td></tr>
+              <tr><td><strong>Feedback anti-abuse data:</strong> a hash of your IP address stored with your report, a message-derived hash and separate duplicate-submission receipts</td><td>Our backend</td><td>Preventing abuse and duplicate feedback submissions</td></tr>
+              <tr><td><strong>Exchange-rate requests</strong></td><td>The App asks public rate services directly (see section 6)</td><td>Converting currencies. These requests contain no personal data other than your IP address, which the services receive as part of any internet request.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>The App does <strong>not</strong> use Firebase Analytics or any other analytics SDK, does not collect precise location, contacts, or your Google Drive files, and does not track you across other companies' apps or websites on iOS.</p>
+        <h3>3.4. Do you have to give us your data?</h3>
+        <p>No law requires you to give us personal data. Some data is needed for a feature to work:</p>
+        <ul>
+          <li>Without an account (email or Google/Apple sign-in) you can still use the App in guest mode, but not cloud sync, cloud backup or multi-device use.</li>
+          <li>Without purchase data, the store and RevenueCat cannot grant or restore Monetic Pro.</li>
+          <li>The email address in feedback is optional; without it we cannot reply to you.</li>
+          <li>Without camera or photo-library access you cannot attach images, and everything else works.</li>
         </ul>
       </section>
 
       <hr>
 
       <section>
-        <h2>6. Cloud Backup Architecture & Lifecycle Management</h2>
-        <p>Monetic provides a hybrid dual-channel backup system designed to maximize privacy and eliminate unnecessary third-party data retention:</p>
-
-        <h3>6.1. Google Drive Cloud Backup (Primary on Android)</h3>
+        <h2>4. Cloud Sync and Cloud Backup</h2>
+        <p>Cloud features are <strong>off by default</strong> and require a signed-in account.</p>
+        <h3>4.1. Cloud sync</h3>
+        <p>When you turn on sync, your financial records are stored in <strong>Google Cloud Firestore</strong> (<code>users/{your account ID}</code>), protected by Google's encryption at rest and TLS in transit, and accessible only to your account. A change history is kept for <strong>90 days</strong> so other devices can catch up, after which it is deleted automatically. A technical record of processed changes (IDs and revision numbers) is kept until you delete your account.</p>
+        <p>Budgets and receipt-photo files are included in full backups rather than continuous sync.</p>
+        <h3>4.2. Cloud backup</h3>
         <ul>
-          <li><strong>Storage Location:</strong> Backups are written directly to your personal Google Drive account in the hidden <code>appDataFolder</code> (<code>https://www.googleapis.com/auth/drive.appdata</code>).</li>
-          <li><strong>Isolation:</strong> Files stored in the <code>appDataFolder</code> are private to Monetic and cannot be accessed, viewed, or modified by other applications or file managers on your device or Google Drive.</li>
-          <li><strong>Scope of Access:</strong> Monetic requests strictly limited scopes (<code>drive.appdata</code> and <code>drive.file</code>). The App <strong>cannot</strong> read, view, modify, or delete any of your personal documents, photos, or folders on Google Drive.</li>
-          <li><strong>Unified Identity:</strong> When signed in via Google Sign-In, your Monetic profile and Google Drive backup destination are unified 1:1, preventing accidental cross-account overwrites.</li>
+          <li><strong>Firebase (Android and iOS):</strong> backups are stored in Firestore and Cloud Storage under your account. The backup content is encrypted by the App with a key derived from your account ID. <strong>This is not end-to-end encryption:</strong> it protects against casual access, but the operator of the service could technically decrypt it. We keep your <strong>5 most recent backups</strong> and delete older ones automatically. Unfinished upload files are removed by a daily cleanup once they are older than <strong>24 hours</strong>. Separate attachment uploads have a 200 MB account quota. Each full Firebase backup archive, including its images, is limited to 50 MB.</li>
+          <li><strong>Google Drive (Android):</strong> if you link Google Drive, the backup is saved as a ZIP file in the hidden app-data folder of <strong>your own</strong> Google Drive. This file is <strong>not encrypted by the App</strong>; it is protected by your Google account. The App asks only for the <code>drive.appdata</code> and <code>drive.file</code> permissions and cannot see your other Drive files. You can delete this backup from Google Drive (<em>Settings → Manage apps → Monetic → Delete hidden app data</em>).</li>
         </ul>
-
-        <h3>6.2. Firebase Cloud Firestore & Storage (Secondary / Fallback & iOS)</h3>
-        <ul>
-          <li><strong>Storage Location:</strong> Used on iOS or on Android when Google Drive is unlinked. Data is stored in secure Google Cloud Firestore database instances (<code>/users/{uid}/backups</code>) and encrypted Google Cloud Storage buckets (<code>/users/{uid}/backups/</code>).</li>
-          <li><strong>Security:</strong> Data in transit is protected using TLS 1.3, and data at rest is encrypted using 256-bit Advanced Encryption Standard (AES-256).</li>
-          <li><strong>Two-Phase Staging & Automated 24-Hour Expiration:</strong>
-            <ul>
-              <li>File uploads (receipt attachments and backup archives) are uploaded to temporary staging slots (<code>users/{uid}/*/staging/</code>) where Magic Bytes and SHA-256 checksums are validated before promotion.</li>
-              <li>In accordance with data minimization principles, unfinalized or abandoned staging files are automatically purged by automated Cloud Storage lifecycle rules after <strong>24 hours</strong>.</li>
-            </ul>
-          </li>
-        </ul>
-
-        <h3>6.3. Background Sync & WorkManager</h3>
-        <p>When Auto-Backup is enabled in Settings, Monetic schedules background sync tasks using <strong>Android WorkManager</strong> (<code>CloudBackupWorker</code>) with network constraints (<code>NetworkType.CONNECTED</code>). This guarantees that your latest mutations are safely uploaded even if you close or swipe away the application.</p>
+        <p>With automatic backup enabled, backups may run after changes and when the App enters the background. Android uses your connected Google Drive account, or Firebase if no Drive account is connected. iOS uses Firebase within the background time allowed by iOS.</p>
       </section>
 
       <hr>
 
       <section>
-        <h2>7. Third-Party Service Providers & Sub-Processors</h2>
-        <p>We work with trusted third-party technology providers to power authentication, infrastructure, crash reporting, subscription validation, and advertising. All sub-processors are bound by strict Data Processing Agreements (DPAs):</p>
-
+        <h2>5. Why We Process Your Data (Legal Bases)</h2>
+        <p>For users in the EEA, UK and Switzerland, we rely on the following legal bases (Art. 6(1) GDPR):</p>
         <div class="table-wrapper">
           <table>
             <thead>
-              <tr>
-                <th>Sub-Processor</th>
-                <th>Location</th>
-                <th>Role / Services Provided</th>
-                <th>Privacy Policy</th>
-              </tr>
+              <tr><th scope="col">Purpose</th><th scope="col">Legal basis</th></tr>
             </thead>
             <tbody>
-              <tr>
-                <td><strong>Cloudflare, Inc.</strong></td>
-                <td>USA / EU</td>
-                <td>Anycast Edge Proxy, Web Application Firewall (WAF), Origin Shielding, DDoS mitigation, and SSL/TLS edge routing.</td>
-                <td><a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare Privacy Policy</a></td>
-              </tr>
-              <tr>
-                <td><strong>Google LLC / Google Ireland Ltd.</strong></td>
-                <td>USA / Ireland</td>
-                <td>Firebase Authentication, Cloud Firestore, Cloud Storage, Firebase Crashlytics, Firebase Remote Config, Google Drive API, Google AdMob, Google UMP SDK.</td>
-                <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></td>
-              </tr>
-              <tr>
-                <td><strong>Apple Inc.</strong></td>
-                <td>USA / Ireland</td>
-                <td>Apple Sign-In authentication, Apple In-App Purchase (StoreKit 2), Face ID local verification, Apple Push Notifications.</td>
-                <td><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Apple Privacy Policy</a></td>
-              </tr>
-              <tr>
-                <td><strong>RevenueCat, Inc.</strong></td>
-                <td>USA</td>
-                <td>In-app subscription lifecycle management, receipt validation, entitlement verification.</td>
-                <td><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">RevenueCat Privacy Policy</a></td>
-              </tr>
+              <tr><td>Account, sign-in, sync, backup, restore, Pro purchases and restore, answering feedback</td><td><strong>Contract</strong> (Art. 6(1)(b)): needed to provide the features you ask for</td></tr>
+              <tr><td>Personalized ads (Android, EEA/UK/Switzerland), and storing or reading identifiers on your device for ads</td><td><strong>Consent</strong> (Art. 6(1)(a) GDPR and Art. 5(3) ePrivacy Directive), collected through the UMP consent form</td></tr>
+              <tr><td>Non-personalized ads in the free plan</td><td><strong>Legitimate interest</strong> (Art. 6(1)(f)) in funding the free version; in the EEA/UK, device storage for ads still follows your UMP choices</td></tr>
+              <tr><td>Crash reports</td><td><strong>Legitimate interest</strong> in a stable, secure App. You can object at any time by turning off &quot;Send crash reports&quot;</td></tr>
+              <tr><td>Server logs, App Check, rate limiting, trial anti-abuse</td><td><strong>Legitimate interest</strong> in protecting the service and preventing fraud</td></tr>
+              <tr><td>Purchase proof, withdrawal statements, confirmation emails and the store-operation queue for refunds and renewal cancellations</td><td><strong>Legal obligation</strong> (Art. 6(1)(c) GDPR; Directive 2011/83/EU Art. 8(7) and 16(m), Romanian OUG 34/2014) and <strong>performance of the contract</strong> (Art. 6(1)(b))</td></tr>
+              <tr><td>Keeping purchase proof and withdrawal statements after account deletion</td><td><strong>Legal obligation</strong> and the establishment, exercise or defence of legal claims (Art. 17(3)(b) and (e) GDPR)</td></tr>
+              <tr><td>Keeping records needed for legal claims or to answer authorities</td><td><strong>Legal obligation</strong> (Art. 6(1)(c)) or <strong>legitimate interest</strong> in defending legal claims</td></tr>
             </tbody>
           </table>
         </div>
+        <p>Camera and photo-library access are used only when you choose to attach an image, and you control them through your device's permission settings.</p>
       </section>
 
       <hr>
 
       <section>
-        <h2>8. International Data Transfers</h2>
-        <p>Our sub-processors maintain servers in the European Union, the United States, and worldwide.</p>
-        <p>Whenever personal data originating from the European Economic Area (EEA), the United Kingdom, or Switzerland is transferred outside these territories, we ensure an adequate level of data protection by relying on:</p>
-        <ul>
-          <li><strong>The EU-U.S. Data Privacy Framework (DPF)</strong> and the UK Extension to the EU-U.S. DPF;</li>
-          <li><strong>Standard Contractual Clauses (SCCs)</strong> approved by the European Commission pursuant to Article 46(2)(c) of the GDPR;</li>
-          <li>Technical safeguards, including end-to-end transport layer encryption (TLS 1.3) and AES-256 storage encryption.</li>
-        </ul>
+        <h2>6. Who Receives Your Data</h2>
+        <p>We do not sell or rent your personal data. We share it only with the service providers below, who process it for us under their data processing terms, or who act as independent controllers where noted.</p>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr><th scope="col">Recipient</th><th scope="col">What they receive</th><th scope="col">Role</th><th scope="col">Location</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Google LLC / Google Ireland Ltd.</strong> (Firebase Authentication, Cloud Firestore, Cloud Storage, Cloud Functions, Crashlytics, Remote Config, App Check, Google Sign-In, Google Drive API)</td><td>Account, synced and backup data, feedback, logs, crash reports</td><td>Processor</td><td>EU (Cloud Functions in <code>europe-west1</code>, Belgium; Cloud Firestore in the <code>eur3</code> multi-region, Belgium and the Netherlands) and USA</td></tr>
+              <tr><td><strong>Google</strong> (AdMob, User Messaging Platform)</td><td>Advertising data and consent choices (free plan)</td><td>Independent controller for personalized ads; processor otherwise</td><td>Worldwide</td></tr>
+              <tr><td><strong>Apple Inc.</strong> (Sign in with Apple, App Store purchases, App Attest)</td><td>Sign-in identifier, purchase data</td><td>Independent controller for purchases</td><td>USA / Ireland</td></tr>
+              <tr><td><strong>Google Play</strong> (Play Billing, Play Integrity)</td><td>Purchase data, integrity verdicts</td><td>Independent controller for purchases</td><td>USA / Ireland</td></tr>
+              <tr><td><strong>RevenueCat, Inc.</strong></td><td>Purchase data and RevenueCat customer ID, to manage Pro, verify purchases, issue Google Play refunds and stop renewal of Google Play subscriptions after a lifetime purchase</td><td>Processor</td><td>USA</td></tr>
+              <tr><td><strong>Cloudflare, Inc.</strong></td><td>Network traffic to our API, including your IP address</td><td>Processor</td><td>Worldwide</td></tr>
+              <tr><td><strong>Brevo</strong> (Sendinblue SAS, France, EU)</td><td>Recipient email address and the content of transactional purchase and withdrawal confirmation emails: plan, price shown, date and time, and lifetime consent acknowledgement where applicable; for withdrawals, the name, purchase description and contact email you entered. Withdrawal notices to support also include the withdrawal reference, account ID, store, product ID, original purchase date and purchase-verification result</td><td>Processor</td><td>EEA</td></tr>
+              <tr><td><strong>Telegram</strong> (Telegram Messenger Inc. / Telegram FZ-LLC)</td><td>For feedback: only feedback type, plan (free, trial with days remaining, or Pro), whether you are signed in, whether a contact email was provided (not the address), UTC date and time, and feedback ID. No free text or device details. Telegram also receives technical alerts about account deletions requiring intervention and when purchase or withdrawal email delivery finally fails. These contain internal job or queue identifiers, without the recipient address, email content or feedback text</td><td>Tool the developer uses to receive feedback notifications and technical alerts</td><td>Outside the EEA (UAE and other locations)</td></tr>
+              <tr><td><strong>Exchange-rate services</strong> (open.er-api.com, frankfurter.app, Binance public API)</td><td>Your IP address when the App downloads rates</td><td>Independent providers</td><td>Various</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>We may also disclose data when required by law, a court order or a competent authority, or to protect our rights in legal proceedings.</p>
       </section>
 
       <hr>
 
-      <!-- EXPLICIT GOOGLE PLAY & APPLE ACCOUNT DELETION SECTION -->
+      <section>
+        <h2>7. International Transfers</h2>
+        <p>Some recipients process data outside the EEA, UK and Switzerland. Where a country has no adequacy decision, transfers rely on the <strong>EU-U.S. Data Privacy Framework</strong> (and its UK and Swiss extensions) for certified providers, or on the European Commission's <strong>Standard Contractual Clauses</strong> (Art. 46(2)(c) GDPR) included in the providers' data processing terms. You can ask for a copy of these safeguards at <a href="mailto:support@monetic.app">support@monetic.app</a>.</p>
+        <p>Telegram is not certified under the Data Privacy Framework and does not offer Standard Contractual Clauses, and the UAE has no adequacy decision. Transfers for feedback notifications and technical alerts are limited to the details in section 6, with no free text or device details. The feedback text, device model, OS version and app language stay in our Firestore database in the EU. The notification is deleted once handled (section 8). <strong>Please do not include personal or financial details in your feedback message.</strong> If you need to share them, write to <a href="mailto:support@monetic.app">support@monetic.app</a> instead.</p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>8. How Long We Keep Data</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr><th scope="col">Data</th><th scope="col">Retention</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Data on your device</td><td>Until you delete it, use &quot;Delete all data&quot;, clear the App's storage or uninstall</td></tr>
+              <tr><td>Pending purchase proof on your device</td><td>Deleted once delivered to us</td></tr>
+              <tr><td>Lifetime consent record on your device</td><td>Until you clear the App's storage or uninstall</td></tr>
+              <tr><td>Local recovery snapshots</td><td>30 days</td></tr>
+              <tr><td>Account data</td><td>Until you delete your account</td></tr>
+              <tr><td>Synced data</td><td>Until you turn off sync and delete cloud data, or delete your account. Change history: 90 days</td></tr>
+              <tr><td>Firebase cloud backups</td><td>Your 5 most recent backups, until you delete them or your account. Unfinished upload files are removed by a daily cleanup once they are older than 24 hours</td></tr>
+              <tr><td>Google Drive backup</td><td>In your Google Drive until you delete it. Account deletion in the Android App also attempts to remove it (section 9.3)</td></tr>
+              <tr><td>Feedback, including the IP-address hash and message-derived hash stored with the report</td><td>12 months, or until you delete your account (whichever comes first)</td></tr>
+              <tr><td>Separate duplicate-submission receipts</td><td>Eligible for deletion after one day, during daily cleanup</td></tr>
+              <tr><td>Feedback notification queue</td><td>30 days</td></tr>
+              <tr><td>Feedback notifications already delivered to Telegram</td><td>Deleted by the developer once handled, and in any case within 12 months</td></tr>
+              <tr><td>Server logs</td><td>30 days</td></tr>
+              <tr><td>Crash reports</td><td>90 days (Crashlytics)</td></tr>
+              <tr><td>Trial records</td><td>Kept to prevent repeated trials; unlinked from your account when you delete it</td></tr>
+              <tr><td>Records of an account deletion (account ID and status)</td><td>30 days after the deletion is completed, to finish retries and prove the deletion</td></tr>
+              <tr><td>Email delivery queue (recipient details, structured purchase or withdrawal information, including account ID and purchase-verification details for withdrawals, and delivery status and retry details)</td><td>30 days from when the email was created, once it has been sent or its delivery has finally failed</td></tr>
+              <tr><td>Store operation queue (refunds and renewal cancellations)</td><td>Entries older than 30 days from creation are deleted during daily cleanup once finished (DONE, FAILED or FAILED_PERMANENT). Pending entries are kept until finished</td></tr>
+              <tr><td>Purchase proof and withdrawal statements</td><td>3 years from creation, including after account deletion</td></tr>
+              <tr><td>Daily purchase and withdrawal submission counters</td><td>30 days</td></tr>
+              <tr><td>Purchase records</td><td>Kept by Apple, Google and RevenueCat as required by tax and accounting laws</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>We keep short-lived anti-abuse counters (identifiers, counters and timestamps) to limit repeated submissions and account actions, only as long as needed for this purpose.</p>
+      </section>
+
+      <hr>
+
       <section id="delete-account" class="deletion-card">
-        <div id="account-deletion"></div>
-        <h3>🗑️ 9. Account & Associated Data Deletion Policy</h3>
-        <p><strong>Google Play Data Safety & Apple App Store Review Guideline 5.1.1(v) Compliance Notice:</strong></p>
-        <p>Monetic provides complete, transparent, and readily accessible mechanisms allowing you to permanently delete your account and all associated personal and financial data. You may execute deletion at any time using either of the following methods:</p>
-
+        <h2>9. Deleting Your Account and Data</h2>
+        <p>You can delete your account and the associated cloud data at any time.</p>
+        <p>Deletion may require a recent sign-in. It runs in the background with automatic retries.</p>
         <div class="deletion-method">
-          <h4>Method 1: In-App Self-Service Deletion (Instant & Automated)</h4>
-          <p>If you currently have the Monetic app installed on your device:</p>
+          <h3>9.1. In the App</h3>
           <ol>
-            <li>Open <strong>Monetic</strong>.</li>
-            <li>Navigate to <strong>Settings</strong> → <strong>Profile / Cont</strong>.</li>
-            <li>Scroll to the bottom and tap <strong>Șterge Contul / Delete Account</strong>.</li>
-            <li>Choose your preferred data handling option:
-              <ul>
-                <li><strong>Delete All Data (Local & Cloud):</strong> Permanently wipes all remote cloud databases, backups, and storage archives, resets authentication, physically and recursively deletes all local receipt photographs from device storage, and wipes all local database tables.</li>
-                <li><strong>Keep Local Data as Guest:</strong> Purges all cloud accounts, server backups, and remote synchronization links while preserving your local transactions on your device as an anonymous, offline Guest profile.</li>
-              </ul>
-            </li>
-            <li>Confirm your decision in the prompt dialog.</li>
+            <li>Open <strong>Monetic</strong> → <strong>Settings</strong> → <strong>Profile / Account</strong>.</li>
+            <li>Tap <strong>Delete Account &amp; Cloud Data</strong>.</li>
+            <li>Choose <strong>Delete all data (Local &amp; Cloud)</strong> or <strong>Keep financial data on this device</strong> (cloud data is deleted, your device keeps an offline guest copy).</li>
+            <li>Confirm.</li>
           </ol>
         </div>
-
         <div class="deletion-method">
-          <h4>Method 2: Non-In-App / Email Deletion Request (Direct Web Submission)</h4>
-          <p>If you have uninstalled the app or lost access to your device:</p>
-          <ol>
-            <li>Send an email to <strong><a href="mailto:support@monetic.app?subject=Account%20Deletion%20Request">support@monetic.app</a></strong> from the email address associated with your Monetic account.</li>
-            <li>Specify the subject line: <code>Account Deletion Request</code> or <code>Data Deletion Request</code>.</li>
-            <li>Provide your registered email address (and your Monetic User ID if available).</li>
-            <li>Our team will verify your request and permanently delete your account credentials, cloud database backups, and all associated personal records within <strong>30 days</strong> (typically completed within 48 to 72 hours). We will send a confirmation email once the deletion process is finalized.</li>
-          </ol>
+          <h3>9.2. Without the App</h3>
+          <p>If you no longer have the App or your device, email <a href="mailto:support@monetic.app">support@monetic.app</a> from the address linked to your account, with the subject <strong>&quot;Account Deletion Request&quot;</strong>. We will verify the request and complete the deletion within <strong>30 days</strong> (usually within 72 hours), then confirm by email.</p>
         </div>
-
-        <h4>Scope of Deletion & Cleanup:</h4>
+        <h3>9.3. What is deleted</h3>
         <ul>
-          <li><strong>Apple Sign-In Authorization Revocation (Apple Guideline 5.1.1(v)):</strong> For users authenticated with Apple, the App securely requests a fresh authorization code via <code>ASAuthorizationAppleIDProvider</code> and transmits it to our backend. The backend generates a signed ES256 client secret JWT and dispatches a verified revocation request to Apple's official endpoint (<code>https://appleid.apple.com/auth/revoke</code>), terminating the Sign in with Apple association immediately.</li>
-          <li><strong>Authentication Credentials:</strong> Your email address, password hash, and unique Firebase Authentication User ID (UID) are permanently purged from Firebase Authentication.</li>
-          <li><strong>Cloud Database & Storage:</strong> All remote database snapshots, financial transaction logs, budget categories, attachments, and backup archives stored in Firebase Cloud Firestore (<code>/users/{uid}</code>) and Cloud Storage are irreversibly erased.</li>
-          <li><strong>Physical Local Media Purge:</strong> Upon selecting total deletion, photographic receipt images stored in the private application directory (<code>receipt_photos</code>) are physically and recursively deleted from the physical device storage.</li>
-          <li><strong>Backend Residual Data Anonymization:</strong> Any historical user feedback or support tickets previously submitted are permanently anonymized (<code>userId</code> is replaced with <code>"DELETED_USER"</code>, email is removed), and device trial records are unlinked (<code>claimedByUid = null</code>), ensuring no lingering identifiable links.</li>
-          <li><strong>Google Drive Backups (Android Users):</strong> Backups stored in your private Google Drive <code>appDataFolder</code> are owned solely by your personal Google account. You can permanently delete this archive at any time directly through Google Drive (<em>Settings &gt; Manage Apps &gt; Monetic &gt; Delete hidden app data</em>).</li>
+          <li>Your Firebase Authentication account (email, sign-in links, account ID).</li>
+          <li>All your synced data and backups in Firestore and Cloud Storage, including receipt photos.</li>
+          <li>Your feedback messages and any queued feedback notifications.</li>
+          <li>Your RevenueCat customer record: deletion waits for pending refunds and renewal cancellations for up to 48 hours from the account deletion request before deleting this record. The store-operation queue entries themselves are not deleted by account deletion; they remain subject to the retention rule in section 8, including keeping pending entries until finished.</li>
+          <li>For Sign in with Apple users, the Apple sign-in authorization is revoked.</li>
+          <li>Trial records are unlinked from your account.</li>
+          <li>With &quot;Delete all data (Local &amp; Cloud)&quot;, the local database and receipt photos on the device are deleted too.</li>
         </ul>
-
-        <h4>Data Retention Periods & Exceptions:</h4>
-        <ul>
-          <li><strong>Local Data:</strong> Data stored on your physical device remains on your device until you clear application data, uninstall the App, or trigger the in-app "Delete All Data" option.</li>
-          <li><strong>Server Access Logs:</strong> Technical server logs containing subnet-anonymized IP addresses are automatically destroyed after <strong>30 days</strong>.</li>
-          <li><strong>Crash & Telemetry Logs:</strong> De-identified diagnostic logs stored in Firebase Crashlytics are retained for a rolling window of up to 90 days, after which they are automatically purged.</li>
-          <li><strong>Billing Records:</strong> Transaction records for Monetic Pro subscriptions processed by Apple (StoreKit) or Google (Google Play Billing) are retained by Apple and Google in accordance with statutory accounting and tax regulations. Monetic does not store raw credit card or banking details.</li>
-        </ul>
+        <p>Deleting your account in the Android App also attempts to delete the backup in your connected Google Drive account. If this fails, remove the backup through Google Drive (section 4.2).</p>
+        <p>Not deleted automatically: purchase records held by Apple, Google and RevenueCat, server logs and crash reports until their retention ends (section 8), and the deletion request record kept for 30 days after completion. Purchase proof and withdrawal statements are kept for 3 years from creation, including after account deletion, for the legal obligations and the establishment, exercise or defence of legal claims described in section 5 (Art. 17(3)(b) and (e) GDPR).</p>
+        <p><strong>Deleting your account does not cancel an active subscription.</strong> Cancel it in your App Store or Google Play subscription settings.</p>
       </section>
 
       <hr>
 
       <section>
-        <h2>10. Your Privacy Rights</h2>
-        <p>Depending on your country or state of residence, you have statutory rights regarding your personal information:</p>
-
-        <h3>10.1. Rights under the EU General Data Protection Regulation (GDPR)</h3>
+        <h2>10. Your Rights</h2>
+        <h3>10.1. EEA, UK and Switzerland</h3>
+        <p>You have the right to:</p>
         <ul>
-          <li><strong>Right of Access (Art. 15 GDPR):</strong> You have the right to request confirmation as to whether your data is being processed and obtain a copy of your personal data.</li>
-          <li><strong>Right to Rectification (Art. 16 GDPR):</strong> You have the right to correct inaccurate or incomplete personal information directly within the App.</li>
-          <li><strong>Right to Erasure / "Right to be Forgotten" (Art. 17 GDPR):</strong> You can request the permanent deletion of your data via the in-app "Delete Account" button or by emailing us at <a href="mailto:support@monetic.app">support@monetic.app</a>.</li>
-          <li><strong>Right to Restriction of Processing (Art. 18 GDPR):</strong> You can request that we restrict the processing of your data under certain legal conditions.</li>
-          <li><strong>Right to Data Portability (Art. 20 GDPR):</strong> You can export all your financial transactions and accounts at any time via <strong>Settings → Data Management → Export to CSV</strong> or via Google Drive archive download.</li>
-          <li><strong>Right to Object (Art. 21 GDPR):</strong> You have the right to object at any time to the processing of your data based on legitimate interests.</li>
-          <li><strong>Right to Withdraw Consent (Art. 7(3) GDPR):</strong> Where processing is based on consent (such as personalized ads or camera access), you may withdraw your consent at any time via the Google UMP consent settings in the App or your device operating system permissions.</li>
-          <li><strong>Right to Lodge a Complaint:</strong> You have the statutory right to file a complaint with your local Data Protection Supervisory Authority (for Romania: <em>Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal - ANSPDCP</em>, <a href="https://www.dataprotection.ro" target="_blank" rel="noopener">www.dataprotection.ro</a>).</li>
+          <li><strong>access</strong> your data and receive a copy (Art. 15);</li>
+          <li><strong>rectify</strong> inaccurate data (Art. 16), mostly directly in the App;</li>
+          <li><strong>erase</strong> your data (Art. 17), see section 9;</li>
+          <li><strong>restrict</strong> processing (Art. 18);</li>
+          <li><strong>data portability</strong> (Art. 20): export your records as CSV or ZIP in <strong>Settings → Data Management</strong>;</li>
+          <li><strong>object</strong> to processing based on legitimate interest (Art. 21), for example by turning off crash reports;</li>
+          <li><strong>withdraw consent</strong> at any time (Art. 7(3)), without affecting earlier processing: open <strong>Settings → Ad Privacy Choices</strong> to change your ad consent;</li>
+          <li><strong>lodge a complaint</strong> with a supervisory authority. In Romania this is the ANSPDCP (<a href="https://www.dataprotection.ro">www.dataprotection.ro</a>); you can also contact the authority in your country of residence, or the UK ICO (<a href="https://ico.org.uk">ico.org.uk</a>).</li>
         </ul>
-
-        <h3>10.2. Rights for California Residents (CCPA / CPRA)</h3>
+        <p>To exercise a right, email <a href="mailto:support@monetic.app">support@monetic.app</a>. We answer within <strong>one month</strong> (extendable by two months for complex requests, in which case we tell you why). We may ask you to confirm your identity, for example by writing from your account's email address.</p>
+        <h3>10.2. United States (California and other states)</h3>
+        <p>Depending on your state, you may have the right to know what personal information we collect, to access, correct and delete it, to obtain a portable copy, and to opt out of the &quot;sale&quot; or &quot;sharing&quot; of personal information for targeted (cross-context behavioral) advertising.</p>
         <ul>
-          <li><strong>Right to Know & Access:</strong> You may request details on the categories and specific pieces of personal information collected over the past 12 months.</li>
-          <li><strong>Right to Delete:</strong> You may request the deletion of your personal data.</li>
-          <li><strong>Right to Non-Discrimination:</strong> We will never deny services, charge different prices, or provide a different quality of service because you exercised your CCPA rights.</li>
-          <li><strong>Notice Regarding "Sale" or "Sharing" of Personal Data:</strong> We do <strong>not</strong> sell your personal or financial data for monetary consideration. For ad-supported Free tier users, third-party advertising identifiers (Google AdMob) are governed by your consent choices via the Google UMP form or device settings (<em>Opt out of Ads Personalization</em> on Android, or <em>Ask App not to Track</em> on iOS).</li>
+          <li><strong>Sale:</strong> we do not sell personal information for money.</li>
+          <li><strong>Sharing for targeted ads:</strong> on Android, the free plan may show personalized ads from Google. You can opt out through <strong>Settings → Ad Privacy Choices</strong> (where offered) and by turning off ad personalization in your device settings (<em>Settings → Privacy → Ads</em> on Android). iOS ads are never personalized.</li>
+          <li><strong>Sensitive information:</strong> we do not use financial records for advertising or to infer characteristics about you.</li>
+          <li><strong>Categories collected in the last 12 months:</strong> identifiers (email, account ID, device and advertising IDs), commercial information (purchases), financial records you choose to sync or back up, internet activity (logs, ad interactions), and customer support content. Sources and purposes are described in sections 3 to 6.</li>
+          <li><strong>Non-discrimination:</strong> we will not treat you differently for exercising your rights.</li>
         </ul>
-
-        <h3>10.3. Prohibition of Automated Decision-Making &amp; Profiling (Art. 22 GDPR)</h3>
-        <p>Monetic does <strong>not</strong> make decisions based solely on automated processing, algorithms, or profiling that produce legal effects concerning you or similarly significantly affect you. All budgetary categorization, spending analytics, and balance summaries are computed locally and deterministically for personal informational purposes without any algorithmic credit scoring, loan underwriting, or behavioral profiling.</p>
+        <p>To make a request, or to use an authorized agent, email <a href="mailto:support@monetic.app">support@monetic.app</a>. If we deny a request, you may appeal by replying to our answer.</p>
+        <h3>10.3. Other countries</h3>
+        <p>If you live elsewhere (for example Brazil, Canada, Australia, India, Japan or South Korea), you may have similar rights under local law. Contact us and we will honor them as required.</p>
+        <h3>10.4. No automated decision-making</h3>
+        <p>We do not make decisions with legal or similarly significant effects based solely on automated processing or profiling (Art. 22 GDPR). Statistics and summaries in the App are calculated on your device for your information only.</p>
       </section>
 
       <hr>
 
       <section>
-        <h2>11. Technical & Organizational Security Measures</h2>
-        <p>We implement rigorous technical and organizational security measures to protect your personal data against accidental loss, unauthorized access, destruction, or alteration:</p>
+        <h2>11. Security</h2>
+        <p>On Android, enabling PIN or biometric app lock blocks screenshots and screen recording and protects the recent-app preview. On iOS, the App blurs its contents while inactive to protect the app-switcher preview.</p>
+        <p>We use technical and organizational measures appropriate to the risk, including: TLS for all network traffic; Cloudflare in front of our API; Firebase App Check; Firestore and Cloud Storage rules that allow access only to your own account; truncated IP addresses in logs; OS-level storage encryption for local data and exclusion from Android backups; PIN hashing; and minimal access by the developer. No system is completely secure. If a personal data breach is likely to put your rights at risk, we will notify the supervisory authority within 72 hours and inform you without undue delay where required (Art. 33 and 34 GDPR).</p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>12. Children</h2>
+        <p>Monetic is not directed to children. You must be at least <strong>16 years old</strong> to use it. The App does not verify your age. We do not knowingly collect personal data from anyone under 16 (or under 13 in the United States, as defined by COPPA). If you believe a child has given us personal data, contact <a href="mailto:support@monetic.app">support@monetic.app</a> and we will delete it.</p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>13. App Store and Google Play Disclosures</h2>
+        <p>The data types in this policy match our Apple App Privacy details (<code>PrivacyInfo.xcprivacy</code>) and our Google Play Data safety form. In short: account data, financial information, photos, purchase history, customer support content and device identifiers are collected for app functionality and linked to your account when you sign in; crash and performance data is collected for app stability and is not linked to your account; advertising data, including approximate location, is used for third-party advertising. Our iOS declaration marks approximate location as unlinked to your identity and not used for tracking. The App does not track you on iOS. Data in transit is encrypted. You can request deletion in the App or at <a href="privacy.html#delete-account">https://monetic.app/privacy.html#delete-account</a>.</p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>14. Changes to This Policy</h2>
+        <p>We may update this policy when the App, the law or store rules change. We will update the &quot;Last Updated&quot; date and publish the new version at <a href="privacy.html">https://monetic.app/privacy.html</a>. For material changes we will also show a notice in the App before they take effect.</p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>15. Contact</h2>
         <ul>
-          <li><strong>Edge Routing &amp; Transport Encryption:</strong> All network traffic between the mobile application and backend services is routed through <strong>Cloudflare Anycast Edge Proxy</strong> with enforced <strong>TLS 1.3 encryption</strong>, web application firewall (WAF) filtering, and origin shielding (<code>X-Monetic-Edge-Secret</code>) prior to reaching our European backend cluster in <code>europe-west1</code>.</li>
-          <li><strong>Hardware-Backed PIN Security:</strong> Internal PINs are derived with <strong>PBKDF2-HMAC-SHA256 (100,000 iterations)</strong> and stored in EncryptedSharedPreferences (MasterKey AES-256-GCM) on Android and Keychain Services on iOS.</li>
-          <li><strong>Native Storage Protection:</strong> Local SQLite databases are protected by Android File-Based Encryption and iOS Data Protection in private app directories.</li>
-          <li><strong>System Backup Isolation:</strong> Financial databases and receipt photos are explicitly excluded from unencrypted operating system backups (<code>backup_rules.xml</code>, <code>data_extraction_rules.xml</code>, <code>NSURLIsExcludedFromBackupKey = true</code>).</li>
-          <li><strong>Biometric Enclave Isolation:</strong> Biometric verification is sandboxed inside the operating system's hardware Secure Enclave.</li>
-          <li><strong>Strict Backend Access Controls:</strong> Firestore and Cloud Storage access requires verified Firebase Authentication tokens and App Check verification.</li>
-        </ul>
-      </section>
-
-      <hr>
-
-      <section>
-        <h2>12. Protection of Children's Privacy</h2>
-        <p>Monetic is not intended or designed for use by children under the age of 16 (or under 13 in the United States). We do not knowingly solicit, collect, or process personal data from children. If we discover that a child has provided us with personal information without verified parental consent, we will take immediate steps to permanently delete such information from our databases. If you believe that a minor has provided us with personal data, please contact us immediately at <a href="mailto:support@monetic.app">support@monetic.app</a>.</p>
-      </section>
-
-      <hr>
-
-      <section>
-        <h2>13. Changes & Updates to This Privacy Policy</h2>
-        <p>We may update this Privacy Policy from time to time to reflect modifications to our software architecture, newly introduced features, changes in legal obligations, or updates from regulatory authorities.</p>
-        <p>When we make material changes, we will notify you by:</p>
-        <ol>
-          <li>Updating the "Last Updated" and "Effective Date" at the top of this document;</li>
-          <li>Publishing the revised policy at <a href="https://monetic.app/privacy.html">https://monetic.app/privacy.html</a>;</li>
-          <li>Providing an in-app notice or alert dialog when a significant architectural change occurs.</li>
-        </ol>
-        <p>We encourage you to review this Privacy Policy periodically to stay informed about how we protect your information.</p>
-      </section>
-
-      <hr>
-
-      <section>
-        <h2>14. Contact Us & Developer Details</h2>
-        <p>If you have questions, feedback, or legal inquiries regarding this Privacy Policy or wish to exercise any of your statutory data protection rights, please contact:</p>
-        <ul>
-          <li><strong>Application:</strong> Monetic</li>
-          <li><strong>Developer / Data Controller:</strong> Daniel Crețu (Independent Software Developer)</li>
-          <li><strong>Contact & Privacy Email:</strong> <a href="mailto:support@monetic.app">support@monetic.app</a></li>
-          <li><strong>EU Digital Services Act (DSA) Single Point of Contact:</strong> <a href="mailto:support@monetic.app">support@monetic.app</a> (Communication languages: English, Romanian)</li>
-          <li><strong>Official Website:</strong> <a href="https://monetic.app">https://monetic.app</a></li>
-          <li><strong>Postal Address:</strong> Cluj-Napoca, Romania</li>
+          <li><strong>Data controller:</strong> Daniel Crețu, Cluj-Napoca, Romania</li>
+          <li><strong>Email:</strong> <a href="mailto:support@monetic.app">support@monetic.app</a></li>
+          <li><strong>Website:</strong> <a href="https://monetic.app">https://monetic.app</a></li>
         </ul>
       </section>
     </div>
 
-    <div class="lang-content-ro">
+    <div class="lang-content-ro" lang="ro">
       <div class="title-block">
-        <h1>Politica de Confidențialitate pentru Monetic</h1>
+        <h1 id="privacy-policy-ro">Politica de confidențialitate Monetic</h1>
         <div class="meta-bar">
-          <span><strong>Data intrării în vigoare:</strong> 29 Septembrie 2026</span>
+          <span><strong>Ultima actualizare:</strong> 4 noiembrie 2026</span>
           <span>•</span>
-          <span><strong>Ultima actualizare:</strong> 29 Septembrie 2026</span>
+          <span><strong>Data intrării în vigoare:</strong> 4 noiembrie 2026</span>
           <span class="badge badge-dev">Dezvoltator Independent</span>
         </div>
       </div>
 
-      <section>
-        <h2>1. Introducere &amp; Prezentare Generală</h2>
-        <p>Bun venit la <strong>Monetic</strong> („Aplicația”, „noi” sau „al nostru”). Monetic este o aplicație mobilă avansată de evidență a cheltuielilor, gestionare a bugetului și finanțe personale, dezvoltată și operată ca soluție multiplatformă pentru Android și iOS, accesibilă la <a href="https://monetic.app">https://monetic.app</a>.</p>
-        <p>Suntem profund dedicați protejării vieții dumneavoastră private și asigurării securității datelor personale și financiare. Această Politică de Confidențialitate explică modul în care colectăm, utilizăm, stocăm, partajăm și protejăm datele dumneavoastră atunci când utilizați aplicația Monetic și serviciile asociate, în strictă conformitate cu:</p>
-        <ul>
-          <li><strong>Regulamentul General privind Protecția Datelor (GDPR)</strong> (Regulamentul (UE) 2016/679) pentru utilizatorii situați în Uniunea Europeană (UE) și Spațiul Economic European (SEE);</li>
-          <li><strong>Directiva e-Privacy</strong> (Directiva 2002/58/CE cu modificările ulterioare) și legislația națională de transpunere;</li>
-          <li><strong>Regulamentul privind Serviciile Digitale (DSA)</strong> (Regulamentul (UE) 2022/2065);</li>
-          <li><strong>California Consumer Privacy Act (CCPA)</strong> și <strong>California Privacy Rights Act (CPRA)</strong> pentru rezidenții din California;</li>
-          <li><strong>Politicile pentru Dezvoltatori Google Play</strong> (inclusiv ghidurile privind Serviciile Financiare, Securitatea Datelor și Ștergerea Contului);</li>
-          <li><strong>Ghidurile de Revizuire Apple App Store</strong> (inclusiv Ghidul 5.1 privind Confidențialitatea, Colectarea Datelor și Ștergerea Contului 5.1.1(v)).</li>
-        </ul>
-        <p>Prin descărcarea, accesarea sau utilizarea aplicației Monetic, confirmați că ați citit și ați înțeles prezenta Politică de Confidențialitate. Dacă nu sunteți de acord cu practicile noastre privind datele, vă rugăm să nu utilizați Aplicația.</p>
-      </section>
+      <p><strong>Ștergerea contului (Google Play / App Store):</strong> <a href="privacy.html#delete-account-ro">https://monetic.app/privacy.html#delete-account</a></p>
+      <p><strong>Versiunea în engleză:</strong> <a href="#privacy-policy-en" class="lang-btn" data-lang="en">PRIVACY_POLICY.md</a></p>
+      <p><strong>Operator de date:</strong> Daniel Crețu, Cluj-Napoca, România</p>
+      <p><strong>Contact:</strong> <a href="mailto:support@monetic.app">support@monetic.app</a></p>
 
       <hr>
 
       <section>
-        <h2>2. Operatorul de Date &amp; Informații de Contact</h2>
-        <p>În sensul GDPR și al legislației internaționale aplicabile privind protecția datelor, <strong>Operatorul de Date</strong> responsabil pentru datele dumneavoastră personale este:</p>
-        <ul>
-          <li><strong>Aplicație:</strong> Monetic</li>
-          <li><strong>Operator de Date / Dezvoltator:</strong> Daniel Crețu (Dezvoltator Software Independent)</li>
-          <li><strong>Email de Contact &amp; Confidențialitate:</strong> <a href="mailto:support@monetic.app">support@monetic.app</a></li>
-          <li><strong>Punct Unic de Contact conform Regulamentului Serviciilor Digitale (DSA):</strong> <a href="mailto:support@monetic.app">support@monetic.app</a> (Limbi de comunicare: Română, Engleză)</li>
-          <li><strong>Site Oficial:</strong> <a href="https://monetic.app">https://monetic.app</a></li>
-          <li><strong>Adresă Poștală:</strong> Cluj-Napoca, România</li>
-        </ul>
-        <p>Dacă aveți întrebări, nelămuriri sau solicitări privind prezenta Politică de Confidențialitate sau exercitarea drepturilor dumneavoastră legale, vă rugăm să ne scrieți direct la <a href="mailto:support@monetic.app">support@monetic.app</a>.</p>
-      </section>
-
-      <hr>
-
-      <section>
-        <h2>3. Principiul Arhitectural Esențial: Stocare Prioritar Locală (Local-First), Izolare OS &amp; Sincronizare Hibridă</h2>
-        <p>Monetic este concepută având la bază o <strong>filozofie de confidențialitate prin design (privacy-by-design) și stocare prioritar locală</strong>:</p>
-
+        <h2>1. Pe scurt</h2>
+        <p>Monetic („Aplicația”, „noi”) este o aplicație de finanțe personale și buget pentru Android și iOS. Această politică explică ce date personale prelucrează Aplicația și serverele ei, de ce, cu cine le împărțim, cât timp le păstrăm și ce drepturi ai. Este scrisă pentru a respecta Regulamentul general privind protecția datelor (GDPR), UK GDPR, legea elvețiană FADP, legile statelor SUA privind confidențialitatea (inclusiv CCPA/CPRA din California), COPPA și cerințele de confidențialitate Apple App Store și Google Play.</p>
+        <p>Pe scurt:</p>
         <div class="callout-info">
-          <h3>🔒 Stocare Locală Implicită &amp; Securitate Asigurată Hardware</h3>
-          <p><strong>În mod implicit, evidențele dumneavoastră financiare sunt stocate exclusiv pe dispozitivul dumneavoastră fizic.</strong></p>
-          <p>Tranzacțiile, soldurile conturilor, categoriile personalizate, plățile recurente, mementourile și istoricul transferurilor sunt păstrate într-o bază de date SQLite privată prin biblioteca Room. Noi nu putem vizualiza, citi, accesa sau analiza datele dumneavoastră financiare locale.</p>
-        </div>
-
-        <ol>
-          <li><strong>Stocare Locală pe Dispozitiv în Mod Implicit (Offline-First):</strong> Datele dumneavoastră financiare de zi cu zi sunt stocate exclusiv pe dispozitivul fizic într-o bază de date locală SQLite prin intermediul bibliotecii Room.</li>
-          <li><strong>Criptarea Nativă la Nivelul Sistemului de Operare:</strong>
-            <ul>
-              <li><strong>Android:</strong> Baza de date SQLite locală este stocată în spațiul intern privat protejat prin <strong>Criptare la Nivel de Fișier (File-Based Encryption - FBE)</strong>, izolând fișierele aplicației de procesele neautorizate.</li>
-              <li><strong>iOS:</strong> Fișierele bazei de date sunt salvate în containerul <code>Application Support</code> protejat prin <strong>iOS Data Protection</strong> (<code>NSFileProtectionCompleteUntilFirstUserAuthentication</code>), rămânând criptate hardware cât timp dispozitivul este blocat.</li>
-            </ul>
-          </li>
-          <li><strong>Instantanee Locale Automate de Recuperare (<code>.monrec</code>):</strong> Pentru a preveni ștergerea accidentală sau coruperea locală a fișierelor, Monetic generează arhive de recuperare criptate la nivel hardware (<code>.monrec</code>) în stocarea internă privată înainte de operațiunile critice asupra bazei de date.
-            <ul>
-              <li><strong>Standarde Criptografice:</strong> Instantaneele sunt criptate în repaus (at rest) utilizând <strong>AES-256-GCM</strong> susținut de <strong>AndroidKeyStore</strong> pe Android, și <strong>AES-256 + HMAC-SHA256 (Encrypt-then-MAC)</strong> cu chei securizate în <strong>iOS Keychain</strong> (<code>kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly</code>).</li>
-              <li><strong>Păstrare &amp; Sferă de Aplicare:</strong> Instantaneele rezidă exclusiv pe dispozitivul dumneavoastră fizic, sunt păstrate pentru o fereastră mobilă de <strong>30 de zile</strong> înainte de ștergerea automată locală și nu sunt transmise niciodată către serverele noastre cloud sau terți.</li>
-            </ul>
-          </li>
-          <li><strong>Excludere Strictă din Backup-urile Necriptate ale Sistemului de Operare:</strong>
-            <ul>
-              <li>Pentru a preveni scurgerile financiare necriptate în backup-urile automate ale sistemului de operare, Monetic exclude în mod explicit baza de date locală (<code>money_manager_db</code>), fotografiile bonurilor (<code>receipt_photos</code>) și fișierele de recuperare (<code>recovery_backups</code>) din backup-urile automate OS.</li>
-              <li><strong>Android:</strong> Blocat explicit prin <code>backup_rules.xml</code> și <code>data_extraction_rules.xml</code> împotriva Google Drive Auto-Backup și transferurilor directe între telefoane.</li>
-              <li><strong>iOS:</strong> Marcat cu <code>NSURLIsExcludedFromBackupKey = true</code> pentru a împiedica includerea în backup-urile necriptate iCloud.</li>
-            </ul>
-          </li>
-          <li><strong>Sincronizarea în Cloud Necesită Consimțământ Explicit &amp; Autentificare:</strong> Sincronizarea la distanță și copiile de rezervă în cloud <strong>nu au loc niciodată fără consimțământul dumneavoastră expres și conectarea într-un cont autentificat</strong>. Toate datele transmise sau stocate în cloud sunt securizate prin TLS 1.3 în tranzit și AES-256 în repaus.</li>
-          <li><strong>Zero Vânzare a Datelor Comerciale:</strong> Nu vindem, nu închiriem, nu monetizăm și nu cedăm <strong>niciodată</strong> datele dumneavoastră financiare personale către agenții de publicitate, birouri de credit sau brokeri de date, sub nicio circumstanță.</li>
-          <li><strong>Proprietatea Utilizatorului Asupra Copiilor de Rezervă:</strong> Când activați backup-ul în cloud, datele sunt comprimate într-o arhivă criptată (<code>monetic_backup.zip</code>) și stocate direct în propriul cont Google Drive în folderul privat AppData (pe Android) sau criptate în Firebase Cloud Firestore / Storage (pe iOS sau ca alternativă). Dumneavoastră păstrați proprietatea exclusivă asupra acestor fișiere.</li>
-        </ol>
-      </section>
-
-      <hr>
-
-      <section>
-        <h2>4. Categoriile de Date pe Care le Prelucrăm</h2>
-
-        <h3>4.1. Informații pe Care ni le Furnizați Direct</h3>
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>Categorie</th>
-                <th>Descriere &amp; Date Specifice</th>
-                <th>Scopul Prelucrării</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Date de Autentificare</strong></td>
-                <td>Adresă de email, parolă (hash-uită criptografic), UID Firebase Authentication, identificator cont Google (la utilizarea Google Sign-In), identificator utilizator Apple (la utilizarea Sign in with Apple), data creării contului, status verificare email.</td>
-                <td>Autentificare, recuperarea contului, securitatea sesiunii, sincronizare multi-dispozitiv.</td>
-              </tr>
-              <tr>
-                <td><strong>Evidențe Financiare</strong></td>
-                <td>Denumiri de conturi, solduri, monede ale conturilor, tranzacții (sumă, dată/oră, tip: venit/cheltuială/transfer, categorie, notițe opționale).</td>
-                <td>Funcționalitate de bază: calculul bugetului, monitorizarea cheltuielilor, statistici, conversii multi-valută.</td>
-              </tr>
-              <tr>
-                <td><strong>Plăți Recurente &amp; Programate</strong></td>
-                <td>Denumiri facturi/abonamente, frecvență (zilnic, săptămânal, lunar), date scadente, ore setate pentru notificări.</td>
-                <td>Programarea notificărilor locale pe dispozitiv pentru mementouri de plată.</td>
-              </tr>
-              <tr>
-                <td><strong>Fotografii ale Bonurilor &amp; Sigle Personalizate</strong></td>
-                <td>Imagini ale bonurilor fiscale, facturi, sigle de categorii sau avatare de conturi selectate din galeria dispozitivului sau fotografiate cu camera.</td>
-                <td>Atașarea dovezilor de achiziție la tranzacții și personalizarea vizuală a interfeței.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>4.2. Informații Procesate Exclusiv Local pe Dispozitiv (Netransmise Niciodată Către Server)</h3>
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>Categorie</th>
-                <th>Descriere &amp; Implementare Tehnică</th>
-                <th>Garanție de Confidențialitate</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Cod PIN Intern din 4 Cifre</strong></td>
-                <td>Securizat prin <strong>PBKDF2-HMAC-SHA256 (100.000 iterații)</strong> cu o valoare salt generată prin CSPRNG (<code>SecureRandom</code>). Stocat în spațiu securizat hardware: <strong>EncryptedSharedPreferences</strong> cu <strong>MasterKey AES-256-GCM</strong> pe Android și <strong>Keychain Services</strong> cu <code>kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly</code> pe iOS.</td>
-                <td><strong>NICIODATĂ</strong> transmis, sincronizat sau recuperabil de pe serverele noastre. Nu modifică și nu se sincronizează cu parolele din cloud.</td>
-              </tr>
-              <tr>
-                <td><strong>Autentificare Biometrică</strong></td>
-                <td>Touch ID, Face ID, Android BiometricPrompt (amprentă sau deblocare facială).</td>
-                <td>Procesată exclusiv în cadrul hardware-ului securizat <strong>Secure Enclave / Android Keystore</strong> al dispozitivului. Aplicația primește doar un token binar de succes/eșec. Datele biometrice brute <strong>nu</strong> sunt accesibile niciodată aplicației Monetic.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <h3>4.3. Informații Colectate Automat &amp; Observabilitate Tehnică</h3>
-        <div class="table-wrapper">
-          <table>
-            <thead>
-              <tr>
-                <th>Categorie</th>
-                <th>Descriere &amp; Sursă Tehnică</th>
-                <th>Scop &amp; Perioadă de Păstrare</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Corelarea Cererilor &amp; Trasabilitate API</strong></td>
-                <td>Antet efemer <code>X-Request-ID</code> (UUID v4) generat per cerere sau extras din Cloudflare Ray ID (<code>cf-ray</code>), durată execuție (<code>durationMs</code>), metodă HTTP și rută anonimizată.</td>
-                <td>Trasabilitate distribuită, integritatea API-urilor, monitorizare performanță. Efemer, nestocat permanent.</td>
-              </tr>
-              <tr>
-                <td><strong>Jurnale de Acces Server &amp; IP Anonimizat</strong></td>
-                <td>Adresă IP client trunchiată la nivel de subnet: <strong>IPv4 este trunchiat la <code>/24</code></strong> (ultimul octet setat pe zero, ex. <code>198.51.100.0</code>); <strong>IPv6 este trunchiat la <code>/48</code></strong> (ultimii 80 de biți setați pe zero, ex. <code>2001:db8:85a3::</code>). User Agent, cod de stare HTTP, UID Firebase (când utilizatorul este autentificat).</td>
-                <td>Securitatea infrastructurii, protecție DDoS, limitarea ratei de acces (rate limiting). Păstrat strict pentru o <strong>perioadă maximă de 30 de zile</strong> în baza Interesului Legitim (Art. 6(1)(f) GDPR).</td>
-              </tr>
-              <tr>
-                <td><strong>Diagnostic &amp; Telemetrie Erori (Crash)</strong></td>
-                <td>Model hardware dispozitiv, sistem de operare și versiune (Android/iOS), versiune aplicație, timestamp eroare, stive de apeluri anonimizate (prin Firebase Crashlytics).</td>
-                <td>Identificarea defectelor software, remedierea erorilor critice, îmbunătățirea stabilității. Păstrate maximum 90 de zile.</td>
-              </tr>
-              <tr>
-                <td><strong>Date Privind Achizițiile &amp; Drepturile PRO</strong></td>
-                <td>ID utilizator RevenueCat, ID tranzacție magazin, identificatori de produs (<code>monetic_pro_monthly</code>, <code>monetic_pro_yearly</code>, <code>monetic_pro_lifetime</code>), timestamp achiziție, status abonament.</td>
-                <td>Acordarea și validarea accesului la funcționalitățile Monetic PRO, gestionarea reînnoirilor automate.</td>
-              </tr>
-              <tr>
-                <td><strong>Identificatori de Publicitate &amp; Consimțământ (Doar Planul Gratuit)</strong></td>
-                <td>Google Advertising ID (GAID) pe Android, IDFA pe iOS (sub rezerva consimțământului explicit prin App Tracking Transparency), status consimțământ colectat prin <strong>Google User Messaging Platform (UMP) SDK</strong>.</td>
-                <td>Afișarea de reclame non-intruzive în versiunea Gratuită prin Google AdMob, strict condiționată de acordul prealabil în SEE și Regatul Unit.</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="callout-info">
-          <h3>🛡️ Garanție Strictă de Zero Scurgere a Datelor Financiare</h3>
-          <p><strong>Monetic garantează că sumele tranzacțiilor, descrierile, notițele, numele categoriilor, soldurile conturilor și fotografiile bonurilor fiscale NU ajung NICIODATĂ în Firebase Crashlytics, jurnale de server sau servicii terțe de analiză.</strong></p>
-          <p>Jurnalele de diagnostic înregistrează doar rute tehnice sanitizate și dimensiunea în octeți a pachetelor (<code>bytes=...</code>), curățate de parametri, token-uri sau conținutul efectiv al tranzacțiilor.</p>
-        </div>
-      </section>
-
-      <hr>
-
-      <section>
-        <h2>5. Temeiurile Legale ale Prelucrării conform GDPR (Utilizatori UE/SEE)</h2>
-        <p>Dacă vă aflați în Uniunea Europeană sau Spațiul Economic European, prelucrăm datele dumneavoastră personale în conformitate cu următoarele temeiuri juridice prevăzute la <strong>Articolul 6(1) din GDPR</strong>:</p>
         <ul>
-          <li><strong>Executarea unui Contract (Articolul 6(1)(b) GDPR):</strong> Prelucrarea credențialelor de cont, evidențelor financiare, calculelor de tranzacții și backup-urilor în cloud pentru a asigura funcționarea serviciului Monetic.</li>
-          <li><strong>Consimțământul Dumneavoastră Explicit (Articolul 6(1)(a) GDPR &amp; Directiva e-Privacy):</strong>
-            <ul>
-              <li>Accesarea camerei foto sau a galeriei dispozitivului pentru capturarea și atașarea fotografiilor bonurilor fiscale.</li>
-              <li>Afișarea reclamelor personalizate sau non-personalizate prin Google AdMob, colectate și gestionate dinamic prin platforma de consimțământ <strong>Google User Messaging Platform (UMP)</strong> înainte de inițierea oricăror solicitări publicitare în SEE și Regatul Unit.</li>
-              <li><strong>Retragerea Consimțământului &amp; Acces Granular CMP:</strong> Utilizatorii din SEE și Regatul Unit își pot revedea, modifica sau retrage oricând opțiunile de consimțământ publicitar direct din aplicație accesând <strong>Setări &rarr; Opțiuni Confidențialitate Reclame</strong> (sau prin setările de confidențialitate ale sistemului de operare). Modificarea consimțământului intră în vigoare imediat, la următoarea solicitare de anunț publicitar.</li>
-            </ul>
-          </li>
-          <li><strong>Interesul Legitim (Articolul 6(1)(f) GDPR):</strong> Prelucrarea identificatorilor efemeri de cereri (<code>X-Request-ID</code>) și jurnalelor de server cu IP-uri anonimizate la nivel de subnet (/24 și /48) pe o durată de maximum 30 de zile pentru protejarea infrastructurii împotriva atacurilor cibernetice și a abuzurilor; diagnosticarea defecțiunilor prin Firebase Crashlytics.</li>
-          <li><strong>Conformarea cu o Obligație Legală (Articolul 6(1)(c) GDPR):</strong> Păstrarea confirmărilor de tranzacții digitale impuse de reglementările fiscale și contabile.</li>
+          <li><strong>Datele tale financiare rămân implicit pe telefon.</strong> Le poți trimite în cloud dacă te autentifici și pornești sincronizarea sau backup-ul în cloud. Le poți și exporta, apoi salva sau trimite unde alegi tu.</li>
+          <li><strong>Nu vindem datele tale financiare</strong> și nu le folosim niciodată pentru reclame.</li>
+          <li><strong>Versiunea gratuită afișează reclame.</strong> Pe Android, reclamele pot fi personalizate doar dacă accepți în formularul de consimțământ. Pe iOS, reclamele sunt mereu nepersonalizate, iar Aplicația nu te urmărește.</li>
+          <li><strong>Rapoartele de erori sunt opționale.</strong> Le poți opri din Setări.</li>
+          <li><strong>Îți poți șterge contul și datele din cloud direct din Aplicație</strong>, oricând.</li>
+        </ul>
+        </div>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>2. Cine răspunde de datele tale</h2>
+        <p>Operatorul de date este <strong>Daniel Crețu</strong>, dezvoltator independent din <strong>Cluj-Napoca, România</strong> (Uniunea Europeană).</p>
+        <ul>
+          <li><strong>Email pentru cereri privind datele și suport:</strong> <a href="mailto:support@monetic.app">support@monetic.app</a></li>
+          <li><strong>Site:</strong> <a href="https://monetic.app">https://monetic.app</a></li>
+          <li><strong>Limbi:</strong> engleză, română</li>
+        </ul>
+        <p>Nu am numit un responsabil cu protecția datelor (DPO), deoarece GDPR nu îl cere pentru acest tip de prelucrare (art. 37 GDPR). Trimite toate întrebările despre date la adresa de mai sus.</p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>3. Ce date prelucrăm</h2>
+        <h3>3.1. Date păstrate doar pe telefonul tău</h3>
+        <p>Datele de mai jos stau în spațiul privat al Aplicației pe telefon și <strong>nu ne sunt trimise</strong>, decât dacă pornești sincronizarea sau backup-ul în cloud (secțiunea 4):</p>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr><th scope="col">Date</th><th scope="col">Detalii</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Evidențe financiare</td><td>Conturi, solduri, monede, tranzacții (sumă, dată, tip, categorie, note), transferuri, bugete, categorii.</td></tr>
+              <tr><td>Elemente programate</td><td>Plăți recurente și remindere, cu notificările lor locale.</td></tr>
+              <tr><td>Imagini</td><td>Poze cu bonuri și logo-uri personalizate făcute cu camera sau alese din galerie.</td></tr>
+              <tr><td>Setări de securitate</td><td>PIN-ul din aplicație (păstrat doar ca hash PBKDF2 cu sare, în spațiu protejat de Android Keystore sau în iOS Keychain) și setarea de blocare biometrică. Datele biometrice (amprentă, Face ID) sunt gestionate în întregime de sistemul de operare; Aplicația primește doar rezultatul „reușit” sau „eșuat”.</td></tr>
+              <tr><td>Detalii pentru recuperarea PIN-ului</td><td>Emailul de recuperare și un hash cu sare separată al parolei de recuperare. Sunt păstrate în preferințele private ale aplicației pe Android și în Keychain pe iOS. Parola de recuperare îți permite să setezi un PIN nou fără internet, fără să restaurezi un backup.</td></tr>
+              <tr><td>Copii locale de recuperare</td><td>Copii criptate ale bazei de date locale, făcute înaintea operațiilor riscante. Arhivele mai vechi de <strong>30 de zile</strong> se șterg automat la curățarea periodică, cât timp folosești Aplicația.</td></tr>
+              <tr><td>Copie de recuperare pentru migrare</td><td>O copie separată a bazei de date, folosită pentru recuperare dacă o migrare eșuează. Este protejată de stocarea dispozitivului și nu este criptată de Aplicație. Nu expiră după o anumită perioadă și este înlocuită când e nevoie de o nouă copie pentru migrare.</td></tr>
+              <tr><td>Preferințe și stare tehnică</td><td>Tema, limba, moneda, alegerile pentru backup și rapoartele de erori și alte setări tehnice. Când te autentifici, Aplicația păstrează local și informații despre cont și datele de autentificare, ca să rămâi conectat. Pe iOS, tokenurile de autentificare sunt păstrate în Keychain.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Pe Android, datele locale sunt excluse din Android Auto Backup. Pe iOS, pozele cu bonuri sunt excluse din backup-urile iCloud și de pe computer; baza de date locală și copiile de recuperare sunt incluse în backup-ul iPhone-ului, ca un iPhone nou restaurat din acel backup să îți primească datele înapoi. Apple protejează backup-urile iCloud conform termenilor săi; le controlezi din setările iPhone-ului.</p>
+        <p>Poți restaura sau șterge copiile locale de recuperare din <strong>Setări → Gestionarea datelor</strong>, inclusiv ca invitat. Aceste copii conțin evidențele din baza de date, dar nu includ imaginile salvate separat sau preferințele pentru bugete. <strong>„Șterge complet totul”</strong> creează mai întâi o copie locală de recuperare, păstrată după aceeași regulă de 30 de zile.</p>
+        <p>Poți exporta evidențele financiare ca fișiere CSV sau ZIP, care nu sunt criptate de Aplicație. Le poți salva sau trimite unde alegi tu. Copiile exportate sunt în afara spațiului privat al Aplicației și a protecției prin blocare.</p>
+        <h3>3.2. Date pe care ni le dai când folosești funcțiile online</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr><th scope="col">Date</th><th scope="col">Când</th><th scope="col">Scop</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Date de cont:</strong> adresa de email, parola (gestionată de Firebase Authentication, nu o vedem niciodată), ID-ul contului (Firebase UID), furnizorul de autentificare, numele afișat pe care îl introduci la înregistrare, precum și numele și identificatorul de profil primite de la Google Sign-In sau Sign in with Apple</td><td>Când îți creezi cont sau te autentifici</td><td>Furnizarea contului, autentificare, recuperarea contului și securitate</td></tr>
+              <tr><td><strong>Date financiare sincronizate:</strong> conturi, tranzacții, categorii, mementouri și plăți programate</td><td>Doar dacă pornești sincronizarea</td><td>Păstrarea datelor la zi pe toate dispozitivele tale</td></tr>
+              <tr><td><strong>Backup-uri în cloud:</strong> o copie a bazei de date, a bugetelor și a pozelor cu bonuri, plus informații despre dispozitiv și aplicație, data backup-ului, numărul de evidențe și mărimea fișierului</td><td>Doar dacă faci un backup sau pornești backup-ul automat</td><td>Restaurarea datelor pe un telefon nou sau resetat</td></tr>
+              <tr><td><strong>Feedback:</strong> mesajul tău, emailul (opțional), tipul de feedback, modelul telefonului, versiunea de sistem, limba aplicației, planul (gratuit/trial/Pro), ID-ul contului dacă ești autentificat, identificatorul dispozitivului și, cât timp „Include date de diagnostic” este bifat, ID-urile ultimelor 5 cereri eșuate către server (coduri aleatorii prin care găsim acele cereri în jurnalele serverului; le conține și emailul de suport pregătit de Aplicație și le poți șterge înainte de trimitere)</td><td>Doar când trimiți feedback</td><td>Să îți răspundem și să reparăm problemele</td></tr>
+              <tr><td><strong>Date de achiziție:</strong> ID-ul de client RevenueCat (ID-ul contului dacă ești autentificat, altfel un ID aleatoriu), produsele cumpărate, datele de cumpărare și reînnoire, starea abonamentului</td><td>Când cumperi sau restaurezi Monetic Pro</td><td>Acordarea și restaurarea funcțiilor Pro</td></tr>
+              <tr><td><strong>Dovada achiziției:</strong> ID-ul contului, planul, prețul afișat, ID-ul produsului din magazin, versiunea informațiilor precontractuale afișate, platforma, limba aplicației, data și ora și, pentru planul pe viață, acordul expres pentru acces imediat și confirmarea pierderii dreptului de retragere</td><td>Când cumperi Monetic Pro</td><td>Dovada achiziției și a consimțământului; trimiterea confirmării prin email</td></tr>
+              <tr><td><strong>Declarații de retragere:</strong> numele, descrierea achiziției, emailul de contact, ID-ul contului, platforma, limba, data și ora primirii, rezultatul verificării achiziției, precum și magazinul, produsul și data achiziției inițiale, când sunt disponibile de la RevenueCat, inclusiv dacă un plan anterior s-a încheiat și achizițiile vizate de rambursare (produsul, magazinul, dacă sunt pe viață, ID-ul tranzacției din magazin când este disponibil și data achiziției inițiale)</td><td>Când trimiți o declarație de retragere</td><td>Înregistrarea și confirmarea retragerii și gestionarea rambursării</td></tr>
+              <tr><td><strong>Coada de operațiuni în magazin:</strong> ID-ul contului, ID-ul retragerii sau al dovezii achiziției, ID-urile produselor și ale tranzacțiilor din magazin unde este cazul, dacă achiziția rambursată este pe viață, ID-urile și numărul tranzacțiilor cu reînnoirea oprită, starea, numărul de încercări, momentele de timp, detaliile reîncercărilor și ale rezervării temporare pentru procesare, codurile de eroare, codurile de răspuns HTTP și ID-ul cererii când sunt disponibile</td><td>După o retragere în termen pentru o rambursare automată Google Play sau o achiziție pe viață pe Android pentru oprirea reînnoirii</td><td>Emiterea rambursărilor Google Play și oprirea reînnoirii abonamentelor Google Play după o achiziție pe viață, cu reîncercări și urmărirea progresului</td></tr>
+              <tr><td><strong>Date de trial:</strong> un identificator al dispozitivului (Android ID sau iOS identifierForVendor), începutul și sfârșitul trialului, ID-ul contului dacă ești autentificat</td><td>Când pornești un trial gratuit</td><td>Prevenirea trialurilor repetate</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Cumpărarea Monetic Pro necesită un cont autentificat cu email verificat. Conturile Google și Apple sunt considerate verificate.</p>
+        <p>Telefonul păstrează dovezile de achiziție încă netrimise, inclusiv ID-ul contului și detaliile achiziției, și o evidență a acordului pentru planul pe viață, legată de contul tău. Dovezile netrimise sunt retrimise când acel cont este autentificat și sunt șterse de pe telefon după ce ajung la noi.</p>
+        <p>Verificăm achiziția cu RevenueCat când trimiți o declarație de retragere din Aplicație. Dacă verificarea nu este disponibilă temporar, înregistrăm totuși declarația, ca suportul să o analizeze.</p>
+        <p>Nu primim niciodată datele cardului sau ale contului bancar. Plățile sunt procesate de Apple sau Google.</p>
+        <h3>3.3. Date colectate automat</h3>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr><th scope="col">Date</th><th scope="col">Sursă</th><th scope="col">Scop</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Jurnale de server:</strong> adresa IP trunchiată înainte de salvare (IPv4 la /24, IPv6 la /48), ID-ul cererii, metoda, calea, codul de răspuns, durata, versiuni hash ale user agent-ului și, dacă ești autentificat, ale ID-ului contului. Operațiunile pe care serverul le termină ulterior (emailuri, ștergerea contului, notificări de feedback) sunt înregistrate sub ID-ul cererii care le-a pornit. Când o cerere eșuează, Aplicația afișează primele caractere ale ID-ului ei ca „Cod eroare”, pe care îl poți transmite la suport</td><td>Serverul nostru (Cloud Functions, prin Cloudflare)</td><td>Securitate, prevenirea abuzurilor, limitarea numărului de cereri, depanare</td></tr>
+              <tr><td><strong>Tokenuri de integritate</strong></td><td>Firebase App Check (Play Integrity pe Android, Apple App Attest/DeviceCheck pe iOS)</td><td>Verificarea faptului că cererile vin din Aplicația originală</td></tr>
+              <tr><td><strong>Rapoarte de erori:</strong> modelul telefonului, versiunea de sistem, versiunea aplicației, ora erorii, stack trace, linii tehnice de jurnal (fără sume, note, nume de categorii sau imagini), un ID de instalare Crashlytics</td><td>Firebase Crashlytics, <strong>pornit implicit</strong>. Poți opri „Trimite rapoarte de erori” din Setări</td><td>Găsirea și repararea erorilor. Rapoartele nu sunt legate de contul tău.</td></tr>
+              <tr><td><strong>Cereri de configurare:</strong> informații de rețea, cum ar fi adresa IP; un ID de instalare Firebase pentru Remote Config pe Android</td><td>Cloud Firestore; Firebase Remote Config pe Android</td><td>Livrarea setărilor aplicației (de exemplu, frecvența reclamelor)</td></tr>
+              <tr><td><strong>Date de publicitate (plan gratuit):</strong> ID-ul de publicitate (doar pe Android, dacă îl permiți tu și setările telefonului), adresa IP, locația aproximativă, informații despre dispozitiv și aplicație, interacțiuni cu reclamele, alegerile tale de consimțământ</td><td>Google AdMob și Google User Messaging Platform (UMP)</td><td>Afișarea și măsurarea reclamelor; înregistrarea alegerilor de consimțământ</td></tr>
+              <tr><td><strong>Date anti-abuz pentru feedback:</strong> un hash al adresei IP, păstrat împreună cu mesajul, un hash derivat din mesaj și confirmări separate împotriva trimiterilor duplicate</td><td>Serverul nostru</td><td>Prevenirea abuzurilor și a trimiterilor duplicate de feedback</td></tr>
+              <tr><td><strong>Cereri pentru cursuri valutare</strong></td><td>Aplicația cere cursurile direct de la servicii publice (secțiunea 6)</td><td>Conversia valutară. Cererile nu conțin date personale în afară de adresa IP, pe care serviciile o primesc la orice cerere pe internet.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Aplicația <strong>nu</strong> folosește Firebase Analytics sau alt SDK de analiză, nu colectează locația exactă, contactele sau fișierele tale din Google Drive și nu te urmărește în aplicațiile sau site-urile altor companii pe iOS.</p>
+        <h3>3.4. Ești obligat să ne dai datele?</h3>
+        <p>Nicio lege nu te obligă să ne dai date personale. Unele date sunt necesare pentru ca o funcție să meargă:</p>
+        <ul>
+          <li>Fără cont (email sau autentificare Google/Apple) poți folosi Aplicația ca invitat, dar fără sincronizare, backup în cloud sau folosire pe mai multe dispozitive.</li>
+          <li>Fără datele de achiziție, magazinul și RevenueCat nu pot acorda sau restaura Monetic Pro.</li>
+          <li>Emailul din feedback este opțional; fără el nu îți putem răspunde.</li>
+          <li>Fără acces la cameră sau la galeria foto nu poți atașa imagini; restul funcționează.</li>
         </ul>
       </section>
 
       <hr>
 
       <section>
-        <h2>6. Arhitectura de Backup în Cloud &amp; Gestionarea Ciclului de Viață</h2>
-        <p>Monetic include un sistem hibrid de backup pe două canale conceput pentru a maximiza confidențialitatea:</p>
-
-        <h3>6.1. Backup în Google Drive (Canal Principal pe Android)</h3>
+        <h2>4. Sincronizarea și backup-ul în cloud</h2>
+        <p>Funcțiile cloud sunt <strong>oprite implicit</strong> și cer un cont autentificat.</p>
+        <h3>4.1. Sincronizarea</h3>
+        <p>Când pornești sincronizarea, evidențele financiare sunt păstrate în <strong>Google Cloud Firestore</strong> (<code>users/{ID-ul contului tău}</code>), protejate de criptarea Google la stocare și de TLS la transfer, și accesibile doar contului tău. Un istoric al modificărilor este păstrat <strong>90 de zile</strong>, ca celelalte dispozitive să se poată actualiza, apoi este șters automat. O evidență tehnică a modificărilor procesate (ID-uri și numere de revizie) se păstrează până la ștergerea contului.</p>
+        <p>Bugetele și fișierele cu poze ale bonurilor sunt incluse în backup-urile complete, nu în sincronizarea continuă.</p>
+        <h3>4.2. Backup-ul în cloud</h3>
         <ul>
-          <li><strong>Locație de Stocare:</strong> Copiile de rezervă sunt salvate direct în propriul cont Google Drive, în folderul dedicat și ascuns <code>appDataFolder</code> (<code>https://www.googleapis.com/auth/drive.appdata</code>).</li>
-          <li><strong>Izolare:</strong> Fișierele salvate în <code>appDataFolder</code> sunt private pentru Monetic și nu pot fi accesate sau vizualizate de alte aplicații din contul dumneavoastră Google Drive.</li>
-          <li><strong>Permisiuni Limitate:</strong> Monetic solicită doar permisiuni strict limitate (<code>drive.appdata</code> și <code>drive.file</code>). Aplicația <strong>nu poate</strong> citi, vizualiza, modifica sau șterge alte documente, poze sau fișiere din Google Drive-ul dumneavoastră.</li>
-          <li><strong>Identitate Unificată:</strong> La conectarea prin Google Sign-In, profilul Monetic și destinația de backup sunt corelate 1:1, prevenind suprascrierile accidentale.</li>
+          <li><strong>Firebase (Android și iOS):</strong> backup-urile sunt păstrate în Firestore și Cloud Storage, în contul tău. Conținutul este criptat de Aplicație cu o cheie derivată din ID-ul contului. <strong>Nu este criptare end-to-end:</strong> protejează împotriva accesului întâmplător, dar operatorul serviciului l-ar putea decripta tehnic. Păstrăm <strong>ultimele 5 backup-uri</strong> și le ștergem automat pe cele mai vechi. Fișierele încărcate incomplet sunt șterse de o curățare zilnică, după ce depășesc <strong>24 de ore</strong>. Atașamentele încărcate separat au o limită de 200 MB pe cont. Fiecare arhivă completă de backup Firebase, inclusiv imaginile, este limitată la 50 MB.</li>
+          <li><strong>Google Drive (Android):</strong> dacă legi Google Drive, backup-ul este salvat ca fișier ZIP în folderul ascuns al aplicației din <strong>propriul tău</strong> Google Drive. Fișierul <strong>nu este criptat de Aplicație</strong>; este protejat de contul tău Google. Aplicația cere doar permisiunile <code>drive.appdata</code> și <code>drive.file</code> și nu vede celelalte fișiere din Drive. Poți șterge acest backup din Google Drive (<em>Setări → Gestionează aplicațiile → Monetic → Șterge datele ascunse ale aplicației</em>).</li>
         </ul>
-
-        <h3>6.2. Firebase Cloud Firestore &amp; Storage (Secundar / Alternativă &amp; iOS)</h3>
-        <ul>
-          <li><strong>Locație de Stocare:</strong> Utilizat pe iOS sau pe Android când Google Drive nu este conectat. Datele sunt stocate în instanțe securizate Google Cloud Firestore (<code>/users/{uid}/backups</code>) și containere criptate Google Cloud Storage.</li>
-          <li><strong>Securitate:</strong> Datele în tranzit sunt protejate prin TLS 1.3, iar datele în repaus sunt criptate conform standardului AES-256 pe 256 de biți.</li>
-          <li><strong>Stocare Temporară în Două Etape &amp; Expirare Automată la 24 de Ore:</strong>
-            <ul>
-              <li>Fișierele încărcate (bonuri și arhive) sunt plasate într-un director temporar de verificare (<code>users/{uid}/*/staging/</code>) unde se validează semnătura digitală și codul de control SHA-256 înainte de promovare.</li>
-              <li>Fișierele temporare nefinalizate sau abandonate sunt șterse automat de regulile Cloud Storage după <strong>24 de ore</strong>.</li>
-            </ul>
-          </li>
-        </ul>
-
-        <h3>6.3. Sincronizare în Fundal &amp; WorkManager</h3>
-        <p>Când opțiunea de backup automat este activată în Setări, Monetic programează sarcini în fundal prin <strong>Android WorkManager</strong> (<code>CloudBackupWorker</code>) cu verificarea conexiunii active la rețea (<code>NetworkType.CONNECTED</code>). Aceasta garantează salvarea modificărilor chiar dacă închideți aplicația.</p>
+        <p>Cu backup-ul automat pornit, backup-urile pot rula după modificări și când Aplicația trece în fundal. Android folosește contul Google Drive conectat sau Firebase, dacă nu ai conectat Drive. iOS folosește Firebase, în limita timpului de fundal permis de iOS.</p>
       </section>
 
       <hr>
 
       <section>
-        <h2>7. Furnizori Terți de Servicii &amp; Sub-procesatori</h2>
-        <p>Colaborăm cu furnizori tehnologici de încredere pentru autentificare, infrastructură, raportarea erorilor, validarea abonamentelor și publicitate. Toți sub-procesatorii sunt obligați prin Acorduri de Prelucrare a Datelor (DPA):</p>
-
+        <h2>5. De ce prelucrăm datele (temeiuri legale)</h2>
+        <p>Pentru utilizatorii din SEE, Regatul Unit și Elveția, folosim următoarele temeiuri (art. 6 alin. (1) GDPR):</p>
         <div class="table-wrapper">
           <table>
             <thead>
-              <tr>
-                <th>Sub-procesator</th>
-                <th>Locație</th>
-                <th>Rol / Servicii Furnizate</th>
-                <th>Politică de Confidențialitate</th>
-              </tr>
+              <tr><th scope="col">Scop</th><th scope="col">Temei legal</th></tr>
             </thead>
             <tbody>
-              <tr>
-                <td><strong>Cloudflare, Inc.</strong></td>
-                <td>SUA / UE</td>
-                <td>Anycast Edge Proxy, Web Application Firewall (WAF), atenuare DDoS și rutare securizată SSL/TLS.</td>
-                <td><a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Politica Cloudflare</a></td>
-              </tr>
-              <tr>
-                <td><strong>Google LLC / Google Ireland Ltd.</strong></td>
-                <td>SUA / Irlanda</td>
-                <td>Firebase Authentication, Cloud Firestore, Cloud Storage, Firebase Crashlytics, Firebase Remote Config, Google Drive API, Google AdMob, Google UMP SDK.</td>
-                <td><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Politica Google</a></td>
-              </tr>
-              <tr>
-                <td><strong>Apple Inc.</strong></td>
-                <td>SUA / Irlanda</td>
-                <td>Autentificare Sign in with Apple, achiziții StoreKit, verificare locală Face ID, notificări Apple Push.</td>
-                <td><a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener">Politica Apple</a></td>
-              </tr>
-              <tr>
-                <td><strong>RevenueCat, Inc.</strong></td>
-                <td>SUA</td>
-                <td>Gestiunea ciclului de viață al abonamentelor, validarea chitanțelor de magazin, verificarea accesului PRO.</td>
-                <td><a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">Politica RevenueCat</a></td>
-              </tr>
+              <tr><td>Cont, autentificare, sincronizare, backup, restaurare, achiziții Pro și restaurarea lor, răspunsuri la feedback</td><td><strong>Contract</strong> (art. 6 alin. (1) lit. b)): necesare pentru funcțiile pe care le ceri</td></tr>
+              <tr><td>Reclame personalizate (Android, SEE/UK/Elveția) și salvarea sau citirea de identificatori pe dispozitiv pentru reclame</td><td><strong>Consimțământ</strong> (art. 6 alin. (1) lit. a) GDPR și art. 5 alin. (3) din Directiva ePrivacy), cerut prin formularul UMP</td></tr>
+              <tr><td>Reclame nepersonalizate în planul gratuit</td><td><strong>Interes legitim</strong> (art. 6 alin. (1) lit. f)) de a finanța versiunea gratuită; în SEE/UK, stocarea pe dispozitiv pentru reclame urmează tot alegerile tale din UMP</td></tr>
+              <tr><td>Rapoarte de erori</td><td><strong>Interes legitim</strong> pentru o Aplicație stabilă și sigură. Te poți opune oricând oprind „Trimite rapoarte de erori”</td></tr>
+              <tr><td>Jurnale de server, App Check, limitarea cererilor, prevenirea abuzului de trial</td><td><strong>Interes legitim</strong> de a proteja serviciul și de a preveni frauda</td></tr>
+              <tr><td>Dovada achiziției, declarații de retragere, emailuri de confirmare și coada de operațiuni în magazin pentru rambursări și oprirea reînnoirii</td><td><strong>Obligație legală</strong> (art. 6 alin. (1) lit. c) GDPR; art. 8 alin. (7) și art. 16 lit. m) din Directiva 2011/83/UE, OUG 34/2014) și <strong>executarea contractului</strong> (art. 6 alin. (1) lit. b))</td></tr>
+              <tr><td>Păstrarea dovezii achiziției și a declarațiilor de retragere după ștergerea contului</td><td><strong>Obligație legală</strong> și constatarea, exercitarea sau apărarea unui drept în instanță (art. 17 alin. (3) lit. b) și e) GDPR)</td></tr>
+              <tr><td>Păstrarea evidențelor necesare pentru apărarea în justiție sau pentru răspunsuri către autorități</td><td><strong>Obligație legală</strong> (art. 6 alin. (1) lit. c)) sau <strong>interes legitim</strong> de apărare în justiție</td></tr>
             </tbody>
           </table>
         </div>
+        <p>Camera și galeria foto sunt folosite doar când alegi să atașezi o imagine, iar accesul îl controlezi din permisiunile telefonului.</p>
       </section>
 
       <hr>
 
       <section>
-        <h2>8. Transferuri Internaționale de Date</h2>
-        <p>Sub-procesatorii noștri operează servere în Uniunea Europeană, Statele Unite și la nivel global.</p>
-        <p>Atunci când datele personale provenite din Spațiul Economic European (SEE) sunt transferate în afara acestuia, asigurăm un nivel adecvat de protecție bazat pe:</p>
-        <ul>
-          <li><strong>Cadrul de Confidențialitate a Datelor UE-SUA (Data Privacy Framework - DPF)</strong>;</li>
-          <li><strong>Clauzele Contractuale Standard (SCC)</strong> aprobate de Comisia Europeană în temeiul Articolului 46(2)(c) din GDPR;</li>
-          <li>Măsuri tehnice de protecție, inclusiv criptare TLS 1.3 în tranzit și AES-256 în repaus.</li>
-        </ul>
+        <h2>6. Cine primește datele tale</h2>
+        <p>Nu vindem și nu închiriem datele tale personale. Le împărțim doar cu furnizorii de mai jos, care le prelucrează pentru noi conform termenilor lor de prelucrare a datelor, sau care acționează ca operatori independenți, unde este menționat.</p>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr><th scope="col">Destinatar</th><th scope="col">Ce primește</th><th scope="col">Rol</th><th scope="col">Locație</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Google LLC / Google Ireland Ltd.</strong> (Firebase Authentication, Cloud Firestore, Cloud Storage, Cloud Functions, Crashlytics, Remote Config, App Check, Google Sign-In, Google Drive API)</td><td>Date de cont, date sincronizate și backup-uri, feedback, jurnale, rapoarte de erori</td><td>Persoană împuternicită</td><td>UE (Cloud Functions în <code>europe-west1</code>, Belgia; Cloud Firestore în multi-regiunea <code>eur3</code>, Belgia și Olanda) și SUA</td></tr>
+              <tr><td><strong>Google</strong> (AdMob, User Messaging Platform)</td><td>Date de publicitate și alegeri de consimțământ (plan gratuit)</td><td>Operator independent pentru reclamele personalizate; altfel persoană împuternicită</td><td>La nivel mondial</td></tr>
+              <tr><td><strong>Apple Inc.</strong> (Sign in with Apple, achiziții App Store, App Attest)</td><td>Identificator de autentificare, date de achiziție</td><td>Operator independent pentru achiziții</td><td>SUA / Irlanda</td></tr>
+              <tr><td><strong>Google Play</strong> (Play Billing, Play Integrity)</td><td>Date de achiziție, verificări de integritate</td><td>Operator independent pentru achiziții</td><td>SUA / Irlanda</td></tr>
+              <tr><td><strong>RevenueCat, Inc.</strong></td><td>Date de achiziție și ID-ul de client RevenueCat, pentru gestionarea Pro, verificarea achizițiilor, emiterea rambursărilor Google Play și oprirea reînnoirii abonamentelor Google Play după o achiziție pe viață</td><td>Persoană împuternicită</td><td>SUA</td></tr>
+              <tr><td><strong>Cloudflare, Inc.</strong></td><td>Traficul către serverul nostru, inclusiv adresa IP</td><td>Persoană împuternicită</td><td>La nivel mondial</td></tr>
+              <tr><td><strong>Brevo</strong> (Sendinblue SAS, Franța, UE)</td><td>Adresa de email a destinatarului și conținutul emailurilor tranzacționale de confirmare a achiziției și a retragerii: planul, prețul afișat, data și ora și, unde este cazul, confirmarea acordului pentru planul pe viață; pentru retrageri, numele, descrierea achiziției și emailul de contact introduse de tine. Notificările de retragere către suport includ și referința retragerii, ID-ul contului, magazinul, ID-ul produsului, data achiziției inițiale și rezultatul verificării achiziției</td><td>Persoană împuternicită</td><td>SEE</td></tr>
+              <tr><td><strong>Telegram</strong> (Telegram Messenger Inc. / Telegram FZ-LLC)</td><td>Pentru feedback: doar tipul feedback-ului, planul (gratuit, trial cu zilele rămase sau Pro), dacă ești autentificat, dacă ai oferit un email de contact (nu adresa), data și ora UTC și ID-ul feedback-ului. Fără text liber sau detalii despre dispozitiv. Telegram primește și alerte tehnice despre ștergeri de cont care necesită intervenție și când livrarea unui email de achiziție sau de retragere eșuează definitiv. Acestea conțin identificatori interni de job sau de coadă, fără adresa destinatarului, conținutul emailului sau textul feedback-ului</td><td>Unealta prin care dezvoltatorul primește notificări de feedback și alerte tehnice</td><td>În afara SEE (Emiratele Arabe Unite și alte locații)</td></tr>
+              <tr><td><strong>Servicii de curs valutar</strong> (open.er-api.com, frankfurter.app, API-ul public Binance)</td><td>Adresa IP când Aplicația descarcă cursurile</td><td>Furnizori independenți</td><td>Diverse</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Putem divulga date și atunci când legea, o instanță sau o autoritate competentă ne obligă, sau pentru a ne apăra drepturile în justiție.</p>
       </section>
 
       <hr>
 
-      <!-- SECTIUNE EXPLICITA DE STERGERE A CONTULUI SI DATELOR -->
-      <section class="deletion-card">
-        <h3>🗑️ 9. Politica de Ștergere a Contului &amp; a Datelor Asociate</h3>
-        <p><strong>Notă de Conformitate cu Cerințele Google Play Data Safety și Ghidul Apple App Store 5.1.1(v):</strong></p>
-        <p>Monetic oferă mecanisme complete, transparente și ușor accesibile care vă permit să vă ștergeți definitiv contul și toate datele personale și financiare asociate. Puteți solicita ștergerea oricând prin oricare dintre următoarele metode:</p>
+      <section>
+        <h2>7. Transferuri internaționale</h2>
+        <p>Unii destinatari prelucrează date în afara SEE, a Regatului Unit și a Elveției. Unde țara nu are o decizie de adecvare, transferurile se bazează pe <strong>Cadrul UE-SUA privind protecția datelor (Data Privacy Framework)</strong> (și extensiile lui pentru Regatul Unit și Elveția) pentru furnizorii certificați, sau pe <strong>Clauzele contractuale standard</strong> ale Comisiei Europene (art. 46 alin. (2) lit. c) GDPR), incluse în termenii de prelucrare ai furnizorilor. Poți cere o copie a acestor garanții la <a href="mailto:support@monetic.app">support@monetic.app</a>.</p>
+        <p>Telegram nu este certificat în Data Privacy Framework și nu oferă Clauze contractuale standard, iar EAU nu au o decizie de adecvare. Transferurile pentru notificările de feedback și alertele tehnice sunt limitate la detaliile din secțiunea 6, fără text liber sau detalii despre dispozitiv. Textul feedback-ului, modelul dispozitivului, versiunea sistemului de operare și limba aplicației rămân în baza noastră de date Firestore din UE. Notificarea este ștearsă după ce o rezolvăm (secțiunea 8). <strong>Te rugăm să nu incluzi date personale sau financiare în mesajul de feedback.</strong> Dacă trebuie să ni le trimiți, scrie la <a href="mailto:support@monetic.app">support@monetic.app</a>.</p>
+      </section>
 
+      <hr>
+
+      <section>
+        <h2>8. Cât timp păstrăm datele</h2>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr><th scope="col">Date</th><th scope="col">Durata păstrării</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Datele de pe telefon</td><td>Până le ștergi, folosești „Șterge complet totul”, golești datele aplicației sau o dezinstalezi</td></tr>
+              <tr><td>Dovezi de achiziție netrimise, de pe telefon</td><td>Șterse după ce ajung la noi</td></tr>
+              <tr><td>Evidența acordului pentru planul pe viață, de pe telefon</td><td>Până golești datele aplicației sau o dezinstalezi</td></tr>
+              <tr><td>Copii locale de recuperare</td><td>30 de zile</td></tr>
+              <tr><td>Date de cont</td><td>Până îți ștergi contul</td></tr>
+              <tr><td>Date sincronizate</td><td>Până oprești sincronizarea și ștergi datele din cloud, sau până îți ștergi contul. Istoricul modificărilor: 90 de zile</td></tr>
+              <tr><td>Backup-uri Firebase</td><td>Ultimele 5 backup-uri, până le ștergi sau îți ștergi contul. Fișierele încărcate incomplet sunt șterse de o curățare zilnică, după ce depășesc 24 de ore</td></tr>
+              <tr><td>Backup Google Drive</td><td>În Google Drive-ul tău, până îl ștergi. Ștergerea contului din Aplicația Android încearcă să îl șteargă și pe acesta (secțiunea 9.3)</td></tr>
+              <tr><td>Feedback, inclusiv hash-ul adresei IP și hash-ul derivat din mesaj</td><td>12 luni, sau până îți ștergi contul (care survine primul)</td></tr>
+              <tr><td>Confirmări separate împotriva trimiterilor duplicate</td><td>Pot fi șterse după o zi, la curățarea zilnică</td></tr>
+              <tr><td>Coada de notificări de feedback</td><td>30 de zile</td></tr>
+              <tr><td>Notificări de feedback deja livrate în Telegram</td><td>Șterse de dezvoltator după rezolvare și, în orice caz, în cel mult 12 luni</td></tr>
+              <tr><td>Jurnale de server</td><td>30 de zile</td></tr>
+              <tr><td>Rapoarte de erori</td><td>90 de zile (Crashlytics)</td></tr>
+              <tr><td>Evidența trialurilor</td><td>Păstrată pentru a preveni trialurile repetate; dezlegată de cont la ștergerea acestuia</td></tr>
+              <tr><td>Evidența ștergerii unui cont (ID-ul contului și starea)</td><td>30 de zile după finalizarea ștergerii, pentru reîncercări și dovada ștergerii</td></tr>
+              <tr><td>Coada de livrare a emailurilor (datele destinatarului, informații structurate despre achiziție sau retragere, inclusiv ID-ul contului și detaliile verificării achiziției pentru retrageri, starea livrării și detaliile reîncercărilor)</td><td>30 de zile de la crearea emailului, după ce a fost trimis sau livrarea a eșuat definitiv</td></tr>
+              <tr><td>Coada de operațiuni în magazin (rambursări și oprirea reînnoirii)</td><td>Înregistrările mai vechi de 30 de zile de la creare sunt șterse la curățarea zilnică după finalizare (DONE, FAILED sau FAILED_PERMANENT). Înregistrările în așteptare sunt păstrate până la finalizare</td></tr>
+              <tr><td>Dovada achiziției și declarații de retragere</td><td>3 ani de la creare, inclusiv după ștergerea contului</td></tr>
+              <tr><td>Contoare zilnice ale trimiterilor privind achizițiile și retragerile</td><td>30 de zile</td></tr>
+              <tr><td>Evidențe ale achizițiilor</td><td>Păstrate de Apple, Google și RevenueCat conform legilor fiscale și contabile</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Păstrăm contoare anti-abuz de scurtă durată (identificatori, contoare și momente de timp) ca să limităm trimiterile și acțiunile repetate asupra contului, doar cât timp e nevoie pentru acest scop.</p>
+      </section>
+
+      <hr>
+
+      <section id="delete-account-ro" class="deletion-card">
+        <h2>9. Ștergerea contului și a datelor</h2>
+        <p>Îți poți șterge oricând contul și datele asociate din cloud.</p>
+        <p>Ștergerea poate cere o autentificare recentă. Rulează în fundal, cu reîncercări automate.</p>
         <div class="deletion-method">
-          <h4>Metoda 1: Ștergere Directă din Aplicație (Instantanee &amp; Automată)</h4>
-          <p>Dacă aveți aplicația Monetic instalată pe dispozitiv:</p>
+          <h3>9.1. Din Aplicație</h3>
           <ol>
-            <li>Deschideți <strong>Monetic</strong>.</li>
-            <li>Navigați la <strong>Setări</strong> → <strong>Profil / Cont</strong>.</li>
-            <li>Derulați până jos și atingeți <strong>Șterge Contul / Delete Account</strong>.</li>
-            <li>Alegeți opțiunea dorită de gestionare a datelor:
-              <ul>
-                <li><strong>Șterge Toate Datele (Local &amp; Cloud):</strong> Șterge definitiv și ireversibil toate bazele de date, backup-urile și arhivele din cloud, resetează autentificarea, șterge recursiv toate fotografiile bonurilor din stocarea telefonului și golește tabelele bazei de date locale.</li>
-                <li><strong>Păstrează Datele Locale ca Oaspete (Guest):</strong> Șterge contul din cloud, copiile de rezervă și sincronizarea la distanță, păstrând în același timp tranzacțiile locale pe telefon ca profil anonim offline.</li>
-              </ul>
-            </li>
-            <li>Confirmați decizia în dialogul de atenționare.</li>
+            <li>Deschide <strong>Monetic</strong> → <strong>Setări</strong> → <strong>Profil / Cont</strong>.</li>
+            <li>Apasă <strong>Șterge Contul și Datele Cloud</strong>.</li>
+            <li>Alege <strong>Șterge complet totul (Local și Cloud)</strong> sau <strong>Păstrează datele pe acest dispozitiv</strong> (datele din cloud se șterg, telefonul păstrează o copie offline, ca invitat).</li>
+            <li>Confirmă.</li>
           </ol>
         </div>
-
         <div class="deletion-method">
-          <h4>Metoda 2: Solicitare de Ștergere prin Email (Trimitere Directă Web)</h4>
-          <p>Dacă ați dezinstalat aplicația sau nu mai aveți acces la dispozitiv:</p>
-          <ol>
-            <li>Trimiteți un email la <strong><a href="mailto:support@monetic.app?subject=Solicitare%20Stergere%20Cont">support@monetic.app</a></strong> de la adresa de email asociată contului Monetic.</li>
-            <li>Specificați în subiect: <code>Solicitare Ștergere Cont</code> sau <code>Account Deletion Request</code>.</li>
-            <li>Menționați adresa de email înregistrată (și ID-ul de utilizator dacă îl cunoașteți).</li>
-            <li>Echipa noastră va verifica solicitarea și va șterge definitiv datele de conectare, backup-urile din cloud și toate evidențele asociate în termen de <strong>maximum 30 de zile</strong> (de regulă în 48 - 72 de ore). Vă vom trimite o confirmare prin email odată finalizată ștergerea.</li>
-          </ol>
+          <h3>9.2. Fără Aplicație</h3>
+          <p>Dacă nu mai ai Aplicația sau telefonul, scrie la <a href="mailto:support@monetic.app">support@monetic.app</a> de pe adresa asociată contului, cu subiectul <strong>„Account Deletion Request”</strong> („Cerere de ștergere a contului”). Verificăm cererea și finalizăm ștergerea în cel mult <strong>30 de zile</strong> (de obicei în 72 de ore), apoi îți confirmăm prin email.</p>
         </div>
-
-        <h4>Domeniul și Efectele Ștergerii:</h4>
+        <h3>9.3. Ce se șterge</h3>
         <ul>
-          <li><strong>Revocarea Autorizării Apple Sign-In (Ghidul Apple 5.1.1(v)):</strong> Pentru utilizatorii conectați cu Apple, aplicația solicită un cod proaspăt prin <code>ASAuthorizationAppleIDProvider</code>, iar backend-ul generează un secret client JWT semnat ES256 și trimite o cerere oficială de revocare la endpoint-ul Apple (<code>https://appleid.apple.com/auth/revoke</code>), revocând asocierea token-ului imediat.</li>
-          <li><strong>Credențiale de Autentificare:</strong> Adresa de email, hash-ul parolei și ID-ul unic de utilizator (UID) sunt șterse definitiv din Firebase Authentication.</li>
-          <li><strong>Baza de Date &amp; Stocarea în Cloud:</strong> Toate instantaneele, tranzacțiile financiare, categoriile de buget, fișierele atașate și arhivele de backup din Firebase Cloud Firestore (<code>/users/{uid}</code>) și Cloud Storage sunt șterse ireversibil.</li>
-          <li><strong>Ștergerea Fișierelor Media Locale:</strong> La selectarea opțiunii de ștergere totală, fotografiile bonurilor fiscale din folderul privat al aplicației (<code>receipt_photos</code>) sunt șterse fizic și recursiv de pe memoria dispozitivului.</li>
-          <li><strong>Anonimizarea Datelor Reziduale:</strong> Tichetele de suport sau feedback-ul transmis anterior sunt anonimizate permanent (<code>userId</code> devine <code>"DELETED_USER"</code>, emailul este eliminat), iar asocierile dispozitivelor de test sunt decuplate (<code>claimedByUid = null</code>).</li>
-          <li><strong>Backup-urile Google Drive (Utilizatori Android):</strong> Arhiva salvată în folderul privat <code>appDataFolder</code> din Google Drive aparține exclusiv contului dumneavoastră Google. Puteți șterge această arhivă oricând direct din Google Drive (<em>Setări &gt; Gestionare Aplicații &gt; Monetic &gt; Ștergeți datele ascunse ale aplicației</em>).</li>
+          <li>Contul tău din Firebase Authentication (email, metode de autentificare, ID-ul contului).</li>
+          <li>Toate datele sincronizate și backup-urile din Firestore și Cloud Storage, inclusiv pozele cu bonuri.</li>
+          <li>Mesajele tale de feedback și notificările de feedback aflate în coadă.</li>
+          <li>Înregistrarea ta de client RevenueCat: ștergerea așteaptă rambursările și opririle de reînnoire aflate în așteptare timp de cel mult 48 de ore de la cererea de ștergere a contului, înainte de a șterge această înregistrare. Înregistrările din coada de operațiuni în magazin nu sunt șterse prin ștergerea contului; li se aplică în continuare regula de păstrare din secțiunea 8, inclusiv păstrarea celor în așteptare până la finalizare.</li>
+          <li>Pentru conturile Sign in with Apple, autorizarea Apple este revocată.</li>
+          <li>Evidențele de trial sunt dezlegate de cont.</li>
+          <li>Cu „Șterge complet totul (Local și Cloud)”, se șterg și baza de date locală și pozele cu bonuri de pe telefon.</li>
         </ul>
-
-        <h4>Perioade de Păstrare a Datelor &amp; Excepții:</h4>
-        <ul>
-          <li><strong>Date Locale:</strong> Rămân pe telefon până când ștergeți datele aplicației, o dezinstalați sau selectați opțiunea de ștergere completă.</li>
-          <li><strong>Jurnale de Acces Server:</strong> Jurnalele tehnice cu adrese IP anonimizate la nivel de subnet sunt distruse automat după <strong>30 de zile</strong>.</li>
-          <li><strong>Jurnale de Erori &amp; Telemetrie:</strong> Înregistrările de diagnostic din Firebase Crashlytics sunt păstrate într-o fereastră mobilă de maximum 90 de zile.</li>
-          <li><strong>Evidențe de Facturare:</strong> Tranzacțiile pentru abonamentele Monetic PRO procesate de Apple (StoreKit) sau Google (Google Play Billing) sunt păstrate de Apple și Google conform reglementărilor legale fiscale și contabile. Monetic nu stochează date brute de card sau cont bancar.</li>
-        </ul>
+        <p>Ștergerea contului din Aplicația Android încearcă să șteargă și backup-ul din contul Google Drive conectat. Dacă nu reușește, șterge backup-ul din Google Drive (secțiunea 4.2).</p>
+        <p>Nu se șterg automat: evidențele achizițiilor păstrate de Apple, Google și RevenueCat, jurnalele de server și rapoartele de erori până la expirarea duratei lor (secțiunea 8) și evidența cererii de ștergere, păstrată 30 de zile după finalizare. Dovada achiziției și declarațiile de retragere sunt păstrate 3 ani de la creare, inclusiv după ștergerea contului, pentru obligațiile legale și constatarea, exercitarea sau apărarea unui drept în instanță descrise în secțiunea 5 (art. 17 alin. (3) lit. b) și e) GDPR).</p>
+        <p><strong>Ștergerea contului nu anulează un abonament activ.</strong> Anulează-l din setările de abonamente App Store sau Google Play.</p>
       </section>
 
       <hr>
 
       <section>
-        <h2>10. Drepturile Dumneavoastră Privind Confidențialitatea</h2>
-        <p>În funcție de țara sau statul în care aveți reședința, beneficiați de drepturi legale clare cu privire la datele dumneavoastră personale:</p>
-
-        <h3>10.1. Drepturi conform Regulamentului General privind Protecția Datelor (GDPR)</h3>
+        <h2>10. Drepturile tale</h2>
+        <h3>10.1. SEE, Regatul Unit și Elveția</h3>
+        <p>Ai dreptul:</p>
         <ul>
-          <li><strong>Dreptul de Acces (Art. 15 GDPR):</strong> Dreptul de a obține o confirmare că datele dumneavoastră sunt prelucrate și o copie a acestora.</li>
-          <li><strong>Dreptul la Rectificare (Art. 16 GDPR):</strong> Dreptul de a corecta datele inexacte sau incomplete direct în Aplicație.</li>
-          <li><strong>Dreptul la Ștergere / „Dreptul de a fi Uitat” (Art. 17 GDPR):</strong> Puteți solicita ștergerea definitivă a datelor prin butonul „Șterge Contul” din aplicație sau la <a href="mailto:support@monetic.app">support@monetic.app</a>.</li>
-          <li><strong>Dreptul la Restricționarea Prelucrării (Art. 18 GDPR):</strong> Dreptul de a solicita blocarea temporară a prelucrării în anumite condiții prevăzute de lege.</li>
-          <li><strong>Dreptul la Portabilitatea Datelor (Art. 20 GDPR):</strong> Puteți exporta toate tranzacțiile și conturile oricând prin <strong>Setări → Gestionare Date → Export în CSV</strong> sau prin descărcarea arhivei din Google Drive.</li>
-          <li><strong>Dreptul la Opoziție (Art. 21 GDPR):</strong> Dreptul de a vă opune în orice moment prelucrării bazate pe interese legitime.</li>
-          <li><strong>Dreptul de a Vă Retrage Consimțământul (Art. 7(3) GDPR):</strong> Vă puteți retrage oricând consimțământul (pentru reclame sau acces la cameră) prin setările UMP din Aplicație sau permisiunile sistemului de operare.</li>
-          <li><strong>Dreptul de a Depune o Plângere:</strong> Aveți dreptul de a depune o plângere la autoritatea națională de supraveghere (în România: <em>Autoritatea Națională de Supraveghere a Prelucrării Datelor cu Caracter Personal - ANSPDCP</em>, <a href="https://www.dataprotection.ro" target="_blank" rel="noopener">www.dataprotection.ro</a>).</li>
+          <li>de <strong>acces</strong> la date și de a primi o copie (art. 15);</li>
+          <li>la <strong>rectificarea</strong> datelor inexacte (art. 16), în mare parte direct din Aplicație;</li>
+          <li>la <strong>ștergerea</strong> datelor (art. 17), vezi secțiunea 9;</li>
+          <li>la <strong>restricționarea</strong> prelucrării (art. 18);</li>
+          <li>la <strong>portabilitatea</strong> datelor (art. 20): exportă evidențele ca CSV sau ZIP din <strong>Setări → Gestionare Date</strong>;</li>
+          <li>de a te <strong>opune</strong> prelucrării bazate pe interes legitim (art. 21), de exemplu oprind rapoartele de erori;</li>
+          <li>de a-ți <strong>retrage consimțământul</strong> oricând (art. 7 alin. (3)), fără a afecta prelucrarea anterioară: deschide <strong>Setări → Opțiuni Confidențialitate Reclame</strong> ca să schimbi consimțământul pentru reclame;</li>
+          <li>de a depune o <strong>plângere</strong> la o autoritate de supraveghere. În România aceasta este ANSPDCP (<a href="https://www.dataprotection.ro">www.dataprotection.ro</a>); te poți adresa și autorității din țara în care locuiești sau ICO în Regatul Unit (<a href="https://ico.org.uk">ico.org.uk</a>).</li>
         </ul>
-
-        <h3>10.2. Drepturi pentru Rezidenții din California (CCPA / CPRA)</h3>
+        <p>Pentru a-ți exercita un drept, scrie la <a href="mailto:support@monetic.app">support@monetic.app</a>. Răspundem în <strong>o lună</strong> (termen prelungibil cu două luni pentru cereri complexe, caz în care îți spunem de ce). Îți putem cere să îți confirmi identitatea, de exemplu scriindu-ne de pe adresa de email a contului.</p>
+        <h3>10.2. Statele Unite (California și alte state)</h3>
+        <p>În funcție de stat, poți avea dreptul să afli ce informații personale colectăm, să le accesezi, să le corectezi și să le ștergi, să primești o copie portabilă și să refuzi „vânzarea” sau „partajarea” informațiilor personale pentru publicitate țintită (cross-context behavioral advertising).</p>
         <ul>
-          <li><strong>Dreptul de a Cunoaște &amp; Accesa:</strong> Puteți solicita detalii privind categoriile și datele colectate în ultimele 12 luni.</li>
-          <li><strong>Dreptul la Ștergere:</strong> Dreptul de a solicita ștergerea datelor personale.</li>
-          <li><strong>Dreptul la Nediscriminare:</strong> Nu vom refuza servicii și nu vom percepe tarife diferite pentru exercitarea drepturilor CCPA.</li>
-          <li><strong>Notă privind Vânzarea sau Partajarea Datelor:</strong> <strong>Nu vindem</strong> datele dumneavoastră financiare sau personale. Pentru versiunea gratuită cu reclame, identificatorii publicitari terți (Google AdMob) sunt guvernați de opțiunile exprimate prin formularul Google UMP sau setările dispozitivului.</li>
+          <li><strong>Vânzare:</strong> nu vindem informații personale pentru bani.</li>
+          <li><strong>Partajare pentru reclame țintite:</strong> pe Android, planul gratuit poate afișa reclame personalizate de la Google. Poți refuza din <strong>Setări → Opțiuni Confidențialitate Reclame</strong> (unde sunt disponibile) și oprind personalizarea reclamelor din setările telefonului (<em>Setări → Confidențialitate → Reclame</em> pe Android). Reclamele pe iOS nu sunt niciodată personalizate.</li>
+          <li><strong>Informații sensibile:</strong> nu folosim evidențele financiare pentru reclame sau pentru a deduce caracteristici despre tine.</li>
+          <li><strong>Categorii colectate în ultimele 12 luni:</strong> identificatori (email, ID cont, ID-uri de dispozitiv și de publicitate), informații comerciale (achiziții), evidențe financiare pe care alegi să le sincronizezi sau să le salvezi în backup, activitate pe internet (jurnale, interacțiuni cu reclamele) și conținut trimis la suport. Sursele și scopurile sunt descrise în secțiunile 3–6.</li>
+          <li><strong>Nediscriminare:</strong> nu te tratăm diferit pentru că îți exerciți drepturile.</li>
         </ul>
-
-        <h3>10.3. Interdicția Luării Automate a Deciziilor &amp; Creării de Profiluri (Art. 22 GDPR)</h3>
-        <p>Monetic <strong>nu</strong> ia decizii bazate exclusiv pe prelucrarea automată a datelor, algoritmi sau profilare care să producă efecte juridice asupra dumneavoastră. Toate analizele, categoriile de buget și sintezele financiare sunt calculate local și deterministic, strict în scop personal și informativ, fără scoruri de creditare, evaluări de risc sau profilare comportamentală.</p>
+        <p>Pentru o cerere, inclusiv prin intermediul unui agent autorizat, scrie la <a href="mailto:support@monetic.app">support@monetic.app</a>. Dacă respingem o cerere, poți face apel răspunzând la mesajul nostru.</p>
+        <h3>10.3. Alte țări</h3>
+        <p>Dacă locuiești în altă parte (de exemplu Brazilia, Canada, Australia, India, Japonia sau Coreea de Sud), poți avea drepturi similare conform legii locale. Contactează-ne și le vom respecta conform legii.</p>
+        <h3>10.4. Fără decizii automate</h3>
+        <p>Nu luăm decizii cu efecte juridice sau la fel de importante bazate exclusiv pe prelucrare automată sau profilare (art. 22 GDPR). Statisticile și rezumatele din Aplicație sunt calculate pe telefon, doar pentru informarea ta.</p>
       </section>
 
       <hr>
 
       <section>
-        <h2>11. Măsuri Tehnice &amp; Organizatorice de Securitate</h2>
-        <p>Implementăm măsuri tehnice și organizatorice riguroase pentru protejarea datelor dumneavoastră împotriva pierderii accidentale, accesului neautorizat, distrugerii sau modificării:</p>
+        <h2>11. Securitate</h2>
+        <p>Pe Android, când pornești blocarea cu PIN sau biometrie, capturile și înregistrarea ecranului sunt blocate, iar previzualizarea din aplicațiile recente este protejată. Pe iOS, Aplicația își estompează conținutul cât timp este inactivă, ca să protejeze previzualizarea din comutatorul de aplicații.</p>
+        <p>Folosim măsuri tehnice și organizatorice potrivite riscului, printre care: TLS pentru tot traficul; Cloudflare în fața serverului; Firebase App Check; reguli Firestore și Cloud Storage care permit accesul doar la propriul cont; adrese IP trunchiate în jurnale; criptarea stocării datelor locale de către sistemul de operare și excluderea lor din backup-urile Android; hash pentru PIN; acces minim al dezvoltatorului la date. Niciun sistem nu este complet sigur. Dacă o încălcare a securității datelor poate pune în pericol drepturile tale, notificăm autoritatea de supraveghere în 72 de ore și te informăm fără întârziere nejustificată, acolo unde legea o cere (art. 33 și 34 GDPR).</p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>12. Copii</h2>
+        <p>Monetic nu se adresează copiilor. Trebuie să ai cel puțin <strong>16 ani</strong> ca să o folosești. Aplicația nu îți verifică vârsta. Nu colectăm cu bună știință date personale de la persoane sub 16 ani (sau sub 13 ani în Statele Unite, conform COPPA). Dacă crezi că un copil ne-a trimis date personale, scrie la <a href="mailto:support@monetic.app">support@monetic.app</a> și le vom șterge.</p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>13. Declarațiile din App Store și Google Play</h2>
+        <p>Tipurile de date din această politică corespund declarațiilor noastre Apple App Privacy (<code>PrivacyInfo.xcprivacy</code>) și formularului Google Play Data safety. Pe scurt: datele de cont, informațiile financiare, pozele, istoricul achizițiilor, conținutul trimis la suport și identificatorii dispozitivului sunt colectate pentru funcționarea aplicației și legate de cont când ești autentificat; datele despre erori și performanță sunt colectate pentru stabilitate și nu sunt legate de cont; datele de publicitate, inclusiv locația aproximativă, sunt folosite pentru reclame de la terți. Declarația noastră pentru iOS marchează locația aproximativă ca nelegată de identitatea ta și nefolosită pentru urmărire. Aplicația nu te urmărește pe iOS. Datele sunt criptate la transfer. Poți cere ștergerea din Aplicație sau la <a href="privacy.html#delete-account-ro">https://monetic.app/privacy.html#delete-account</a>.</p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>14. Modificări ale politicii</h2>
+        <p>Putem actualiza această politică atunci când se schimbă Aplicația, legea sau regulile magazinelor. Actualizăm data „Ultima actualizare” și publicăm noua versiune la <a href="privacy.html">https://monetic.app/privacy.html</a>. Pentru modificări importante afișăm și o notificare în Aplicație înainte ca ele să intre în vigoare.</p>
+      </section>
+
+      <hr>
+
+      <section>
+        <h2>15. Contact</h2>
         <ul>
-          <li><strong>Rutare Edge &amp; Criptare în Tranzit:</strong> Întregul trafic de rețea dintre aplicația mobilă și serviciile backend este rutat prin <strong>Cloudflare Anycast Edge Proxy</strong> cu criptare impusă <strong>TLS 1.3</strong>, filtrare prin Web Application Firewall (WAF) și protecție a originii (Origin Shielding prin <code>X-Monetic-Edge-Secret</code>) înainte de a atinge clusterul backend european din <code>europe-west1</code>.</li>
-          <li><strong>Securitate PIN cu Protecție Hardware:</strong> Codul PIN intern este derivat prin <strong>PBKDF2-HMAC-SHA256 (100.000 iterații)</strong> și stocat în EncryptedSharedPreferences (MasterKey AES-256-GCM) pe Android și Keychain Services pe iOS.</li>
-          <li><strong>Protecție Locală Nativă:</strong> Bazele de date SQLite sunt protejate prin Android File-Based Encryption și iOS Data Protection în spațiul privat al aplicației.</li>
-          <li><strong>Izolare față de Backup-ul Sistemului de Operare:</strong> Bazele de date financiare și fotografiile bonurilor sunt excluse explicit din backup-urile automate necriptate ale sistemului (<code>backup_rules.xml</code>, <code>data_extraction_rules.xml</code>, <code>NSURLIsExcludedFromBackupKey = true</code>).</li>
-          <li><strong>Izolare Biometrică:</strong> Autentificarea biometrică este securizată hardware în Secure Enclave / Keystore-ul dispozitivului.</li>
-          <li><strong>Control Strict al Accesului în Backend:</strong> Accesul la Firestore și Cloud Storage necesită token-uri validate Firebase Authentication și verificare App Check.</li>
-        </ul>
-      </section>
-
-      <hr>
-
-      <section>
-        <h2>12. Protecția Confidențialității Minorilor</h2>
-        <p>Monetic nu este destinată și nu este concepută pentru a fi utilizată de copii cu vârsta sub 16 ani (sau sub 13 ani în Statele Unite). Nu colectăm și nu prelucrăm cu bună știință date personale de la minori. În cazul în care descoperim că un minor ne-a furnizat date personale fără acordul verificabil al părinților, vom lua măsuri imediate pentru a șterge definitiv aceste date. Dacă aveți motive să credeți că un minor ne-a transmis date personale, vă rugăm să ne contactați la <a href="mailto:support@monetic.app">support@monetic.app</a>.</p>
-      </section>
-
-      <hr>
-
-      <section>
-        <h2>13. Modificări &amp; Actualizări ale Politicii de Confidențialitate</h2>
-        <p>Putem actualiza periodic această Politică de Confidențialitate pentru a reflecta modificările din arhitectura aplicației, funcționalitățile nou introduse sau cerințele legale și de reglementare.</p>
-        <p>Când aducem modificări semnificative, vă vom notifica prin:</p>
-        <ol>
-          <li>Actualizarea datelor de „Ultima actualizare” și „Data intrării în vigoare” din antetul documentului;</li>
-          <li>Publicarea versiunii revizuite la <a href="https://monetic.app/privacy.html">https://monetic.app/privacy.html</a>;</li>
-          <li>Afișarea unei notificări în aplicație la producerea unor schimbări arhitecturale importante.</li>
-        </ol>
-        <p>Vă recomandăm să consultați periodic această pagină pentru a fi la curent cu măsurile de protecție a datelor dumneavoastră.</p>
-      </section>
-
-      <hr>
-
-      <section>
-        <h2>14. Contact &amp; Datele Dezvoltatorului</h2>
-        <p>Dacă aveți întrebări, sugestii sau solicitări legale referitoare la această Politică de Confidențialitate sau doriți să vă exercitați drepturile conferite de lege, vă rugăm să contactați:</p>
-        <ul>
-          <li><strong>Aplicație:</strong> Monetic</li>
-          <li><strong>Dezvoltator / Operator de Date:</strong> Daniel Crețu (Dezvoltator Software Independent)</li>
-          <li><strong>Email de Contact &amp; Confidențialitate:</strong> <a href="mailto:support@monetic.app">support@monetic.app</a></li>
-          <li><strong>Punct Unic de Contact conform Regulamentului Serviciilor Digitale (DSA):</strong> <a href="mailto:support@monetic.app">support@monetic.app</a> (Limbi de comunicare: Română, Engleză)</li>
-          <li><strong>Site Oficial:</strong> <a href="https://monetic.app">https://monetic.app</a></li>
-          <li><strong>Adresă Poștală:</strong> Cluj-Napoca, România</li>
+          <li><strong>Operator de date:</strong> Daniel Crețu, Cluj-Napoca, România</li>
+          <li><strong>Email:</strong> <a href="mailto:support@monetic.app">support@monetic.app</a></li>
+          <li><strong>Site:</strong> <a href="https://monetic.app">https://monetic.app</a></li>
         </ul>
       </section>
     </div>
