@@ -180,18 +180,7 @@
     ]
   }
   </script>
-  <script>
-    (function() {
-      try {
-        var saved = localStorage.getItem('monetic_preferred_lang');
-        var lang = (saved === 'ro' || saved === 'en') ? saved : (navigator.language && navigator.language.toLowerCase().startsWith('ro') ? 'ro' : 'en');
-        document.documentElement.setAttribute('lang', lang);
-        document.documentElement.lang = lang;
-        document.documentElement.classList.remove('lang-en', 'lang-ro');
-        document.documentElement.classList.add('lang-' + lang);
-      } catch (e) {}
-    })();
-  </script>
+  <script src="lang-init.js"></script>
 
   <style>
     :root {
@@ -1807,19 +1796,19 @@
           </div>
 
           <div class="screen-gallery">
-            <div class="screen-thumb" onclick="openLightbox('screenshots/20_dashboard_expenses.jpg', 'cap_dashboard_expenses')">
+            <div class="screen-thumb" data-lightbox-src="screenshots/20_dashboard_expenses.jpg" data-lightbox-caption="cap_dashboard_expenses">
               <img src="screenshots/20_dashboard_expenses.jpg" alt="Dashboard Expenses View" loading="lazy">
               <span class="expand-indicator">🔍</span>
             </div>
-            <div class="screen-thumb" onclick="openLightbox('screenshots/18_dashboard_income.jpg', 'cap_dashboard_income')">
+            <div class="screen-thumb" data-lightbox-src="screenshots/18_dashboard_income.jpg" data-lightbox-caption="cap_dashboard_income">
               <img src="screenshots/18_dashboard_income.jpg" alt="Dashboard Income View" loading="lazy">
               <span class="expand-indicator">🔍</span>
             </div>
-            <div class="screen-thumb" onclick="openLightbox('screenshots/22_add_transaction.jpg', 'cap_add_transaction')">
+            <div class="screen-thumb" data-lightbox-src="screenshots/22_add_transaction.jpg" data-lightbox-caption="cap_add_transaction">
               <img src="screenshots/22_add_transaction.jpg" alt="Add Transaction Screen" loading="lazy">
               <span class="expand-indicator">🔍</span>
             </div>
-            <div class="screen-thumb" onclick="openLightbox('screenshots/19_transactions.jpg', 'cap_transactions')">
+            <div class="screen-thumb" data-lightbox-src="screenshots/19_transactions.jpg" data-lightbox-caption="cap_transactions">
               <img src="screenshots/19_transactions.jpg" alt="Transactions List Screen" loading="lazy">
               <span class="expand-indicator">🔍</span>
             </div>
@@ -1858,15 +1847,15 @@
           </div>
 
           <div class="screen-gallery">
-            <div class="screen-thumb" onclick="openLightbox('screenshots/17_accounts.jpg', 'cap_accounts')">
+            <div class="screen-thumb" data-lightbox-src="screenshots/17_accounts.jpg" data-lightbox-caption="cap_accounts">
               <img src="screenshots/17_accounts.jpg" alt="Accounts Overview" loading="lazy">
               <span class="expand-indicator">🔍</span>
             </div>
-            <div class="screen-thumb" onclick="openLightbox('screenshots/21_create_account_dialog.jpg', 'cap_create_account')">
+            <div class="screen-thumb" data-lightbox-src="screenshots/21_create_account_dialog.jpg" data-lightbox-caption="cap_create_account">
               <img src="screenshots/21_create_account_dialog.jpg" alt="Create Account Dialog" loading="lazy">
               <span class="expand-indicator">🔍</span>
             </div>
-            <div class="screen-thumb" onclick="openLightbox('screenshots/15_transfers.jpg', 'cap_transfers')">
+            <div class="screen-thumb" data-lightbox-src="screenshots/15_transfers.jpg" data-lightbox-caption="cap_transfers">
               <img src="screenshots/15_transfers.jpg" alt="Transfers Screen" loading="lazy">
               <span class="expand-indicator">🔍</span>
             </div>
@@ -1905,35 +1894,35 @@
           </div>
 
           <div class="screen-gallery">
-            <div class="screen-thumb" onclick="openLightbox('screenshots/06_charts_trend.jpg', 'cap_trend')">
+            <div class="screen-thumb" data-lightbox-src="screenshots/06_charts_trend.jpg" data-lightbox-caption="cap_trend">
               <img src="screenshots/06_charts_trend.jpg" alt="Trend &amp; Budget Chart" loading="lazy">
               <span class="expand-indicator">🔍</span>
             </div>
-            <div class="screen-thumb" onclick="openLightbox('screenshots/10_charts_analytics.jpg', 'cap_analytics')">
+            <div class="screen-thumb" data-lightbox-src="screenshots/10_charts_analytics.jpg" data-lightbox-caption="cap_analytics">
               <img src="screenshots/10_charts_analytics.jpg" alt="Period Wave Curve" loading="lazy">
               <span class="expand-indicator">🔍</span>
             </div>
-            <div class="screen-thumb" onclick="openLightbox('screenshots/08_charts_net_worth.jpg', 'cap_net_worth')">
+            <div class="screen-thumb" data-lightbox-src="screenshots/08_charts_net_worth.jpg" data-lightbox-caption="cap_net_worth">
               <img src="screenshots/08_charts_net_worth.jpg" alt="Net Worth Chart" loading="lazy">
               <span class="expand-indicator">🔍</span>
             </div>
-            <div class="screen-thumb" onclick="openLightbox('screenshots/14_charts_bar_monthly.jpg', 'cap_monthly_bar')">
+            <div class="screen-thumb" data-lightbox-src="screenshots/14_charts_bar_monthly.jpg" data-lightbox-caption="cap_monthly_bar">
               <img src="screenshots/14_charts_bar_monthly.jpg" alt="Monthly Bar Chart" loading="lazy">
               <span class="expand-indicator">🔍</span>
             </div>
-            <div class="screen-thumb" onclick="openLightbox('screenshots/12_charts_pie_expenses.jpg', 'cap_pie_expenses')">
+            <div class="screen-thumb" data-lightbox-src="screenshots/12_charts_pie_expenses.jpg" data-lightbox-caption="cap_pie_expenses">
               <img src="screenshots/12_charts_pie_expenses.jpg" alt="Pie Chart Expenses" loading="lazy">
               <span class="expand-indicator">🔍</span>
             </div>
-            <div class="screen-thumb" onclick="openLightbox('screenshots/13_charts_donut_expenses.jpg', 'cap_donut_expenses')">
+            <div class="screen-thumb" data-lightbox-src="screenshots/13_charts_donut_expenses.jpg" data-lightbox-caption="cap_donut_expenses">
               <img src="screenshots/13_charts_donut_expenses.jpg" alt="Donut Chart Expenses" loading="lazy">
               <span class="expand-indicator">🔍</span>
             </div>
-            <div class="screen-thumb" onclick="openLightbox('screenshots/16_charts_donut_detail.jpg', 'cap_donut_detail')">
+            <div class="screen-thumb" data-lightbox-src="screenshots/16_charts_donut_detail.jpg" data-lightbox-caption="cap_donut_detail">
               <img src="screenshots/16_charts_donut_detail.jpg" alt="Donut Slice Detail" loading="lazy">
               <span class="expand-indicator">🔍</span>
             </div>
-            <div class="screen-thumb" onclick="openLightbox('screenshots/11_charts_category_breakdown.jpg', 'cap_category_breakdown')">
+            <div class="screen-thumb" data-lightbox-src="screenshots/11_charts_category_breakdown.jpg" data-lightbox-caption="cap_category_breakdown">
               <img src="screenshots/11_charts_category_breakdown.jpg" alt="Category Breakdown" loading="lazy">
               <span class="expand-indicator">🔍</span>
             </div>
@@ -1965,11 +1954,11 @@
           </div>
 
           <div class="screen-gallery">
-            <div class="screen-thumb" onclick="openLightbox('screenshots/04_regular_payments.jpg', 'cap_regular_payments')">
+            <div class="screen-thumb" data-lightbox-src="screenshots/04_regular_payments.jpg" data-lightbox-caption="cap_regular_payments">
               <img src="screenshots/04_regular_payments.jpg" alt="Regular Payments" loading="lazy">
               <span class="expand-indicator">🔍</span>
             </div>
-            <div class="screen-thumb" onclick="openLightbox('screenshots/05_reminders.jpg', 'cap_reminders')">
+            <div class="screen-thumb" data-lightbox-src="screenshots/05_reminders.jpg" data-lightbox-caption="cap_reminders">
               <img src="screenshots/05_reminders.jpg" alt="Reminders Screen" loading="lazy">
               <span class="expand-indicator">🔍</span>
             </div>
@@ -2008,19 +1997,19 @@
           </div>
 
           <div class="screen-gallery">
-            <div class="screen-thumb" onclick="openLightbox('screenshots/03_themes_appearance.jpg', 'cap_themes')">
+            <div class="screen-thumb" data-lightbox-src="screenshots/03_themes_appearance.jpg" data-lightbox-caption="cap_themes">
               <img src="screenshots/03_themes_appearance.jpg" alt="Themes Screen" loading="lazy">
               <span class="expand-indicator">🔍</span>
             </div>
-            <div class="screen-thumb" onclick="openLightbox('screenshots/02_select_currency.jpg', 'cap_currency')">
+            <div class="screen-thumb" data-lightbox-src="screenshots/02_select_currency.jpg" data-lightbox-caption="cap_currency">
               <img src="screenshots/02_select_currency.jpg" alt="Currencies Screen" loading="lazy">
               <span class="expand-indicator">🔍</span>
             </div>
-            <div class="screen-thumb" onclick="openLightbox('screenshots/01_select_language.jpg', 'cap_language')">
+            <div class="screen-thumb" data-lightbox-src="screenshots/01_select_language.jpg" data-lightbox-caption="cap_language">
               <img src="screenshots/01_select_language.jpg" alt="Language Selection" loading="lazy">
               <span class="expand-indicator">🔍</span>
             </div>
-            <div class="screen-thumb" onclick="openLightbox('screenshots/07_settings.jpg', 'cap_settings')">
+            <div class="screen-thumb" data-lightbox-src="screenshots/07_settings.jpg" data-lightbox-caption="cap_settings">
               <img src="screenshots/07_settings.jpg" alt="Settings Screen" loading="lazy">
               <span class="expand-indicator">🔍</span>
             </div>
@@ -2066,7 +2055,7 @@
           </div>
 
           <div class="screen-gallery">
-            <div class="screen-thumb" onclick="openLightbox('screenshots/09_account_cloud_backup.jpg', 'cap_cloud_backup')">
+            <div class="screen-thumb" data-lightbox-src="screenshots/09_account_cloud_backup.jpg" data-lightbox-caption="cap_cloud_backup">
               <img src="screenshots/09_account_cloud_backup.jpg" alt="Account and Cloud Backup" loading="lazy">
               <span class="expand-indicator">🔍</span>
             </div>
@@ -2280,9 +2269,9 @@
   </main>
 
   <!-- Lightbox Modal for Fullscreen Screenshot Previews -->
-  <div id="lightbox" class="lightbox-modal" onclick="closeLightbox(event)" role="dialog" aria-modal="true" aria-label="Screenshot Preview">
-    <button class="lightbox-close" onclick="closeLightbox(event)" title="Close viewer" aria-label="Close viewer">✕</button>
-    <div class="lightbox-dialog" onclick="event.stopPropagation()">
+  <div id="lightbox" class="lightbox-modal" data-lightbox-close role="dialog" aria-modal="true" aria-label="Screenshot Preview">
+    <button class="lightbox-close" data-lightbox-close title="Close viewer" aria-label="Close viewer">✕</button>
+    <div class="lightbox-dialog" data-lightbox-dialog>
       <img id="lightbox-img" class="lightbox-image" src="" alt="Monetic Screen Full View">
       <div id="lightbox-caption" class="lightbox-caption"></div>
     </div>
@@ -2314,84 +2303,7 @@
   <script src="translations.js"></script>
 
   <!-- Lightbox & Filter Interactivity Script -->
-  <script>
-    function openLightbox(src, captionKeyOrText) {
-      const modal = document.getElementById('lightbox');
-      const img = document.getElementById('lightbox-img');
-      const cap = document.getElementById('lightbox-caption');
-      img.src = src;
-      const translatedCaption = (window.getMoneticTranslation && typeof window.getMoneticTranslation === 'function')
-        ? window.getMoneticTranslation(captionKeyOrText, captionKeyOrText)
-        : captionKeyOrText;
-      img.alt = translatedCaption;
-      cap.innerHTML = translatedCaption;
-      modal.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeLightbox(event) {
-      if (event && event.stopPropagation) {
-        event.stopPropagation();
-      }
-      const modal = document.getElementById('lightbox');
-      modal.classList.remove('active');
-      document.body.style.overflow = 'auto';
-    }
-
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        closeLightbox();
-      }
-    });
-
-    // Module Filter Buttons
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        const filter = btn.getAttribute('data-filter');
-        
-        document.querySelectorAll('.tour-item').forEach(item => {
-          if (filter === 'all' || item.getAttribute('data-category') === filter) {
-            item.style.display = 'grid';
-          } else {
-            item.style.display = 'none';
-          }
-        });
-      });
-    });
-
-    // Mobile Nav Toggle
-    const navToggle = document.getElementById('nav-toggle');
-    const navLinks = document.getElementById('nav-links');
-
-    if (navToggle && navLinks) {
-      navToggle.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const isOpen = navLinks.classList.toggle('is-open');
-        navToggle.classList.toggle('is-active', isOpen);
-        navToggle.setAttribute('aria-expanded', isOpen);
-      });
-
-      // Close mobile nav when clicking a link
-      navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          navLinks.classList.remove('is-open');
-          navToggle.classList.remove('is-active');
-          navToggle.setAttribute('aria-expanded', 'false');
-        });
-      });
-
-      // Close mobile nav when tapping outside
-      document.addEventListener('click', (e) => {
-        if (!navToggle.contains(e.target) && !navLinks.contains(e.target) && navLinks.classList.contains('is-open')) {
-          navLinks.classList.remove('is-open');
-          navToggle.classList.remove('is-active');
-          navToggle.setAttribute('aria-expanded', 'false');
-        }
-      });
-    }
-  </script>
+  <script src="site.js"></script>
 
 </body>
 </html>
